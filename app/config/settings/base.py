@@ -153,5 +153,9 @@ CORS_ORIGIN_WHITELIST = (
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/vol/web/media/'
+STATIC_ROOT = '/vol/web/static/'
+
 
 AUTH_USER_MODEL = 'account.User'
