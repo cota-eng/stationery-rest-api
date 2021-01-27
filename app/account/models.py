@@ -53,11 +53,16 @@ def profile_image_path(instance, filename):
     filename = f'{uuid.uuid4()}.{ext}'
     return os.path.join('uploads/avatar/')
 
+def profile_avatar_resize():
+    pass
+
 class Profile(models.Model):
+    """Model that has avatar and dates of create and update"""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
-    nickname = models.models.CharField(max_length=50)
+    nickname = models.CharField(max_length=50)
     created_at=models.DateField(auto_now=True)
     updated_at = models.DateField(auto_now_add=True)
     avatar = models.ImageField(upload_to=profile_image_path, height_field=None, width_field=None, max_length=None)
+    # favorite_pen = models.ManyToManyField()
     def __str__(self):
         return f'Profile:{self.nickname}'
