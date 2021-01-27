@@ -38,7 +38,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     Custom user model that supports using email instead of username
     and using uuid4
     """
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=50)
     is_staff = models.BooleanField(default=False)
