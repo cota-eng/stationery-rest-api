@@ -45,3 +45,19 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     objects = UserManager()
     USERNAME_FIELD = 'email'
+    def __str__(self):
+        return self.email
+
+def profile_image_path(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = f'{uuid.uuid4()}.{ext}'
+    return os.path.join('uploads/avatar/')
+
+class Profile(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
+    nickname = models.models.CharField(max_length=50)
+    created_at=models.DateField(auto_now=True)
+    updated_at = models.DateField(auto_now_add=True)
+    avatar = models.ImageField(upload_to=profile_image_path, height_field=None, width_field=None, max_length=None)
+    def __str__(self):
+        return f'Profile:{self.nickname}'
