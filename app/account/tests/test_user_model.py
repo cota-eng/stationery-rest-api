@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from . import models
+from .. import models
+from unittest.mock import patch
 
 def create_sample_user(email="smp@smp.com", password="smplepass"):
     return get_user_model().objects.create_user(email, password)
@@ -22,7 +23,7 @@ class ModelTests(TestCase):
 
     def test_create_user_with_upper_email_successful(self):
         """Test that create user by using upper email"""
-        email = "TEST@TEST.COM"
+        email = "test@TEST.COM"
         password = "testtest"
         user = get_user_model().objects.create_user(
             email=email,
@@ -51,3 +52,10 @@ class ModelTests(TestCase):
         self.assertTrue(superuser.is_staff)
         self.assertTrue(superuser.is_superuser)
 
+    @patch('uuid.uuid4')
+    def test_profile_avatar_path_created_successful(self, mock_uuid):
+        uuid = ""
+        mock_uuid.return_value = uuid
+        file_path = models.profile_avatar_path(None, 'sample.jpg')
+        path = f'uploads/avatar/{uuid}.jpg'
+        self.assertEqual(file_path,path)
