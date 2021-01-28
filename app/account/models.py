@@ -48,10 +48,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.email
 
-def profile_image_path(instance, filename):
+def profile_avatar_path(instance, filename):
     ext = filename.split('.')[-1]
     filename = f'{uuid.uuid4()}.{ext}'
-    return os.path.join('uploads/avatar/')
+    return os.path.join('uploads/avatar/',filename)
 
 def profile_avatar_resize():
     pass
@@ -59,10 +59,15 @@ def profile_avatar_resize():
 class Profile(models.Model):
     """Model that has avatar and dates of create and update"""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
+    user_profile = models.OneToOneField(
+        User,
+        related_name="user_profile",
+        on_delete=models.CASCADE
+        )
     nickname = models.CharField(max_length=50)
     created_at=models.DateField(auto_now=True)
     updated_at = models.DateField(auto_now_add=True)
-    avatar = models.ImageField(upload_to=profile_image_path, height_field=None, width_field=None, max_length=None)
+    avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None)
     # favorite_pen = models.ManyToManyField()
     def __str__(self):
         return f'Profile:{self.nickname}'
