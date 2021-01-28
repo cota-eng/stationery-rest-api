@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
     'account.apps.AccountConfig',
+    'pen.apps.PenConfig',
     'rest_framework',
     'corsheaders',
 ]
