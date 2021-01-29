@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'pen.apps.PenConfig',
     'rest_framework',
     'corsheaders',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
