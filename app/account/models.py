@@ -23,14 +23,11 @@ class UserManager(BaseUserManager):
     def create_superuser(self, email=None, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
-
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser must have is_staff=True.')
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
-
         return self._create_user( email, password, **extra_fields)
-
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -38,7 +35,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     Custom user model that supports using email instead of username
     and using uuid4
     """
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=50)
     is_staff = models.BooleanField(default=False)
@@ -65,7 +62,7 @@ class Profile(models.Model):
         on_delete=models.CASCADE
         )
     nickname = models.CharField(max_length=50)
-    created_at=models.DateField(auto_now=True)
+    created_at = models.DateField(auto_now=True)
     updated_at = models.DateField(auto_now_add=True)
     avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None)
     # favorite_pen = models.ManyToManyField()
