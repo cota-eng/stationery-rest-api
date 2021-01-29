@@ -19,3 +19,8 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = models.Profile
         fields = ('id', 'nickname', 'created_at', 'updated_at', 'avatar', 'user_profile')
         extra_kwargs = {'user_profile': {'read_only': True}}
+
+    def validate(self, attrs):
+        nickname = attrs.get('nickname', '')
+        if not nickname.isalnum():
+            raise serializers.ValidationError('only a-z 0-9 alnum')

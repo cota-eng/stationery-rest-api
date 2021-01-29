@@ -37,13 +37,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
     email = models.EmailField(max_length=255, unique=True)
-    name = models.CharField(max_length=50)
+    is_verified = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     objects = UserManager()
     USERNAME_FIELD = 'email'
     def __str__(self):
         return self.email
+    def tokens():
+        pass
 
 def profile_avatar_path(instance, filename):
     ext = filename.split('.')[-1]
