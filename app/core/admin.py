@@ -5,7 +5,7 @@ from account import models
 from django.utils.translation import gettext as _
 
 class UserAdmin(BaseUserAdmin):
-    ordering = ['uuid']
+    ordering = ['id']
     list_display = ['email','name']
     fieldsets = (
         (None,{'fields':('email','password')}),
