@@ -162,3 +162,10 @@ STATIC_ROOT = '/vol/web/static/'
 
 
 AUTH_USER_MODEL = 'account.User'
+
+"""Veryfy email sender"""
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER= env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
