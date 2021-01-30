@@ -24,3 +24,12 @@ class ProfileSerializer(serializers.ModelSerializer):
         nickname = attrs.get('nickname', '')
         if not nickname.isalnum():
             raise serializers.ValidationError('only a-z 0-9 alnum')
+
+
+class EmailVerifySerializer(serializers.ModelSerializer):
+    token = serializers.CharField(max_length=500)
+    
+    class Meta:
+        model = models.User
+        fields = ('token',)
+        
