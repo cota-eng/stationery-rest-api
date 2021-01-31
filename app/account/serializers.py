@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('id','email', 'password',)
+        fields = ('email', 'password',)
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -24,3 +24,12 @@ class ProfileSerializer(serializers.ModelSerializer):
         nickname = attrs.get('nickname', '')
         if not nickname.isalnum():
             raise serializers.ValidationError('only a-z 0-9 alnum')
+
+
+class EmailVerifySerializer(serializers.ModelSerializer):
+    token = serializers.CharField(max_length=500)
+    
+    class Meta:
+        model = models.User
+        fields = ('token',)
+        

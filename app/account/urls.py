@@ -7,5 +7,6 @@ router.register('profile',views.ProfileViewSet)
 app_name="account"
 urlpatterns = [
     path('', include(router.urls)),
-    path('register/',views.RegisterView.as_view(),name="register")
+    path('register/',views.RegisterView.as_view(),name="register"),
+    path('email-veryfy/',views.EmailVerifyView.as_view(),name="email-veryfy")
 ]
