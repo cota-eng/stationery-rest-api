@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.conf import settings
 import uuid
 import os
-
+from rest_framework_simplejwt.tokens import RefreshToken
 class UserManager(BaseUserManager):
     use_in_migrations = True
     def _create_user(self, email, password, **extra_fields):
@@ -30,6 +30,7 @@ class UserManager(BaseUserManager):
         return self._create_user( email, password, **extra_fields)
 
 
+
 class User(AbstractBaseUser, PermissionsMixin):
     """
     Custom user model that supports using email instead of username
@@ -42,10 +43,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     objects = UserManager()
     USERNAME_FIELD = 'email'
+
     def __str__(self):
         return self.email
-    def tokens():
-        pass
+
+    def tokens(self):
+        refresh = RefreshToken.for_user(self)
+        return {
+            'refresh': str(refresh),
+            'access':str(refresh.access_token)
+        }
 
 def profile_avatar_path(instance, filename):
     ext = filename.split('.')[-1]
