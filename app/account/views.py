@@ -51,7 +51,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
         return serializer.save(user_profile=self.request.user)
 
 
-class EmailVerifyView(views.APIView):
+class EmailVerifyAPIView(views.APIView):
     serializer_class = serializers.EmailVerifySerializer
     token_param_config = openapi.Parameter('token', in_=openapi.IN_QUERY, description='Description', type=openapi.TYPE_STRING)
     
@@ -79,10 +79,14 @@ class LoginAPIView(generics.GenericAPIView):
 
         return Response(serialier.data,status=status.HTTP_200_OK)
 
-class PasswordResetView(generics.GenericAPIView):
+class PasswordResetAPIView(generics.GenericAPIView):
     serializer_class = serializers.PasswordResetSerializer
     def post(self, request):
         data = {'request':request,'data':request.data}
         serializer = self.serializer_class(data=data)
         serializer.is_valid(raise_exception=True)
         
+
+class PasswordTokenCheckAPIView(generics.GenericAPIView):
+    def get(self, request, uidb64, token):
+        pass 
