@@ -111,9 +111,18 @@ class PasswordResetAPIView(generics.GenericAPIView):
         # data = {'request':request,'data':request.data}
         # serializer = self.serializer_class(data=data)
         # serializer.is_valid(raise_exception=True)
-            return Response({'success': 'sent you a password reset link!'},
+        return Response({'success': 'sent you a password reset link!'},
                 status=status.HTTP_200_OK)
 
 class PasswordTokenCheckAPIView(generics.GenericAPIView):
     def get(self, request, uidb64, token):
-        pass 
+        try:
+            id = smart_str(urlsafe_base64_decode(uidb64))
+            user = models.User.objects.get(id=id)
+
+            if not PasswordResetTokenGenerator().check_token(user,token):
+                return Response({'error': 'token is not valid'}, status=status.HTTP_401_UNAUTHORIZED)
+                
+            return Response({'success':True,'message':'credentials valid','uidb64':uidb64,'token':token},status=status.HTTP_200_OK)
+        except DjangoUnicodeDecodeError as identifier:
+            return Response({'error':'token is not valid'},status=status.HTTP_401_UNAUTHORIZED)
