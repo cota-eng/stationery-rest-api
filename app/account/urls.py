@@ -11,6 +11,6 @@ urlpatterns = [
     path('login/',views.LoginAPIView.as_view(),name="login"),
     path('email-veryfy/',views.EmailVerifyAPIView.as_view(),name="email-veryfy"),
     path('token/refresh/',TokenRefreshView.as_view(),name="token-refresh"),
-    path('password-reset/<uidb64>/<token>/',views.PasswordTokenCheckAPIView.as_view(),name="password-reset-check"),
-    # path('password-reset/<uidb64>/<token>/',views.PasswordResetAPIView.as_view(),name="password-reset-check"),
+    path('password-reset/<uidb64>/<token>/',views.PasswordTokenCheckAPIView.as_view(),name="password-reset-confirm"),
+    path('password-reset/',views.PasswordResetAPIView.as_view(),name="password-reset"),
 ]

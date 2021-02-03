@@ -67,23 +67,23 @@ class PasswordResetSerializer(serializers.ModelSerializer):
         model = models.User
         fields = ('email',)
 
-    def validate(self, attrs):
-        email = attrs['data'].get('email')
-        user = models.User.objects.filter(email=email)
-        if user.exists():
-            uidb64 = urlsafe_base64_encode(user.id)
-            token = PasswordResetTokenGenerator().make_token(user)
-            current_site = get_current_site(request=attrs['data'].get('request')).domain
-            reverse_link = reverse('account:password-reset-check',kwargs={'uidb64':uidb64,'token':token})
-            absolute_url = f'http://{current_site}{reverse_link}'
+    # def validate(self, attrs):
+    #     email = attrs['data'].get('email')
+    #     user = models.User.objects.filter(email=email)
+    #     if user.exists():
+    #         uidb64 = urlsafe_base64_encode(user.id)
+    #         token = PasswordResetTokenGenerator().make_token(user)
+    #         current_site = get_current_site(request=attrs['data'].get('request')).domain
+    #         reverse_link = reverse('account:password-reset',kwargs={'uidb64':uidb64,'token':token})
+    #         absolute_url = f'http://{current_site}{reverse_link}'
 
-            email_body = f'Hi,there! \n please click this url for reset your password! \n {absolute_url}'
+    #         email_body = f'Hi,there! \n please click this url for reset your password! \n {absolute_url}'
 
-            data = {
-                'email_subject': 'reset password',
-                'email_body': email_body,
-                'email_to': user.email,
-                }
+    #         data = {
+    #             'email_subject': 'reset password',
+    #             'email_body': email_body,
+    #             'email_to': user.email,
+    #             }
             
-            utils.Util.send_email(data)
-        return super().validate(attrs)            
+    #         utils.Util.send_email(data)
+    #     return super().validate(attrs)            
