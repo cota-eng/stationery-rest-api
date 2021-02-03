@@ -78,3 +78,11 @@ class LoginAPIView(generics.GenericAPIView):
         serialier.is_valid(raise_exception=True)
 
         return Response(serialier.data,status=status.HTTP_200_OK)
+
+class PasswordResetView(generics.GenericAPIView):
+    serializer_class = serializers.PasswordResetSerializer
+    def post(self, request):
+        data = {'request':request,'data':request.data}
+        serializer = self.serializer_class(data=data)
+        serializer.is_valid(raise_exception=True)
+        
