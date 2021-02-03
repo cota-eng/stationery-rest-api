@@ -27,7 +27,7 @@ class RegisterView(generics.GenericAPIView):
             token = RefreshToken.for_user(created_user).access_token
             current_site = get_current_site(request).domain
             reverse_link = reverse('account:email-veryfy')
-            absolute_url = f'http://{current_site}/{reverse_link}?token={token}'
+            absolute_url = f'http://{current_site}{reverse_link}?token={token}'
 
             email_body = f'Hi,there!your mail is {created_user.email}\n please click this url for verifing your account! \n {absolute_url}'
 
@@ -68,4 +68,13 @@ class EmailVerifyView(views.APIView):
         except jwt.ExpiredSignatureError:
             return Response({'error':'not successfully activated'},status=status.HTTP_400_BAD_REQUEST)
         except jwt.exceptions.DecodeError:
-            return Response({'error':'invalid token'},status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': 'invalid token'}, status=status.HTTP_400_BAD_REQUEST)
+            
+
+class LoginAPIView(generics.GenericAPIView):
+    serializer_class = serializers.LoginSerializer
+    def post(self, request):
+        serialier = self.serializer_class(data=request.data)
+        serialier.is_valid(raise_exception=True)
+
+        return Response(serialier.data,status=status.HTTP_200_OK)
