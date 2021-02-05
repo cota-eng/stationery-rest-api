@@ -126,3 +126,12 @@ class PasswordTokenCheckAPIView(generics.GenericAPIView):
             return Response({'success':True,'message':'credentials valid','uidb64':uidb64,'token':token},status=status.HTTP_200_OK)
         except DjangoUnicodeDecodeError as identifier:
             return Response({'error':'token is not valid'},status=status.HTTP_401_UNAUTHORIZED)
+
+
+class SetNewPasswordAPIView(generics.GenericAPIView):
+    serializer_class = serializers.SetNewPasswordSerializer
+
+    def patch(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        return Response({'success':True,'message':'password reset successed'},status=status.HTTP_200_OK)

@@ -9,6 +9,7 @@ from rest_framework import exceptions
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from . import utils
+from rest_framework import status
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
@@ -86,4 +87,29 @@ class PasswordResetSerializer(serializers.ModelSerializer):
     #             }
             
     #         utils.Util.send_email(data)
-    #     return super().validate(attrs)            
+    #     return super().validate(attrs)
+    
+class SetNewPasswordSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+    token = serializers.CharField(write_only=True)
+    uidb64 = serializers.CharField(write_only=True)
+    class Meta:
+        model = models.User
+        fields = ('password', 'token', 'uidb64',)
+    
+    def validate(self, attrs):
+        try:
+            password = attrs.get('password')
+            token = attrs.get('token')
+            uidb64 = attrs.get('uidb64')
+            id = force_str(urlsafe_base64_decode(uidb64))
+            user = models.User.objects.get(id=id)
+
+            if not PasswordResetTokenGenerator().check_token(user, token):
+                raise exceptions.AuthenticationFailed('reset link is invalid, try again!', 401)
+            user.set_password(password)
+            user.save()
+        except  Exception as e:
+                raise exceptions.AuthenticationFailed('reset link is invalid, try again!', 401)
+                
+        return super().validate(attrs)
