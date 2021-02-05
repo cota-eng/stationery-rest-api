@@ -5,21 +5,19 @@ from account import models
 from django.utils.translation import gettext as _
 
 class UserAdmin(BaseUserAdmin):
-    ordering = ['uuid']
-    list_display = ['email','name']
+    ordering = ['id',]
+    list_display = ['email',]
     fieldsets = (
-        (None,{'fields':('email','password')}),
-        (_('Personal Info'),{'fields':('name',)}),
-        (
-            _('Permissions'),
+        (_('Credentials'),{'fields':('email','password')}),
+        (_('Personal Info'),{'fields':('is_verified',)}),
+        (_('Permissions'),
             {
                 'fields': ('is_active',
                            'is_staff',
                            'is_superuser')
             }
         ),
-        (
-            _('Important dates'),
+        (_('Important dates'),
             {
                 'fields': ('last_login',)
                 }

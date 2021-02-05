@@ -34,7 +34,7 @@ class Pen(models.Model):
         )
     price_yen = models.PositiveIntegerField(
         _("price"),
-        validater=[MaxValueValidator(100000),]
+        validators=[MaxValueValidator(100000),]
         )
     productor = models.ForeignKey(
         Productor,
@@ -44,7 +44,6 @@ class Pen(models.Model):
     tag = models.ManyToManyField(
         Tag,
         related_name="pen_tag",
-        on_delete=models.CASCADE
     )
     image = models.ImageField(_("pen's images"), upload_to=None, height_field=None, width_field=None, max_length=None)
     created_at = models.DateTimeField(default=timezone.now)

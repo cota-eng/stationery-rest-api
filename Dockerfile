@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM python:3.8-alpine
 
 # ENV PYTHONDONTWRITEBYTECODE 1 
 ENV PYTHONUNBUFFERED 1
@@ -11,6 +11,7 @@ RUN apk add --update --no-cache --virtual .tmp-build-deps \
 
 RUN pip install --upgrade pip
 RUN pip install -r /requirements.txt
+
 RUN apk del .tmp-build-deps
 
 RUN mkdir /app
@@ -23,5 +24,4 @@ RUN adduser -D user
 RUN chown -R user:user /vol
 RUN chmod -R 755 /vol/web
 
-# delete this code, succeeded
 USER user

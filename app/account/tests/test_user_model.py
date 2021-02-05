@@ -59,3 +59,4 @@ class ModelTests(TestCase):
         file_path = models.profile_avatar_path(None, 'sample.jpg')
         path = f'uploads/avatar/{uuid}.jpg'
         self.assertEqual(file_path,path)
+
