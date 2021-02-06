@@ -10,6 +10,8 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from . import utils
 from rest_framework import status
+from rest_framework_simplejwt.tokens import RefreshToken,TokenError
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
@@ -75,10 +77,32 @@ class LoginSerializer(serializers.ModelSerializer):
             'tokens':user.tokens,
         }
 
-class PasswordResetSerializer(serializers.ModelSerializer):
+class LogoutSerializer(serializers.ModelSerializer):
+    refresh = serializers.CharField()
+
+    def validate(self, attrs):
+        self.token = attrs.get('refresh')
+        return attrs
+
+    def save(self, **kwargs):
+        # RefreshToken(self.token).blacklist()
+        # RefreshToken(self.token).blacklist()
+        # token = RefreshToken(base64_encoded_token_string)
+        # token.blacklist()
+        try:
+            RefreshToken(self.token).blacklist()
+        except TokenError:
+            self.fail('error')
     class Meta:
         model = models.User
-        fields = ('email',)
+        fields = ('refresh',)
+
+class PasswordResetSerializer(serializers.ModelSerializer):
+    redirect_url = serializers.CharField(max_length=255, required=False)
+    
+    class Meta:
+        model = models.User
+        fields = ('email','redirect_url',)
 
     # def validate(self, attrs):
     #     email = attrs['data'].get('email')

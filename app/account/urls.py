@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('register/',views.RegisterView.as_view(),name="register"),
     path('login/',views.LoginAPIView.as_view(),name="login"),
+    path('logout/',views.LogoutAPIView.as_view(),name="logout"),
     path('email-veryfy/',views.EmailVerifyAPIView.as_view(),name="email-veryfy"),
     path('token/refresh/',TokenRefreshView.as_view(),name="token-refresh"),
     path('password-reset/<uidb64>/<token>/',views.PasswordTokenCheckAPIView.as_view(),name="password-reset-confirm"),
