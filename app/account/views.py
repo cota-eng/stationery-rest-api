@@ -115,6 +115,8 @@ class PasswordResetAPIView(generics.GenericAPIView):
                 status=status.HTTP_200_OK)
 
 class PasswordTokenCheckAPIView(generics.GenericAPIView):
+    serializer_class = serializers.SetNewPasswordSerializer
+
     def get(self, request, uidb64, token):
         try:
             id = smart_str(urlsafe_base64_decode(uidb64))

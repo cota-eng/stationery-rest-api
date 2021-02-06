@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
     'account.apps.AccountConfig',
+    'social_auth.apps.SocialAuthConfig',
     'pen.apps.PenConfig',
     'rest_framework',
     'corsheaders',
