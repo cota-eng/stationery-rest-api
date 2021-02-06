@@ -29,7 +29,10 @@ class UserManager(BaseUserManager):
             raise ValueError('Superuser must have is_superuser=True.')
         return self._create_user( email, password, **extra_fields)
 
-
+AUTH_PROVIDERS = {
+    'google': 'google',
+    'email':'email',
+}
 
 class User(AbstractBaseUser, PermissionsMixin):
     """
@@ -41,6 +44,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_verified = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    auth_provider = models.CharField(
+        max_length=255, blank=False, null=False, default=AUTH_PROVIDERS.get('email')
+    )
     objects = UserManager()
     USERNAME_FIELD = 'email'
 
@@ -70,7 +76,7 @@ class Profile(models.Model):
         related_name="user_profile",
         on_delete=models.CASCADE
         )
-    nickname = models.CharField(max_length=50)
+    nickname = models.CharField(max_length=50,default="匿名ユーザー")
     created_at = models.DateField(auto_now=True)
     updated_at = models.DateField(auto_now_add=True)
     avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None)

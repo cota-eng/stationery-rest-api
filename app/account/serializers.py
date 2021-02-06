@@ -10,6 +10,8 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from . import utils
 from rest_framework import status
+from rest_framework_simplejwt.tokens import RefreshToken,TokenError
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
@@ -40,18 +42,30 @@ class EmailVerifySerializer(serializers.ModelSerializer):
         fields = ('tokens',)
         
 class LoginSerializer(serializers.ModelSerializer):
-    tokens = serializers.CharField(max_length=500, read_only=True)
+    tokens = serializers.SerializerMethodField()
     email = serializers.EmailField(max_length=255)
     password = serializers.CharField(max_length=255, min_length=4, write_only=True)
     tokens = serializers.CharField(read_only=True)
     class Meta:
         model = models.User
         fields = ('email', 'password','tokens',)
-        
+    
+    def get_tokens(self, obj):
+        user = models.User.objects.get(email=obj['email'])
+        return {
+            'access':user.tokens()['access'],
+            'refresh':user.tokens()['refresh'],
+        }
+
     def validate(self, attrs):
         email = attrs.get('email')
         password = attrs.get('password')
+        filtered_user_by_email = models.User.objects.filter(email=email)
         user = authenticate(email=email, password=password)
+        if filtered_user_by_email.exists() and filtered_user_by_email[0].auth_provider != 'email':
+            raise exceptions.AuthenticationFailed(
+                detail='Please continue your login using ' + filtered_user_by_email[0].auth_provider)
+
         if not user:
             raise exceptions.AuthenticationFailed('invalid user')
         if not user.is_active:
@@ -63,10 +77,32 @@ class LoginSerializer(serializers.ModelSerializer):
             'tokens':user.tokens,
         }
 
-class PasswordResetSerializer(serializers.ModelSerializer):
+class LogoutSerializer(serializers.ModelSerializer):
+    refresh = serializers.CharField()
+
+    def validate(self, attrs):
+        self.token = attrs.get('refresh')
+        return attrs
+
+    def save(self, **kwargs):
+        # RefreshToken(self.token).blacklist()
+        # RefreshToken(self.token).blacklist()
+        # token = RefreshToken(base64_encoded_token_string)
+        # token.blacklist()
+        try:
+            RefreshToken(self.token).blacklist()
+        except TokenError:
+            self.fail('error')
     class Meta:
         model = models.User
-        fields = ('email',)
+        fields = ('refresh',)
+
+class PasswordResetSerializer(serializers.ModelSerializer):
+    redirect_url = serializers.CharField(max_length=255, required=False)
+    
+    class Meta:
+        model = models.User
+        fields = ('email','redirect_url',)
 
     # def validate(self, attrs):
     #     email = attrs['data'].get('email')
