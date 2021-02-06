@@ -40,14 +40,21 @@ class EmailVerifySerializer(serializers.ModelSerializer):
         fields = ('tokens',)
         
 class LoginSerializer(serializers.ModelSerializer):
-    tokens = serializers.CharField(max_length=500, read_only=True)
+    tokens = serializers.SerializerMethodField()
     email = serializers.EmailField(max_length=255)
     password = serializers.CharField(max_length=255, min_length=4, write_only=True)
     tokens = serializers.CharField(read_only=True)
     class Meta:
         model = models.User
         fields = ('email', 'password','tokens',)
-        
+    
+    def get_tokens(self, obj):
+        user = models.User.objects.get(email=obj['email'])
+        return {
+            'access':user.tokens()['access'],
+            'refresh':user.tokens()['refresh'],
+        }
+
     def validate(self, attrs):
         email = attrs.get('email')
         password = attrs.get('password')
