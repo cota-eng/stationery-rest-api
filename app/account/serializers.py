@@ -21,6 +21,26 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return get_user_model().objects.create_user(**validated_data)
 
+class UserRegisterSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(style={'input_type':'password'},write_only=True)
+    password2 = serializers.CharField(style={'input_type':'password'},write_only=True)
+    class Meta:
+        model = get_user_model()
+        fields = ('email', 'password','password2',)
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def save(self):
+        user = get_user_model().objects.create_user(
+            email=self.validated_data['email']
+        )
+        password = self.validated_data['password']
+        password2 = self.validated_data['password2']
+        if  password != password2:
+            raise serializers.ValidationError(
+                {'error':'password must be equal'})
+        user.set_password(password)
+        user.save()
+
 class ProfileSerializer(serializers.ModelSerializer):
     created_at = serializers.DateField(format="%Y-%m-%d",read_only=True)
     updated_at = serializers.DateField(format="%Y-%m-%d", read_only=True)
@@ -28,11 +48,11 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = models.Profile
         fields = ('id', 'nickname', 'created_at', 'updated_at', 'avatar', 'user_profile')
         extra_kwargs = {'user_profile': {'read_only': True}}
-
     def validate(self, attrs):
         nickname = attrs.get('nickname')
         if not nickname.isalnum():
             raise serializers.ValidationError('only a-z 0-9 alnum')
+        return super().validate(attrs)
 
 
 class EmailVerifySerializer(serializers.ModelSerializer):
@@ -49,7 +69,7 @@ class LoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.User
         fields = ('email', 'password','tokens',)
-    
+    # need to check
     def get_tokens(self, obj):
         user = models.User.objects.get(email=obj['email'])
         return {

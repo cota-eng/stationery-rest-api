@@ -4,29 +4,34 @@ from django.utils.translation import gettext as _
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.conf import settings
 from django.utils import timezone
+from account.models import User
 
 class Category(models.Model):
     """Model that define category and id is normal"""
-    name = models.CharField(_("category name"),max_length=20)
+    name = models.CharField(_("category name"),max_length=50)
+    slug = models.CharField(_("category slug"),max_length=50)
     def __str__(self):
-        return self.name
+        return f'Category: {self.name}'
 
 class Productor(models.Model):
-    """Model that define Maker and has name"""
+    """Model that define Maker and has name and only one official web site"""
     name = models.CharField(max_length=50)
+    slug = models.CharField(_("category slug"),max_length=50)
+    official_site_link = models.CharField(max_length=255)
     def __str__(self):
-        return self.name
+        return f'Productor: {self.name}'
 
 class Tag(models.Model):
     """Model that has diffrent tags, such as Wood, Light, Rich ..."""
     name = models.CharField(max_length=50)
+    slug = models.CharField(_("category slug"),max_length=50)
     def __str__(self):
-        return self.name
+        return f'Tag: {self.name}'
 
 class Pen(models.Model):
     """Model that is main part"""
-    name = models.CharField(_("pen's name"), max_length=50)
-    description = models.TextField()
+    name = models.CharField(_("pen name"), max_length=50)
+    description = models.TextField(_('description'))
     category = models.ForeignKey(
         Category,
         related_name="pen_category",
@@ -34,7 +39,7 @@ class Pen(models.Model):
         )
     price_yen = models.PositiveIntegerField(
         _("price"),
-        validators=[MaxValueValidator(100000),]
+        validators=[MaxValueValidator(1000000),]
         )
     productor = models.ForeignKey(
         Productor,
@@ -45,7 +50,54 @@ class Pen(models.Model):
         Tag,
         related_name="pen_tag",
     )
-    image = models.ImageField(_("pen's images"), upload_to=None, height_field=None, width_field=None, max_length=None)
+    image = models.ImageField(
+        upload_to=None,
+        height_field=None, width_field=None, max_length=None)
+    image_src = models.CharField(blank=True, null=True,max_length=500)
     created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    """in the future set affiliate link, so is charfield"""
+    amazon_link_to_buy = models.CharField(blank=True, null=True,max_length=500)
+    rakuten_link_to_buy = models.CharField(blank=True, null=True,max_length=500)
+
+    def mercari_link_to_buy(self):
+        return f'https://www.mercari.com/jp/search/?keyword={self.name}'
+
+    def number_of_review(self):
+        reviews = Review.objects.filter(pen=self)
+        return len(reviews)
+
+    def avarage_of_review_star(self):
+        sum: int = 0
+        reviews = Review.objects.filter(pen=self)
+        if len(reviews) != 0:
+            for review in reviews:
+                sum += review.stars
+            return sum / len(reviews)
+        else:
+            return 0
+        
+    def __str__(self):
+        return f'Pen: {self.name} Price: {self.price_yen}'
     
+class Review(models.Model):
+    """Model that display reviews of pens"""
+    pen = models.ForeignKey(
+        Pen,
+        related_name='reviewed_pen',
+        on_delete=models.CASCADE)
+    stars = models.IntegerField(_('star'), validators=[MaxValueValidator(5), MinValueValidator(1)])
+    reviewer = models.ForeignKey(
+        User,
+        related_name='reviewer',
+        on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = (('reviewer','pen'))
+        index_together = (('reviewer', 'pen'))
+
+    def __str__(self):
+        return f'Reviewd Pen: {self.pen.name} / Reviewer: {self.user.nickname}'
+    
+# class Comment(models.Model):
+#     pass

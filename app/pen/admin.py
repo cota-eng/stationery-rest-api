@@ -1,3 +1,7 @@
 from django.contrib import admin
+from . import models
 
-# Register your models here.
+admin.site.register(models.Tag)
+admin.site.register(models.Productor)
+admin.site.register(models.Pen)
+admin.site.register(models.Category)
