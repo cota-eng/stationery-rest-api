@@ -14,7 +14,7 @@ class Category(models.Model):
 class Productor(models.Model):
     """Model that define Maker and has name and only one official web site"""
     name = models.CharField(max_length=50)
-    official_site_url = models.CharField(max_length=255)
+    official_site_link = models.CharField(max_length=255)
     def __str__(self):
         return f'Productor: {self.name}'
 
@@ -50,14 +50,19 @@ class Pen(models.Model):
         related_name="pen_tag",
     )
     image = models.ImageField(
-        _("pen's images"),
+        _("pen images"),
         upload_to=None,
         height_field=None, width_field=None, max_length=None)
     image_src = models.CharField(blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
-    amazon_url_to_buy = models.CharField(blank=True, null=True)
-    rakuten_url_to_buy = models.CharField(blank=True, null=True)
+    amazon_link_to_buy = models.CharField(blank=True, null=True)
+    rakuten_link_to_buy = models.CharField(blank=True, null=True)
+    
+    def merukari_link_to_buy(self):
+        return f'https://www.mercari.com/jp/search/?keyword={self.name}'
+
     def __str__(self):
         return f'Pen: {self.name} Price: {self.price_yen}'
     
+class Review(models.model):
