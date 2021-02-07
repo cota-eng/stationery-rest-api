@@ -25,11 +25,11 @@ from django.shortcuts import redirect
 from django.http import HttpResponsePermanentRedirect
 
 class RegisterView(generics.GenericAPIView):
-    serializer_class = serializers.UserSerializer
+    serializer_class = serializers.UserRegisterSerializer
     permission_classes = (permissions.AllowAny,)
 
     def post(self,request):
-        serializer = serializers.UserSerializer(data=request.data)
+        serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             serializer.save()
 
@@ -55,7 +55,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
     queryset = models.Profile.objects.all()
     serializer_class = serializers.ProfileSerializer
     # permission_classes = (permissions.IsAuthenticated,)
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
     
     def perform_create(self, serializer):
         return serializer.save(user_profile=self.request.user)
