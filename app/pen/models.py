@@ -4,7 +4,7 @@ from django.utils.translation import gettext as _
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.conf import settings
 from django.utils import timezone
-
+from account.models import User
 class Category(models.Model):
     """Model that define category and id is normal"""
     name = models.CharField(_("category name"),max_length=50)
@@ -58,7 +58,7 @@ class Pen(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     amazon_link_to_buy = models.CharField(blank=True, null=True)
     rakuten_link_to_buy = models.CharField(blank=True, null=True)
-    
+
     def merukari_link_to_buy(self):
         return f'https://www.mercari.com/jp/search/?keyword={self.name}'
 
@@ -66,3 +66,22 @@ class Pen(models.Model):
         return f'Pen: {self.name} Price: {self.price_yen}'
     
 class Review(models.model):
+    pen = models.ForeignKey(
+        _('pen'),
+        Pen,
+        related_name='reviewed_pen',
+        on_delete=models.CASCADE)
+    stars = models.IntegerField(_('star'), validators=[MaxValueValidator(5), MinValueValidator(1)])
+    reviewer = models.ForeignKey(
+        _('reviewer'),
+        User,
+        related_name='reviewer',
+        on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = (('reviewer','pen'))
+        index_together = (('reviewer', 'pen'))
+
+    def __str__(self):
+        return f'Reviewd Pen: {self.pen.name} / Reviewer: {self.user.nickname}'
+    
