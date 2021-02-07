@@ -81,7 +81,7 @@ class Profile(models.Model):
     """Model that has avatar and dates of create and update"""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
     user_profile = models.OneToOneField(
-        _('user'),
+        # _('user'),
         User,
         related_name="user_profile",
         on_delete=models.CASCADE
@@ -90,7 +90,7 @@ class Profile(models.Model):
     created_at = models.DateField(auto_now=True)
     updated_at = models.DateField(auto_now_add=True)
     avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None)
-    twitter_account = models.CharField(_('twitter username'),null=True,blank=True)
+    twitter_account = models.CharField(_('twitter username'),null=True,blank=True,max_length=100)
     # favorite_pen = models.ManyToManyField()
     def __str__(self):
         return f'Profile of {self.nickname}'

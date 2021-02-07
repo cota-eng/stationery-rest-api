@@ -5,6 +5,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.conf import settings
 from django.utils import timezone
 from account.models import User
+
 class Category(models.Model):
     """Model that define category and id is normal"""
     name = models.CharField(_("category name"),max_length=50)
@@ -29,7 +30,7 @@ class Pen(models.Model):
     name = models.CharField(_("pen name"), max_length=50)
     description = models.TextField(_('description'))
     category = models.ForeignKey(
-        _('category'),
+        # _('category'),
         Category,
         related_name="pen_category",
         on_delete=models.CASCADE
@@ -39,41 +40,57 @@ class Pen(models.Model):
         validators=[MaxValueValidator(1000000),]
         )
     productor = models.ForeignKey(
-        _('productor'),
+        # _('productor'),
         Productor,
         related_name="pen_productor",
         on_delete=models.CASCADE
     )
     tag = models.ManyToManyField(
-        _('tag'),
+        # _('tag'),
         Tag,
         related_name="pen_tag",
     )
     image = models.ImageField(
-        _("pen images"),
+        # _("pen images"),
         upload_to=None,
         height_field=None, width_field=None, max_length=None)
-    image_src = models.CharField(blank=True, null=True)
+    image_src = models.CharField(blank=True, null=True,max_length=500)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
-    amazon_link_to_buy = models.CharField(blank=True, null=True)
-    rakuten_link_to_buy = models.CharField(blank=True, null=True)
+    """in the future set affiliate link, so is charfield"""
+    amazon_link_to_buy = models.CharField(blank=True, null=True,max_length=500)
+    rakuten_link_to_buy = models.CharField(blank=True, null=True,max_length=500)
 
-    def merukari_link_to_buy(self):
+    def mercari_link_to_buy(self):
         return f'https://www.mercari.com/jp/search/?keyword={self.name}'
 
+    def number_of_review(self):
+        reviews = Review.objects.filter(pen=self)
+        return len(reviews)
+
+    def avarage_of_review_star(self):
+        sum: int = 0
+        reviews = Review.objects.filter(pen=self)
+        if len(reviews) != 0:
+            for review in reviews:
+                sum += review.stars
+            return sum / len(reviews)
+        else:
+            return 0
+        
     def __str__(self):
         return f'Pen: {self.name} Price: {self.price_yen}'
     
-class Review(models.model):
+class Review(models.Model):
+    """Model that display reviews of pens"""
     pen = models.ForeignKey(
-        _('pen'),
+        # _('pen'),
         Pen,
         related_name='reviewed_pen',
         on_delete=models.CASCADE)
     stars = models.IntegerField(_('star'), validators=[MaxValueValidator(5), MinValueValidator(1)])
     reviewer = models.ForeignKey(
-        _('reviewer'),
+        # _('reviewer'),
         User,
         related_name='reviewer',
         on_delete=models.CASCADE)
@@ -85,3 +102,5 @@ class Review(models.model):
     def __str__(self):
         return f'Reviewd Pen: {self.pen.name} / Reviewer: {self.user.nickname}'
     
+# class Comment(models.Model):
+#     pass
