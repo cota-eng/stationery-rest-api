@@ -9,12 +9,14 @@ from account.models import User
 class Category(models.Model):
     """Model that define category and id is normal"""
     name = models.CharField(_("category name"),max_length=50)
+    slug = models.CharField(_("category slug"),max_length=50)
     def __str__(self):
         return f'Category: {self.name}'
 
 class Productor(models.Model):
     """Model that define Maker and has name and only one official web site"""
     name = models.CharField(max_length=50)
+    slug = models.CharField(_("category slug"),max_length=50)
     official_site_link = models.CharField(max_length=255)
     def __str__(self):
         return f'Productor: {self.name}'
@@ -22,6 +24,7 @@ class Productor(models.Model):
 class Tag(models.Model):
     """Model that has diffrent tags, such as Wood, Light, Rich ..."""
     name = models.CharField(max_length=50)
+    slug = models.CharField(_("category slug"),max_length=50)
     def __str__(self):
         return f'Tag: {self.name}'
 
@@ -30,7 +33,6 @@ class Pen(models.Model):
     name = models.CharField(_("pen name"), max_length=50)
     description = models.TextField(_('description'))
     category = models.ForeignKey(
-        # _('category'),
         Category,
         related_name="pen_category",
         on_delete=models.CASCADE
@@ -40,18 +42,15 @@ class Pen(models.Model):
         validators=[MaxValueValidator(1000000),]
         )
     productor = models.ForeignKey(
-        # _('productor'),
         Productor,
         related_name="pen_productor",
         on_delete=models.CASCADE
     )
     tag = models.ManyToManyField(
-        # _('tag'),
         Tag,
         related_name="pen_tag",
     )
     image = models.ImageField(
-        # _("pen images"),
         upload_to=None,
         height_field=None, width_field=None, max_length=None)
     image_src = models.CharField(blank=True, null=True,max_length=500)
@@ -84,13 +83,11 @@ class Pen(models.Model):
 class Review(models.Model):
     """Model that display reviews of pens"""
     pen = models.ForeignKey(
-        # _('pen'),
         Pen,
         related_name='reviewed_pen',
         on_delete=models.CASCADE)
     stars = models.IntegerField(_('star'), validators=[MaxValueValidator(5), MinValueValidator(1)])
     reviewer = models.ForeignKey(
-        # _('reviewer'),
         User,
         related_name='reviewer',
         on_delete=models.CASCADE)
