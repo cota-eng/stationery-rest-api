@@ -60,6 +60,12 @@ class ProfileViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         return serializer.save(user_profile=self.request.user)
 
+class MyProfileListView(generics.ListAPIView):
+    queryset = models.Profile.objects.all()
+    serializer_class = serializers.ProfileSerializer
+    def get_queryset(self):
+        return self.queryset.filter(userProfile=self.request.user)
+
 
 class EmailVerifyAPIView(views.APIView):
     serializer_class = serializers.EmailVerifySerializer

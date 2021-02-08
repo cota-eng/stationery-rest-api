@@ -8,5 +8,4 @@ django-cors-headers
 django-environ
 drf-yasg==1.20.0
 google-api-python-client==1.12.8
-# djoser
-# gunicorn
+django-filter
