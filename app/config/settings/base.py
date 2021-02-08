@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'social_auth.apps.SocialAuthConfig',
     'pen.apps.PenConfig',
     'rest_framework',
+    'django_filters',
     'corsheaders',
     'drf_yasg',
     'rest_framework_simplejwt.token_blacklist',
