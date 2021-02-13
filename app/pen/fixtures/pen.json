@@ -1,0 +1,73 @@
+[{
+        "model": "pen.Pen",
+        "pk": "830b7032-bf3b-914a-e764-ec1b4057c939",
+        "fields": {
+            "name": "S20",
+            "description": "有名なペン",
+            "category": 1,
+            "price_yen": 2000,
+            "brand": 2,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "dc03a501-4ac3-d1db-987e-adf794d9ce30",
+        "fields": {
+            "name": "S10",
+            "description": "有名なペン",
+            "category": 1,
+            "price_yen": 2000,
+            "brand": 2,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "0963ddf4-8b7e-120f-0373-a778c78371ba",
+        "fields": {
+            "name": "S20",
+            "description": "有名なペン",
+            "category": 1,
+            "price_yen": 2000,
+            "brand": 2,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "d667c15a-8cf7-1bc3-6e97-c7232c8c91e1",
+        "fields": {
+            "name": "S20",
+            "description": "有名なペン",
+            "category": 1,
+            "price_yen": 2000,
+            "brand": 2,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    }
+]

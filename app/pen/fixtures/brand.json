@@ -1,0 +1,28 @@
+[{
+        "model": "pen.Brand",
+        "pk": 1,
+        "fields": {
+            "name": "ユニ（Uni）",
+            "slug": "uni",
+            "official_site_link": "https://www.mpuni.co.jp/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 2,
+        "fields": {
+            "name": "パイロット（Pilot）",
+            "slug": "pilot",
+            "official_site_link": "https://www.pilot.co.jp/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 3,
+        "fields": {
+            "name": "ゼブラ（",
+            "slug": "zebra",
+            "official_site_link": "https://www.zebra.co.jp/"
+        }
+    }
+]

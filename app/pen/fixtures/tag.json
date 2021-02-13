@@ -1,0 +1,65 @@
+[{
+        "model": "pen.Tag",
+        "pk": 1,
+        "fields": {
+            "name": "木軸",
+            "slug": "wood"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 2,
+        "fields": {
+            "name": "高級",
+            "slug": "rich"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 3,
+        "fields": {
+            "name": "安価",
+            "slug": "low-price"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 4,
+        "fields": {
+            "name": "ラバー",
+            "slug": "rubber"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 5,
+        "fields": {
+            "name": "おしゃれ",
+            "slug": "osyare"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 6,
+        "fields": {
+            "name": "限定",
+            "slug": "limited"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 7,
+        "fields": {
+            "name": "金属",
+            "slug": "metal"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 8,
+        "fields": {
+            "name": "ベストセラー",
+            "slug": "best-seller"
+        }
+    }
+]

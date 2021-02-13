@@ -1,0 +1,25 @@
+[{
+        "model": "pen.Category",
+        "pk": 1,
+        "fields": {
+            "name": "シャーペン",
+            "slug": "mechanical-pencil"
+        }
+    },
+    {
+        "model": "pen.Category",
+        "pk": 2,
+        "fields": {
+            "name": "ボールペン",
+            "slug": "ball-point-pen"
+        }
+    },
+    {
+        "model": "pen.Category",
+        "pk": 3,
+        "fields": {
+            "name": "万年筆",
+            "slug": "fountain-pen"
+        }
+    }
+]
