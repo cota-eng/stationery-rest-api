@@ -4,7 +4,8 @@ from . import serializers
 from . import models
 from rest_framework import permissions
 from rest_framework import generics
-class CategoryViewSet(viewsets.ModelViewSet):
+
+class CategoryViewSets(viewsets.ModelViewSet):
     queryset = models.Category.objects.all()
     serializer_class = serializers.CategorySerializer
     permission_classes = (permissions.AllowAny,)

@@ -1,5 +1,5 @@
-from django.apps import AppConfig
+# from django.apps import AppConfig
 
 
-class SocialAuthConfig(AppConfig):
-    name = 'social_auth'
+# class SocialAuthConfig(AppConfig):
+#     name = 'social_auth'
