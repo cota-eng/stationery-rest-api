@@ -8,9 +8,9 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ('name','slug',)
         depth = 1
 
-class ProductorSerializer(serializers.ModelSerializer):
+class BrandSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Productor
+        model = models.Brand
         fields = ('name', 'slug', 'official_site_link',)
         depth = 1
 
@@ -25,13 +25,13 @@ class PenSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
     updated_at = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
     category = CategorySerializer()
-    productor = ProductorSerializer()
+    brand = BrandSerializer()
     tag = TagSerializer()
     # reviewed_pen = ReviewSerialier()
     
     class Meta:
         model = models.Pen
-        fields = ('name', 'description','category', 'price_yen', 'productor', 'tag', 'image', 'image_src', 'created_at', 'updated_at', 'amazon_link_to_buy', 'rakuten_link_to_buy', )
+        fields = ('name', 'description','category', 'price_yen', 'brand', 'tag', 'image', 'image_src', 'created_at', 'updated_at', 'amazon_link_to_buy', 'rakuten_link_to_buy', )
         read_only_fields = '__all__'
         
     

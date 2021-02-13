@@ -13,7 +13,7 @@ class Category(models.Model):
     def __str__(self):
         return f'Category: {self.name}'
 
-class Productor(models.Model):
+class Brand(models.Model):
     """Model that define Maker and has name and only one official web site"""
     name = models.CharField(max_length=50)
     slug = models.CharField(_("category slug"),max_length=50)
@@ -22,7 +22,7 @@ class Productor(models.Model):
         return f'Productor: {self.name}'
 
 class Tag(models.Model):
-    """Model that has diffrent tags, such as Wood, Light, Rich ..."""
+    """Model that has diffrent tags, such as Wood, Light, Rich, Boys ..."""
     name = models.CharField(max_length=50)
     slug = models.CharField(_("category slug"),max_length=50)
     def __str__(self):
@@ -30,20 +30,24 @@ class Tag(models.Model):
 
 class Pen(models.Model):
     """Model that is main part"""
-    name = models.CharField(_("pen name"), max_length=50)
-    description = models.TextField(_('description'))
+    name = models.CharField(
+        _("name"), max_length=50)
+    # TODO markdown -> html field
+    description = models.TextField(
+        _('description'))
     category = models.ForeignKey(
         Category,
         related_name="pen_category",
+        # TODO CASCADE -> SETNULL
         on_delete=models.CASCADE
         )
     price_yen = models.PositiveIntegerField(
         _("price"),
         validators=[MaxValueValidator(1000000),]
         )
-    productor = models.ForeignKey(
-        Productor,
-        related_name="pen_productor",
+    brand = models.ForeignKey(
+        Brand,
+        related_name="pen_brand",
         on_delete=models.CASCADE
     )
     tag = models.ManyToManyField(
@@ -52,13 +56,29 @@ class Pen(models.Model):
     )
     image = models.ImageField(
         upload_to=None,
-        height_field=None, width_field=None, max_length=None)
-    image_src = models.CharField(blank=True, null=True,max_length=500)
+        height_field=None,
+        width_field=None,
+        max_length=None,
+        blank=True,
+        null=True)
+    image_src = models.CharField(
+        blank=True,
+        null=True,
+        max_length=500)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
-    """in the future set affiliate link, so is charfield"""
-    amazon_link_to_buy = models.CharField(blank=True, null=True,max_length=500)
-    rakuten_link_to_buy = models.CharField(blank=True, null=True,max_length=500)
+
+    """
+    in the future, set affiliate link, so is charfield
+    """
+    amazon_link_to_buy = models.CharField(
+        blank=True,
+        null=True,
+        max_length=500)
+    rakuten_link_to_buy = models.CharField(
+        blank=True,
+        null=True,
+        max_length=500)
 
     def mercari_link_to_buy(self):
         return f'https://www.mercari.com/jp/search/?keyword={self.name}'
@@ -67,6 +87,7 @@ class Pen(models.Model):
         reviews = Review.objects.filter(pen=self)
         return len(reviews)
 
+    # アベレージ考え中
     def avarage_of_review_star(self):
         sum: int = 0
         reviews = Review.objects.filter(pen=self)
@@ -86,12 +107,23 @@ class Review(models.Model):
         Pen,
         related_name='reviewed_pen',
         on_delete=models.CASCADE)
+    """
+    review - 買いやすさ、デザイン、使いやすさ、壊れにくさ、疲れにくさ、あともう一個、で総合的な評価とする
+                comprehensive_starsとする。
+                avarage自体どうするか
+                個人のアベレージを取るのと、個人のアベレージを平均したものをペンのトップに載せる
+
+                レビュー自体は1,2,3,4,5だが、平均のみfloatで扱う
+
+    レビュー自体が参考になったか：きちんとしたレビューは評価され、みんなにより見てもらう必要がある
+    """
+    title = models.CharField(_('title'), max_length=30)
     stars = models.IntegerField(_('star'), validators=[MaxValueValidator(5), MinValueValidator(1)])
     reviewer = models.ForeignKey(
         User,
         related_name='reviewer',
         on_delete=models.CASCADE)
-
+    created_at=models.DateTimeField(auto_now=True)
     class Meta:
         unique_together = (('reviewer','pen'))
         index_together = (('reviewer', 'pen'))
