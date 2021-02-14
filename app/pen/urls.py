@@ -4,7 +4,9 @@ from . import views
 
 router = routers.DefaultRouter()
 
-router.register('category',views.CategoryViewSet)
+router.register('category',views.CategoryReadOnlyViewSet)
+router.register('pen',views.PenReadOnlyViewSet)
+router.register('search',views.PenSearchByAllConditions)
 urlpatterns = [
     path('',include(router.urls))
 ]

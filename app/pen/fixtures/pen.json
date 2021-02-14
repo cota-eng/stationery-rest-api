@@ -1,9 +1,27 @@
 [{
         "model": "pen.Pen",
-        "pk": "830b7032-bf3b-914a-e764-ec1b4057c939",
+        "pk": 1,
         "fields": {
-            "name": "S20",
-            "description": "有名なペン",
+            "name": "サンプル１",
+            "description": "サンプルサンプル１",
+            "category": 1,
+            "price_yen": 1000,
+            "brand": 2,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk":2,
+        "fields": {
+            "name": "サンプル２",
+            "description": "サンプル２",
             "category": 1,
             "price_yen": 2000,
             "brand": 2,
@@ -18,12 +36,12 @@
     },
     {
         "model": "pen.Pen",
-        "pk": "dc03a501-4ac3-d1db-987e-adf794d9ce30",
+        "pk": 3,
         "fields": {
-            "name": "S10",
-            "description": "有名なペン",
+            "name": "サンプル3",
+            "description": "サンプル3",
             "category": 1,
-            "price_yen": 2000,
+            "price_yen": 150,
             "brand": 2,
             "tag": [1, 2],
             "image": "",
@@ -36,12 +54,12 @@
     },
     {
         "model": "pen.Pen",
-        "pk": "0963ddf4-8b7e-120f-0373-a778c78371ba",
+        "pk": 4,
         "fields": {
-            "name": "S20",
-            "description": "有名なペン",
+            "name": "サンプル",
+            "description": "サンプル",
             "category": 1,
-            "price_yen": 2000,
+            "price_yen": 200,
             "brand": 2,
             "tag": [1, 2],
             "image": "",
@@ -54,13 +72,67 @@
     },
     {
         "model": "pen.Pen",
-        "pk": "d667c15a-8cf7-1bc3-6e97-c7232c8c91e1",
+        "pk": 5,
         "fields": {
-            "name": "S20",
-            "description": "有名なペン",
+            "name": "サンプル5",
+            "description": "サンプル5",
+            "category": 1,
+            "price_yen": 3000,
+            "brand": 2,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": 6,
+        "fields": {
+            "name": "サンプル6",
+            "description": "サンプル6",
+            "category": 1,
+            "price_yen": 1300,
+            "brand": 4,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": 7,
+        "fields": {
+            "name": "サンプル7",
+            "description": "サンプル7",
             "category": 1,
             "price_yen": 2000,
-            "brand": 2,
+            "brand": 5,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": 8,
+        "fields": {
+            "name": "サンプル8",
+            "description": "サンプル8",
+            "category": 1,
+            "price_yen": 2000,
+            "brand":1,
             "tag": [1, 2],
             "image": "",
             "image_src": "",

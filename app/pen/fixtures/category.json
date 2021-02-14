@@ -21,5 +21,13 @@
             "name": "万年筆",
             "slug": "fountain-pen"
         }
+    },
+    {
+        "model": "pen.Category",
+        "pk": 4,
+        "fields": {
+            "name": "鉛筆",
+            "slug": "pencil"
+        }
     }
 ]

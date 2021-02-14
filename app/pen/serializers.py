@@ -17,6 +17,7 @@ class BrandSerializer(serializers.ModelSerializer):
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Tag
+        # fields = ('name',)
         fields = ('name', 'slug',)
         depth = 1
 
@@ -26,13 +27,13 @@ class PenSerializer(serializers.ModelSerializer):
     updated_at = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
     category = CategorySerializer()
     brand = BrandSerializer()
-    tag = TagSerializer()
+    # tag = TagSerializer()
     # reviewed_pen = ReviewSerialier()
     
     class Meta:
         model = models.Pen
         fields = ('name', 'description','category', 'price_yen', 'brand', 'tag', 'image', 'image_src', 'created_at', 'updated_at', 'amazon_link_to_buy', 'rakuten_link_to_buy', )
-        read_only_fields = '__all__'
+        # read_only_fields = '__all__'
         
     
 class ReviewSerialier(serializers.ModelSerializer):

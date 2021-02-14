@@ -29,6 +29,12 @@ class Tag(models.Model):
         return f'Tag: {self.name}'
 
 class Pen(models.Model):
+    #  short_uuid = models.UUIDField(
+    #     _('uuid'),
+    #     primary_key=True,
+    #     default=str(uuid.uuid4)[:8],
+    #     editable=False,
+    #     db_index=True) 
     """Model that is main part"""
     name = models.CharField(
         _("name"), max_length=50)
