@@ -6,33 +6,37 @@ from rest_framework import permissions
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.decorators import  action
+from rest_framework import authentication
+from django_filters import rest_framework as filters
+from .filters import  PenOriginalFilter
 
 class CategoryReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Category.objects.all()
     serializer_class = serializers.CategorySerializer
     permission_classes = (permissions.AllowAny)
-    # filter_fields = ('slug', )
     lookup_field = 'slug'
         
 class PenReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Pen.objects.all()
     serializer_class = serializers.PenSerializer
     permission_classes = (permissions.AllowAny,)
-    # filter_fields = ('slug',)
+    # lookup_field = 'slug'
 
-from django_filters import rest_framework as filters
-from .filters import  PenOriginalFilter
+class TagReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = models.Tag.objects.all()
+    serializer_class = serializers.TagSerializer
+    permission_classes = (permissions.AllowAny,)
+    lookup_field = 'slug'
 
 class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
     """
     search like below
-    http://localhost:8000/api/search/?name=S20&?price_yen=2000
+    http://localhost:8000/api/search/?name=S20&?
     """
     queryset = models.Pen.objects.all()
     serializer_class = serializers.PenSerializer
     permission_classes = (permissions.AllowAny,)
-    # filter_backends = [filters.DjangoFilterBackend,]
-    # filterset_fields = ('name','price_yen','brand',)
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = PenOriginalFilter
 
@@ -44,10 +48,10 @@ class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
 #     filter_fields = ('slug', )
 
 # class PenBrandFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
-#     queryset = models.Pen.objects.filter(category=)
+#     queryset = models.Pen.objects.filter(category)
 #     serializer_class = serializers.CategorySerializer
 #     permission_classes = (permissions.AllowAny,)
-#     filter_fields = ('slug', )
+#     lookup_field = ('slug', )
 
 
 # class OwnReviewListView(generics.ListAPIView):
@@ -56,8 +60,8 @@ class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
 #     def get_queryset(self):
 #         user = self.request.user
 #         return .objects.filter(=user)
-from rest_framework.decorators import  action
-from rest_framework import authentication
+
+
 # class ReviewViewSet(generics.CreateAPIView):
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = models.Review.objects.all()
@@ -68,7 +72,11 @@ class ReviewViewSet(viewsets.ModelViewSet):
     # lookup_field = ''
     # def perform_create(self, serializer):
     #     serializer.save(reviewer=self.request.user)
-
+    # def get_serializer_class(self):
+    #     if self.action == 'retrieve':
+    #         return serializers.RecipeDetailSerializer
+    #     elif self.action == 'upload_image':
+    #         return serializers.RecipeImageSerializer
     @action(detail=True,methods=["POST"])
     def rate_pen(self, request, pk=None):
         if 'stars' in request.data:
@@ -89,3 +97,14 @@ class ReviewViewSet(viewsets.ModelViewSet):
         else:
             response = {'message': 'not working'}
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
+    def destroy(self, request, *args, **kwargs):
+        response = {'message': 'DELETE method is not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+    def update(self, request, *args, **kwargs):
+        response = {'message': 'PUT method is not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+    def partial_update(self, request, *args, **kwargs):
+        response = {'message': 'PATCH method is not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)

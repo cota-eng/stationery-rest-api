@@ -143,7 +143,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # "rest_framework.authentication.BasicAuthentication",
-        # "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
         # "dj_rest_auth.utils.JWTCookieAuthentication",
 
         # 'rest_framework_simplejwt.authentication.JWTTokenUserAuthentication',

@@ -8,6 +8,7 @@ router.register('category',views.CategoryReadOnlyViewSet)
 router.register('pen',views.PenReadOnlyViewSet)
 router.register('search',views.PenSearchByAllConditions)
 router.register('review',views.ReviewViewSet)
+router.register('tag',views.TagReadOnlyViewSet)
 urlpatterns = [
     path('',include(router.urls))
 ]
