@@ -132,7 +132,7 @@ class Review(models.Model):
         User,
         related_name='reviewer',
         on_delete=models.CASCADE)
-    created_at=models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now=True)
     class Meta:
         """
         one review for one person 

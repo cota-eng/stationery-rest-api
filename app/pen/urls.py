@@ -7,6 +7,7 @@ router = routers.DefaultRouter()
 router.register('category',views.CategoryReadOnlyViewSet)
 router.register('pen',views.PenReadOnlyViewSet)
 router.register('search',views.PenSearchByAllConditions)
+router.register('review',views.ReviewViewSet)
 urlpatterns = [
     path('',include(router.urls))
 ]

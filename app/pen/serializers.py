@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from . import models
-
+from account.models import User
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,8 +24,8 @@ class TagSerializer(serializers.ModelSerializer):
 class PenSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
     updated_at = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
-    category = CategorySerializer()
-    brand = BrandSerializer()
+    category = CategorySerializer(many=True)
+    brand = BrandSerializer(many=True)
     tag = TagSerializer(many=True)
     # tag_name = serializers.ReadOnlyField(source='tag.slug')
     # tag = TagSerializer()
@@ -35,11 +35,16 @@ class PenSerializer(serializers.ModelSerializer):
         model = models.Pen
         fields = ('pk','name', 'description','category', 'price_yen', 'brand', 'tag', 'image', 'image_src', 'created_at', 'updated_at', 'amazon_link_to_buy', 'rakuten_link_to_buy','mercari_link_to_buy', )
         # read_only_fields = '__all__'
-        
+
+class ReviewerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id',)        
     
 class ReviewSerialier(serializers.ModelSerializer):
+    reviewer = ReviewerSerializer()
     class Meta:
         model = models.Review
-        fields = ('pen', 'stars','reviewer',)
+        fields = ('title','pen', 'stars','reviewer',)
         depth = 1
     
