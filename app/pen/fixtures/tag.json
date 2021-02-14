@@ -61,5 +61,13 @@
             "name": "ベストセラー",
             "slug": "best-seller"
         }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 9,
+        "fields": {
+            "name": "カラフル",
+            "slug": "colorful"
+        }
     }
 ]

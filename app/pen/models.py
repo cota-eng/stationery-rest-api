@@ -86,14 +86,17 @@ class Pen(models.Model):
         null=True,
         max_length=500)
 
+    @property
     def mercari_link_to_buy(self):
         return f'https://www.mercari.com/jp/search/?keyword={self.name}'
 
+    @property
     def number_of_review(self):
         reviews = Review.objects.filter(pen=self)
         return len(reviews)
 
     # アベレージ考え中
+    @property
     def avarage_of_review_star(self):
         sum: int = 0
         reviews = Review.objects.filter(pen=self)
@@ -131,6 +134,9 @@ class Review(models.Model):
         on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now=True)
     class Meta:
+        """
+        one review for one person 
+        """
         unique_together = (('reviewer','pen'))
         index_together = (('reviewer', 'pen'))
 
