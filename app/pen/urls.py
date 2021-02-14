@@ -4,7 +4,11 @@ from . import views
 
 router = routers.DefaultRouter()
 
-router.register('category',views.CategoryViewSets)
+router.register('category',views.CategoryReadOnlyViewSet)
+router.register('pen',views.PenReadOnlyViewSet)
+router.register('search',views.PenSearchByAllConditions)
+router.register('review',views.ReviewViewSet)
+router.register('tag',views.TagReadOnlyViewSet)
 urlpatterns = [
     path('',include(router.urls))
 ]

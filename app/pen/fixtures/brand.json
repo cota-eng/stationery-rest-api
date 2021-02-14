@@ -1,0 +1,145 @@
+[{
+        "model": "pen.Brand",
+        "pk": 1,
+        "fields": {
+            "name": "ユニ（Uni）",
+            "slug": "uni",
+            "official_site_link": "https://www.mpuni.co.jp/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 2,
+        "fields": {
+            "name": "パイロット（Pilot）",
+            "slug": "pilot",
+            "official_site_link": "https://www.pilot.co.jp/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 3,
+        "fields": {
+            "name": "ゼブラ（",
+            "slug": "zebra",
+            "official_site_link": "https://www.zebra.co.jp/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 4,
+        "fields": {
+            "name": "ファーバーカステル",
+            "slug": "faber-castell",
+            "official_site_link": "https://www.faber-castell.jp/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 5,
+        "fields": {
+            "name": "ラミー",
+            "slug": "lamy",
+            "official_site_link": "https://lamy.jp/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 6,
+        "fields": {
+            "name": "ロットリング",
+            "slug": "",
+            "official_site_link": ""
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 7,
+        "fields": {
+            "name": "コクヨ",
+            "slug": "",
+            "official_site_link": ""
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 8,
+        "fields": {
+            "name": "カヴェコ",
+            "slug": "",
+            "official_site_link": ""
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 9,
+        "fields": {
+            "name": "トンボ",
+            "slug": "",
+            "official_site_link": ""
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 10,
+        "fields": {
+            "name": "オート",
+            "slug": "",
+            "official_site_link": ""
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 11,
+        "fields": {
+            "name": "コクヨ",
+            "slug": "",
+            "official_site_link": ""
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 12,
+        "fields": {
+            "name": "ミドリ",
+            "slug": "",
+            "official_site_link": ""
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 13,
+        "fields": {
+            "name": "ナカバヤシ",
+            "slug": "",
+            "official_site_link": ""
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 14,
+        "fields": {
+            "name": "プラチナ",
+            "slug": "",
+            "official_site_link": ""
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 15,
+        "fields": {
+            "name": "ロディア",
+            "slug": "",
+            "official_site_link": ""
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 16,
+        "fields": {
+            "name": "",
+            "slug": "",
+            "official_site_link": ""
+        }
+    }
+]
