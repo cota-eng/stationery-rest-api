@@ -57,14 +57,16 @@ class ProfileViewSet(viewsets.ReadOnlyModelViewSet):
     # permission_classes = (permissions.IsAuthenticated,)
     permission_classes = (permissions.AllowAny,)
     
-    def perform_create(self, serializer):
-        return serializer.save(user_profile=self.request.user)
 
 class MyProfileView(viewsets.ModelViewSet):
     queryset = models.Profile.objects.all()
     serializer_class = serializers.ProfileSerializer
+
     def get_queryset(self):
         return self.queryset.filter(user_profile=self.request.user)
+        
+    def perform_create(self, serializer):
+        return serializer.save(user_profile=self.request.user)
 
 
 
