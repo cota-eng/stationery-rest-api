@@ -14,7 +14,7 @@ from .filters import  PenOriginalFilter
 class CategoryReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Category.objects.all()
     serializer_class = serializers.CategorySerializer
-    permission_classes = (permissions.AllowAny)
+    permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
         
 class PenReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
@@ -61,7 +61,7 @@ class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
     #     return self.queryset.filter(brand=self.request.GET.get('slug'))
 
 
-class OwnReviewCheckRealOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+class OwnReviewReadOnlyViewSet(viewsets.ModelViewSet):
     """
     View that get data reviewed by request user:IsAuthenticated
     """
@@ -110,23 +110,23 @@ class ReviewViewSet(viewsets.ModelViewSet):
             response = {'message': 'not working'}
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
-    """
-    delete is invalid
-    """
     def destroy(self, request, *args, **kwargs):
+        """
+        delete is invalid
+        """
         response = {'message': 'DELETE method is not allowed'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
-    """
-    put is invalid
-    """
     def update(self, request, *args, **kwargs):
+        """
+        put is invalid
+        """
         response = {'message': 'PUT method is not allowed'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
-    """
-    patch is invalid
-    """
     def partial_update(self, request, *args, **kwargs):
+        """
+        patch is invalid
+        """
         response = {'message': 'PATCH method is not allowed'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)

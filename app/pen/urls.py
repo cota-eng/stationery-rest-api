@@ -9,7 +9,7 @@ router.register('pen',views.PenReadOnlyViewSet)
 router.register('search',views.PenSearchByAllConditions)
 router.register('review',views.ReviewViewSet)
 router.register('tag',views.TagReadOnlyViewSet)
-router.register('my',views.OwnReviewCheckRealOnlyViewSet)
+router.register('my-review',views.OwnReviewReadOnlyViewSet)
 # router.register('brand',views.PenBrandFilteredReadOnlyViewSet)
 urlpatterns = [
     path('',include(router.urls))

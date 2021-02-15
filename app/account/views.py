@@ -64,10 +64,22 @@ class MyProfileView(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return self.queryset.filter(user_profile=self.request.user)
-        
+
     def perform_create(self, serializer):
         return serializer.save(user_profile=self.request.user)
 
+    def create(self, request, *args, **kwargs):
+        """
+        post is invalid, why profile is created when user logined
+        """
+        response = {'message': 'post method is not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+    def destroy(self, request, *args, **kwargs):
+        """
+        delete is invalid
+        """
+        response = {'message': 'delete method is not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
 class EmailVerifyAPIView(views.APIView):
