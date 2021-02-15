@@ -16,8 +16,9 @@ class Category(models.Model):
 class Brand(models.Model):
     """Model that define Maker and has name and only one official web site"""
     name = models.CharField(max_length=50)
-    slug = models.CharField(_("category slug"),max_length=50)
+    slug = models.CharField(_("brand slug"),max_length=50)
     official_site_link = models.CharField(max_length=255)
+    
     def __str__(self):
         return f'Productor: {self.name}'
 

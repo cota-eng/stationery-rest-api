@@ -33,6 +33,7 @@ class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
     """
     search like below
     http://localhost:8000/api/search/?name=S20&?
+    all condition searching
     """
     queryset = models.Pen.objects.all()
     serializer_class = serializers.PenSerializer
@@ -47,29 +48,37 @@ class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
 #     permission_classes = (permissions.AllowAny,)
 #     filter_fields = ('slug', )
 
-# class PenBrandFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
-#     queryset = models.Pen.objects.filter(category)
-#     serializer_class = serializers.CategorySerializer
-#     permission_classes = (permissions.AllowAny,)
-#     lookup_field = ('slug', )
+class PenBrandFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = models.Pen.objects.all()
+    serializer_class = serializers.BrandSerializer
+    permission_classes = (permissions.AllowAny,)
+    lookup_field = 'slug'
+    """
+
+    """
+    # def get_queryset(self):
+    #     return self.queryset.filter(brand=self.request.GET.get('slug'))
 
 
-# class OwnReviewListView(generics.ListAPIView):
-"""View that get data reviewed by request user:IsAuthenticated"""
-#     serializer_class = 
-#     def get_queryset(self):
-#         user = self.request.user
-#         return .objects.filter(=user)
+class OwnReviewCheckRealOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    View that get data reviewed by request user:IsAuthenticated
+    """
+    queryset = models.Review.objects.all()
+    serializer_class = serializers.ReviewSerialier
+    permission_classes = (permissions.AllowAny,)
+    
+    def get_queryset(self):
+        user = self.request.user
+        return models.Review.objects.filter(reviewer=user)
 
 
-# class ReviewViewSet(generics.CreateAPIView):
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = models.Review.objects.all()
     serializer_class = serializers.ReviewSerialier
     permission_classes = (permissions.AllowAny,)
-    authentication_classes = [authentication.SessionAuthentication,]
-    # permission_classes = (permissions.IsAuthenticated,)
     # lookup_field = ''
+    # permission_classes = (permissions.IsAuthenticated,)
     # def perform_create(self, serializer):
     #     serializer.save(reviewer=self.request.user)
     # def get_serializer_class(self):
@@ -82,29 +91,41 @@ class ReviewViewSet(viewsets.ModelViewSet):
         if 'stars' in request.data:
             pen = models.Pen.objects.get(id=pk)
             stars = request.data['stars']
+            title = request.data['title']
             user = request.user
             try:
                 review = models.Review.objects.get(reviewer=user, pen=pen)
                 review.stars = stars
+                review.title = title
                 review.save()
                 serializer = serializers.ReviewSerialier(review, many=False)
                 response = {'message': 'Rating updated', 'result': serializer.data}
                 return Response(response, status=status.HTTP_200_OK)
             except:
-                review = models.Review.objects.create(reviewer=user, pen=pen, stars=stars)
+                review = models.Review.objects.create(reviewer=user, pen=pen, stars=stars,title=title)
                 response = {'message': 'created'}
                 return Response(response, status=status.HTTP_200_OK)
         else:
             response = {'message': 'not working'}
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+    """
+    delete is invalid
+    """
     def destroy(self, request, *args, **kwargs):
         response = {'message': 'DELETE method is not allowed'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
+    """
+    put is invalid
+    """
     def update(self, request, *args, **kwargs):
         response = {'message': 'PUT method is not allowed'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
+    """
+    patch is invalid
+    """
     def partial_update(self, request, *args, **kwargs):
         response = {'message': 'PATCH method is not allowed'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
