@@ -16,8 +16,9 @@ class Category(models.Model):
 class Brand(models.Model):
     """Model that define Maker and has name and only one official web site"""
     name = models.CharField(max_length=50)
-    slug = models.CharField(_("category slug"),max_length=50)
+    slug = models.CharField(_("brand slug"),max_length=50)
     official_site_link = models.CharField(max_length=255)
+
     def __str__(self):
         return f'Productor: {self.name}'
 
@@ -117,7 +118,9 @@ class Review(models.Model):
         related_name='reviewed_pen',
         on_delete=models.CASCADE)
     """
-    review - 買いやすさ、デザイン、使いやすさ、壊れにくさ、疲れにくさ、あともう一個、で総合的な評価とする
+    - デザイン性
+    - 耐久性
+    - 利便性
                 comprehensive_starsとする。
                 avarage自体どうするか
                 個人のアベレージを取るのと、個人のアベレージを平均したものをペンのトップに載せる
@@ -127,7 +130,21 @@ class Review(models.Model):
     レビュー自体が参考になったか：きちんとしたレビューは評価され、みんなにより見てもらう必要がある
     """
     title = models.CharField(_('title'), max_length=30)
-    stars = models.IntegerField(_('star'), validators=[MaxValueValidator(5), MinValueValidator(1)])
+    stars = models.IntegerField(
+        _('star'), validators=[MaxValueValidator(5), MinValueValidator(1)]
+        )
+    # stars_of_design = models.IntegerField(
+    #     _('star'),
+    #     validators=[MaxValueValidator(5), MinValueValidator(1)]
+    #     )
+    # stars_of_durability = models.IntegerField(
+    #     _('star'), validators=[MaxValueValidator(5), MinValueValidator(1)]
+    #     )
+    # stars_of_usefulness = models.IntegerField(
+    #     _('star'), validators=[MaxValueValidator(5), MinValueValidator(1)]
+    #     )
+    # good_point_text = models.TextField()
+    # bad_point_text = models.TextField()
     reviewer = models.ForeignKey(
         User,
         related_name='reviewer',
