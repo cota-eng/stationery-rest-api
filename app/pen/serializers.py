@@ -9,6 +9,7 @@ class CategorySerializer(serializers.ModelSerializer):
         # depth = 1
 
 class BrandSerializer(serializers.ModelSerializer):
+    # pen = PenSerializer()
     class Meta:
         model = models.Brand
         fields = ('name', 'slug', 'official_site_link',)

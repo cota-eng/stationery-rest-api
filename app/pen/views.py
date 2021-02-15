@@ -48,13 +48,14 @@ class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
 #     permission_classes = (permissions.AllowAny,)
 #     filter_fields = ('slug', )
 
-class PenBrandFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = models.Pen.objects.all()
-    serializer_class = serializers.BrandSerializer
-    permission_classes = (permissions.AllowAny,)
-    lookup_field = 'slug'
+# class PenBrandFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+#     queryset = models.Brand.objects.all()
+#     serializer_class = serializers.BrandSerializer
+#     permission_classes = (permissions.AllowAny,)
+#     lookup_field = 'slug'
     """
-
+    filter by brand/<brand_name_slug>
+    display Respective Brand Pens !
     """
     # def get_queryset(self):
     #     return self.queryset.filter(brand=self.request.GET.get('slug'))
