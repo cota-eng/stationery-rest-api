@@ -53,12 +53,12 @@ class Tag(models.Model):
 
 class Pen(models.Model):
     """Model that is main part"""
-    id = models.UUIDField(
-        _('uuid'),
-        primary_key=True,
-        default=str(uuid.uuid4)[:8],
-        editable=False,
-        db_index=True) 
+    # id = models.UUIDField(
+    #     _('uuid'),
+    #     primary_key=True,
+    #     default=str(uuid.uuid4)[:8],
+    #     editable=False,
+    #     db_index=True) 
     name = models.CharField(
         _("name"), max_length=50)
     # TODO: markdown -> html field
@@ -139,12 +139,12 @@ class FavPen(models.Model):
     Fav is Favorite
     """
     # is_favorite = models.BooleanField(default=False)
-    fav_user = models.ForeignKey(
+    fav_user = models.OneToOneField(
         User,
         related_name="user_fav",
         on_delete=models.CASCADE
     )
-    pen = models.ForeignKey(
+    pen = models.OneToOneField(
         Pen,
         related_name="pen_fav",
         on_delete=models.CASCADE
@@ -159,16 +159,17 @@ class Review(models.Model):
         related_name='reviewed_pen',
         on_delete=models.CASCADE)
     """
+    TODO:
     avarage自体どうするか
     個人のアベレージと、個人のアベレージを平均したものをペンのトップに載せる
     レビュー自体が参考になったか：きちんとしたレビューは評価され、みんなにより見てもらう必要がある
     """
     title = models.CharField(_('title'), max_length=30)
-    stars = models.IntegerField(
-        _('star'), validators=[MaxValueValidator(5), MinValueValidator(1)]
-        )
-    # TODO: field add ...
+    # stars = models.IntegerField(
+    #     _('star'), validators=[MaxValueValidator(5), MinValueValidator(1)]
+    #     )
     """
+    TODO: 
     デザイン性
     耐久性
     利便性
@@ -176,27 +177,38 @@ class Review(models.Model):
     入手性
     """
     stars_of_design = models.IntegerField(
-        _('star'),
+        _('design'),
         validators=[MaxValueValidator(5), MinValueValidator(1)]
         )
     stars_of_durability = models.IntegerField(
-        _('star'),
+        _('durability'),
         validators=[MaxValueValidator(5), MinValueValidator(1)]
         )
     stars_of_usefulness = models.IntegerField(
-        _('star'),
+        _('usefulness'),
         validators=[MaxValueValidator(5), MinValueValidator(1)]
         )
     stars_of_function = models.IntegerField(
-        _('star'),
+        _('function'),
         validators=[MaxValueValidator(5), MinValueValidator(1)]
         )
     stars_of_easy_to_get = models.IntegerField(
-        _('star'),
+        _('easy_to_get'),
         validators=[MaxValueValidator(5), MinValueValidator(1)]
         )
-    good_point_text = models.TextField()
-    bad_point_text = models.TextField()
+
+    @property
+    def avarage_star(self):
+        sum = 0
+        sum += self.stars_of_design
+        sum += self.stars_of_durability
+        sum += self.stars_of_usefulness
+        sum += self.stars_of_function
+        sum += self.stars_of_easy_to_get
+        return float(sum / 5)
+
+    good_point_text = models.TextField(blank=True,null=True)
+    bad_point_text = models.TextField(blank=True,null=True)
     reviewer = models.ForeignKey(
         User,
         related_name='reviewer',
@@ -210,7 +222,7 @@ class Review(models.Model):
         index_together = (('reviewer', 'pen'))
 
     def __str__(self):
-        return f'Reviewd Pen: {self.pen.name} / Reviewer: {self.user.nickname}'
+        return f'Reviewd Pen: {self.pen.name} / Reviewer: {self.reviewer.user_profile.nickname}'
     
 # class Comment(models.Model):
 #     pass

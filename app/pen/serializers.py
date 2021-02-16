@@ -10,7 +10,6 @@ pen_detail_url = serializers.HyperlinkedIdentityField(
 
 class CategorySerializer(serializers.ModelSerializer):
     # pen_category = PenSerializer()
-    # url = pen_detail_url
     class Meta:
         model = models.Category
         fields = (
@@ -18,7 +17,7 @@ class CategorySerializer(serializers.ModelSerializer):
             'slug',
             'pen_category',
             )
-        depth = 1
+        # depth = 1
 
 class BrandSerializer(serializers.ModelSerializer):
     # pen = PenSerializer()
@@ -29,7 +28,7 @@ class BrandSerializer(serializers.ModelSerializer):
             'slug',
             'official_site_link',
             )
-        depth = 1
+        # depth = 1
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
@@ -39,22 +38,28 @@ class TagSerializer(serializers.ModelSerializer):
             'slug',
             'pen_tag',
             )
-        depth = 1
+        # depth = 1
 
 
 class ReviewSerialier(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
-    reviewer = UserSerializer()
+    """
+    reviewer - avatar, nickname, id
+    """
+    reviewer = UserSerializer(read_only=True)
     class Meta:
         model = models.Review
         fields = (
             'title',
-            'stars',
+            # 'stars',
             'reviewer',
             'created_at',
+            'avarage_star',
             )
         depth = 1
-        
+
+import markdown
+
 class PenSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
     updated_at = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
@@ -62,6 +67,11 @@ class PenSerializer(serializers.ModelSerializer):
     brand = BrandSerializer()
     tag = TagSerializer(many=True)
     reviewed_pen = ReviewSerialier(many=True)
+    description = serializers.SerializerMethodField()
+
+    def get_description(self, instance):
+        return markdown.markdown(instance.description, extensions=['markdown.extensions.toc'])
+    
     class Meta:
         model = models.Pen
         fields = (
