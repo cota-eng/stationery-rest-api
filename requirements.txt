@@ -7,8 +7,8 @@ djangorestframework-simplejwt==4.6.0
 django-cors-headers
 django-environ
 drf-yasg==1.20.0
-# google-api-python-client==1.12.8
 # dj-rest-auth
 # django-allauth
 django-filter
 cloudinary
+markdown
