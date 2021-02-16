@@ -139,20 +139,30 @@ class FavPen(models.Model):
     Fav is Favorite
     """
     # is_favorite = models.BooleanField(default=False)
-    fav_user = models.OneToOneField(
+    """
+    TODO:
+    connect to User or Profile
+    """
+    fav_user = models.ForeignKey(
         User,
         related_name="user_fav",
         on_delete=models.CASCADE
     )
-    pen = models.OneToOneField(
+    pen = models.ForeignKey(
         Pen,
         related_name="pen_fav",
         on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(auto_now=True)
     
+    class Meta:
+        """
+        one review for one person 
+        """
+        unique_together = (('fav_user','pen'))
+        index_together = (('fav_user', 'pen'))
     def __str__(self):
-        return f"stock {self.pen.name} user {self.fav_user.user}"
+        return f"stock {self.pen.name} user {self.fav_user}"
 
 class Review(models.Model):
     """Model that display reviews of pens"""
