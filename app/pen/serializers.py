@@ -9,7 +9,6 @@ pen_detail_url = serializers.HyperlinkedIdentityField(
     )
 
 class CategorySerializer(serializers.ModelSerializer):
-    # pen_category = PenSerializer()
     class Meta:
         model = models.Category
         fields = (

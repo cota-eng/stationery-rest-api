@@ -5,7 +5,9 @@
         "fields": {
             "email": "b@b.com",
             "password": "adminadmin",
-            "is_verified":true
+            "is_verified":true,
+            "is_staff":true,
+            "is_superuser":true
         }
     },
     {
