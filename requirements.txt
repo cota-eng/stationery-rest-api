@@ -11,3 +11,4 @@ drf-yasg==1.20.0
 # dj-rest-auth
 # django-allauth
 django-filter
+cloudinary

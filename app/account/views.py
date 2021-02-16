@@ -24,6 +24,32 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.shortcuts import redirect
 from django.http import HttpResponsePermanentRedirect
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.parsers import MultiPartParser, JSONParser
+
+# import cloudinary.uploader
+"""
+avatar upload
+https://www.codementor.io/@chidioguejiofor/implementing-a-file-upload-to-cloudinary-endpoint-with-python-drf-vj2n7j2kb
+class UploadView(APIView):
+    parser_classes = (
+        MultiPartParser,
+        JSONParser,
+    )
+
+    @staticmethod
+    def post(request):
+        file = request.data.get('picture')
+
+        upload_data = cloudinary.uploader.upload(file)
+        return Response({
+            'status': 'success',
+            'data': upload_data,
+        }, status=201)
+"""
+
+
 class RegisterView(generics.GenericAPIView):
     serializer_class = serializers.UserRegisterSerializer
     permission_classes = (permissions.AllowAny,)
