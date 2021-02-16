@@ -18,7 +18,7 @@
     },
     {
         "model": "pen.Review",
-        "pk": 1,
+        "pk": 2,
         "fields": {
             "pen": 2,
             "title": "nice",
@@ -35,7 +35,7 @@
     },
     {
         "model": "pen.Review",
-        "pk": 1,
+        "pk": 3,
         "fields": {
             "pen": 3,
             "title": "nice",
@@ -46,7 +46,7 @@
             "stars_of_easy_to_get":4,
             "good_point_text":"good",
             "bad_point_text":"bad",
-            "reviewer":"51649c9c-6c66-9199-68bd-6a8f32e816565",
+            "reviewer":"51649c9c-6c66-9199-68bd-6a8f32e81656",
             "created_at":"2021-02-20T12:00:00.000Z"
         }
     }

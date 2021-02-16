@@ -125,7 +125,7 @@ class Pen(models.Model):
         reviews = Review.objects.filter(pen=self)
         if len(reviews) != 0:
             for review in reviews:
-                sum += review.stars
+                sum += review.avarage_star
             return sum / len(reviews)
         else:
             return 0
@@ -150,7 +150,9 @@ class FavPen(models.Model):
         on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(auto_now=True)
-
+    
+    def __str__(self):
+        return f"stock {self.pen.name} user {self.fav_user.user}"
 
 class Review(models.Model):
     """Model that display reviews of pens"""
