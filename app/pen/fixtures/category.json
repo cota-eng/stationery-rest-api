@@ -29,5 +29,21 @@
             "name": "鉛筆",
             "slug": "pencil"
         }
+    },
+    {
+        "model": "pen.Category",
+        "pk": 5,
+        "fields": {
+            "name": "消しゴム",
+            "slug": "eraser"
+        }
+    },
+    {
+        "model": "pen.Category",
+        "pk": 6,
+        "fields": {
+            "name": "筆箱",
+            "slug": "pencase"
+        }
     }
 ]

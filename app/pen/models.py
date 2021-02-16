@@ -29,6 +29,9 @@ class Tag(models.Model):
     def __str__(self):
         return f'Tag: {self.name}'
 
+
+
+
 class Pen(models.Model):
     #  short_uuid = models.UUIDField(
     #     _('uuid'),
@@ -39,7 +42,7 @@ class Pen(models.Model):
     """Model that is main part"""
     name = models.CharField(
         _("name"), max_length=50)
-    # TODO markdown -> html field
+    # TODO: markdown -> html field
     description = models.TextField(
         _('description'))
     category = models.ForeignKey(
@@ -96,7 +99,7 @@ class Pen(models.Model):
         reviews = Review.objects.filter(pen=self)
         return len(reviews)
 
-    # アベレージ考え中
+    # TODO:アベレージ考え中
     @property
     def avarage_of_review_star(self):
         sum: int = 0
@@ -111,6 +114,15 @@ class Pen(models.Model):
     def __str__(self):
         return f'Pen: {self.name} Price: {self.price_yen}'
     
+
+class LikePen(models.Model):
+    is_favorite = models.BooleanField(default=False)
+    pen = models.ManyToManyField(
+        Pen,
+        related_name="like"
+    )
+
+
 class Review(models.Model):
     """Model that display reviews of pens"""
     pen = models.ForeignKey(
@@ -121,18 +133,16 @@ class Review(models.Model):
     - デザイン性
     - 耐久性
     - 利便性
-                comprehensive_starsとする。
                 avarage自体どうするか
                 個人のアベレージを取るのと、個人のアベレージを平均したものをペンのトップに載せる
-
                 レビュー自体は1,2,3,4,5だが、平均のみfloatで扱う
-
     レビュー自体が参考になったか：きちんとしたレビューは評価され、みんなにより見てもらう必要がある
     """
     title = models.CharField(_('title'), max_length=30)
     stars = models.IntegerField(
         _('star'), validators=[MaxValueValidator(5), MinValueValidator(1)]
         )
+    # TODO: field add ...
     # stars_of_design = models.IntegerField(
     #     _('star'),
     #     validators=[MaxValueValidator(5), MinValueValidator(1)]

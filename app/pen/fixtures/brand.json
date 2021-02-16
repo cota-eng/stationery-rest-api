@@ -48,8 +48,8 @@
         "pk": 6,
         "fields": {
             "name": "ロットリング",
-            "slug": "",
-            "official_site_link": ""
+            "slug": "rotring",
+            "official_site_link": "https://www.rotring.com/jp/"
         }
     },
     {
@@ -57,8 +57,8 @@
         "pk": 7,
         "fields": {
             "name": "コクヨ",
-            "slug": "",
-            "official_site_link": ""
+            "slug": "kokuyo",
+            "official_site_link": "https://www.kokuyo.co.jp/"
         }
     },
     {
@@ -66,8 +66,8 @@
         "pk": 8,
         "fields": {
             "name": "カヴェコ",
-            "slug": "",
-            "official_site_link": ""
+            "slug": "kaweco",
+            "official_site_link": "https://preco-corp.co.jp/brand/kaweco/"
         }
     },
     {
@@ -75,8 +75,8 @@
         "pk": 9,
         "fields": {
             "name": "トンボ",
-            "slug": "",
-            "official_site_link": ""
+            "slug": "tombow",
+            "official_site_link": "https://www.tombow.com/"
         }
     },
     {
@@ -84,15 +84,15 @@
         "pk": 10,
         "fields": {
             "name": "オート",
-            "slug": "",
-            "official_site_link": ""
+            "slug": "ohto",
+            "official_site_link": "https://ohto.co.jp/"
         }
     },
     {
         "model": "pen.Brand",
         "pk": 11,
         "fields": {
-            "name": "コクヨ",
+            "name": "",
             "slug": "",
             "official_site_link": ""
         }
