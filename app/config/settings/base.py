@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
-    'account.apps.AccountConfig',
+    # 'account.apps.AccountConfig',
+    'authentication.apps.AuthenticationConfig',
     # 'social_auth.apps.SocialAuthConfig',
     'pen.apps.PenConfig',
     'rest_framework',
@@ -55,6 +56,13 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_yasg',
     'rest_framework_simplejwt.token_blacklist',
+    # for social login
+    "django.contrib.sites",
+    "dj_rest_auth",
+    # "allauth",
+    # "allauth.account",
+    # "allauth.socialaccount",
+    # "allauth.socialaccount.providers.google",
 
 ]
 
