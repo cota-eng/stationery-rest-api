@@ -150,12 +150,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        # "rest_framework.authentication.BasicAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
-        # "dj_rest_auth.utils.JWTCookieAuthentication",
-
         # 'rest_framework_simplejwt.authentication.JWTTokenUserAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+        "rest_framework.authentication.SessionAuthentication",
+        "dj_rest_auth.utils.JWTCookieAuthentication",
     ],
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
@@ -258,6 +256,21 @@ SOCIALACCOUNT_PROVIDERS = {
 SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
 SOCIALACCOUNT_EMAIL_REQUIRED = True
 
+REST_SESSION_LOGIN=True
 REST_USE_JWT = True
-JWT_AUTH_COOKIE = 'jwt-auth'
+# JWT_AUTH_COOKIE = 'jwt-auth'
+
+# JWT_AUTH_SECURE=True
+# JWT_AUTH_HTTPONLY=True
+
+# JWT_AUTH_SAMESITE=True
+
+# OLD_PASSWORD_FIELD_ENABLED=True
+
+# LOGOUT_ON_PASSWORD_CHANGE=True
+
+# JWT_AUTH_COOKIE_USE_CSRF=True
+
+# JWT_AUTH_COOKIE_ENFORCE_CSRF_ON_UNAUTHENTICATED=True
+
 SITE_ID = 1
