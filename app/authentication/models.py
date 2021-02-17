@@ -179,3 +179,11 @@ class Profile(models.Model):
     # favorite_pen = models.ManyToManyField()
     def __str__(self):
         return f'Profile of {self.nickname}'
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+@receiver(post_save, sender=User)
+def create_profile(sender, **kwargs):
+    """ 新ユーザー作成時に空のprofileも作成する """
+    if kwargs['created']:
+        user_profile = Profile.objects.get_or_create(user_profile=kwargs['instance'])

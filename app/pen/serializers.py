@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from . import models
-from account.models import User
-from account.serializers import UserSerializer
+from authentication.models import User
+from authentication.serializers import UserSerializer
 
 pen_detail_url = serializers.HyperlinkedIdentityField(
     view_name='pen:pen',
