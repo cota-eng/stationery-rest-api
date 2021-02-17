@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from django.conf import settings
-from . import models
 from django.contrib.auth import get_user_model, authenticate
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import smart_str, force_str, DjangoUnicodeDecodeError
@@ -11,13 +10,15 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken,TokenError
 from django.contrib.auth import get_user_model
-from authentication.models import User
-
+from . import models
+from django.utils.text import gettext_lazy as _
+from rest_framework import serializers
+from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('email', 'password',)
+        fields = ('email', 'password','nickname',)
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -26,27 +27,23 @@ class UserSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     created_at = serializers.DateField(format="%Y/%m/%d",read_only=True)
     updated_at = serializers.DateField(format="%Y/%m/%d", read_only=True)
+
     class Meta:
         model = models.Profile
         fields = ('id', 'nickname', 'created_at', 'updated_at', 'avatar', 'user_profile')
         extra_kwargs = {'user_profile': {'read_only': True}}
+
     # def validate(self, attrs):
     #     nickname = attrs.get('nickname')
     #     if not nickname.isalnum():
     #         raise serializers.ValidationError('only a-z 0-9 alnum')
     #     return super().validate(attrs)
 
-
-from django.utils.text import gettext_lazy as _
-from rest_framework import serializers
-from rest_framework_simplejwt.tokens import RefreshToken, TokenError
-
 class LogoutSerializer(serializers.Serializer):
     refresh = serializers.CharField()
-
-    # default_error_messages = {
-    #     'bad_token': _('aaa')
-    # }
+    default_error_messages = {
+        'bad_token': _('aaa')
+    }
 
     def validate(self, attrs):
         self.token = attrs['refresh']
