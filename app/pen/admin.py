@@ -3,7 +3,13 @@ from . import models
 
 admin.site.site_header = "管理画面"
 
+class ReviewInline(admin.TabularInline):
+    model = models.Review
+
 class PenAdmin(admin.ModelAdmin):
+    inlines = [
+        ReviewInline
+    ]
     # exclude = ('name',)
     # fields = ('name',)
     list_display = ('name', 'price_yen',)
