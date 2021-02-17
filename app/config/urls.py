@@ -19,7 +19,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/auth/', include("account.urls")),
+    path('api/auth/', include("authentication.urls")),
     # path('oauth/', include("social_auth.urls")),
     path('api/', include("pen.urls")),
     # path('rest-auth/', include("rest_framework.urls")),

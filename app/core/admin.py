@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from account import models
+from authentication import models
 
 from django.utils.translation import gettext as _
 
@@ -9,7 +9,7 @@ class UserAdmin(BaseUserAdmin):
     list_display = ['email',]
     fieldsets = (
         (_('Credentials'),{'fields':('email','password')}),
-        (_('Personal Info'),{'fields':('is_verified',)}),
+        # (_('Personal Info'),{'fields':('is_verified',)}),
         (_('Permissions'),
             {
                 'fields': ('is_active',

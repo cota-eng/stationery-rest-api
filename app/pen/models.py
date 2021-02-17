@@ -4,7 +4,7 @@ from django.utils.translation import gettext as _
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.conf import settings
 from django.utils import timezone
-from account.models import User
+from authentication.models import User
 
 class Category(models.Model):
     """
