@@ -50,32 +50,32 @@ class UploadView(APIView):
 """
 
 
-class RegisterView(generics.GenericAPIView):
-    serializer_class = serializers.UserRegisterSerializer
-    permission_classes = (permissions.AllowAny,)
+# class RegisterView(generics.GenericAPIView):
+#     serializer_class = serializers.UserRegisterSerializer
+#     permission_classes = (permissions.AllowAny,)
 
-    def post(self,request):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
+#     def post(self,request):
+#         serializer = self.serializer_class(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
 
-            created_user = models.User.objects.get(email=serializer.data['email'])
-            token = RefreshToken.for_user(created_user).access_token
-            current_site = get_current_site(request).domain
-            reverse_link = reverse('account:email-veryfy')
-            absolute_url = f'http://{current_site}{reverse_link}?token={token}'
+#             created_user = models.User.objects.get(email=serializer.data['email'])
+#             token = RefreshToken.for_user(created_user).access_token
+#             current_site = get_current_site(request).domain
+#             reverse_link = reverse('account:email-veryfy')
+#             absolute_url = f'http://{current_site}{reverse_link}?token={token}'
 
-            email_body = f'Hi,there!your mail is {created_user.email}\n please click this url for verifing your account! \n {absolute_url}'
+#             email_body = f'Hi,there!your mail is {created_user.email}\n please click this url for verifing your account! \n {absolute_url}'
 
-            data = {
-                'email_subject': 'verify',
-                'email_body': email_body,
-                'email_to': created_user.email,
-                }
+#             data = {
+#                 'email_subject': 'verify',
+#                 'email_body': email_body,
+#                 'email_to': created_user.email,
+#                 }
             
-            utils.Util.send_email(data)
-            return Response(serializer.data,status=status.HTTP_201_CREATED)
-        return Response(status.HTTP_400_BAD_REQUEST)
+#             utils.Util.send_email(data)
+#             return Response(serializer.data,status=status.HTTP_201_CREATED)
+#         return Response(status.HTTP_400_BAD_REQUEST)
 
 class ProfileViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Profile.objects.all()
