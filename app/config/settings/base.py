@@ -59,10 +59,10 @@ INSTALLED_APPS = [
     # for social login
     "django.contrib.sites",
     "dj_rest_auth",
-    # "allauth",
-    # "allauth.account",
-    # "allauth.socialaccount",
-    # "allauth.socialaccount.providers.google",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
 
 ]
 
@@ -221,7 +221,7 @@ MEDIA_ROOT = '/vol/web/media/'
 STATIC_ROOT = '/vol/web/static/'
 
 
-AUTH_USER_MODEL = 'account.User'
+AUTH_USER_MODEL = 'authentication.User'
 
 """Veryfy email sender"""
 EMAIL_USE_TLS = True
