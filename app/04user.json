@@ -1,0 +1,50 @@
+[
+    {
+        "model": "authentication.User",
+        "pk": "eb62f809-65ab-cbc8-9c94-a18a0b47dd35",
+        "fields": {
+            "email": "b@b.com",
+            "password": "adminadmin",
+            "is_verified":true,
+            "is_staff":true,
+            "is_superuser":true
+        }
+    },
+    {
+        "model": "authentication.User",
+        "pk": "f0c5985c-af3e-4743-e481-1188f21f82b8",
+        "fields": {
+            "email": "c@c.com",
+            "password": "adminadmin",
+            "is_verified":true
+        }
+    },
+    {
+        "model": "authentication.User",
+        "pk": "ef36ac07-5675-f1a1-656d-27171f423956",
+        "fields": {
+            "email": "d@d.com",
+            "password": "adminadmin",
+            "is_verified":true
+        }
+    },
+    {
+        "model": "authentication.User",
+        "pk": "51649c9c-6c66-9199-68bd-6a8f32e81656",
+        "fields": {
+            "email": "e@e.com",
+            "password": "adminadmin",
+            "is_verified":true
+        }
+    },
+        {
+        "model": "authentication.User",
+        "pk": "dc6f5f49-44e2-1420-5001-a60970d8baf4",
+        "fields": {
+            "email": "f@f.com",
+            "password": "adminadmin",
+            "is_verified":true
+        }
+    }
+   
+]

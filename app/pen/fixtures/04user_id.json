@@ -1,0 +1,48 @@
+[
+    {
+        "model": "authentication.User",
+        "pk": "2",
+        "fields": {
+            "username":"b",
+            "email": "b@b.com",
+            "password": "adminadmin"
+        }
+    },
+    {
+        "model": "authentication.User",
+        "pk": "2",
+        "fields": {
+            "username":"c",
+            "email": "c@c.com",
+            "password": "adminadmin"
+        }
+    },
+    {
+        "model": "authentication.User",
+        "pk": "3",
+        "fields": {
+            "username":"d",
+            "email": "d@d.com",
+            "password": "adminadmin"
+        }
+    },
+    {
+        "model": "authentication.User",
+        "pk": "4",
+        "fields": {
+            "username":"e",
+            "email": "e@e.com",
+            "password": "adminadmin"
+        }
+    },
+    {
+        "model": "authentication.User",
+        "pk": "5",
+        "fields": {
+            "username":"f",
+            "email": "f@f.com",
+            "password": "adminadmin"
+        }
+    }
+   
+]

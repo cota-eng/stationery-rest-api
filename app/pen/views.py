@@ -11,6 +11,9 @@ from rest_framework import authentication
 from django_filters import rest_framework as filters
 from .filters import  PenOriginalFilter
 
+class AddFavPenAPIView(generics.GenericAPIView):
+    pass
+
 class CategoryReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Category.objects.all()
     serializer_class = serializers.CategorySerializer

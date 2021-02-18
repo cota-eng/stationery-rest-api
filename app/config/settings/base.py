@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
-    'account.apps.AccountConfig',
+    # 'account.apps.AccountConfig',
+    'authentication.apps.AuthenticationConfig',
     # 'social_auth.apps.SocialAuthConfig',
     'pen.apps.PenConfig',
     'rest_framework',
@@ -55,6 +56,14 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_yasg',
     'rest_framework_simplejwt.token_blacklist',
+    #  "rest_framework.authtoken",
+    # for social login
+    "django.contrib.sites",
+    "dj_rest_auth",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
 
 ]
 
@@ -147,14 +156,16 @@ REST_FRAMEWORK = {
         # "dj_rest_auth.utils.JWTCookieAuthentication",
 
         # 'rest_framework_simplejwt.authentication.JWTTokenUserAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+
     ],
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
 
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 5,
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 5,
 
     'NON_FIELD_ERRORS_KEY': 'error',
     
@@ -163,8 +174,8 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle'
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '100/day',
-        'user': '1000/day'
+        'anon': '100000/day',
+        'user': '1000000/day'
     },
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
@@ -193,16 +204,26 @@ SIMPLE_JWT = {
     # 'TOKEN_TYPE_CLAIM': 'token_type',
 
     # 'JTI_CLAIM': 'jti',
-
+    # sliding unuse
     # 'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
     # 'SLIDING_TOKEN_LIFETIME': timedelta(minutes=),
     # 'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+    # 'AUTH_COOKIE': 'access_token',  # Cookie name. Enables cookies if value is set.
+    # 'AUTH_COOKIE_DOMAIN': None,     # A string like "example.com", or None for standard domain cookie.
+    # 'AUTH_COOKIE_SECURE': False,    # Whether the auth cookies should be secure (https:// only).
+    # 'AUTH_COOKIE_HTTP_ONLY' : True, # Http only cookie flag.It's not fetch by javascript.
+    # 'AUTH_COOKIE_PATH': '/',        # The path of the auth cookie.
+    # 'AUTH_COOKIE_SAMESITE': 'Lax',  # Whether to set the flag restricting cookie leaks on cross-site requests.
+    #                             # This can be 'Lax', 'Strict', or None to disable the flag.
 }
+# for allauth
+SITE_ID = 1
 
+# for cors
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
-    'http://127.0.0.1:8080',
+    'http://127.0.0.1:3000',
 )
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -213,7 +234,7 @@ MEDIA_ROOT = '/vol/web/media/'
 STATIC_ROOT = '/vol/web/static/'
 
 
-AUTH_USER_MODEL = 'account.User'
+AUTH_USER_MODEL = 'authentication.User'
 
 """Veryfy email sender"""
 EMAIL_USE_TLS = True
@@ -232,3 +253,42 @@ SWAGGER_SETTINGS = {
         }
     }
 }
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+
+
+REST_SESSION_LOGIN = True
+
+REST_USE_JWT = True
+
+# JWT_AUTH_COOKIE = 'jwt-auth'
+
+JWT_AUTH_SECURE = True
+
+JWT_AUTH_HTTPONLY=True
+
+JWT_AUTH_SAMESITE=True
+
+# OLD_PASSWORD_FIELD_ENABLED=True
+
+# LOGOUT_ON_PASSWORD_CHANGE=True
+
+JWT_AUTH_COOKIE_USE_CSRF=True
+
+JWT_AUTH_COOKIE_ENFORCE_CSRF_ON_UNAUTHENTICATED=True
+
+SITE_ID = 1

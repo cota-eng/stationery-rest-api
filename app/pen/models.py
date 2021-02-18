@@ -4,42 +4,64 @@ from django.utils.translation import gettext as _
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.conf import settings
 from django.utils import timezone
-from account.models import User
+from authentication.models import User
 
 class Category(models.Model):
-    """Model that define category and id is normal"""
-    name = models.CharField(_("category name"),max_length=50)
-    slug = models.CharField(_("category slug"),max_length=50)
+    """
+    Model that define category and id is normal
+    """
+    name = models.CharField(
+        _("category name"),
+        max_length=50)
+    slug = models.CharField(
+        _("category slug"),
+        max_length=50)
+    
     def __str__(self):
         return f'Category: {self.name}'
 
 class Brand(models.Model):
-    """Model that define Maker and has name and only one official web site"""
-    name = models.CharField(max_length=50)
-    slug = models.CharField(_("brand slug"),max_length=50)
-    official_site_link = models.CharField(max_length=255)
+    """
+    Model that define Maker and has name and only one official web site
+    """
+    name = models.CharField(
+        _('brand name'),
+        max_length=50)
+    slug = models.CharField(
+        _("brand slug"),
+        max_length=50)
+    official_site_link = models.CharField(
+         _("brand link"),
+         max_length=255)
 
     def __str__(self):
         return f'Productor: {self.name}'
 
 class Tag(models.Model):
-    """Model that has diffrent tags, such as Wood, Light, Rich, Boys ..."""
-    name = models.CharField(max_length=50)
-    slug = models.CharField(_("category slug"),max_length=50)
+    """
+    Model that has diffrent tags, such as Wood, Light, Rich, Boys ...
+    """
+    name = models.CharField(
+        _("category name"),
+        max_length=50)
+    slug = models.CharField(
+        _("category slug"),
+        max_length=50)
+    
     def __str__(self):
         return f'Tag: {self.name}'
 
 class Pen(models.Model):
-    #  short_uuid = models.UUIDField(
+    """Model that is main part"""
+    # id = models.UUIDField(
     #     _('uuid'),
     #     primary_key=True,
     #     default=str(uuid.uuid4)[:8],
     #     editable=False,
     #     db_index=True) 
-    """Model that is main part"""
     name = models.CharField(
         _("name"), max_length=50)
-    # TODO markdown -> html field
+    # TODO: markdown -> html field
     description = models.TextField(
         _('description'))
     category = models.ForeignKey(
@@ -96,14 +118,14 @@ class Pen(models.Model):
         reviews = Review.objects.filter(pen=self)
         return len(reviews)
 
-    # アベレージ考え中
+    # TODO:アベレージ考え中
     @property
     def avarage_of_review_star(self):
         sum: int = 0
         reviews = Review.objects.filter(pen=self)
         if len(reviews) != 0:
             for review in reviews:
-                sum += review.stars
+                sum += review.avarage_star
             return sum / len(reviews)
         else:
             return 0
@@ -111,6 +133,37 @@ class Pen(models.Model):
     def __str__(self):
         return f'Pen: {self.name} Price: {self.price_yen}'
     
+
+class FavPen(models.Model):
+    """
+    Fav is Favorite
+    """
+    # is_favorite = models.BooleanField(default=False)
+    """
+    TODO:
+    connect to User or Profile
+    """
+    fav_user = models.ForeignKey(
+        User,
+        related_name="user_fav",
+        on_delete=models.CASCADE
+    )
+    pen = models.ForeignKey(
+        Pen,
+        related_name="pen_fav",
+        on_delete=models.CASCADE
+    )
+    created_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        """
+        one review for one person 
+        """
+        unique_together = (('fav_user','pen'))
+        index_together = (('fav_user', 'pen'))
+    def __str__(self):
+        return f"stock {self.pen.name} user {self.fav_user}"
+
 class Review(models.Model):
     """Model that display reviews of pens"""
     pen = models.ForeignKey(
@@ -118,33 +171,56 @@ class Review(models.Model):
         related_name='reviewed_pen',
         on_delete=models.CASCADE)
     """
-    - デザイン性
-    - 耐久性
-    - 利便性
-                comprehensive_starsとする。
-                avarage自体どうするか
-                個人のアベレージを取るのと、個人のアベレージを平均したものをペンのトップに載せる
-
-                レビュー自体は1,2,3,4,5だが、平均のみfloatで扱う
-
+    TODO:
+    avarage自体どうするか
+    個人のアベレージと、個人のアベレージを平均したものをペンのトップに載せる
     レビュー自体が参考になったか：きちんとしたレビューは評価され、みんなにより見てもらう必要がある
     """
     title = models.CharField(_('title'), max_length=30)
-    stars = models.IntegerField(
-        _('star'), validators=[MaxValueValidator(5), MinValueValidator(1)]
+    # stars = models.IntegerField(
+    #     _('star'), validators=[MaxValueValidator(5), MinValueValidator(1)]
+    #     )
+    """
+    TODO: 
+    デザイン性
+    耐久性
+    利便性
+    機能性
+    入手性
+    """
+    stars_of_design = models.IntegerField(
+        _('design'),
+        validators=[MaxValueValidator(5), MinValueValidator(1)]
         )
-    # stars_of_design = models.IntegerField(
-    #     _('star'),
-    #     validators=[MaxValueValidator(5), MinValueValidator(1)]
-    #     )
-    # stars_of_durability = models.IntegerField(
-    #     _('star'), validators=[MaxValueValidator(5), MinValueValidator(1)]
-    #     )
-    # stars_of_usefulness = models.IntegerField(
-    #     _('star'), validators=[MaxValueValidator(5), MinValueValidator(1)]
-    #     )
-    # good_point_text = models.TextField()
-    # bad_point_text = models.TextField()
+    stars_of_durability = models.IntegerField(
+        _('durability'),
+        validators=[MaxValueValidator(5), MinValueValidator(1)]
+        )
+    stars_of_usefulness = models.IntegerField(
+        _('usefulness'),
+        validators=[MaxValueValidator(5), MinValueValidator(1)]
+        )
+    stars_of_function = models.IntegerField(
+        _('function'),
+        validators=[MaxValueValidator(5), MinValueValidator(1)]
+        )
+    stars_of_easy_to_get = models.IntegerField(
+        _('easy_to_get'),
+        validators=[MaxValueValidator(5), MinValueValidator(1)]
+        )
+
+    @property
+    def avarage_star(self):
+        sum = 0
+        sum += self.stars_of_design
+        sum += self.stars_of_durability
+        sum += self.stars_of_usefulness
+        sum += self.stars_of_function
+        sum += self.stars_of_easy_to_get
+        return float(sum / 5)
+
+    good_point_text = models.TextField(blank=True,null=True)
+    bad_point_text = models.TextField(blank=True,null=True)
     reviewer = models.ForeignKey(
         User,
         related_name='reviewer',
@@ -158,7 +234,7 @@ class Review(models.Model):
         index_together = (('reviewer', 'pen'))
 
     def __str__(self):
-        return f'Reviewd Pen: {self.pen.name} / Reviewer: {self.user.nickname}'
+        return f'Reviewd Pen: {self.pen.name} / Reviewer: {self.reviewer.user_profile.nickname}'
     
 # class Comment(models.Model):
 #     pass
