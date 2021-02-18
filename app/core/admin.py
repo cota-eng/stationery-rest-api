@@ -8,7 +8,7 @@ class UserAdmin(BaseUserAdmin):
     ordering = ['id',]
     list_display = ['email',]
     fieldsets = (
-        (_('Credentials'),{'fields':('email','password')}),
+        (_('Credentials'),{'fields':('email','password','username')}),
         # (_('Personal Info'),{'fields':('is_verified',)}),
         (_('Permissions'),
             {
