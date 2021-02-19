@@ -36,6 +36,30 @@ class BrandSerializer(serializers.ModelSerializer):
             )
         # depth = 1
 
+class BrandFilteredPenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Pen
+        fields = (
+            'id',
+            'name',
+            'description',
+            'category',
+            'price_yen',
+            'brand',
+            'tag',
+            'image',
+            'image_src',
+            'created_at',
+            'updated_at',
+            'amazon_link_to_buy',
+            'rakuten_link_to_buy',
+            'mercari_link_to_buy',
+            'number_of_review',
+            'avarage_of_review_star',
+            # 'reviewed_pen'
+            )
+        # depth = 1
+
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Tag
