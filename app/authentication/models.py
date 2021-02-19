@@ -104,13 +104,13 @@ class User(AbstractBaseUser, PermissionsMixin):
             'unique': _("A user with that username already exists."),
         },
     )
-    nickname = models.CharField(
-        _('nickname'),
-        max_length=150,
-        default='初期ユーザー'
-    )
-    first_name = models.CharField(_('first name'), max_length=150, blank=True)
-    last_name = models.CharField(_('last name'), max_length=150, blank=True)
+    # nickname = models.CharField(
+    #     _('nickname'),
+    #     max_length=150,
+    #     default='初期ユーザー'
+    # )
+    # first_name = models.CharField(_('first name'), max_length=150, blank=True)
+    # last_name = models.CharField(_('last name'), max_length=150, blank=True)
     email = models.EmailField(_('email address'),unique=True)
     is_staff = models.BooleanField(
         _('staff status'),
@@ -142,16 +142,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         super().clean()
         self.email = self.__class__.objects.normalize_email(self.email)
 
-    def get_full_name(self):
-        """
-        Return the first_name plus the last_name, with a space in between.
-        """
-        full_name = '%s %s' % (self.first_name, self.last_name)
-        return full_name.strip()
+    # def get_full_name(self):
+    #     """
+    #     Return the first_name plus the last_name, with a space in between.
+    #     """
+    #     full_name = '%s %s' % (self.first_name, self.last_name)
+    #     return full_name.strip()
 
-    def get_short_name(self):
-        """Return the short name for the user."""
-        return self.first_name
+    # def get_short_name(self):
+    #     """Return the short name for the user."""
+    #     return self.first_name
 
 
 def profile_avatar_path(instance, filename):
@@ -174,7 +174,7 @@ class Profile(models.Model):
     nickname = models.CharField(_('nickname'),max_length=50,default="匿名ユーザー")
     created_at = models.DateField(auto_now=True)
     updated_at = models.DateField(auto_now_add=True)
-    avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None)
+    avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None,null=True,blank=True)
     twitter_account = models.CharField(_('twitter username'),null=True,blank=True,max_length=100)
     # favorite_pen = models.ManyToManyField()
     def __str__(self):
