@@ -17,19 +17,19 @@ class AddFavPenAPIView(generics.GenericAPIView):
 class CategoryReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Category.objects.all()
     serializer_class = serializers.CategorySerializer
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'slug'
         
 class PenReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Pen.objects.all()
     serializer_class = serializers.PenSerializer
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
     # lookup_field = 'slug'
 
 class TagReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Tag.objects.all()
     serializer_class = serializers.TagSerializer
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'slug'
 
 class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
@@ -40,7 +40,7 @@ class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
     """
     queryset = models.Pen.objects.all()
     serializer_class = serializers.PenSerializer
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = PenOriginalFilter
 
@@ -48,21 +48,23 @@ class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
 # class PenCategoryFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
 #     queryset = models.Pen.objects.filter(category=)
 #     serializer_class = serializers.CategorySerializer
-#     permission_classes = (permissions.AllowAny,)
+#     permission_classes = (permissions.IsAuthenticated,)
 #     filter_fields = ('slug', )
 
-# class PenBrandFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
-#     queryset = models.Brand.objects.all()
-#     serializer_class = serializers.BrandSerializer
-#     permission_classes = (permissions.AllowAny,)
-#     lookup_field = 'slug'
+class PenBrandFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     """
     filter by brand/<brand_name_slug>
     display Respective Brand Pens !
     """
+    queryset = models.Brand.objects.all()
+    serializer_class = serializers.BrandSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+    lookup_field = 'slug'
     # def get_queryset(self):
-    #     return self.queryset.filter(brand=self.request.GET.get('slug'))
-
+    #     return self.queryset.filter(slug=self.request.GET.get('slug'))
+    # def retrieve(self, request, pk=None):
+    #     response = {'message': 'retrieve method is not allowed'}
+    #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 class OwnReviewReadOnlyViewSet(viewsets.ModelViewSet):
     """
@@ -70,7 +72,7 @@ class OwnReviewReadOnlyViewSet(viewsets.ModelViewSet):
     """
     queryset = models.Review.objects.all()
     serializer_class = serializers.ReviewSerialier
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
     
     def get_queryset(self):
         user = self.request.user
@@ -80,7 +82,7 @@ class OwnReviewReadOnlyViewSet(viewsets.ModelViewSet):
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = models.Review.objects.all()
     serializer_class = serializers.ReviewSerialier
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
     # lookup_field = ''
     # permission_classes = (permissions.IsAuthenticated,)
     # def perform_create(self, serializer):
