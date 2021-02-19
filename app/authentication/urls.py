@@ -9,12 +9,12 @@ from rest_framework_simplejwt.views import (
 )
 from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
-router.register('profile',views.ProfileViewSet)
-router.register('my-profile',views.MyProfileView)
+router.register('user',views.ProfileViewSet)
+router.register('profile',views.ProfileRetrieveUpdateViewSet)
 
 
 urlpatterns = [
-    # path('profile/', views.ProfileListView.as_view(), name='profile'),
+    # path('profile-update/<int:pk>/', views.ProfileUpdateView.as_view(), name='auth_update_profile'),
     path('login/',views.GoogleLogin.as_view(), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
