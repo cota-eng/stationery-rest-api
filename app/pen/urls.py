@@ -10,7 +10,7 @@ router.register('search',views.PenSearchByAllConditions)
 router.register('review',views.ReviewViewSet)
 router.register('tag',views.TagReadOnlyViewSet)
 router.register('my-review',views.OwnReviewReadOnlyViewSet)
-# router.register('brand',views.PenBrandFilteredReadOnlyViewSet)
+router.register('brand',views.PenBrandFilteredReadOnlyViewSet)
 app_name="pen"
 urlpatterns = [
     path('',include(router.urls))
