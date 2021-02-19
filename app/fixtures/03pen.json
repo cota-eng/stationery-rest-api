@@ -141,5 +141,185 @@
             "amazon_link_to_buy": "",
             "rakuten_link_to_buy": ""
         }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": 9,
+        "fields": {
+            "name": "サンプル9",
+            "description": "サンプル9",
+            "category": 1,
+            "price_yen": 2000,
+            "brand":1,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": 10,
+        "fields": {
+            "name": "サンプル10",
+            "description": "サンプル10",
+            "category": 1,
+            "price_yen": 2000,
+            "brand":1,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": 11,
+        "fields": {
+            "name": "サンプル11",
+            "description": "サンプル11",
+            "category": 1,
+            "price_yen": 2000,
+            "brand":1,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": 12,
+        "fields": {
+            "name": "サンプル12",
+            "description": "サンプル12",
+            "category": 1,
+            "price_yen": 2000,
+            "brand":1,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": 13,
+        "fields": {
+            "name": "サンプル13",
+            "description": "サンプル13",
+            "category": 1,
+            "price_yen": 2000,
+            "brand":1,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": 14,
+        "fields": {
+            "name": "サンプル14",
+            "description": "サンプル14",
+            "category": 1,
+            "price_yen": 2000,
+            "brand":1,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": 15,
+        "fields": {
+            "name": "サンプル15",
+            "description": "サンプル15",
+            "category": 1,
+            "price_yen": 2000,
+            "brand":1,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": 16,
+        "fields": {
+            "name": "サンプル16",
+            "description": "サンプル16",
+            "category": 1,
+            "price_yen": 2000,
+            "brand":1,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": 17,
+        "fields": {
+            "name": "サンプル17",
+            "description": "サンプル17",
+            "category": 1,
+            "price_yen": 2000,
+            "brand":1,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": 18,
+        "fields": {
+            "name": "サンプル18",
+            "description": "サンプル18",
+            "category": 1,
+            "price_yen": 2000,
+            "brand":1,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
     }
 ]
