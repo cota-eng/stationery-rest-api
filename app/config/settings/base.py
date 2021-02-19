@@ -34,7 +34,7 @@ DEBUG = env.get_value('DEBUG')
 
 
 
-ALLOWED_HOSTS = ['localhost',]
+ALLOWED_HOSTS = ['localhost','127.0.0.1',]
 
 
 # Application definition
@@ -47,19 +47,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
-    # 'account.apps.AccountConfig',
     'authentication.apps.AuthenticationConfig',
+    # 'account.apps.AccountConfig',
     # 'social_auth.apps.SocialAuthConfig',
     'pen.apps.PenConfig',
     'rest_framework',
     'django_filters',
     'corsheaders',
     'drf_yasg',
-    'rest_framework_simplejwt.token_blacklist',
-    #  "rest_framework.authtoken",
+    # 'rest_framework_simplejwt.token_blacklist',
+     "rest_framework.authtoken",
     # for social login
     "django.contrib.sites",
     "dj_rest_auth",
+    "dj_rest_auth.registration",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -68,9 +69,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -149,25 +150,31 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
+AUTHENTICATION_BACKENDS = [
+   "django.contrib.auth.backends.AllowAllUsersModelBackend",
+   "allauth.account.auth_backends.AuthenticationBackend"
+]
+
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # "rest_framework.authentication.BasicAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
-        # "dj_rest_auth.utils.JWTCookieAuthentication",
-
+        # "rest_framework.authentication.SessionAuthentication",
         # 'rest_framework_simplejwt.authentication.JWTTokenUserAuthentication',
-        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # "dj_rest_auth.utils.JWTCookieAuthentication",
+        # 'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
 
     ],
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny'
+        # 'rest_framework.permissions.IsAuthenticated',
     ),
 
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     # 'PAGE_SIZE': 5,
 
-    'NON_FIELD_ERRORS_KEY': 'error',
+    # 'NON_FIELD_ERRORS_KEY': 'error',
     
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
@@ -182,12 +189,14 @@ REST_FRAMEWORK = {
     ),
 }
 
+
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
-    'ROTATE_REFRESH_TOKENS': False,
+    'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
-    'UPDATE_LAST_LOGIN': False,
+    'UPDATE_LAST_LOGIN': True,
 
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
@@ -195,9 +204,9 @@ SIMPLE_JWT = {
     'AUDIENCE': None,
     'ISSUER': None,
 
-    'AUTH_HEADER_TYPES': ('JWT',),
-    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
-    'USER_ID_FIELD': 'id',
+    # 'AUTH_HEADER_TYPES': ('Bearer',),
+    # 'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    # 'USER_ID_FIELD': 'id',
     # 'USER_ID_CLAIM': 'user_id',
 
     # 'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
@@ -216,15 +225,37 @@ SIMPLE_JWT = {
     # 'AUTH_COOKIE_SAMESITE': 'Lax',  # Whether to set the flag restricting cookie leaks on cross-site requests.
     #                             # This can be 'Lax', 'Strict', or None to disable the flag.
 }
+
 # for allauth
 SITE_ID = 1
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_EMAIL_REQUIRED = True
 
 # for cors
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
+CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-)
+]
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOW_CREDENTIALS = True  # Access-control-Allow-Credentials: true
+# SESSION_COOKIE_SAMESITE = None  # default='Lax'
+# SESSION_COOKIE_SECURE = True
+
+# CORS_ALLOW_HEADERS = [
+#     'accept',
+#     'accept-encoding',
+#     'authorization',
+#     'content-type',
+#     'dnt',
+#     'origin',
+#     'user-agent',
+#     'x-csrftoken',
+#     'x-requested-with',
+# ]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
@@ -267,28 +298,17 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
-SOCIALACCOUNT_EMAIL_REQUIRED = True
-
-
-REST_SESSION_LOGIN = True
 
 REST_USE_JWT = True
-
 # JWT_AUTH_COOKIE = 'jwt-auth'
-
-JWT_AUTH_SECURE = True
-
-JWT_AUTH_HTTPONLY=True
-
-JWT_AUTH_SAMESITE=True
-
+# REST_SESSION_LOGIN = True
+# JWT_AUTH_SECURE = False
+# JWT_AUTH_HTTPONLY= True
+# JWT_AUTH_SAMESITE = "Lax"
 # OLD_PASSWORD_FIELD_ENABLED=True
-
 # LOGOUT_ON_PASSWORD_CHANGE=True
-
-JWT_AUTH_COOKIE_USE_CSRF=True
-
-JWT_AUTH_COOKIE_ENFORCE_CSRF_ON_UNAUTHENTICATED=True
-
-SITE_ID = 1
+# JWT_AUTH_COOKIE_USE_CSRF=True
+# JWT_AUTH_COOKIE_ENFORCE_CSRF_ON_UNAUTHENTICATED=True
+# LANGUAGE_COOKIE_HTTPONLY=True
+# SESSION_COOKIE_HTTPONLY=True
+# CSRF_COOKIE_HTTPONLY=True
