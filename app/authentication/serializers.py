@@ -18,7 +18,7 @@ from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('email', 'password','nickname','user_profile',)
+        fields = ('email', 'password','user_profile',)
         extra_kwargs = {'password': {
             'write_only': True,
             'style': {'input_type': 'password'}
