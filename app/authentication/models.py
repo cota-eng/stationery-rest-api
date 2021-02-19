@@ -93,7 +93,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     Username and password are required. Other fields are optional.
     """
     username_validator = UnicodeUsernameValidator()
-
+    """
+    TODO: id override to UUOD ?
+    """
     username = models.CharField(
         _('username'),
         max_length=150,
@@ -157,13 +159,17 @@ class User(AbstractBaseUser, PermissionsMixin):
 def profile_avatar_path(instance, filename):
     ext = filename.split('.')[-1]
     filename = f'{uuid.uuid4()}.{ext}'
-    return os.path.join('uploads/avatar/',filename)
+    # return os.path.join('uploads/avatar/',filename)
+    return os.path.join('media/',filename)
 
 def profile_avatar_resize():
     pass
 
 class Profile(models.Model):
     """Model that has avatar and dates of create and update"""
+    """
+    TODO: id is to normal id?
+    """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
     user_profile = models.OneToOneField(
         # _('user'),
@@ -172,8 +178,8 @@ class Profile(models.Model):
         on_delete=models.CASCADE
         )
     nickname = models.CharField(_('nickname'),max_length=50,default="匿名ユーザー")
-    created_at = models.DateField(auto_now=True)
-    updated_at = models.DateField(auto_now_add=True)
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
     avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None,null=True,blank=True)
     twitter_account = models.CharField(_('twitter username'),null=True,blank=True,max_length=100)
     # favorite_pen = models.ManyToManyField()
