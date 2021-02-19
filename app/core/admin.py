@@ -4,7 +4,13 @@ from authentication import models
 
 from django.utils.translation import gettext as _
 
+class ProfileInline(admin.TabularInline):
+    model = models.Profile
+
 class UserAdmin(BaseUserAdmin):
+    inlines = [
+        ProfileInline
+    ]
     ordering = ['id',]
     list_display = ['email',]
     fieldsets = (
