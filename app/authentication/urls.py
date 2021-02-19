@@ -9,7 +9,7 @@ from rest_framework_simplejwt.views import (
 )
 from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
-router.register('user',views.ProfileViewSet)
+router.register('user',views.ProfileReadOnlyViewSet)
 router.register('profile',views.ProfileRetrieveUpdateViewSet)
 
 
