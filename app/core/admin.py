@@ -12,7 +12,7 @@ class UserAdmin(BaseUserAdmin):
         ProfileInline
     ]
     ordering = ['id',]
-    list_display = ['email',]
+    list_display = ['email','username','last_login']
     fieldsets = (
         (_('Credentials'),{'fields':('email','password','username')}),
         # (_('Personal Info'),{'fields':('is_verified',)}),
