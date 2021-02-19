@@ -23,12 +23,15 @@ from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from dj_rest_auth.registration.views import SocialLoginView
 from allauth.socialaccount.providers.oauth2.client import OAuth2Client
 from django.conf import settings
+
+
 # from rest_framework_simplejwt.tokens import RefreshToken
 # from rest_framework.views import APIView
 from rest_framework import permissions, status
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from .serializers import LogoutSerializer
+
 
 class GoogleLogin(SocialLoginView):
     authentication_classes = [] # disable authentication
