@@ -84,6 +84,8 @@ class UserManager(BaseUserManager):
     #             obj=obj,
     #         )
     #     return self.none()
+import ulid
+from core.model import ULIDField
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -96,6 +98,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
     TODO: id override to UUOD ?
     """
+    id = ULIDField(
+        primary_key=True,
+        default=ulid.new,
+        unique=True,
+        editable=False,
+        db_index=True
+        )
     username = models.CharField(
         _('username'),
         max_length=150,
@@ -170,11 +179,17 @@ class Profile(models.Model):
     """
     TODO: id is to normal id?
     """
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
-    user_profile = models.OneToOneField(
-        # _('user'),
+    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
+    id = ULIDField(
+        primary_key=True,
+        default=ulid.new,
+        unique=True,
+        editable=False,
+        db_index=True
+        )
+    user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
-        related_name="user_profile",
+        related_name="profile",
         on_delete=models.CASCADE
         )
     # nickname = models.CharField(_('nickname'),max_length=50,default="匿名ユーザー")

@@ -5,6 +5,9 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.conf import settings
 from django.utils import timezone
 from authentication.models import User
+import ulid
+from core.model import ULIDField
+
 
 class Category(models.Model):
     """
@@ -53,12 +56,13 @@ class Tag(models.Model):
 
 class Pen(models.Model):
     """Model that is main part"""
-    # id = models.UUIDField(
-    #     _('uuid'),
-    #     primary_key=True,
-    #     default=str(uuid.uuid4)[:8],
-    #     editable=False,
-    #     db_index=True) 
+    id = ULIDField(
+        primary_key=True,
+        default=ulid.new,
+        unique=True,
+        editable=False,
+        db_index=True
+        )
     name = models.CharField(
         _("name"), max_length=50)
     # TODO: markdown -> html field
@@ -96,7 +100,6 @@ class Pen(models.Model):
         max_length=500)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
-
     """
     in the future, set affiliate link, so is charfield
     """
@@ -145,12 +148,12 @@ class FavPen(models.Model):
     """
     fav_user = models.ForeignKey(
         User,
-        related_name="user_fav",
+        related_name="fav",
         on_delete=models.CASCADE
     )
     pen = models.ForeignKey(
         Pen,
-        related_name="pen_fav",
+        related_name="faved",
         on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(auto_now=True)
@@ -166,9 +169,16 @@ class FavPen(models.Model):
 
 class Review(models.Model):
     """Model that display reviews of pens"""
+    id = ULIDField(
+        primary_key=True,
+        default=ulid.new,
+        unique=True,
+        editable=False,
+        db_index=True
+        )
     pen = models.ForeignKey(
         Pen,
-        related_name='reviewed_pen',
+        related_name='review',
         on_delete=models.CASCADE)
     """
     TODO:
@@ -177,9 +187,6 @@ class Review(models.Model):
     レビュー自体が参考になったか：きちんとしたレビューは評価され、みんなにより見てもらう必要がある
     """
     title = models.CharField(_('title'), max_length=30)
-    # stars = models.IntegerField(
-    #     _('star'), validators=[MaxValueValidator(5), MinValueValidator(1)]
-    #     )
     """
     TODO: 
     デザイン性
