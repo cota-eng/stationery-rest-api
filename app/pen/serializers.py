@@ -3,10 +3,6 @@ from . import models
 from authentication.models import User
 from authentication.serializers import UserSerializer
 
-pen_detail_url = serializers.HyperlinkedIdentityField(
-    view_name='pen:pen',
-    lookup_field='id'
-    )
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -89,10 +85,16 @@ class ReviewSerialier(serializers.ModelSerializer):
         model = models.Review
         fields = (
             'title',
-            # 'stars',
+            'stars_of_design',
+            'stars_of_durability',
+            'stars_of_usefulness',
+            'stars_of_function',
+            'stars_of_easy_to_get',
+            'avarage_star',
+            'good_point_text',
+            'bad_point_text',
             'reviewer',
             'created_at',
-            'avarage_star',
             )
         depth = 1
 
