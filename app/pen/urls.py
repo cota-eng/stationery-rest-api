@@ -5,7 +5,7 @@ from . import views
 router = routers.DefaultRouter()
 
 router.register('category',views.CategoryReadOnlyViewSet)
-router.register('pen',views.PenReadOnlyViewSet,basename='pen')
+router.register('pen',views.PenReadOnlyViewSet)
 router.register('search',views.PenSearchByAllConditions)
 router.register('review',views.ReviewViewSet)
 router.register('tag',views.TagReadOnlyViewSet)
