@@ -15,10 +15,26 @@ from django.utils.text import gettext_lazy as _
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 
+# class LoginSerializer(serializers.ModelSerializer):
+#     tokens = serializers.SerializerMethodField()
+#     email = serializers.EmailField(max_length=255)
+#     password = serializers.CharField(max_length=255, min_length=4, write_only=True)
+#     tokens = serializers.CharField(read_only=True)
+#     class Meta:
+#         model = models.User
+#         fields = ('email', 'password','tokens',)
+#     # need to check
+#     def get_tokens(self, obj):
+#         user = models.User.objects.get(email=obj['email'])
+#         return {
+#             'access':user.tokens()['access'],
+#             'refresh':user.tokens()['refresh'],
+#         }
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('email', 'password','user_profile',)
+        fields = ('id','email','nickname', 'password','user_profile',)
         extra_kwargs = {'password': {
             'write_only': True,
             'style': {'input_type': 'password'}
@@ -34,10 +50,10 @@ class ProfileSerializer(serializers.ModelSerializer):
     """
     created_at = serializers.DateField(format="%Y/%m/%d",read_only=True)
     updated_at = serializers.DateField(format="%Y/%m/%d", read_only=True)
-
+    # user_profile = UserSerializer()
     class Meta:
         model = models.Profile
-        fields = ('id', 'nickname','created_at', 'updated_at',  'avatar', )
+        fields = ('id','created_at', 'updated_at',  'avatar', )
         # fields = ('id', 'nickname','created_at', 'updated_at',  'avatar', 'user_profile')
         # extra_kwargs = {'user_profile': {'read_only': True}}
     # def validate(self, attrs):

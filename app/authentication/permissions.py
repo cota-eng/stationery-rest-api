@@ -2,8 +2,8 @@ from rest_framework import generics, mixins, permissions
 
 class UserIsOwnerOrReadOnly(permissions.BasePermission):
     """
-    IsAuthenticated is user can see info about profile
-    personA can change PersonB profile
+    IsAuthenticated is that user can see info about profile
+    and personA can change(not safe method) PersonB profile
     this is not allowed, so this permission is needed
     """
     def has_object_permission(self, request, view, obj):
