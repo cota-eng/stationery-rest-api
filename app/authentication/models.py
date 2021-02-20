@@ -85,7 +85,7 @@ class UserManager(BaseUserManager):
     #         )
     #     return self.none()
 import ulid
-from core.model import ULIDField
+from core.models import ULIDField
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -192,19 +192,20 @@ class Profile(models.Model):
         related_name="profile",
         on_delete=models.CASCADE
         )
-    # nickname = models.CharField(_('nickname'),max_length=50,default="匿名ユーザー")
+    # nickname = models.CharField(_('nickname'),max_length=50,default="profile nickname")
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None,null=True,blank=True)
     twitter_account = models.CharField(_('twitter username'),null=True,blank=True,max_length=100)
     # favorite_pen = models.ManyToManyField()
     def __str__(self):
-        return f'Profile of {self.nickname}'
+        return f'Profile of {self.user}'
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
 @receiver(post_save, sender=User)
 def create_profile(sender, **kwargs):
     """ 新ユーザー作成時に空のprofileも作成する """
     if kwargs['created']:
-        user_profile = Profile.objects.get_or_create(user_profile=kwargs['instance'])
+        profile = Profile.objects.get_or_create(user=kwargs['instance'])
