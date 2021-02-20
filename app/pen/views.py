@@ -17,19 +17,19 @@ class AddFavPenAPIView(generics.GenericAPIView):
 class CategoryReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Category.objects.all()
     serializer_class = serializers.CategorySerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
         
 class PenReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Pen.objects.all()
     serializer_class = serializers.PenSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
     # lookup_field = 'slug'
 
 class TagReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Tag.objects.all()
     serializer_class = serializers.TagSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
 
 class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
@@ -40,7 +40,7 @@ class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
     """
     queryset = models.Pen.objects.all()
     serializer_class = serializers.PenSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = PenOriginalFilter
 
@@ -58,7 +58,7 @@ class PenBrandFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = models.Brand.objects.all()
     serializer_class = serializers.BrandSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
     # def get_queryset(self):
     #     return self.queryset.filter(slug=self.request.GET.get('slug'))
@@ -78,8 +78,18 @@ class OwnReviewReadOnlyViewSet(viewsets.ModelViewSet):
         user = self.request.user
         return models.Review.objects.filter(reviewer=user)
 
+class ReviewReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = models.Review.objects.all()
+    serializer_class = serializers.ReviewSerialier
+    permission_classes = (permissions.AllowAny,)
+    
 
 class ReviewViewSet(viewsets.ModelViewSet):
+    """
+    can review specific pen 
+    only authenticateed user 
+
+    """
     queryset = models.Review.objects.all()
     serializer_class = serializers.ReviewSerialier
     permission_classes = (permissions.IsAuthenticated,)

@@ -40,6 +40,16 @@ from .serializers import LogoutSerializer
 logout
 """
 
+# class LoginAPIView(generics.GenericAPIView):
+#     authentication_classes = [] # disable authentication
+#     permission_classes = (permissions.AllowAny,)
+#     serializer_class = serializers.LoginSerializer
+#     def post(self, request):
+#         serialier = self.serializer_class(data=request.data)
+#         serialier.is_valid(raise_exception=True)
+
+#         return Response(serialier.data,status=status.HTTP_200_OK)
+
 class GoogleLogin(SocialLoginView):
     authentication_classes = [] # disable authentication
     adapter_class = GoogleOAuth2Adapter
