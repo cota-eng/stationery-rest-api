@@ -84,7 +84,6 @@ class ReviewViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ReviewSerialier
     permission_classes = (permissions.IsAuthenticated,)
     # lookup_field = ''
-    # permission_classes = (permissions.IsAuthenticated,)
     # def perform_create(self, serializer):
     #     serializer.save(reviewer=self.request.user)
     # def get_serializer_class(self):
@@ -94,25 +93,48 @@ class ReviewViewSet(viewsets.ModelViewSet):
     #         return serializers.RecipeImageSerializer
     @action(detail=True,methods=["POST"])
     def rate_pen(self, request, pk=None):
-        if 'stars' in request.data:
+        if 'title' in request.data:
             pen = models.Pen.objects.get(id=pk)
-            stars = request.data['stars']
             title = request.data['title']
+            stars_of_design = request.data['stars_of_design']
+            stars_of_durability = request.data['stars_of_durability']
+            stars_of_usefulness = request.data['stars_of_usefulness']
+            stars_of_function = request.data['stars_of_function']
+            stars_of_easy_to_get = request.data['stars_of_easy_to_get']
+            good_point_text = request.data['good_point_text']
+            bad_point_text = request.data['bad_point_text']
             user = request.user
             try:
                 review = models.Review.objects.get(reviewer=user, pen=pen)
-                review.stars = stars
                 review.title = title
+                review.stars_of_design = stars_of_design
+                review.stars_of_durability = stars_of_durability
+                review.stars_of_usefulness = stars_of_usefulness
+                review.stars_of_function = stars_of_function
+                review.stars_of_easy_to_get = stars_of_easy_to_get
+                review.good_point_text = good_point_text
+                review.bad_point_text = bad_point_text
                 review.save()
                 serializer = serializers.ReviewSerialier(review, many=False)
                 response = {'message': 'Rating updated', 'result': serializer.data}
                 return Response(response, status=status.HTTP_200_OK)
             except:
-                review = models.Review.objects.create(reviewer=user, pen=pen, stars=stars,title=title)
-                response = {'message': 'created'}
+                review = models.Review.objects.create(
+                    reviewer=user,
+                    pen=pen,
+                    title=title,
+                    stars_of_design=stars_of_design,
+                    stars_of_durability=stars_of_durability,
+                    stars_of_usefulness=stars_of_usefulness,
+                    stars_of_function=stars_of_function,
+                    stars_of_easy_to_get=stars_of_easy_to_get,
+                    good_point_text=good_point_text,
+                    bad_point_text=bad_point_text
+                    )
+                response = {'message': 'review created'}
                 return Response(response, status=status.HTTP_200_OK)
         else:
-            response = {'message': 'not working'}
+            response = {'message': 'error evoled'}
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
     def destroy(self, request, *args, **kwargs):
