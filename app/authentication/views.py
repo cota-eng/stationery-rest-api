@@ -63,7 +63,7 @@ class ProfileReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
 from .permissions import UserIsOwnerOrReadOnly
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
-
+from rest_framework import parsers
 
 class ProfileRetrieveUpdateViewSet(viewsets.ModelViewSet):
     queryset = models.Profile.objects.all()
@@ -71,7 +71,8 @@ class ProfileRetrieveUpdateViewSet(viewsets.ModelViewSet):
                           UserIsOwnerOrReadOnly,
                           )
     serializer_class = serializers.ProfileSerializer
-    
+    parser_classes = [parsers.MultiPartParser,
+                      parsers.FormParser,]
     def destroy(self, request, *args, **kwargs):
         """
         delete is invalid
@@ -92,27 +93,6 @@ class ProfileRetrieveUpdateViewSet(viewsets.ModelViewSet):
         """
         response = {'message': 'post method is not allowed'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
-
-# class UserProfileChangeAPIView(generics.RetrieveAPIView,
-#                             #    mixins.DestroyModelMixin,
-#                                mixins.UpdateModelMixin):
-#     permission_classes = (
-#         permissions.IsAuthenticated,
-#         UserIsOwnerOrReadOnly,
-#     )
-#     serializer_class = serializers.ProfileSerializer
-#     # parser_classes = (MultiPartParser, FormParser,)
-
-#     def get_object(self):
-#         id = self.kwargs["id"]
-#         obj = get_object_or_404(get_user_model(), id=id)
-#         return obj
-
-#     # def delete(self, request, *args, **kwargs):
-#     #     return self.destroy(request, *args, **kwargs)
-
-#     def put(self, request, *args, **kwargs):
-#         return self.update(request, *args, **kwargs)
 
 """
 not needed
