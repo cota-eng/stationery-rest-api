@@ -65,7 +65,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
-
+    # 'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -77,6 +77,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -254,8 +255,10 @@ CORS_ALLOW_CREDENTIALS = True  # Access-control-Allow-Credentials: true
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/vol/web/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+# MEDIA_ROOT = '/vol/web/media/'
 STATIC_ROOT = '/vol/web/static/'
+# STATIC_ROOT = '/vol/web/static/'
 
 
 AUTH_USER_MODEL = 'authentication.User'
@@ -305,3 +308,13 @@ REST_USE_JWT = True
 # LANGUAGE_COOKIE_HTTPONLY=True
 # SESSION_COOKIE_HTTPONLY=True
 # CSRF_COOKIE_HTTPONLY=True
+
+# import cloudinary
+# import cloudinary.uploader
+# import cloudinary.api
+# cloudinary.config( 
+#   cloud_name = env.get_value('CLOUDINARY_URL'), 
+#   api_key = env.get_value('CLOUDINARY_API_KEY'), 
+#   api_secret = env.get_value('CLOUDINARY_API_SECRET'),
+# )
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
