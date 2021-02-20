@@ -17,3 +17,4 @@ django-filter
 cloudinary
 markdown
 django-debug-toolbar
+ulid-py
