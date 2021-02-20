@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from .models import Profile,User
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('nickname','user_profile',)
+    list_display = ('user_profile',)
     # list_filter = ('name',)
 
 admin.site.register(Profile,ProfileAdmin)

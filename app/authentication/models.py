@@ -106,13 +106,13 @@ class User(AbstractBaseUser, PermissionsMixin):
             'unique': _("A user with that username already exists."),
         },
     )
-    # nickname = models.CharField(
-    #     _('nickname'),
-    #     max_length=150,
-    #     default='初期ユーザー'
-    # )
-    # first_name = models.CharField(_('first name'), max_length=150, blank=True)
-    # last_name = models.CharField(_('last name'), max_length=150, blank=True)
+    nickname = models.CharField(
+        _('nickname'),
+        max_length=150,
+        default='初期ユーザー'
+    )
+    first_name = models.CharField(_('first name'), max_length=150, blank=True)
+    last_name = models.CharField(_('last name'), max_length=150, blank=True)
     email = models.EmailField(_('email address'),unique=True)
     is_staff = models.BooleanField(
         _('staff status'),
@@ -177,7 +177,7 @@ class Profile(models.Model):
         related_name="user_profile",
         on_delete=models.CASCADE
         )
-    nickname = models.CharField(_('nickname'),max_length=50,default="匿名ユーザー")
+    # nickname = models.CharField(_('nickname'),max_length=50,default="匿名ユーザー")
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None,null=True,blank=True)
