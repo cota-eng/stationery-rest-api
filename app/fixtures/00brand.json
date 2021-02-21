@@ -88,33 +88,7 @@
             "official_site_link": "https://ohto.co.jp/"
         }
     },
-    {
-        "model": "pen.Brand",
-        "pk": 11,
-        "fields": {
-            "name": "",
-            "slug": "",
-            "official_site_link": ""
-        }
-    },
-    {
-        "model": "pen.Brand",
-        "pk": 12,
-        "fields": {
-            "name": "ミドリ",
-            "slug": "",
-            "official_site_link": ""
-        }
-    },
-    {
-        "model": "pen.Brand",
-        "pk": 13,
-        "fields": {
-            "name": "ナカバヤシ",
-            "slug": "",
-            "official_site_link": ""
-        }
-    },
+
     {
         "model": "pen.Brand",
         "pk": 14,
@@ -123,23 +97,5 @@
             "slug": "",
             "official_site_link": ""
         }
-    },
-    {
-        "model": "pen.Brand",
-        "pk": 15,
-        "fields": {
-            "name": "ロディア",
-            "slug": "",
-            "official_site_link": ""
-        }
-    },
-    {
-        "model": "pen.Brand",
-        "pk": 16,
-        "fields": {
-            "name": "",
-            "slug": "",
-            "official_site_link": ""
-        }
-    }
+    }    
 ]
