@@ -241,7 +241,7 @@ class Review(models.Model):
         index_together = (('reviewer', 'pen'))
 
     def __str__(self):
-        return f'Reviewd Pen: {self.pen.name} / Reviewer: {self.reviewer.user_profile.nickname}'
+        return f'Reviewd Pen: {self.pen.name} / Reviewer: {self.reviewer.nickname}'
     
 # class Comment(models.Model):
 #     pass
