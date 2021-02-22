@@ -31,6 +31,15 @@ class TagReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.TagSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
+from rest_framework import pagination
+
+class FilteredResultPagination(pagination.PageNumberPagination):
+    page_size = 5
+    page_size_query_param = 'page_size'
+
+# class FilteredResultPagination(pagination.LimitOffsetPagination):
+#     default = 2
+#     max_limit = 10
 
 class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
     """
@@ -41,6 +50,7 @@ class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
     queryset = models.Pen.objects.all()
     serializer_class = serializers.PenSerializer
     permission_classes = (permissions.AllowAny,)
+    pagination_class = FilteredResultPagination
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = PenOriginalFilter
 
