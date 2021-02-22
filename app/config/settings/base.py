@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_yasg',
     # 'rest_framework_simplejwt.token_blacklist',
-     "rest_framework.authtoken",
+    #  "rest_framework.authtoken",
     # for social login
     "django.contrib.sites",
     "dj_rest_auth",
