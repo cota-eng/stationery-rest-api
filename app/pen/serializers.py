@@ -67,7 +67,7 @@ class TagSerializer(serializers.ModelSerializer):
             'pen_tag',
             )
         # depth = 1
-        
+
 class TagUsingPenSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Tag
@@ -79,7 +79,7 @@ class TagUsingPenSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerialier(serializers.ModelSerializer):
-    created_at = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
+    created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     """
     reviewer - avatar, nickname, id
     """
@@ -104,8 +104,8 @@ class ReviewSerialier(serializers.ModelSerializer):
 import markdown
 
 class PenSerializer(serializers.ModelSerializer):
-    created_at = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
-    updated_at = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
+    created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
+    updated_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     category = CategoryUsingPenSerializer()
     brand = BrandSerializer()
     tag = TagUsingPenSerializer(many=True)

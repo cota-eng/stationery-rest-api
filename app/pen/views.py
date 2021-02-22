@@ -10,6 +10,7 @@ from rest_framework.decorators import  action
 from rest_framework import authentication
 from django_filters import rest_framework as filters
 from .filters import  PenOriginalFilter
+from rest_framework import pagination
 
 class AddFavPenAPIView(generics.GenericAPIView):
     pass
@@ -31,11 +32,9 @@ class TagReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.TagSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
-from rest_framework import pagination
 
 class FilteredResultPagination(pagination.PageNumberPagination):
-    page_size = 5
-    page_size_query_param = 'page_size'
+    page_size = 12
 
 # class FilteredResultPagination(pagination.LimitOffsetPagination):
 #     default = 2
@@ -50,10 +49,11 @@ class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
     queryset = models.Pen.objects.all()
     serializer_class = serializers.PenSerializer
     permission_classes = (permissions.AllowAny,)
-    pagination_class = FilteredResultPagination
+    # pagination_class = FilteredResultPagination
+    # pagination_class = pagination.LimitOffsetPagination
+    # add &?limit=100&offset=500
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = PenOriginalFilter
-
 
 # class PenCategoryFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
 #     queryset = models.Pen.objects.filter(category=)
