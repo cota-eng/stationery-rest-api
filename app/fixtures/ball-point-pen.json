@@ -1,0 +1,110 @@
+[
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPTGKR2N4E5DWZWCTM9",
+        "fields": {
+            "name": "ジェットストリーム スタンダード",
+            "description": "超・低摩擦ジェットストリームインク搭載。従来の油性ボールペンと比較して、摩擦係数が最大50％軽減されています。顔料と新しい色材を組み合わせることにより、くっきりと濃い描線を実現。また、速乾性にも優れています",
+            "category": 2,
+            "price_yen": 150,
+            "brand":1,
+            "tag": [3],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPVP428BF7ZERHBEQVH",
+        "fields": {
+            "name": "ジェットストリーム アルファゲルグリップ",
+            "description": "超・低摩擦ジェットストリームインク搭載。グリップ部分にやわらかいゲル状の衝撃吸収素材α-gel（アルファゲル）を採用しました。 　（「α-gel」は、（株）タイカの登録商標です。）",
+            "category": 2,
+            "price_yen": 1000,
+            "brand":1,
+            "tag": [4],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EZ3N82PNSJGJ2WYZT918Y217",
+        "fields": {
+            "name": "ジェットストリーム　エッジ",
+            "description": "油性ボールペン初となる、世界最小ボール径0.28mm",
+            "category":2 ,
+            "price_yen":1000 ,
+            "brand":1,
+            "tag": [5,7,13],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EZ3N82PP76EPZQMS6839DVWA",
+        "fields": {
+            "name": "ジェットストリーム プライム 回転繰り出し式シングル",
+            "description": "ペン先の繰り出し動作に適度な重みをもたせ、回転繰り出し式シングルに求められる上質な操作感を表現しています。",
+            "category": 2,
+            "price_yen":3000 ,
+            "brand":1,
+            "tag": [2,7],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EZ3N82PP39GY8W7BD2AQ2Z74",
+        "fields": {
+            "name": "スーパーグリップG　ノック式",
+            "description": "新開発のグリッドグリップでしっかり握れる。油性ボールペンの新定番。グリップに格子状のスリットを入れることで、指の動きをしっかりホールドできる新開発のグリッドグリップを採用。従来品の「スーパーグリップ」に比べて、グリップ力を向上させたことで、握る力の強弱にかかわらず、しっかり指先をホールドできます。ペン先近くまでグリッドグリップで覆うことで、持ち方や持つ位置にかかわらず握りやすくなりました。",
+            "category": 2,
+            "price_yen": 100,
+            "brand":2,
+            "tag": [3],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EZ3N82PR0ZNGQ8A31EGJKXNK",
+        "fields": {
+            "name": "タプリクリップ",
+            "description": "たっぷりインク,バインダークリップ,ロングラバーグリップ",
+            "category": 2,
+            "price_yen": 100,
+            "brand":3,
+            "tag": [3],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    }
+]
