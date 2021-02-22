@@ -15,24 +15,48 @@ from django.utils.text import gettext_lazy as _
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 
+# class LoginSerializer(serializers.ModelSerializer):
+#     tokens = serializers.SerializerMethodField()
+#     email = serializers.EmailField(max_length=255)
+#     password = serializers.CharField(max_length=255, min_length=4, write_only=True)
+#     tokens = serializers.CharField(read_only=True)
+#     class Meta:
+#         model = models.User
+#         fields = ('email', 'password','tokens',)
+#     # need to check
+#     def get_tokens(self, obj):
+#         user = models.User.objects.get(email=obj['email'])
+#         return {
+#             'access':user.tokens()['access'],
+#             'refresh':user.tokens()['refresh'],
+#         }
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('email', 'password','nickname',)
-        extra_kwargs = {'password': {'write_only': True}}
+        fields = ('id','nickname','profile',)
+        # fields = ('id','email','nickname', 'password','profile',)
+        extra_kwargs = {'password': {
+            'write_only': True,
+            'style': {'input_type': 'password'}
+        }
+            }
 
-    def create(self, validated_data):
-        return get_user_model().objects.create_user(**validated_data)
+    # def create(self, validated_data):
+    #     return get_user_model().objects.create_user(**validated_data)
 
 class ProfileSerializer(serializers.ModelSerializer):
+    """
+    read only 
+    """
     created_at = serializers.DateField(format="%Y/%m/%d",read_only=True)
     updated_at = serializers.DateField(format="%Y/%m/%d", read_only=True)
-
+    # user_profile = UserSerializer()
     class Meta:
         model = models.Profile
-        fields = ('id', 'nickname', 'created_at', 'updated_at', 'avatar', 'user_profile')
-        extra_kwargs = {'user_profile': {'read_only': True}}
-
+        fields = ('id','created_at', 'updated_at',  'avatar', )
+        # fields = ('id', 'nickname','created_at', 'updated_at',  'avatar', 'user_profile')
+        # extra_kwargs = {'user_profile': {'read_only': True}}
     # def validate(self, attrs):
     #     nickname = attrs.get('nickname')
     #     if not nickname.isalnum():
@@ -42,7 +66,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 class LogoutSerializer(serializers.Serializer):
     refresh = serializers.CharField()
     default_error_messages = {
-        'bad_token': _('aaa')
+        'bad_token': _('invalid token')
     }
 
     def validate(self, attrs):

@@ -16,3 +16,5 @@ drf-yasg==1.20.0
 django-filter
 cloudinary
 markdown
+django-debug-toolbar
+ulid-py

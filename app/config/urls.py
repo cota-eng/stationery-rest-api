@@ -19,7 +19,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/auth/', include("authentication.urls")),
+    path('api/', include("authentication.urls")),
     path('dj/', include("dj_rest_auth.urls")),
     # path('oauth/', include("social_auth.urls")),
     path('api/', include("pen.urls")),
@@ -27,3 +27,14 @@ urlpatterns = [
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
+
+from django.conf.urls.static import static
+from django.conf import settings
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# import debug_toolbar
+# if settings.DEBUG:
+#     urlpatterns += [
+#         path('__debug__/', include(debug_toolbar.urls)),
+#     ] 

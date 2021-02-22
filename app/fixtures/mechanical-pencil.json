@@ -1,0 +1,344 @@
+[{
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBP4GT46K3KJTFMEXYYR",
+        "fields": {
+            "name": "s20",
+            "description": "パイロットの定番の木軸シャーペンです。",
+            "category": 1,
+            "price_yen": 2000,
+            "brand": 2,
+            "tag": [1, 2,5],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk":"01EYZ0NBP4W5BYWQE7ENE7CSY6",
+        "fields": {
+            "name": "クルトガ　スタンダードモデル",
+            "description": "心が尖り続けるシャープペンシルです。",
+            "category": 1,
+            "price_yen": 450,
+            "brand": 1,
+            "tag": [3,8],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBP56N7G3VQVGH5R51X2",
+        "fields": {
+            "name": "ドクターグリップ　Gスペック",
+            "description": "パイロットの定番フレフレシャープペンシルです。第２世代です。、",
+            "category": 1,
+            "price_yen": 800,
+            "brand": 2,
+            "tag": [4,8],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBP5AYWANHYESCYAGAP3",
+        "fields": {
+            "name": "クルトガ ラバーグリップ付",
+            "description": "ラバーグリップを付けて握りやすさにこだわった、長時間の筆記にも適した新モデルです。",
+            "category": 1,
+            "price_yen": 650,
+            "brand": 1,
+            "tag": [4],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPNK540VZAPMNJ201JY",
+        "fields": {
+            "name": "クルトガ ハイグレードモデル",
+            "description": "低重心構造で安定した書き心地を得られ、高級感あるアルミグリップタイプです。",
+            "category": 1,
+            "price_yen": 1000,
+            "brand": 1,
+            "tag": [7,9,10],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPP79DR9SDCES9XPJJK",
+        "fields": {
+            "name": "クルトガ ローレットモデル",
+            "description": "グリップの握りやすさにこだわったローレットモデルで、高級感も備えたモデルです。",
+            "category": 1,
+            "price_yen": 1300,
+            "brand": 1,
+            "tag": [7,9,10],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPQWRJ334W8KVQD82YX",
+        "fields": {
+            "name": "クルトガアドバンス",
+            "description": "書き続けても文字の濃さも太さも変わらないため、キレイな文字を書くことができます。",
+            "category": 1,
+            "price_yen": 550,
+            "brand": 2,
+            "tag": [3,10],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPQJ0V6YHK8T9H2KQZ5",
+        "fields": {
+            "name": "クルトガアドバンス　アップグレードモデル",
+            "description": "デザイン性のあるスタイリッシュなパンチンググリップを採用",
+            "category": 1,
+            "price_yen": 1000,
+            "brand":1,
+            "tag": [7,10],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPR8FS3VXWNFD9CC9ZY",
+        "fields": {
+            "name": "アルファゲル スイッチ",
+            "description": "一定の細さ・濃さでキレイな文字を書きたいときには、“クルトガモード”、安定した筆記感でたくさん書きたいときには、“ホールドモード”と切り替えて使うことができます。",
+            "category": 1,
+            "price_yen": 1000,
+            "brand":1,
+            "tag": [4,10],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPRJCQQ2ZCQ2F4KK9HA",
+        "fields": {
+            "name": "アルファゲル <クルトガエンジン搭載タイプ>",
+            "description": "グリップ部分にやわらかいゲル状の衝撃吸収素材アルファゲルを採用しました。 （アルファゲルは、株式会社タイカの登録商標です。）",
+            "category": 1,
+            "price_yen": 850,
+            "brand":1,
+            "tag": [4, 10],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPSMWX131SYGNGFXC9C",
+        "fields": {
+            "name": "アルファゲル<スリムタイプ>",
+            "description": "やわらかくて弾力性のあるアルファゲルをグリップ部に採用。抜群のフィット感と癒される握り心地を実現。 （アルファゲルは、株式会社タイカの登録商標です。）",
+            "category": 1,
+            "price_yen": 800,
+            "brand":1,
+            "tag": [4],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPS6B8H28XARPAMTVND",
+        "fields": {
+            "name": "アルファゲル<シャカシャカ機構搭載モデル>",
+            "description": "やわらかくて弾力性のあるアルファゲルをグリップ部に採用。抜群のフィット感と癒される握り心地を実現。 （アルファゲルは、株式会社タイカの登録商標です。）",
+            "category": 1,
+            "price_yen": 600,
+            "brand":1,
+            "tag": [4],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPT7C21HSKQT1WM6KAN",
+        "fields": {
+            "name": "シフト",
+            "description": "ロング先端パイプ、金属を削りだしたローレット加工グリップ、メタルクリップなど、製図用シャープとしての特長に加え、ON/OFFの切り替えを可能とするシフト機構",
+            "category": 1,
+            "price_yen": 1000,
+            "brand":1,
+            "tag": [7,10,12],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPVPN580RK42KF6C51N",
+        "fields": {
+            "name": "ピュアモルト（オークウッド・プレミアム・エディション） キャップ式",
+            "description": "何十年にもわたりウイスキー樽として使用されていたオーク材を、シャープ素材にしました。木の優しい質感とぬくもりが手にしっくりなじむ生涯を共にしたい一本。",
+            "category": 1,
+            "price_yen": 5000,
+            "brand":1,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPWRSQVV619N00E0G90",
+        "fields": {
+            "name": "ピュアモルト",
+            "description": "何十年にもわたりウイスキー樽として使用されていたオーク材を、シャープ素材にしました。木の優しい質感とぬくもりが手にしっくりなじむ生涯を共にしたい一本。",
+            "category": 1,
+            "price_yen": 1000,
+            "brand":1,
+            "tag": [1],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPWP2B57R4P7T3TK0Z0",
+        "fields": {
+            "name": "ピュアモルト（オークウッド・プレミアム・エディション） ノック式",
+            "description": "何十年にもわたりウイスキー樽として使用されていたオーク材を、シャープ素材にしました。木の優しい質感とぬくもりが手にしっくりなじむ生涯を共にしたい一本。",
+            "category": 1,
+            "price_yen": 2000,
+            "brand":1,
+            "tag": [1, 2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EYZ0NBPWP2B57R4P7T3TK0Z0",
+        "fields": {
+            "name": "ドクターグリップエース",
+            "description": "長時間の勉強も快適に。勉強全力サポートのシャープペンシル「ドクターグリップエース」登場！\n疲れにくく、芯が折れない、進化したドクターグリップが４つの機能でサポートします。",
+            "category": 1,
+            "price_yen":800 ,
+            "brand":2,
+            "tag": [4,10],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EZ3N5AHDM90SVDGRVRHZ0RNF",
+        "fields": {
+            "name": "デルガード タイプGR",
+            "description": "指が痛くないグリップ付きで折れずに書ける",
+            "category": 1,
+            "price_yen": 700,
+            "brand":4,
+            "tag": [7],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EZ3N5AHDVC525TC4SZ508NRW",
+        "fields": {
+            "name": "デルガード+2C",
+            "description": "デルガード＋ボールペン",
+            "category":1 ,
+            "price_yen": 1200,
+            "brand":3,
+            "tag": [4,10],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    }
+    
+]

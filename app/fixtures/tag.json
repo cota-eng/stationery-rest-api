@@ -69,5 +69,45 @@
             "name": "カラフル",
             "slug": "colorful"
         }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 10,
+        "fields": {
+            "name": "多機能",
+            "slug": "functional"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 11,
+        "fields": {
+            "name": "新商品",
+            "slug": "new"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 12,
+        "fields": {
+            "name": "製図用",
+            "slug": "new"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "多色",
+            "slug": "full-color"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "極細",
+            "slug": "extra-fine"
+        }
     }
 ]

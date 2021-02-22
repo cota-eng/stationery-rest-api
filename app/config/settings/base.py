@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_yasg',
     # 'rest_framework_simplejwt.token_blacklist',
-     "rest_framework.authtoken",
+    #  "rest_framework.authtoken",
     # for social login
     "django.contrib.sites",
     "dj_rest_auth",
@@ -65,7 +65,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
-
+    # 'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -77,6 +77,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -170,6 +171,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny'
         # 'rest_framework.permissions.IsAuthenticated',
     ),
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.StandardResultsSetPagination',
 
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     # 'PAGE_SIZE': 5,
@@ -192,7 +194,7 @@ REST_FRAMEWORK = {
 
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),# in local
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
@@ -217,13 +219,6 @@ SIMPLE_JWT = {
     # 'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
     # 'SLIDING_TOKEN_LIFETIME': timedelta(minutes=),
     # 'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
-    # 'AUTH_COOKIE': 'access_token',  # Cookie name. Enables cookies if value is set.
-    # 'AUTH_COOKIE_DOMAIN': None,     # A string like "example.com", or None for standard domain cookie.
-    # 'AUTH_COOKIE_SECURE': False,    # Whether the auth cookies should be secure (https:// only).
-    # 'AUTH_COOKIE_HTTP_ONLY' : True, # Http only cookie flag.It's not fetch by javascript.
-    # 'AUTH_COOKIE_PATH': '/',        # The path of the auth cookie.
-    # 'AUTH_COOKIE_SAMESITE': 'Lax',  # Whether to set the flag restricting cookie leaks on cross-site requests.
-    #                             # This can be 'Lax', 'Strict', or None to disable the flag.
 }
 
 # for allauth
@@ -261,8 +256,10 @@ CORS_ALLOW_CREDENTIALS = True  # Access-control-Allow-Credentials: true
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/vol/web/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+# MEDIA_ROOT = '/vol/web/media/'
 STATIC_ROOT = '/vol/web/static/'
+# STATIC_ROOT = '/vol/web/static/'
 
 
 AUTH_USER_MODEL = 'authentication.User'
@@ -312,3 +309,13 @@ REST_USE_JWT = True
 # LANGUAGE_COOKIE_HTTPONLY=True
 # SESSION_COOKIE_HTTPONLY=True
 # CSRF_COOKIE_HTTPONLY=True
+
+# import cloudinary
+# import cloudinary.uploader
+# import cloudinary.api
+# cloudinary.config( 
+#   cloud_name = env.get_value('CLOUDINARY_URL'), 
+#   api_key = env.get_value('CLOUDINARY_API_KEY'), 
+#   api_secret = env.get_value('CLOUDINARY_API_SECRET'),
+# )
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

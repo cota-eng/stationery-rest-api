@@ -59,31 +59,33 @@ class UserManager(BaseUserManager):
 
         return self._create_user(username, email, password, **extra_fields)
 
-    def with_perm(self, perm, is_active=True, include_superusers=True, backend=None, obj=None):
-        if backend is None:
-            backends = auth._get_backends(return_tuples=True)
-            if len(backends) == 1:
-                backend, _ = backends[0]
-            else:
-                raise ValueError(
-                    'You have multiple authentication backends configured and '
-                    'therefore must provide the `backend` argument.'
-                )
-        elif not isinstance(backend, str):
-            raise TypeError(
-                'backend must be a dotted import path string (got %r).'
-                % backend
-            )
-        else:
-            backend = auth.load_backend(backend)
-        if hasattr(backend, 'with_perm'):
-            return backend.with_perm(
-                perm,
-                is_active=is_active,
-                include_superusers=include_superusers,
-                obj=obj,
-            )
-        return self.none()
+    # def with_perm(self, perm, is_active=True, include_superusers=True, backend=None, obj=None):
+    #     if backend is None:
+    #         backends = auth._get_backends(return_tuples=True)
+    #         if len(backends) == 1:
+    #             backend, _ = backends[0]
+    #         else:
+    #             raise ValueError(
+    #                 'You have multiple authentication backends configured and '
+    #                 'therefore must provide the `backend` argument.'
+    #             )
+    #     elif not isinstance(backend, str):
+    #         raise TypeError(
+    #             'backend must be a dotted import path string (got %r).'
+    #             % backend
+    #         )
+    #     else:
+    #         backend = auth.load_backend(backend)
+    #     if hasattr(backend, 'with_perm'):
+    #         return backend.with_perm(
+    #             perm,
+    #             is_active=is_active,
+    #             include_superusers=include_superusers,
+    #             obj=obj,
+    #         )
+    #     return self.none()
+import ulid
+from core.models import ULIDField
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -93,7 +95,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     Username and password are required. Other fields are optional.
     """
     username_validator = UnicodeUsernameValidator()
-
+    """
+    TODO: id override to UUOD ?
+    """
+    id = ULIDField(
+        primary_key=True,
+        default=ulid.new,
+        unique=True,
+        editable=False,
+        db_index=True
+        )
     username = models.CharField(
         _('username'),
         max_length=150,
@@ -142,48 +153,59 @@ class User(AbstractBaseUser, PermissionsMixin):
         super().clean()
         self.email = self.__class__.objects.normalize_email(self.email)
 
-    def get_full_name(self):
-        """
-        Return the first_name plus the last_name, with a space in between.
-        """
-        full_name = '%s %s' % (self.first_name, self.last_name)
-        return full_name.strip()
+    # def get_full_name(self):
+    #     """
+    #     Return the first_name plus the last_name, with a space in between.
+    #     """
+    #     full_name = '%s %s' % (self.first_name, self.last_name)
+    #     return full_name.strip()
 
-    def get_short_name(self):
-        """Return the short name for the user."""
-        return self.first_name
+    # def get_short_name(self):
+    #     """Return the short name for the user."""
+    #     return self.first_name
 
 
 def profile_avatar_path(instance, filename):
     ext = filename.split('.')[-1]
     filename = f'{uuid.uuid4()}.{ext}'
-    return os.path.join('uploads/avatar/',filename)
+    # return os.path.join('uploads/avatar/',filename)
+    return os.path.join('media/',filename)
 
 def profile_avatar_resize():
     pass
 
 class Profile(models.Model):
     """Model that has avatar and dates of create and update"""
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
-    user_profile = models.OneToOneField(
-        # _('user'),
+    """
+    TODO: id is to normal id?
+    """
+    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
+    id = ULIDField(
+        primary_key=True,
+        default=ulid.new,
+        unique=True,
+        editable=False,
+        db_index=True
+        )
+    user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
-        related_name="user_profile",
+        related_name="profile",
         on_delete=models.CASCADE
         )
-    nickname = models.CharField(_('nickname'),max_length=50,default="匿名ユーザー")
-    created_at = models.DateField(auto_now=True)
-    updated_at = models.DateField(auto_now_add=True)
-    avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None)
+    # nickname = models.CharField(_('nickname'),max_length=50,default="profile nickname")
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
+    avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None,null=True,blank=True)
     twitter_account = models.CharField(_('twitter username'),null=True,blank=True,max_length=100)
     # favorite_pen = models.ManyToManyField()
     def __str__(self):
-        return f'Profile of {self.nickname}'
+        return f'Profile of {self.user}'
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
 @receiver(post_save, sender=User)
 def create_profile(sender, **kwargs):
     """ 新ユーザー作成時に空のprofileも作成する """
     if kwargs['created']:
-        user_profile = Profile.objects.get_or_create(user_profile=kwargs['instance'])
+        profile = Profile.objects.get_or_create(user=kwargs['instance'])

@@ -32,6 +32,23 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from .serializers import LogoutSerializer
 
+"""
+4 views needed
+- Google login 
+- user profile list/get read only
+- profile update only owner
+logout
+"""
+
+# class LoginAPIView(generics.GenericAPIView):
+#     authentication_classes = [] # disable authentication
+#     permission_classes = (permissions.AllowAny,)
+#     serializer_class = serializers.LoginSerializer
+#     def post(self, request):
+#         serialier = self.serializer_class(data=request.data)
+#         serialier.is_valid(raise_exception=True)
+
+#         return Response(serialier.data,status=status.HTTP_200_OK)
 
 class GoogleLogin(SocialLoginView):
     authentication_classes = [] # disable authentication
@@ -39,42 +56,88 @@ class GoogleLogin(SocialLoginView):
     callback_url = "http://localhost:3000"
     client_class = OAuth2Client
 
-class MyProfileView(viewsets.ModelViewSet):
+# class MyProfileView(viewsets.ModelViewSet):
+#     queryset = models.Profile.objects.all()
+#     serializer_class = serializers.ProfileSerializer
+#     permission_classes = (permissions.IsAuthenticated,)
+#     def get_queryset(self):
+#             return self.queryset.filter(user_profile=self.request.user)
+# put only ?
+
+class ProfileReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Profile.objects.all()
     serializer_class = serializers.ProfileSerializer
+    permission_classes = (permissions.AllowAny,)
+    lookup_field = "id"
 
-    def get_queryset(self):
-        return self.queryset.filter(user_profile=self.request.user)
+from .permissions import UserIsOwnerOrReadOnly
+from django.shortcuts import get_object_or_404
+from django.contrib.auth import get_user_model
+from rest_framework import parsers
 
-    def perform_create(self, serializer):
-        return serializer.save(user_profile=self.request.user)
-
-    def create(self, request, *args, **kwargs):
-        """
-        post is invalid, why profile is created when user logined
-        """
-        response = {'message': 'post method is not allowed'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
-
+class ProfileRetrieveUpdateViewSet(viewsets.ModelViewSet):
+    queryset = models.User.objects.all()
+    permission_classes = (permissions.IsAuthenticated,
+                          UserIsOwnerOrReadOnly,
+                          )
+    serializer_class = serializers.UserSerializer
     def destroy(self, request, *args, **kwargs):
         """
         delete is invalid
         """
-        response = {'message': 'delete method is not allowed'}
+        response = {'message': 'DELETE method is not allowed'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
-class ProfileViewSet(viewsets.ModelViewSet):
-    queryset = models.Profile.objects.all()
-    serializer_class = serializers.ProfileSerializer
-    # permission_classes = (permissions.IsAuthenticated,)
-    permission_classes = (permissions.AllowAny,)
-    
-    def perform_create(self, serializer):
-        return serializer.save(user_profile=self.request.user)
+    def list(self, request, *args, **kwargs):
+        """
+        list is invalid
+        """
+        response = {'message': 'list method is not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
-class ProfileListView(generics.ListAPIView):
+    def post(self, request, *args, **kwargs):
+        """
+        psot is invalid
+        """
+        response = {'message': 'post method is not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ProfileRetrieveUpdateViewSet(viewsets.ModelViewSet):
     queryset = models.Profile.objects.all()
+    permission_classes = (permissions.IsAuthenticated,
+                          UserIsOwnerOrReadOnly,
+                          )
     serializer_class = serializers.ProfileSerializer
+    parser_classes = [parsers.MultiPartParser,
+                      parsers.FormParser,]
+    def destroy(self, request, *args, **kwargs):
+        """
+        delete is invalid
+        """
+        response = {'message': 'DELETE method is not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+    def list(self, request, *args, **kwargs):
+        """
+        list is invalid
+        """
+        response = {'message': 'list method is not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+    def post(self, request, *args, **kwargs):
+        """
+        psot is invalid
+        """
+        response = {'message': 'post method is not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+"""
+not needed
+"""
+# class ProfileListView(generics.ListAPIView):
+#     queryset = models.Profile.objects.all()
+#     serializer_class = serializers.ProfileSerializer
     # permission_classes = (permissions.IsAuthenticated,)
     # def get_queryset(self):
     #     return self.queryset.filter(userProfile=self.request.user)
