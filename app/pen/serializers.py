@@ -67,6 +67,7 @@ class TagSerializer(serializers.ModelSerializer):
             'pen_tag',
             )
         # depth = 1
+        
 class TagUsingPenSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Tag
@@ -108,7 +109,7 @@ class PenSerializer(serializers.ModelSerializer):
     category = CategoryUsingPenSerializer()
     brand = BrandSerializer()
     tag = TagUsingPenSerializer(many=True)
-    reviewed_pen = ReviewSerialier(many=True)
+    review = ReviewSerialier(many=True)
     # description = serializers.SerializerMethodField()
 
     # def get_description(self, instance):
@@ -133,7 +134,7 @@ class PenSerializer(serializers.ModelSerializer):
             'mercari_link_to_buy',
             'number_of_review',
             'avarage_of_review_star',
-            'reviewed_pen'
+            'review'
             )
         # read_only_fields = '__all__'
         depth = 1

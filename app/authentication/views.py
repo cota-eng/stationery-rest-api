@@ -76,6 +76,34 @@ from django.contrib.auth import get_user_model
 from rest_framework import parsers
 
 class ProfileRetrieveUpdateViewSet(viewsets.ModelViewSet):
+    queryset = models.User.objects.all()
+    permission_classes = (permissions.IsAuthenticated,
+                          UserIsOwnerOrReadOnly,
+                          )
+    serializer_class = serializers.UserSerializer
+    def destroy(self, request, *args, **kwargs):
+        """
+        delete is invalid
+        """
+        response = {'message': 'DELETE method is not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+    def list(self, request, *args, **kwargs):
+        """
+        list is invalid
+        """
+        response = {'message': 'list method is not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+    def post(self, request, *args, **kwargs):
+        """
+        psot is invalid
+        """
+        response = {'message': 'post method is not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ProfileRetrieveUpdateViewSet(viewsets.ModelViewSet):
     queryset = models.Profile.objects.all()
     permission_classes = (permissions.IsAuthenticated,
                           UserIsOwnerOrReadOnly,
