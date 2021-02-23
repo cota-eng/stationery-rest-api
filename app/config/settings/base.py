@@ -22,7 +22,7 @@ from datetime import timedelta
 # BASE_DIR = Path(__file__).resolve().parent.parent
 
 # settings dir created, so changed basedir
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
