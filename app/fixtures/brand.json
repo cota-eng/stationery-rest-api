@@ -54,15 +54,6 @@
     },
     {
         "model": "pen.Brand",
-        "pk": 7,
-        "fields": {
-            "name": "コクヨ",
-            "slug": "kokuyo",
-            "official_site_link": "https://www.kokuyo.co.jp/"
-        }
-    },
-    {
-        "model": "pen.Brand",
         "pk": 8,
         "fields": {
             "name": "カヴェコ",
@@ -88,7 +79,6 @@
             "official_site_link": "https://ohto.co.jp/"
         }
     },
-
     {
         "model": "pen.Brand",
         "pk": 14,

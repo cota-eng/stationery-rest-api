@@ -30,7 +30,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 SECRET_KEY = env.get_value('SECRET_KEY')
 
-DEBUG = env.get_value('DEBUG')
+# DEBUG = env.get_value('DEBUG')
+DEBUG = True
 
 
 
@@ -79,7 +80,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
-
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE=True
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_PRELOAD=True
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
@@ -184,7 +191,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100000/day',
-        'user': '1000000/day'
+        'user': '100000/day'
     },
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
@@ -258,18 +265,18 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 # MEDIA_ROOT = '/vol/web/media/'
-STATIC_ROOT = '/vol/web/static/'
+STATIC_ROOT = '/static/'
 # STATIC_ROOT = '/vol/web/static/'
 
 
 AUTH_USER_MODEL = 'authentication.User'
 
 """Veryfy email sender"""
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER= env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER= env('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 
 SWAGGER_SETTINGS = {
