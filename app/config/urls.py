@@ -17,10 +17,15 @@ schema_view = get_schema_view(
    permission_classes=(permissions.AllowAny,),
 )
 
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import environ
+env = environ.Env()
+env.read_env(os.path.join(BASE_DIR, '.env'))
+ADMIN_URL = env('ADMIN_URL')
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('api/', include("authentication.urls")),
-    path('dj/', include("dj_rest_auth.urls")),
     # path('oauth/', include("social_auth.urls")),
     path('api/', include("pen.urls")),
     # path('rest-auth/', include("rest_framework.urls")),
@@ -33,6 +38,12 @@ from django.conf import settings
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += path('admin/', admin.site.urls),
+    urlpatterns += path('dj/', include("dj_rest_auth.urls")),
+else:
+    path(ADMIN_URL + '/', admin.site.urls),
+
+
 # import debug_toolbar
 # if settings.DEBUG:
 #     urlpatterns += [

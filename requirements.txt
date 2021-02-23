@@ -18,3 +18,5 @@ cloudinary
 markdown
 django-debug-toolbar
 ulid-py
+dj_database_url
+django_heroku

@@ -1,4 +1,6 @@
 *.dio
+social_auth/
+account/
 memo.txt
 media
 # Byte-compiled / optimized / DLL files
