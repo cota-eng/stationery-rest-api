@@ -11,11 +11,10 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
 DATABASES['default'].update(db_from_env)
-# from django.conf import settings
-# BASE_DIR = settings.BASE_DIR
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 import django_heroku
 django_heroku.settings(locals())
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # import cloudinary
 
 # cloudinary.config(cloud_name='<cloud-name-here>',
