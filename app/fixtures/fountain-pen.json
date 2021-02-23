@@ -1,0 +1,92 @@
+[
+    {
+        "model": "pen.Pen",
+        "pk": "01EZ6HCSZHMKTBHFNQPDYRRT2H",
+        "fields": {
+            "name": "キャップレスLS",
+            "description": "新機構「ノック＆ツイスト」搭載",
+            "category": 3,
+            "price_yen": 35000,
+            "brand":2,
+            "tag": [2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EZ6HCSZHWGMPMHGEQAP4702M",
+        "fields": {
+            "name": "カスタム 743",
+            "description": "本格派のための現代の書き味を追求したカスタムシリーズ。「カスタム743」は大きい15号サイズのペン先を使用しているので、ゆったりとしなやかで心地よい書き味を実現しています。",
+            "category": 3,
+            "price_yen": 30000,
+            "brand":2,
+            "tag": [2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EZ6HCSZH0RNBMGA60GXA333P",
+        "fields": {
+            "name": "LAMY safari candy mango 万年筆",
+            "description": "2020年発売の限定カラー。ジューシーなキャンディカラー3色のうちのひとつ。アイコニックなワイヤークリップとボディが同色で統一されたポップな仕上がりです。",
+            "category":3 ,
+            "price_yen":1000 ,
+            "brand":5,
+            "tag": [2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EZ6HCSZKSBMN82XTBA7M8G23",
+        "fields": {
+            "name": "ブライヤー #63 ブライヤーシェル",
+            "description": "センチュリーシリーズ。",
+            "category": 3,
+            "price_yen":50000 ,
+            "brand":14,
+            "tag": [2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    },
+    {
+        "model": "pen.Pen",
+        "pk": "01EZ6HCSZKE2CT65CXM1FAEBY1",
+        "fields": {
+            "name": "スペシャル ブルー 万年筆",
+            "description": "kaweco(カヴェコ)のSPECIALシリーズにブルーエディションが登場。。",
+            "category": 3,
+            "price_yen": 11000,
+            "brand":8,
+            "tag": [2],
+            "image": "",
+            "image_src": "",
+            "created_at": "2021-02-20T12:00:00.000Z",
+            "updated_at": "2021-02-20T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": ""
+        }
+    }
+]
