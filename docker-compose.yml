@@ -12,7 +12,7 @@ services:
       sh -c "python manage.py wait_for_db &&
              python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000 &&
-             python manage.py loaddata brand.json category.json tag.json pen.json user.json review.json"
+             python manage.py loaddata fixtures/*"
     environment:
       - DB_HOST=db
       - DB_NAME=app
