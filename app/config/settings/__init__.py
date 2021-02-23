@@ -1,8 +1,8 @@
-# settings/__init__.py
+# # settings/__init__.py
 
-from .production import *
+# from .production import *
 
-try:
-    from .local import *
-except:
-    pass
+# try:
+#     from .local import *
+# except:
+#     pass

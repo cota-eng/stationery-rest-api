@@ -20,6 +20,7 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
 DATABASES['default'].update(db_from_env)
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 import django_heroku
