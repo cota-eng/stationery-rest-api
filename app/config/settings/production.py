@@ -13,7 +13,7 @@ DEBUG = False
 # CSRF_TRUSTED_ORIGINS = [
     
 # ]
-# ALLOWED_HOSTS = ["https://stationery-rest-api.herokuapp.com",]
+ALLOWED_HOSTS = [".herokuapp.com",]
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 import dj_database_url
