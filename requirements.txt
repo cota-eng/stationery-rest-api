@@ -22,3 +22,4 @@ ulid-py
 dj_database_url
 django_heroku
 gunicorn
+whitenoise
