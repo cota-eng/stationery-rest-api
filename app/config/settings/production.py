@@ -1,12 +1,12 @@
 from .base import *
 DEBUG = False
-CORS_ORIGIN_WHITELIST = [
+# CORS_ORIGIN_WHITELIST = [
     
-]
-CSRF_TRUSTED_ORIGINS = [
+# ]
+# CSRF_TRUSTED_ORIGINS = [
     
-]
-ALLOWED_HOSTS = [""]
+# ]
+ALLOWED_HOSTS = ["https://stationery-rest-api.herokuapp.com",]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
