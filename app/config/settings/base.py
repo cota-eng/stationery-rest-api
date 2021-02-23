@@ -30,11 +30,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 SECRET_KEY = env.get_value('SECRET_KEY')
 
-DEBUG = env.get_value('DEBUG')
+# DEBUG = env.get_value('DEBUG')
+DEBUG = True
 
 
 
-ALLOWED_HOSTS = ['localhost',]
+ALLOWED_HOSTS = ['localhost','127.0.0.1',]
 
 
 # Application definition
@@ -47,24 +48,45 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
-    'account.apps.AccountConfig',
+    'authentication.apps.AuthenticationConfig',
+    # 'account.apps.AccountConfig',
+    # 'social_auth.apps.SocialAuthConfig',
     'pen.apps.PenConfig',
     'rest_framework',
+    'django_filters',
     'corsheaders',
     'drf_yasg',
+    # 'rest_framework_simplejwt.token_blacklist',
+    #  "rest_framework.authtoken",
+    # for social login
+    "django.contrib.sites",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
+    # 'debug_toolbar',
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
-
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE=True
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_PRELOAD=True
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
@@ -136,28 +158,60 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
+AUTHENTICATION_BACKENDS = [
+   "django.contrib.auth.backends.AllowAllUsersModelBackend",
+   "allauth.account.auth_backends.AuthenticationBackend"
+]
+
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        # "rest_framework.authentication.BasicAuthentication",
+        # "rest_framework.authentication.SessionAuthentication",
+        # 'rest_framework_simplejwt.authentication.JWTTokenUserAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # "dj_rest_auth.utils.JWTCookieAuthentication",
+        # 'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+
     ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
-    'NON_FIELD_ERRORS_KEY': 'error',
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny'
+        # 'rest_framework.permissions.IsAuthenticated',
+    ),
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.StandardResultsSetPagination',
+
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 5,
+
+    # 'NON_FIELD_ERRORS_KEY': 'error',
+    
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100000/day',
+        'user': '100000/day'
+    },
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
 }
 
 
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    # 'ROTATE_REFRESH_TOKENS': False,
-    # 'BLACKLIST_AFTER_ROTATION': True,
-    # 'UPDATE_LAST_LOGIN': False,
 
-    # 'ALGORITHM': 'HS256',
-    # 'SIGNING_KEY': SECRET_KEY,
-    # 'VERIFYING_KEY': None,
-    # 'AUDIENCE': None,
-    # 'ISSUER': None,
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),# in local
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': True,
+
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
 
     # 'AUTH_HEADER_TYPES': ('Bearer',),
     # 'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
@@ -168,34 +222,61 @@ SIMPLE_JWT = {
     # 'TOKEN_TYPE_CLAIM': 'token_type',
 
     # 'JTI_CLAIM': 'jti',
-
+    # sliding unuse
     # 'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
-    # 'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
+    # 'SLIDING_TOKEN_LIFETIME': timedelta(minutes=),
     # 'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
+# for allauth
+SITE_ID = 1
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+
+# for cors
+CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
-    'http://127.0.0.1:8080',
-)
+    'http://127.0.0.1:3000',
+]
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOW_CREDENTIALS = True  # Access-control-Allow-Credentials: true
+# SESSION_COOKIE_SAMESITE = None  # default='Lax'
+# SESSION_COOKIE_SECURE = True
+
+# CORS_ALLOW_HEADERS = [
+#     'accept',
+#     'accept-encoding',
+#     'authorization',
+#     'content-type',
+#     'dnt',
+#     'origin',
+#     'user-agent',
+#     'x-csrftoken',
+#     'x-requested-with',
+# ]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/vol/web/media/'
-STATIC_ROOT = '/vol/web/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+# MEDIA_ROOT = '/vol/web/media/'
+STATIC_ROOT = '/static/'
+# STATIC_ROOT = '/vol/web/static/'
 
 
-AUTH_USER_MODEL = 'account.User'
+AUTH_USER_MODEL = 'authentication.User'
 
 """Veryfy email sender"""
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER= env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER= env('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 
 SWAGGER_SETTINGS = {
@@ -207,3 +288,41 @@ SWAGGER_SETTINGS = {
         }
     }
 }
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
+
+REST_USE_JWT = True
+# JWT_AUTH_COOKIE = 'jwt-auth'
+# REST_SESSION_LOGIN = True
+# JWT_AUTH_SECURE = False
+# JWT_AUTH_HTTPONLY= True
+# JWT_AUTH_SAMESITE = "Lax"
+# OLD_PASSWORD_FIELD_ENABLED=True
+# LOGOUT_ON_PASSWORD_CHANGE=True
+# JWT_AUTH_COOKIE_USE_CSRF=True
+# JWT_AUTH_COOKIE_ENFORCE_CSRF_ON_UNAUTHENTICATED=True
+# LANGUAGE_COOKIE_HTTPONLY=True
+# SESSION_COOKIE_HTTPONLY=True
+# CSRF_COOKIE_HTTPONLY=True
+
+# import cloudinary
+# import cloudinary.uploader
+# import cloudinary.api
+# cloudinary.config( 
+#   cloud_name = env.get_value('CLOUDINARY_URL'), 
+#   api_key = env.get_value('CLOUDINARY_API_KEY'), 
+#   api_secret = env.get_value('CLOUDINARY_API_SECRET'),
+# )
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

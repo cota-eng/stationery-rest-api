@@ -1,18 +1,5 @@
 # EndPoint
 
-- /api/
-- GET /articles HTTP/1.1
-
-Host: foo.bar.com
-Accept: application/json
-GET /users/1234/profile
-
-- /api/register/
-- POST
-- /api/auth/
-- djoser's endpoint
-- /api/auth/jwt/create/
-- POST
 - /api/str:category/
 - GET
 - /api/pens/str:uuid
