@@ -26,11 +26,7 @@ ADMIN_URL = env('ADMIN_URL')
 
 urlpatterns = [
     path('api/', include("authentication.urls")),
-    # path('oauth/', include("social_auth.urls")),
     path('api/', include("pen.urls")),
-    # path('rest-auth/', include("rest_framework.urls")),
-    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
 
 from django.conf.urls.static import static
@@ -38,8 +34,12 @@ from django.conf import settings
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += path('admin/', admin.site.urls),
-    urlpatterns += path('dj/', include("dj_rest_auth.urls")),
+    urlpatterns += [
+        path('admin/', admin.site.urls),
+        path('dj/', include("dj_rest_auth.urls")),
+        path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+        path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc')
+    ]
 else:
     path(ADMIN_URL + '/', admin.site.urls),
 
