@@ -1,6 +1,8 @@
-# 文房具の RESTAPI
+# 文房具のレビューサイト用のRESTAPI
 
-Djangoで作っているRESTAPI
+Djangoで作っているRESTに則ったAPIです。
+
+フロントエンドと疎結合化し、開発を楽にしています。
 
 ## 課題と実装予定
 
@@ -8,8 +10,15 @@ Djangoで作っているRESTAPI
 - 写真のクラウドへの保存
 - アバター画像の選択
 
+## 使用技術・環境
+- Python
+- Django(RestFramework)
+- Docker(python3.8-slim)
+- PostgreSQL
+- pip(requirements.txt)
+
 ## 実際の様子
-未デプロイのためスクショを掲載
+未デプロイのためスクリーンショット
 
 - ペン一覧
 
