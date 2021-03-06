@@ -6,7 +6,7 @@ admin.site.site_header = "管理画面"
 class ReviewInline(admin.TabularInline):
     model = models.Review
 
-class PenAdmin(admin.ModelAdmin):
+class ProductAdmin(admin.ModelAdmin):
     inlines = [
         ReviewInline
     ]
@@ -16,7 +16,7 @@ class PenAdmin(admin.ModelAdmin):
     list_filter = ('price_yen',)
     # change_list_templates = 'admin/pen/pen_change_list.html'
 
-admin.site.register(models.Pen,PenAdmin)
+admin.site.register(models.Product,ProductAdmin)
 
 class TagAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug',)
@@ -32,5 +32,5 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(models.Category,CategoryAdmin)
 
 
-admin.site.register(models.FavPen)
+admin.site.register(models.FavProduct)
 admin.site.register(models.Review)

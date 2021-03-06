@@ -10,10 +10,10 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = (
             'name',
             'slug',
-            'pen_category',
+            'product_category',
             )
         # depth = 1
-class CategoryUsingPenSerializer(serializers.ModelSerializer):
+class CategoryUsingProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Category
         fields = (
@@ -34,9 +34,9 @@ class BrandSerializer(serializers.ModelSerializer):
             )
         # depth = 1
 
-class BrandFilteredPenSerializer(serializers.ModelSerializer):
+class BrandFilteredProductSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Pen
+        model = models.Product
         fields = (
             'id',
             'name',
@@ -64,7 +64,7 @@ class TagSerializer(serializers.ModelSerializer):
         fields = (
             'name',
             'slug',
-            'pen_tag',
+            'product_tag',
             )
         # depth = 1
 
@@ -103,10 +103,10 @@ class ReviewSerialier(serializers.ModelSerializer):
 
 import markdown
 
-class PenSerializer(serializers.ModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     updated_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
-    category = CategoryUsingPenSerializer()
+    category = CategoryUsingProductSerializer()
     brand = BrandSerializer()
     tag = TagUsingPenSerializer(many=True)
     review = ReviewSerialier(many=True)
@@ -116,7 +116,7 @@ class PenSerializer(serializers.ModelSerializer):
     #     return markdown.markdown(instance.description)
     
     class Meta:
-        model = models.Pen
+        model = models.Product
         fields = (
             'id',
             'name',

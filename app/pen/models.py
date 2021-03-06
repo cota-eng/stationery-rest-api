@@ -54,7 +54,7 @@ class Tag(models.Model):
     def __str__(self):
         return f'Tag: {self.name}'
 
-class Pen(models.Model):
+class Product(models.Model):
     """Model that is main part"""
     id = ULIDField(
         primary_key=True,
@@ -70,7 +70,7 @@ class Pen(models.Model):
         _('description'))
     category = models.ForeignKey(
         Category,
-        related_name="pen_category",
+        related_name="product_category",
         # TODO CASCADE -> SETNULL
         on_delete=models.CASCADE
         )
@@ -80,12 +80,12 @@ class Pen(models.Model):
         )
     brand = models.ForeignKey(
         Brand,
-        related_name="pen_brand",
+        related_name="product_brand",
         on_delete=models.CASCADE
     )
     tag = models.ManyToManyField(
         Tag,
-        related_name="pen_tag",
+        related_name="product_tag",
     )
     image = models.ImageField(
         upload_to=None,
@@ -134,10 +134,10 @@ class Pen(models.Model):
             return 0
         
     def __str__(self):
-        return f'Pen: {self.name} Price: {self.price_yen}'
+        return f'product: {self.name} Price: {self.price_yen}'
     
 
-class FavPen(models.Model):
+class FavProduct(models.Model):
     """
     Fav is Favorite
     """
@@ -151,8 +151,8 @@ class FavPen(models.Model):
         related_name="fav",
         on_delete=models.CASCADE
     )
-    pen = models.ForeignKey(
-        Pen,
+    product = models.ForeignKey(
+        Product,
         related_name="faved",
         on_delete=models.CASCADE
     )
@@ -162,8 +162,8 @@ class FavPen(models.Model):
         """
         one review for one person 
         """
-        unique_together = (('fav_user','pen'))
-        index_together = (('fav_user', 'pen'))
+        unique_together = (('fav_user','product'))
+        index_together = (('fav_user', 'product'))
     def __str__(self):
         return f"stock {self.pen.name} user {self.fav_user}"
 
@@ -176,8 +176,8 @@ class Review(models.Model):
         editable=False,
         db_index=True
         )
-    pen = models.ForeignKey(
-        Pen,
+    product = models.ForeignKey(
+        Product,
         related_name='review',
         on_delete=models.CASCADE)
     """
@@ -237,11 +237,11 @@ class Review(models.Model):
         """
         one review for one person 
         """
-        unique_together = (('reviewer','pen'))
-        index_together = (('reviewer', 'pen'))
+        unique_together = (('reviewer','product'))
+        index_together = (('reviewer', 'product'))
 
     def __str__(self):
-        return f'Reviewd Pen: {self.pen.name} / Reviewer: {self.reviewer.nickname}'
+        return f'Reviewd product: {self.pen.name} / Reviewer: {self.reviewer.nickname}'
     
 # class Comment(models.Model):
 #     pass

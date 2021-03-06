@@ -9,10 +9,10 @@ from rest_framework import status
 from rest_framework.decorators import  action
 from rest_framework import authentication
 from django_filters import rest_framework as filters
-from .filters import  PenOriginalFilter
+from .filters import  ProductOriginalFilter
 from rest_framework import pagination
 
-class AddFavPenAPIView(generics.GenericAPIView):
+class AddFavProductAPIView(generics.GenericAPIView):
     pass
 
 class CategoryReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
@@ -21,9 +21,9 @@ class CategoryReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
         
-class PenReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = models.Pen.objects.all()
-    serializer_class = serializers.PenSerializer
+class ProductReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = models.Product.objects.all()
+    serializer_class = serializers.ProductSerializer
     permission_classes = (permissions.AllowAny,)
     # lookup_field = 'slug'
 
@@ -40,20 +40,20 @@ class FilteredResultPagination(pagination.PageNumberPagination):
 #     default = 2
 #     max_limit = 10
 
-class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
+class ProductSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
     """
     search like below
     http://localhost:8000/api/search/?name=S20&?
     all condition searching
     """
-    queryset = models.Pen.objects.all()
-    serializer_class = serializers.PenSerializer
+    queryset = models.Product.objects.all()
+    serializer_class = serializers.ProductSerializer
     permission_classes = (permissions.AllowAny,)
     # pagination_class = FilteredResultPagination
     # pagination_class = pagination.LimitOffsetPagination
     # add &?limit=100&offset=500
     filter_backends = [filters.DjangoFilterBackend]
-    filterset_class = PenOriginalFilter
+    filterset_class = ProductOriginalFilter
 
 # class PenCategoryFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
 #     queryset = models.Pen.objects.filter(category=)
@@ -61,7 +61,7 @@ class PenSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
 #     permission_classes = (permissions.IsAuthenticated,)
 #     filter_fields = ('slug', )
 
-class PenBrandFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+class ProductBrandFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     """
     filter by brand/<brand_name_slug>
     display Respective Brand Pens !
@@ -111,10 +111,10 @@ class ReviewViewSet(viewsets.ModelViewSet):
     #         return serializers.RecipeDetailSerializer
     #     elif self.action == 'upload_image':
     #         return serializers.RecipeImageSerializer
-    @action(detail=True,methods=["POST"])
-    def rate_pen(self, request, pk=None):
+    @action(detail=True,methods=["POST"], permission_classes=[permissions.IsAuthenticated])
+    def rate_product(self, request, pk=None):
         if 'title' in request.data:
-            pen = models.Pen.objects.get(id=pk)
+            product = models.Product.objects.get(id=pk)
             title = request.data['title']
             stars_of_design = request.data['stars_of_design']
             stars_of_durability = request.data['stars_of_durability']
@@ -125,7 +125,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
             bad_point_text = request.data['bad_point_text']
             user = request.user
             try:
-                review = models.Review.objects.get(reviewer=user, pen=pen)
+                review = models.Review.objects.get(reviewer=user, product=product)
                 review.title = title
                 review.stars_of_design = stars_of_design
                 review.stars_of_durability = stars_of_durability
@@ -141,7 +141,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
             except:
                 review = models.Review.objects.create(
                     reviewer=user,
-                    pen=pen,
+                    product=product,
                     title=title,
                     stars_of_design=stars_of_design,
                     stars_of_durability=stars_of_durability,

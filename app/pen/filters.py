@@ -2,7 +2,7 @@ from django_filters import rest_framework as filters
 from . import models
 
 
-class PenOriginalFilter(filters.FilterSet):
+class ProductOriginalFilter(filters.FilterSet):
     """
     price - less than equal
             more than equal
@@ -16,5 +16,5 @@ class PenOriginalFilter(filters.FilterSet):
     name = filters.CharFilter(field_name="name", lookup_expr='icontains')
     tag = filters.CharFilter(field_name='tag__slug',lookup_expr='exact')
     class Meta:
-        model = models.Pen
+        model = models.Product
         fields = ('name','tag','brand','category',)
