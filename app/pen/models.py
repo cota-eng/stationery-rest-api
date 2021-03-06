@@ -118,14 +118,14 @@ class Product(models.Model):
 
     @property
     def number_of_review(self):
-        reviews = Review.objects.filter(pen=self)
+        reviews = Review.objects.filter(product=self)
         return len(reviews)
 
     # TODO:アベレージ考え中
     @property
     def avarage_of_review_star(self):
         sum: int = 0
-        reviews = Review.objects.filter(pen=self)
+        reviews = Review.objects.filter(product=self)
         if len(reviews) != 0:
             for review in reviews:
                 sum += review.avarage_star
@@ -156,6 +156,7 @@ class FavProduct(models.Model):
         related_name="faved",
         on_delete=models.CASCADE
     )
+    # for ordering by created_at
     created_at = models.DateTimeField(auto_now=True)
     
     class Meta:
@@ -165,7 +166,8 @@ class FavProduct(models.Model):
         unique_together = (('fav_user','product'))
         index_together = (('fav_user', 'product'))
     def __str__(self):
-        return f"stock {self.pen.name} user {self.fav_user}"
+        return f"stock {self.product.name} user {self.fav_user.username}"
+
 
 class Review(models.Model):
     """Model that display reviews of pens"""
@@ -241,7 +243,7 @@ class Review(models.Model):
         index_together = (('reviewer', 'product'))
 
     def __str__(self):
-        return f'Reviewd product: {self.pen.name} / Reviewer: {self.reviewer.nickname}'
+        return f'Reviewd product: {self.product.name} / Reviewer: {self.reviewer.nickname}'
     
 # class Comment(models.Model):
 #     pass
