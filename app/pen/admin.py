@@ -32,5 +32,5 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(models.Category,CategoryAdmin)
 
 
-admin.site.register(models.FavProduct)
+admin.site.register(models.Fav)
 admin.site.register(models.Review)
