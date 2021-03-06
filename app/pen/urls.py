@@ -12,6 +12,7 @@ router.register('review-read',views.ReviewReadOnlyViewSet)
 router.register('tag',views.TagReadOnlyViewSet)
 router.register('my-review',views.OwnReviewReadOnlyViewSet)
 router.register('brand',views.ProductBrandFilteredReadOnlyViewSet)
+router.register('fav',views.AddFavProductAPIView)
 app_name="pen"
 urlpatterns = [
     path('',include(router.urls))
