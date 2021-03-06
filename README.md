@@ -46,3 +46,23 @@ Django で作っている REST に則った API です。
 ## エンドポイント
 
 以下にまとめる。
+
+|  METHOD  |  URI  |
+| ---- | ---- |
+| GET |  brand/  |
+| GET |  brand/{slug_category}/  |
+| GET |  category/  |
+| GET |  category/{slug_category}  |
+| POST |  login/  |
+| POST |  logout/  |
+| GET |  products/  |
+| GET |  products/{id}/  |
+| GET |  review/  |
+| GET |  review/{id_review}/  |
+| POST |  token/verify/  |
+| POST |  token/refresh/  |
+| POST |    |
+| PUT |    |
+| POST |    |
+| PATCH |    |
+| DELETE |    |
