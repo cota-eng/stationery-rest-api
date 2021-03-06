@@ -1,6 +1,6 @@
 [
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ6HCSZHMKTBHFNQPDYRRT2H",
         "fields": {
             "name": "キャップレスLS",
@@ -18,7 +18,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ6HCSZHWGMPMHGEQAP4702M",
         "fields": {
             "name": "カスタム 743",
@@ -36,7 +36,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ6HCSZH0RNBMGA60GXA333P",
         "fields": {
             "name": "LAMY safari candy mango 万年筆",
@@ -54,7 +54,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ6HCSZKSBMN82XTBA7M8G23",
         "fields": {
             "name": "ブライヤー #63 ブライヤーシェル",
@@ -72,7 +72,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ6HCSZKE2CT65CXM1FAEBY1",
         "fields": {
             "name": "スペシャル ブルー 万年筆",

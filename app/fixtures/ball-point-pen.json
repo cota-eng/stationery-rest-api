@@ -1,6 +1,6 @@
 [
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPTGKR2N4E5DWZWCTM9",
         "fields": {
             "name": "ジェットストリーム スタンダード",
@@ -18,7 +18,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPVP428BF7ZERHBEQVH",
         "fields": {
             "name": "ジェットストリーム アルファゲルグリップ",
@@ -36,7 +36,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ3N82PNSJGJ2WYZT918Y217",
         "fields": {
             "name": "ジェットストリーム　エッジ",
@@ -54,7 +54,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ3N82PP76EPZQMS6839DVWA",
         "fields": {
             "name": "ジェットストリーム プライム 回転繰り出し式シングル",
@@ -72,7 +72,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ3N82PP39GY8W7BD2AQ2Z74",
         "fields": {
             "name": "スーパーグリップG　ノック式",
@@ -90,7 +90,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ3N82PR0ZNGQ8A31EGJKXNK",
         "fields": {
             "name": "タプリクリップ",

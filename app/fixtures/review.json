@@ -3,7 +3,7 @@
         "model": "pen.Review",
         "pk": "01EYZ0NBQCQY989TYTW0A2N7F5",
         "fields": {
-            "pen": "01EYZ0NBP4GT46K3KJTFMEXYYR",
+            "product": "01EYZ0NBP4GT46K3KJTFMEXYYR",
             "title": "nice",
             "stars_of_design":2,
             "stars_of_durability":4,
@@ -20,7 +20,7 @@
         "model": "pen.Review",
         "pk": "01EYZ0NBQCFK3MNB2VQTK7SJQ2",
         "fields": {
-            "pen": "01EYZ0NBP4W5BYWQE7ENE7CSY6",
+            "product": "01EYZ0NBP4W5BYWQE7ENE7CSY6",
             "title": "nice",
             "stars_of_design":2,
             "stars_of_durability":4,
@@ -37,7 +37,7 @@
         "model": "pen.Review",
         "pk": "01EYZ0NBQCB4G49C6P85CSDZMQ",
         "fields": {
-            "pen": "01EYZ0NBP56N7G3VQVGH5R51X2",
+            "product": "01EYZ0NBP56N7G3VQVGH5R51X2",
             "title": "nice",
             "stars_of_design":2,
             "stars_of_durability":4,
