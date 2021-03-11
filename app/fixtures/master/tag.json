@@ -91,7 +91,7 @@
         "pk": 12,
         "fields": {
             "name": "製図用",
-            "slug": "new"
+            "slug": "draft"
         }
     },
     {
