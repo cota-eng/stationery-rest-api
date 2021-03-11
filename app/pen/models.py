@@ -156,7 +156,7 @@ class Fav(models.Model):
         related_name="faved",
         on_delete=models.CASCADE
     )
-    created_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
         """
