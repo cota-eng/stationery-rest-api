@@ -209,7 +209,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
                 serializer = serializers.ReviewSerialier(review, many=False)
                 response = {'message': 'Rating updated', 'result': serializer.data}
                 return Response(response, status=status.HTTP_200_OK)
-            except:
+            except models.Review.DoesNotExist:
                 review = models.Review.objects.create(
                     reviewer=user,
                     product=product,
