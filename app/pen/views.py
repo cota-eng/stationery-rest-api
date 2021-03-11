@@ -14,12 +14,21 @@ from rest_framework import pagination
 from rest_framework import mixins
 from rest_framework import generics
 
-class AddFavProductAPIView(mixins.RetrieveModelMixin,viewsets.GenericViewSet):
+class AddFavProductAPIView(mixins.RetrieveModelMixin,
+                           mixins.ListModelMixin,
+                           viewsets.GenericViewSet):
     queryset = models.Fav.objects.all()
     serializer_class = serializers.FavSerializer
-    permission_classes = (permissions.AllowAny,)
-    # permission_classes = (permissions.IsAuthenticated,)
-
+    permission_classes = (permissions.IsAuthenticated,)
+    
+    def get(self, request, pk=None):
+        """
+        fav/fav_id/ => get is_favorite
+        """
+        queryset = self.get_queryset()
+        serializer = serializers.FavSerializer
+        return Response(serializer.data)
+  
     @action(detail=True, methods=["POST"], permission_classes=[permissions.AllowAny])
     def fav(self, request, pk=None):
         """
@@ -36,14 +45,10 @@ class AddFavProductAPIView(mixins.RetrieveModelMixin,viewsets.GenericViewSet):
         """
         product = models.Product.objects.get(id=pk)
         # productのid入手
-        print("#################")
-        print(pk)
         user = request.user
-        print("#################")
-        print(user.pk)
         # get_or_create
         try:
-            fav = models.Fav.objects.get(fav_user=self.request.user.pk, product=product)
+            fav = models.Fav.objects.get(fav_user=user.pk, product=product)
             if fav.is_favorite:
                 fav.is_favorite = False
             else:
