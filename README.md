@@ -51,18 +51,36 @@ Django で作っている REST に則った API です。
 | ---- | ---- |
 | GET |  brand/  |
 | GET |  brand/{slug_category}/  |
+| ---- | ---- |
 | GET |  category/  |
 | GET |  category/{slug_category}  |
+| ---- | ---- |
 | POST |  login/  |
 | POST |  logout/  |
+| ---- | ---- |
 | GET |  products/  |
 | GET |  products/{id}/  |
+| ---- | ---- |
 | GET |  review/  |
 | GET |  review/{id_review}/  |
+| GET |  review/{id_product}/rate  |
+| ---- | ---- |
 | POST |  token/verify/  |
 | POST |  token/refresh/  |
+| ---- | ---- |
+| about user |  URI  |
+| GET |  account/profile/  |
+| GET |  account/like/  |
+| GET |  account/reviewed  |
+| POST |    |
+| POST |    |
 | POST |    |
 | PUT |    |
-| POST |    |
+| PUT |    |
+| PUT |    |
 | PATCH |    |
+| PATCH |    |
+| PATCH |    |
+| DELETE |    |
+| DELETE |    |
 | DELETE |    |
