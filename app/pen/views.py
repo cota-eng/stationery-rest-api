@@ -21,13 +21,13 @@ class AddFavProductAPIView(mixins.RetrieveModelMixin,
     serializer_class = serializers.FavSerializer
     permission_classes = (permissions.IsAuthenticated,)
     
-    def get(self, request, pk=None):
-        """
-        fav/fav_id/ => get is_favorite
-        """
-        queryset = self.get_queryset()
-        serializer = serializers.FavSerializer
-        return Response(serializer.data)
+    # def get(self, request, pk=None):
+    #     """
+    #     fav/fav_id/ => get is_favorite
+    #     """
+    #     queryset = self.get_queryset()
+    #     serializer = serializers.FavSerializer
+    #     return Response(serializer.data)
   
     @action(detail=True, methods=["POST"], permission_classes=[permissions.AllowAny])
     def fav(self, request, pk=None):
