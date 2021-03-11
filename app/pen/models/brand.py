@@ -15,13 +15,19 @@ class Brand(models.Model):
     """
     name = models.CharField(
         _('brand name'),
-        max_length=50)
+        max_length=50,
+        unique=True,
+    )
     slug = models.CharField(
         _("brand slug"),
-        max_length=50)
+        max_length=50,
+        unique=True,
+        )
     official_site_link = models.CharField(
          _("brand link"),
-         max_length=255)
+         max_length=255,
+         unique=True
+         )
 
     def __str__(self):
         return f'Productor: {self.name}'
