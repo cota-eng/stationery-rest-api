@@ -29,7 +29,7 @@ class AddFavProductAPIView(mixins.RetrieveModelMixin,
     #     serializer = serializers.FavSerializer
     #     return Response(serializer.data)
   
-    @action(detail=True, methods=["POST"], permission_classes=[permissions.AllowAny])
+    @action(detail=True, methods=["POST"], permission_classes=[permissions.IsAuthenticated])
     def fav(self, request, pk=None):
         """
         FAV
@@ -61,6 +61,7 @@ class AddFavProductAPIView(mixins.RetrieveModelMixin,
             fav = models.Fav.objects.create(
                 fav_user=user,
                 product=product,
+                is_favorite=True,
                 )
             response = {'message': 'first faved'}
             return Response(response, status=status.HTTP_200_OK)

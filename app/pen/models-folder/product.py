@@ -10,6 +10,7 @@ from core.models import ULIDField
 from .category import Category
 from .brand import Brand
 from .tag import Tag
+from .review import  Review
 
 
 class Product(models.Model):
