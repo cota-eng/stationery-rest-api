@@ -11,75 +11,75 @@ from rest_framework import authentication
 from django_filters import rest_framework as filters
 from .filters import  ProductOriginalFilter
 from rest_framework import pagination
+from rest_framework import mixins
+from rest_framework import generics
 
-class AddFavProductAPIView(viewsets.ModelViewSet):
+class AddFavProductAPIView(mixins.RetrieveModelMixin,viewsets.GenericViewSet):
     queryset = models.Fav.objects.all()
     serializer_class = serializers.FavSerializer
     permission_classes = (permissions.AllowAny,)
     # permission_classes = (permissions.IsAuthenticated,)
+
     @action(detail=True, methods=["POST"], permission_classes=[permissions.AllowAny])
-    def add_or_delete_fav(self, request, pk=None):
+    def fav(self, request, pk=None):
         """
         FAV
+        default false
         if not faved => fav
         product = models.Product.objects.get(id=pk)
-        user:self.request.user => add to fav_user
+        user:self.request.user => bool true
 
         UNFAV
         if faved => not faved
-        user:self.request.user => delete from fav_user
+        user:self.request.user => bool false
 
         """
-        if 'product' in request.data:
-            product = models.Product.objects.get(id=pk)
-            title = request.data['title']
-            user = request.user
-            try:
-                review = models.Review.objects.get(reviewer=user, product=product)
-                review.title = title
-                review.save()
-                serializer = serializers.ReviewSerialier(review, many=False)
-                response = {'message': 'Rating updated', 'result': serializer.data}
-                return Response(response, status=status.HTTP_200_OK)
-            except:
-                review = models.Review.objects.create(
-                    reviewer=user,
-                    product=product,
-                    title=title,
-                    stars_of_design=stars_of_design,
-                    stars_of_durability=stars_of_durability,
-                    stars_of_usefulness=stars_of_usefulness,
-                    stars_of_function=stars_of_function,
-                    stars_of_easy_to_get=stars_of_easy_to_get,
-                    good_point_text=good_point_text,
-                    bad_point_text=bad_point_text
-                    )
-                response = {'message': 'review created'}
-                return Response(response, status=status.HTTP_200_OK)
-        else:
-            response = {'message': 'error evoled'}
-            return Response(response, status=status.HTTP_400_BAD_REQUEST)
+        product = models.Product.objects.get(id=pk)
+        # productのid入手
+        print("#################")
+        print(pk)
+        user = request.user
+        print("#################")
+        print(user.pk)
+        # get_or_create
+        try:
+            fav = models.Fav.objects.get(fav_user=self.request.user.pk, product=product)
+            if fav.is_favorite:
+                fav.is_favorite = False
+            else:
+                fav.is_favorite = True
+            fav.save()
+            serializer = serializers.FavSerializer(fav, many=False)
+            response = {'message': 'Rating updated', 'result': serializer.data}
+            return Response(response, status=status.HTTP_200_OK)
+        except models.Fav.DoesNotExist:
+            fav = models.Fav.objects.create(
+                fav_user=user,
+                product=product,
+                )
+            response = {'message': 'first faved'}
+            return Response(response, status=status.HTTP_200_OK)
+     
+    # def destroy(self, request, *args, **kwargs):
+    #     """
+    #     delete is invalid
+    #     """
+    #     response = {'message': 'DELETE method is not allowed'}
+    #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
-    def destroy(self, request, *args, **kwargs):
-        """
-        delete is invalid
-        """
-        response = {'message': 'DELETE method is not allowed'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+    # def update(self, request, *args, **kwargs):
+    #     """
+    #     put is invalid
+    #     """
+    #     response = {'message': 'PUT method is not allowed'}
+    #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
-    def update(self, request, *args, **kwargs):
-        """
-        put is invalid
-        """
-        response = {'message': 'PUT method is not allowed'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
-
-    def partial_update(self, request, *args, **kwargs):
-        """
-        patch is invalid
-        """
-        response = {'message': 'PATCH method is not allowed'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+    # def partial_update(self, request, *args, **kwargs):
+    #     """
+    #     patch is invalid
+    #     """
+    #     response = {'message': 'PATCH method is not allowed'}
+    #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
     
 class CategoryReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Category.objects.all()
