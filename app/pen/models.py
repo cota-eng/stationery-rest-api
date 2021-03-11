@@ -137,11 +137,11 @@ class Product(models.Model):
         return f'product: {self.name} Price: {self.price_yen}'
     
 
-class FavProduct(models.Model):
+class Fav(models.Model):
     """
     Fav is Favorite
     """
-    # is_favorite = models.BooleanField(default=False)
+    is_favorite = models.BooleanField(default=False)
     """
     TODO:
     connect to User or Profile
@@ -156,7 +156,6 @@ class FavProduct(models.Model):
         related_name="faved",
         on_delete=models.CASCADE
     )
-    # for ordering by created_at
     created_at = models.DateTimeField(auto_now=True)
     
     class Meta:
@@ -165,6 +164,8 @@ class FavProduct(models.Model):
         """
         unique_together = (('fav_user','product'))
         index_together = (('fav_user', 'product'))
+        ordering = ['-created_at']
+
     def __str__(self):
         return f"stock {self.product.name} user {self.fav_user.username}"
 
