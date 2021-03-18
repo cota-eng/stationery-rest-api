@@ -125,10 +125,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = _('users')
         # abstract = True
 
-    def clean(self):
-        super().clean()
-        self.email = self.__class__.objects.normalize_email(self.email)
-
     # def get_full_name(self):
     #     """
     #     Return the first_name plus the last_name, with a space in between.
@@ -179,9 +175,17 @@ class Profile(models.Model):
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+import environ
 
+env = environ.Env()
+env.read_env('.env')
+import requests, json
 @receiver(post_save, sender=User)
 def create_profile(sender, **kwargs):
     """ 新ユーザー作成時に空のprofileも作成する """
     if kwargs['created']:
+        WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+        requests.post(WEB_HOOK_URL, data = json.dumps({
+            'text': f':smile_cat:User [ {kwargs["instance"]} ] Created!!',  #通知内容
+        }))
         profile = Profile.objects.get_or_create(user=kwargs['instance'])
