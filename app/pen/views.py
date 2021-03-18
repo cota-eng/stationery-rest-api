@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework import viewsets
 from . import serializers
 from . import models
@@ -14,9 +13,12 @@ from rest_framework import pagination
 from rest_framework import mixins
 from rest_framework import generics
 
-class AddFavProductAPIView(mixins.RetrieveModelMixin,
+class FavProductAPIView(mixins.RetrieveModelMixin,
                            mixins.ListModelMixin,
                            viewsets.GenericViewSet):
+    """
+    get specific fav info
+    """
     queryset = models.Fav.objects.all()
     serializer_class = serializers.FavSerializer
     permission_classes = (permissions.IsAuthenticated,)
