@@ -49,12 +49,13 @@ class ProfileSerializer(serializers.ModelSerializer):
     """
     read only 
     """
+    user = UserSerializer()
     created_at = serializers.DateField(format="%Y/%m/%d",read_only=True)
     updated_at = serializers.DateField(format="%Y/%m/%d", read_only=True)
     # user_profile = UserSerializer()
     class Meta:
         model = models.Profile
-        fields = ('id','created_at', 'updated_at',  'avatar', )
+        fields = ('id','created_at', 'updated_at',  'avatar', 'user')
         # fields = ('id', 'nickname','created_at', 'updated_at',  'avatar', 'user_profile')
         # extra_kwargs = {'user_profile': {'read_only': True}}
     # def validate(self, attrs):
