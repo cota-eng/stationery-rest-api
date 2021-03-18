@@ -48,7 +48,7 @@ class Brand(models.Model):
          )
 
     def __str__(self):
-        return f'Productor: {self.name}'
+        return f'Brand: {self.name}'
 
 class Tag(models.Model):
     """
@@ -85,7 +85,7 @@ class Product(models.Model):
     category = models.ForeignKey(
         Category,
         related_name="product_category",
-        # TODO CASCADE -> SETNULL
+        # TODO: CASCADE -> SETNULL
         on_delete=models.CASCADE
         )
     price_yen = models.PositiveIntegerField(
@@ -108,6 +108,7 @@ class Product(models.Model):
         max_length=None,
         blank=True,
         null=True)
+    # in JP 出典
     image_src = models.CharField(
         blank=True,
         null=True,
