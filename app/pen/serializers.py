@@ -110,6 +110,14 @@ class ReviewSerialier(serializers.ModelSerializer):
             'created_at',
             )
         depth = 1
+        """
+        TODO: validation add!
+        """
+        extra_kwargs = {
+            "title": {
+                'max_length':20,
+            }
+        }
 
 import markdown
 

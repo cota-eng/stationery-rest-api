@@ -31,7 +31,7 @@ from rest_framework import generics
 - Google login 
 - user profile list/get read only
 - profile update only owner
-logout
+- logout
 """
 
 # class LoginAPIView(generics.GenericAPIView):
@@ -55,12 +55,12 @@ class UserReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     """
     TODO:not needed?
     """
-    queryset = models.Profile.objects.all()
-    serializer_class = serializers.ProfileSerializer
+    queryset = get_user_model().objects.all()
+    serializer_class = serializers.UserSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = "id"
 
-class ProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
+class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
                                    mixins.ListModelMixin,
                                    mixins.UpdateModelMixin,
                                    viewsets.GenericViewSet):

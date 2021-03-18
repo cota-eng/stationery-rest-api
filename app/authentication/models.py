@@ -164,7 +164,7 @@ class Profile(models.Model):
         related_name="profile",
         on_delete=models.CASCADE
         )
-    # nickname = models.CharField(_('nickname'),max_length=50,default="profile nickname")
+    nickname = models.CharField(_('nickname'),max_length=50,default="profile nickname")
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None,null=True,blank=True)
@@ -186,6 +186,6 @@ def create_profile(sender, **kwargs):
     if kwargs['created']:
         WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
         requests.post(WEB_HOOK_URL, data = json.dumps({
-            'text': f':smile_cat:User [ {kwargs["instance"]} ] Created!!',  #通知内容
+            'text': f':smile_cat:Profile [ {kwargs["instance"]} ] Created!!',  #通知内容
         }))
         profile = Profile.objects.get_or_create(user=kwargs['instance'])
