@@ -255,8 +255,18 @@ class Review(models.Model):
         """
         one review for one person 
         """
-        unique_together = (('reviewer','product'))
-        index_together = (('reviewer', 'product'))
+        constraints = [
+            # 同じ日に部屋の予約を重複させない
+            models.UniqueConstraint(fields=['reviewer', 'product'], name='unique_booking'),
+        ]
+        indexes = [
+            models.Index(fields=['reviewer', 'product'])
+        ]
+        """
+        in the future, cannot use below code
+        """
+        # unique_together = (('reviewer','product'))
+        # index_together = (('reviewer', 'product'))
 
     def __str__(self):
         return f'Reviewd product: {self.product.name} / Reviewer: {self.reviewer.nickname}'
