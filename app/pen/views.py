@@ -121,7 +121,8 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
     #     response = {'message': 'PATCH method is not allowed'}
     #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
     
-class CategoryReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+class CategoryReadOnlyViewSet(mixins.ListModelMixin,
+                              viewsets.GenericViewSet):
     """
     for list category view \n
     display category related product !
@@ -131,13 +132,16 @@ class CategoryReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
         
-class ProductReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+class ProductReadOnlyViewSet(mixins.ListModelMixin,
+                             mixins.RetrieveModelMixin,
+                             viewsets.GenericViewSet):
     queryset = models.Product.objects.all()
     serializer_class = serializers.ProductSerializer
     permission_classes = (permissions.AllowAny,)
     # lookup_field = 'slug'
 
-class TagReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+class TagReadOnlyViewSet(mixins.ListModelMixin,
+                         viewsets.GenericViewSet):
     """
     for list tag view \n
     display tag related product !
@@ -147,7 +151,8 @@ class TagReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
 
-class BrandReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+class BrandReadOnlyViewSet(mixins.ListModelMixin,
+                           viewsets.GenericViewSet):
     """
     for list brand view \n
     display brand related product !
@@ -157,7 +162,8 @@ class BrandReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
 
-class ProductSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
+class ProductSearchByAllConditions(mixins.ListModelMixin,
+                                   viewsets.GenericViewSet):
     """
     search like below \n
     http://localhost:8000/api/search/?name=S20&? \n
@@ -178,7 +184,8 @@ class ProductSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
 #     permission_classes = (permissions.IsAuthenticated,)
 #     filter_fields = ('slug', )
 
-class ProductBrandFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+class ProductBrandFilteredReadOnlyViewSet(mixins.ListModelMixin,
+                                          viewsets.GenericViewSet):
     """
     filter by brand/<brand_name_slug>
     display Respective Brand Pens !
@@ -190,7 +197,8 @@ class ProductBrandFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
         slug = self.request.GET.get('slug')
         return self.queryset.filter(brand__slug=slug)
 
-class ProductCategoryFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+class ProductCategoryFilteredReadOnlyViewSet(mixins.ListModelMixin,
+                                             viewsets.GenericViewSet):
     """
     filter by brand/<category_name_slug>
     display Respective Category Products !
@@ -203,7 +211,8 @@ class ProductCategoryFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
         return self.queryset.filter(category__slug=slug)
 
 
-class ProductTagFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+class ProductTagFilteredReadOnlyViewSet(mixins.ListModelMixin,
+                                        viewsets.GenericViewSet):
     """
     filter by tag
     display Respective Tag Products !
@@ -215,7 +224,7 @@ class ProductTagFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
         slug = self.request.GET.get('slug')
         return self.queryset.filter(tag__slug=slug)
 
-class OwnReviewReadOnlyViewSet(viewsets.ModelViewSet):
+class OwnReviewViewSet(viewsets.ModelViewSet):
     """
     View that get data reviewed by request user:IsAuthenticated
     """
