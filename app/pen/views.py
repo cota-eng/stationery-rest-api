@@ -12,6 +12,7 @@ from .filters import  ProductOriginalFilter,OwnFavFilter
 from rest_framework import pagination
 from rest_framework import mixins
 from rest_framework import generics
+from django.db.models import Q
 import environ
 env = environ.Env()
 env.read_env('.env')
@@ -59,7 +60,7 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
         print(instance)
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
-        
+
     # def get(self, request, pk=None):
     #     """
     #     fav/fav_id/ => get is_favorite
@@ -69,10 +70,16 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
     #     return Response(serializer.data)
   
     @action(detail=True, methods=["GET"], permission_classes=[permissions.IsAuthenticated])
-    def check_is_fav(self, request, pk=None):
+    def check_fav(self, request, pk=None):
         product = models.Product.objects.get(id=pk)
         user = request.user
-        response = {'message': 'fav checked'}
+        try:
+            fav = models.Fav.objects.get(Q(fav_user__exact=user) & Q(product__exact=product))
+        except models.Fav.DoesNotExist:
+            response = {'message': 'not faved'}
+            return Response(response, status=status.HTTP_204_NO_CONTENT)
+        serializer = serializers.FavSerializer(fav, many=False)
+        response = {'message': 'Fav cheked', 'result': serializer.data["is_favorite"]}
         return Response(response, status=status.HTTP_200_OK)
 
     @action(detail=True, methods=["POST"], permission_classes=[permissions.IsAuthenticated])
