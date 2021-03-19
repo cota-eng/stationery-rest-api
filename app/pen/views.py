@@ -59,6 +59,7 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
         print(instance)
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
+        
     # def get(self, request, pk=None):
     #     """
     #     fav/fav_id/ => get is_favorite
@@ -67,6 +68,13 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
     #     serializer = serializers.FavSerializer
     #     return Response(serializer.data)
   
+    @action(detail=True, methods=["GET"], permission_classes=[permissions.IsAuthenticated])
+    def check_is_fav(self, request, pk=None):
+        product = models.Product.objects.get(id=pk)
+        user = request.user
+        response = {'message': 'fav checked'}
+        return Response(response, status=status.HTTP_200_OK)
+
     @action(detail=True, methods=["POST"], permission_classes=[permissions.IsAuthenticated])
     def fav(self, request, pk=None):
         """
@@ -93,7 +101,7 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
                 fav.is_favorite = True
             fav.save()
             serializer = serializers.FavSerializer(fav, many=False)
-            response = {'message': 'Rating updated', 'result': serializer.data}
+            response = {'message': 'Fav changed', 'result': serializer.data}
             return Response(response, status=status.HTTP_200_OK)
         except models.Fav.DoesNotExist:
             fav = models.Fav.objects.create(
@@ -124,63 +132,69 @@ class ProductReadOnlyViewSet(mixins.ListModelMixin,
     serializer_class = serializers.ProductSerializer
     permission_classes = (permissions.AllowAny,)
     # lookup_field = 'slug'
-    @action(detail=True,methods=["POST"], permission_classes=[permissions.IsAuthenticated])
-    def rate(self, request, pk=None):
-        if 'title' in request.data:
-            product = models.Product.objects.get(id=pk)
-            title = request.data['title']
-            stars_of_design = request.data['stars_of_design']
-            stars_of_durability = request.data['stars_of_durability']
-            stars_of_usefulness = request.data['stars_of_usefulness']
-            stars_of_function = request.data['stars_of_function']
-            stars_of_easy_to_get = request.data['stars_of_easy_to_get']
-            good_point_text = request.data['good_point_text']
-            bad_point_text = request.data['bad_point_text']
-            user = request.user
-            try:
-                review = models.Review.objects.get(reviewer=user, product=product)
-                review.title = title
-                review.stars_of_design = int(stars_of_design)
-                review.stars_of_durability = int(stars_of_durability)
-                review.stars_of_usefulness = int(stars_of_usefulness)
-                review.stars_of_function = int(stars_of_function)
-                review.stars_of_easy_to_get = int(stars_of_easy_to_get)
-                review.good_point_text = good_point_text
-                review.bad_point_text = bad_point_text
-                review.save()
-                serializer = serializers.ReviewSerialier(review, many=False)
-                response = {'message': 'Rating updated', 'result': serializer.data}
-                WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
-                requests.post(WEB_HOOK_URL, data = json.dumps({
-                    'text': f':smile_cat:Review Updated by {user} !!',  
-                }))
-                return Response(response, status=status.HTTP_200_OK)
-            except models.Review.DoesNotExist:
-                review = models.Review.objects.create(
-                    reviewer=user,
-                    product=product,
-                    title=title,
-                    stars_of_design=int(stars_of_design),
-                    stars_of_durability=int(stars_of_durability),
-                    stars_of_usefulness=int(stars_of_usefulness),
-                    stars_of_function=int(stars_of_function),
-                    stars_of_easy_to_get=int(stars_of_easy_to_get),
-                    good_point_text=good_point_text,
-                    bad_point_text=bad_point_text
-                    )
-                response = {'message': 'review created'}
-                WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
-                requests.post(WEB_HOOK_URL, data = json.dumps({
-                    'text': f':smile_cat:Review Created by {user} !!',  
-                }))
-                return Response(response, status=status.HTTP_200_OK)
-        else:
-            response = {'message': 'error evoled'}
-            WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
-            requests.post(WEB_HOOK_URL, data = json.dumps({
-                'text': f':smile_cat:Review Failed by {user} !!',  
-            }))
-            return Response(response, status=status.HTTP_400_BAD_REQUEST)
+    """
+    TODO: not working below
+    """
+    # @action(detail=True,methods=["POST"], permission_classes=[permissions.IsAuthenticated])
+    # def rate(self, request, pk=None):
+    #     if 'title' in request.data:
+    #         product = models.Product.objects.get(id=pk)
+    #         title = request.data['title']
+    #         stars_of_design = request.data['stars_of_design']
+    #         stars_of_durability = request.data['stars_of_durability']
+    #         stars_of_usefulness = request.data['stars_of_usefulness']
+    #         stars_of_function = request.data['stars_of_function']
+    #         stars_of_easy_to_get = request.data['stars_of_easy_to_get']
+    #         good_point_text = request.data['good_point_text']
+    #         bad_point_text = request.data['bad_point_text']
+    #         user = request.user
+    #         print("start")
+    #         try:
+    #             review = models.Review.objects.get(reviewer=user, product=product)
+    #             review.title = title
+    #             review.stars_of_design = int(stars_of_design)
+    #             review.stars_of_durability = int(stars_of_durability)
+    #             review.stars_of_usefulness = int(stars_of_usefulness)
+    #             review.stars_of_function = int(stars_of_function)
+    #             review.stars_of_easy_to_get = int(stars_of_easy_to_get)
+    #             review.good_point_text = good_point_text
+    #             review.bad_point_text = bad_point_text
+    #             review.save()
+    #             serializer = serializers.ReviewSerialier(review, many=False)
+    #             response = {'message': 'Rating updated', 'result': serializer.data}
+    #             WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+    #             requests.post(WEB_HOOK_URL, data = json.dumps({
+    #                 'text': f':smile_cat:Review Updated by {user} !!',  
+    #             }))
+    #             return Response(response, status=status.HTTP_200_OK)
+    #         except models.Review.DoesNotExist:
+    #             review = models.Review.objects.create(
+    #                 reviewer=user,
+    #                 product=product,
+    #                 title=title,
+    #                 stars_of_design=int(stars_of_design),
+    #                 stars_of_durability=int(stars_of_durability),
+    #                 stars_of_usefulness=int(stars_of_usefulness),
+    #                 stars_of_function=int(stars_of_function),
+    #                 stars_of_easy_to_get=int(stars_of_easy_to_get),
+    #                 good_point_text=good_point_text,
+    #                 bad_point_text=bad_point_text
+    #                 )
+    #             review.save()
+    #             serializer = serializers.ReviewSerialier(review, many=False)
+    #             WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+    #             requests.post(WEB_HOOK_URL, data = json.dumps({
+    #                 'text': f':smile_cat:Review Created by !!',  
+    #             }))
+    #             response = {'message': 'review created','result': serializer.data}
+    #             return Response(response, status=status.HTTP_200_OK)
+    #     else:
+    #         WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+    #         requests.post(WEB_HOOK_URL, data = json.dumps({
+    #             'text': f':smile_cat:Review Failed by  !!',  
+    #         }))
+    #         response = {'message': 'error evoled'}
+    #         return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
 class TagReadOnlyViewSet(mixins.ListModelMixin,
@@ -304,7 +318,7 @@ class ReviewViewSet(mixins.ListModelMixin,
     # def perform_create(self, serializer):
     #     serializer.save(reviewer=self.request.user)
     @action(detail=True,methods=["POST"], permission_classes=[permissions.IsAuthenticated])
-    def rate(self, request, pk=None):
+    def review(self, request, pk=None):
         if 'title' in request.data:
             product = models.Product.objects.get(id=pk)
             title = request.data['title']
