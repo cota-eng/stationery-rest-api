@@ -37,15 +37,16 @@ class UserSerializer(serializers.ModelSerializer):
     twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
     class Meta:
         model = get_user_model()
-        fields = ('id','email','nickname','profile','twitter_account',)
+        fields = ('id','nickname','profile','twitter_account',)
+        # fields = ('id','email','nickname','profile','twitter_account',)
         extra_kwargs = {
             'password': {
                 'write_only': True,
                 'style': {'input_type': 'password'}
             },
-            'email': {
-                'read_only':True
-            },
+            # 'email': {
+            #     'read_only':True
+            # },
         }
     def get_nickname(self, obj):
         return obj.profile.nickname
