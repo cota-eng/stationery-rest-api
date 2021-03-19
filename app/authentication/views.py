@@ -61,9 +61,9 @@ class UserReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     lookup_field = "id"
 
 class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
-                                   mixins.ListModelMixin,
-                                   mixins.UpdateModelMixin,
-                                   viewsets.GenericViewSet):
+                                          mixins.ListModelMixin,
+                                          mixins.UpdateModelMixin,
+                                          viewsets.GenericViewSet):
     """
     for your own profile
     """
