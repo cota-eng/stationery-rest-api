@@ -124,6 +124,63 @@ class ProductReadOnlyViewSet(mixins.ListModelMixin,
     serializer_class = serializers.ProductSerializer
     permission_classes = (permissions.AllowAny,)
     # lookup_field = 'slug'
+    @action(detail=True,methods=["POST"], permission_classes=[permissions.IsAuthenticated])
+    def rate(self, request, pk=None):
+        if 'title' in request.data:
+            product = models.Product.objects.get(id=pk)
+            title = request.data['title']
+            stars_of_design = request.data['stars_of_design']
+            stars_of_durability = request.data['stars_of_durability']
+            stars_of_usefulness = request.data['stars_of_usefulness']
+            stars_of_function = request.data['stars_of_function']
+            stars_of_easy_to_get = request.data['stars_of_easy_to_get']
+            good_point_text = request.data['good_point_text']
+            bad_point_text = request.data['bad_point_text']
+            user = request.user
+            try:
+                review = models.Review.objects.get(reviewer=user, product=product)
+                review.title = title
+                review.stars_of_design = int(stars_of_design)
+                review.stars_of_durability = int(stars_of_durability)
+                review.stars_of_usefulness = int(stars_of_usefulness)
+                review.stars_of_function = int(stars_of_function)
+                review.stars_of_easy_to_get = int(stars_of_easy_to_get)
+                review.good_point_text = good_point_text
+                review.bad_point_text = bad_point_text
+                review.save()
+                serializer = serializers.ReviewSerialier(review, many=False)
+                response = {'message': 'Rating updated', 'result': serializer.data}
+                WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+                requests.post(WEB_HOOK_URL, data = json.dumps({
+                    'text': f':smile_cat:Review Updated by {user} !!',  
+                }))
+                return Response(response, status=status.HTTP_200_OK)
+            except models.Review.DoesNotExist:
+                review = models.Review.objects.create(
+                    reviewer=user,
+                    product=product,
+                    title=title,
+                    stars_of_design=int(stars_of_design),
+                    stars_of_durability=int(stars_of_durability),
+                    stars_of_usefulness=int(stars_of_usefulness),
+                    stars_of_function=int(stars_of_function),
+                    stars_of_easy_to_get=int(stars_of_easy_to_get),
+                    good_point_text=good_point_text,
+                    bad_point_text=bad_point_text
+                    )
+                response = {'message': 'review created'}
+                WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+                requests.post(WEB_HOOK_URL, data = json.dumps({
+                    'text': f':smile_cat:Review Created by {user} !!',  
+                }))
+                return Response(response, status=status.HTTP_200_OK)
+        else:
+            response = {'message': 'error evoled'}
+            WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+            requests.post(WEB_HOOK_URL, data = json.dumps({
+                'text': f':smile_cat:Review Failed by {user} !!',  
+            }))
+            return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
 class TagReadOnlyViewSet(mixins.ListModelMixin,
