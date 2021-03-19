@@ -224,7 +224,10 @@ class ProductTagFilteredReadOnlyViewSet(mixins.ListModelMixin,
         slug = self.request.GET.get('slug')
         return self.queryset.filter(tag__slug=slug)
 
-class OwnReviewViewSet(viewsets.ModelViewSet):
+class OwnReviewViewSet(mixins.ListModelMixin,
+                       mixins.RetrieveModelMixin,
+                       mixins.UpdateModelMixin, 
+                       viewsets.GenericViewSet):
     """
     View that get data reviewed by request user:IsAuthenticated
     """
@@ -236,17 +239,16 @@ class OwnReviewViewSet(viewsets.ModelViewSet):
         user = self.request.user
         return models.Review.objects.filter(reviewer=user)
 
-class ReviewReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = models.Review.objects.all()
-    serializer_class = serializers.ReviewSerialier
-    permission_classes = (permissions.AllowAny,)
+
     
 
-class ReviewViewSet(viewsets.ModelViewSet):
+class ReviewViewSet(mixins.ListModelMixin,
+                    mixins.RetrieveModelMixin,
+                    mixins.CreateModelMixin,
+                    viewsets.GenericViewSet):
     """
     can review specific pen 
     only authenticateed user 
-
     """
     queryset = models.Review.objects.all()
     serializer_class = serializers.ReviewSerialier
@@ -254,11 +256,6 @@ class ReviewViewSet(viewsets.ModelViewSet):
     # lookup_field = ''
     # def perform_create(self, serializer):
     #     serializer.save(reviewer=self.request.user)
-    # def get_serializer_class(self):
-    #     if self.action == 'retrieve':
-    #         return serializers.RecipeDetailSerializer
-    #     elif self.action == 'upload_image':
-    #         return serializers.RecipeImageSerializer
     @action(detail=True,methods=["POST"], permission_classes=[permissions.IsAuthenticated])
     def rate(self, request, pk=None):
         if 'title' in request.data:
