@@ -12,6 +12,10 @@ from .filters import  ProductOriginalFilter,OwnFavFilter
 from rest_framework import pagination
 from rest_framework import mixins
 from rest_framework import generics
+import environ
+env = environ.Env()
+env.read_env('.env')
+import requests, json
 
 class FilteredResultPagination(pagination.PageNumberPagination):
     page_size = 12
@@ -100,27 +104,7 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
             response = {'message': 'first faved'}
             return Response(response, status=status.HTTP_200_OK)
      
-    # def destroy(self, request, *args, **kwargs):
-    #     """
-    #     delete is invalid
-    #     """
-    #     response = {'message': 'DELETE method is not allowed'}
-    #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
-    # def update(self, request, *args, **kwargs):
-    #     """
-    #     put is invalid
-    #     """
-    #     response = {'message': 'PUT method is not allowed'}
-    #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
-
-    # def partial_update(self, request, *args, **kwargs):
-    #     """
-    #     patch is invalid
-    #     """
-    #     response = {'message': 'PATCH method is not allowed'}
-    #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
-    
 class CategoryReadOnlyViewSet(mixins.ListModelMixin,
                               viewsets.GenericViewSet):
     """
@@ -132,6 +116,7 @@ class CategoryReadOnlyViewSet(mixins.ListModelMixin,
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
         
+
 class ProductReadOnlyViewSet(mixins.ListModelMixin,
                              mixins.RetrieveModelMixin,
                              viewsets.GenericViewSet):
@@ -139,6 +124,7 @@ class ProductReadOnlyViewSet(mixins.ListModelMixin,
     serializer_class = serializers.ProductSerializer
     permission_classes = (permissions.AllowAny,)
     # lookup_field = 'slug'
+
 
 class TagReadOnlyViewSet(mixins.ListModelMixin,
                          viewsets.GenericViewSet):
@@ -151,6 +137,7 @@ class TagReadOnlyViewSet(mixins.ListModelMixin,
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
 
+
 class BrandReadOnlyViewSet(mixins.ListModelMixin,
                            viewsets.GenericViewSet):
     """
@@ -161,6 +148,7 @@ class BrandReadOnlyViewSet(mixins.ListModelMixin,
     serializer_class = serializers.BrandSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
+
 
 class ProductSearchByAllConditions(mixins.ListModelMixin,
                                    viewsets.GenericViewSet):
@@ -178,11 +166,13 @@ class ProductSearchByAllConditions(mixins.ListModelMixin,
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = ProductOriginalFilter
 
+
 # class PenCategoryFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
 #     queryset = models.Pen.objects.filter(category=)
 #     serializer_class = serializers.CategorySerializer
 #     permission_classes = (permissions.IsAuthenticated,)
 #     filter_fields = ('slug', )
+
 
 class ProductBrandFilteredReadOnlyViewSet(mixins.ListModelMixin,
                                           viewsets.GenericViewSet):
@@ -196,6 +186,7 @@ class ProductBrandFilteredReadOnlyViewSet(mixins.ListModelMixin,
     def get_queryset(self):
         slug = self.request.GET.get('slug')
         return self.queryset.filter(brand__slug=slug)
+
 
 class ProductCategoryFilteredReadOnlyViewSet(mixins.ListModelMixin,
                                              viewsets.GenericViewSet):
@@ -224,6 +215,7 @@ class ProductTagFilteredReadOnlyViewSet(mixins.ListModelMixin,
         slug = self.request.GET.get('slug')
         return self.queryset.filter(tag__slug=slug)
 
+
 class OwnReviewViewSet(mixins.ListModelMixin,
                        mixins.RetrieveModelMixin,
                        mixins.UpdateModelMixin, 
@@ -238,8 +230,6 @@ class OwnReviewViewSet(mixins.ListModelMixin,
     def get_queryset(self):
         user = self.request.user
         return models.Review.objects.filter(reviewer=user)
-
-
     
 
 class ReviewViewSet(mixins.ListModelMixin,
@@ -272,53 +262,44 @@ class ReviewViewSet(mixins.ListModelMixin,
             try:
                 review = models.Review.objects.get(reviewer=user, product=product)
                 review.title = title
-                review.stars_of_design = stars_of_design
-                review.stars_of_durability = stars_of_durability
-                review.stars_of_usefulness = stars_of_usefulness
-                review.stars_of_function = stars_of_function
-                review.stars_of_easy_to_get = stars_of_easy_to_get
+                review.stars_of_design = int(stars_of_design)
+                review.stars_of_durability = int(stars_of_durability)
+                review.stars_of_usefulness = int(stars_of_usefulness)
+                review.stars_of_function = int(stars_of_function)
+                review.stars_of_easy_to_get = int(stars_of_easy_to_get)
                 review.good_point_text = good_point_text
                 review.bad_point_text = bad_point_text
                 review.save()
                 serializer = serializers.ReviewSerialier(review, many=False)
                 response = {'message': 'Rating updated', 'result': serializer.data}
+                WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+                requests.post(WEB_HOOK_URL, data = json.dumps({
+                    'text': f':smile_cat:Review Updated by {user} !!',  
+                }))
                 return Response(response, status=status.HTTP_200_OK)
             except models.Review.DoesNotExist:
                 review = models.Review.objects.create(
                     reviewer=user,
                     product=product,
                     title=title,
-                    stars_of_design=stars_of_design,
-                    stars_of_durability=stars_of_durability,
-                    stars_of_usefulness=stars_of_usefulness,
-                    stars_of_function=stars_of_function,
-                    stars_of_easy_to_get=stars_of_easy_to_get,
+                    stars_of_design=int(stars_of_design),
+                    stars_of_durability=int(stars_of_durability),
+                    stars_of_usefulness=int(stars_of_usefulness),
+                    stars_of_function=int(stars_of_function),
+                    stars_of_easy_to_get=int(stars_of_easy_to_get),
                     good_point_text=good_point_text,
                     bad_point_text=bad_point_text
                     )
                 response = {'message': 'review created'}
+                WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+                requests.post(WEB_HOOK_URL, data = json.dumps({
+                    'text': f':smile_cat:Review Created by {user} !!',  
+                }))
                 return Response(response, status=status.HTTP_200_OK)
         else:
             response = {'message': 'error evoled'}
+            WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+            requests.post(WEB_HOOK_URL, data = json.dumps({
+                'text': f':smile_cat:Review Failed by {user} !!',  
+            }))
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
-
-    def destroy(self, request, *args, **kwargs):
-        """
-        delete is invalid
-        """
-        response = {'message': 'DELETE method is not allowed'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
-
-    def update(self, request, *args, **kwargs):
-        """
-        put is invalid
-        """
-        response = {'message': 'PUT method is not allowed'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
-
-    def partial_update(self, request, *args, **kwargs):
-        """
-        patch is invalid
-        """
-        response = {'message': 'PATCH method is not allowed'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
