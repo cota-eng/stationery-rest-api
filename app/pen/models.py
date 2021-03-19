@@ -256,7 +256,6 @@ class Review(models.Model):
         one review for one person 
         """
         constraints = [
-            # 同じ日に部屋の予約を重複させない
             models.UniqueConstraint(fields=['reviewer', 'product'], name='unique_booking'),
         ]
         indexes = [
