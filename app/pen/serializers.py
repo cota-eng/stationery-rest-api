@@ -98,6 +98,7 @@ class ReviewSerialier(serializers.ModelSerializer):
     class Meta:
         model = models.Review
         fields = (
+            'id',
             'title',
             'stars_of_design',
             'stars_of_durability',
@@ -125,10 +126,11 @@ import markdown
 class ProductSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     updated_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
-    category = CategoryUsingProductSerializer()
-    brand = BrandSerializer()
-    tag = TagUsingPenSerializer(many=True)
-    review = ReviewSerialier(many=True)
+    category = CategoryUsingProductSerializer(read_only=True)
+    brand = BrandSerializer(read_only=True)
+    tag = TagUsingPenSerializer(many=True,read_only=True)
+    review = ReviewSerialier()
+    # review = ReviewSerialier(many=True)
     # description = serializers.SerializerMethodField()
 
     # def get_description(self, instance):
@@ -136,26 +138,25 @@ class ProductSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = models.Product
-        fields = (
+        fields = ('review',
+                  'created_at',
+                  'updated_at',
+                  'category',
+                  'brand',
+                  'tag',)
+        read_only_fields = (
             'id',
             'name',
             'description',
-            'category',
             'price_yen',
-            'brand',
-            'tag',
             'image',
             'image_src',
-            'created_at',
-            'updated_at',
             'amazon_link_to_buy',
             'rakuten_link_to_buy',
             'mercari_link_to_buy',
             'number_of_review',
             'avarage_of_review_star',
-            'review'
             )
-        # read_only_fields = '__all__'
         depth = 1
 
     
