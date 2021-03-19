@@ -189,9 +189,31 @@ class ProductBrandFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         slug = self.request.GET.get('slug')
         return self.queryset.filter(brand__slug=slug)
-    # def retrieve(self, request, pk=None):
-    #     response = {'message': 'retrieve method is not allowed'}
-    #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+class ProductCategoryFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    filter by brand/<category_name_slug>
+    display Respective Category Products !
+    """
+    queryset = models.Product.objects.all()
+    serializer_class = serializers.ProductSerializer
+    permission_classes = (permissions.AllowAny,)
+    def get_queryset(self):
+        slug = self.request.GET.get('slug')
+        return self.queryset.filter(category__slug=slug)
+
+
+class ProductTagFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    filter by tag
+    display Respective Tag Products !
+    """
+    queryset = models.Product.objects.all()
+    serializer_class = serializers.ProductSerializer
+    permission_classes = (permissions.AllowAny,)
+    def get_queryset(self):
+        slug = self.request.GET.get('slug')
+        return self.queryset.filter(tag__slug=slug)
 
 class OwnReviewReadOnlyViewSet(viewsets.ModelViewSet):
     """
