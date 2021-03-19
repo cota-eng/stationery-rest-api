@@ -13,6 +13,13 @@ from rest_framework import pagination
 from rest_framework import mixins
 from rest_framework import generics
 
+class FilteredResultPagination(pagination.PageNumberPagination):
+    page_size = 12
+
+# class FilteredResultPagination(pagination.LimitOffsetPagination):
+#     default = 2
+#     max_limit = 10
+
 class FavProductAPIView(mixins.RetrieveModelMixin,
                            mixins.ListModelMixin,
                            viewsets.GenericViewSet):
@@ -42,7 +49,7 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
 
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
-        
+
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
         print(instance)
@@ -115,6 +122,10 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
     #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
     
 class CategoryReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    for list category view \n
+    display category related product !
+    """
     queryset = models.Category.objects.all()
     serializer_class = serializers.CategorySerializer
     permission_classes = (permissions.AllowAny,)
@@ -127,22 +138,19 @@ class ProductReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     # lookup_field = 'slug'
 
 class TagReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    for list tag view \n
+    display tag related product !
+    """
     queryset = models.Tag.objects.all()
     serializer_class = serializers.TagSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
 
-class FilteredResultPagination(pagination.PageNumberPagination):
-    page_size = 12
-
-# class FilteredResultPagination(pagination.LimitOffsetPagination):
-#     default = 2
-#     max_limit = 10
-
 class ProductSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
     """
-    search like below
-    http://localhost:8000/api/search/?name=S20&?
+    search like below \n
+    http://localhost:8000/api/search/?name=S20&? \n
     all condition searching
     """
     queryset = models.Product.objects.all()
@@ -165,12 +173,12 @@ class ProductBrandFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     filter by brand/<brand_name_slug>
     display Respective Brand Pens !
     """
-    queryset = models.Brand.objects.all()
-    serializer_class = serializers.BrandSerializer
+    queryset = models.Product.objects.all()
+    serializer_class = serializers.ProductSerializer
     permission_classes = (permissions.AllowAny,)
-    lookup_field = 'slug'
-    # def get_queryset(self):
-    #     return self.queryset.filter(slug=self.request.GET.get('slug'))
+    def get_queryset(self):
+        slug = self.request.GET.get('slug')
+        return self.queryset.filter(brand__slug=slug)
     # def retrieve(self, request, pk=None):
     #     response = {'message': 'retrieve method is not allowed'}
     #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
