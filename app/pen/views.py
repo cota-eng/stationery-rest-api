@@ -147,6 +147,16 @@ class TagReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
 
+class BrandReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    for list brand view \n
+    display brand related product !
+    """
+    queryset = models.Brand.objects.all()
+    serializer_class = serializers.BrandSerializer
+    permission_classes = (permissions.AllowAny,)
+    lookup_field = 'slug'
+
 class ProductSearchByAllConditions(viewsets.ReadOnlyModelViewSet):
     """
     search like below \n
