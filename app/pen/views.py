@@ -8,7 +8,7 @@ from rest_framework import status
 from rest_framework.decorators import  action
 from rest_framework import authentication
 from django_filters import rest_framework as filters
-from .filters import  ProductOriginalFilter
+from .filters import  ProductOriginalFilter,OwnFavFilter
 from rest_framework import pagination
 from rest_framework import mixins
 from rest_framework import generics
@@ -18,11 +18,36 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
                            viewsets.GenericViewSet):
     """
     get specific fav info
+    EX
+    endpoint:http://localhost:8000/api/fav/?fav_user=01F02WMKMEP7AMQ859595GEK37&product=01EYZ0NBPVP428BF7ZERHBEQVH
     """
     queryset = models.Fav.objects.all()
     serializer_class = serializers.FavSerializer
     permission_classes = (permissions.IsAuthenticated,)
-    
+    filter_backends = [filters.DjangoFilterBackend]
+    filterset_class = OwnFavFilter
+    """
+    below is return single obj...
+    """
+    # lookup_field = "product"
+    # lookup_url_kwarg = "fav_user"
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+        
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        print(instance)
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
     # def get(self, request, pk=None):
     #     """
     #     fav/fav_id/ => get is_favorite
