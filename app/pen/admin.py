@@ -15,11 +15,11 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(models.Product,ProductAdmin)
 
-class FavAdmin(admin.ModelAdmin):
+class FavProductAdmin(admin.ModelAdmin):
     list_display = ('fav_user', 'product',)
     list_filter = ('is_favorite',)
 
-admin.site.register(models.Fav,FavAdmin)
+admin.site.register(models.FavProduct,FavProductAdmin)
 
 
 class TagAdmin(admin.ModelAdmin):

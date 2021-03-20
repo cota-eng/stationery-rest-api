@@ -9,7 +9,7 @@ class OwnFavFilter(filters.FilterSet):
     fav_user = filters.CharFilter(field_name="fav_user", lookup_expr='exact')
     # product = filters.CharFilter(field_name='product',lookup_expr='exact')
     class Meta:
-        model = models.Fav
+        model = models.FavProduct
         fields = ('fav_user',)
         
 class ProductOriginalFilter(filters.FilterSet):

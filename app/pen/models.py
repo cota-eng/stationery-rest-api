@@ -152,7 +152,7 @@ class Product(models.Model):
         return f'product: {self.name} Price: {self.price_yen}'
     
 
-class Fav(models.Model):
+class FavProduct(models.Model):
     """
     Fav is Favorite
     """
@@ -233,15 +233,20 @@ class Review(models.Model):
         _('easy_to_get'),
         validators=[MaxValueValidator(5), MinValueValidator(1)]
         )
+        
+    stars_list = [
+        stars_of_design,
+        stars_of_durability,
+        stars_of_usefulness,
+        stars_of_function,
+        stars_of_easy_to_get,
+        ]
 
     @property
     def avarage_star(self):
         sum = 0
-        sum += self.stars_of_design
-        sum += self.stars_of_durability
-        sum += self.stars_of_usefulness
-        sum += self.stars_of_function
-        sum += self.stars_of_easy_to_get
+        for star in stars_list:
+            sum += self.star
         return float(sum / 5)
 
     good_point_text = models.TextField(blank=True,null=True)
@@ -251,6 +256,7 @@ class Review(models.Model):
         related_name='reviewer',
         on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True)
+
     class Meta:
         """
         one review for one person 
@@ -268,7 +274,7 @@ class Review(models.Model):
         # index_together = (('reviewer', 'product'))
 
     def __str__(self):
-        return f'Reviewd product: {self.product.name} / Reviewer: {self.reviewer.nickname}'
+        return f'Reviewd product: {self.product.name} / Reviewer: {self.reviewer.username}'
     
 # class Comment(models.Model):
 #     pass

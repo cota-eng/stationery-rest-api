@@ -3,14 +3,20 @@ from . import models
 from authentication.models import User
 from authentication.serializers import UserSerializer
 
-class FavSerializer(serializers.ModelSerializer):
+class FavProductSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     is_favorite = serializers.BooleanField(read_only=True)
     # lookup_field = 'faved.pk'
     class Meta:
-        model = models.Fav
-        fields = '__all__'
+        model = models.FavProduct
+        fields = ('is_favorite','fav_user','product','created_at',)
     
+class FavUsedByProfileSerializer(serializers.ModelSerializer):
+    is_favorite = serializers.BooleanField(read_only=True)
+    class Meta:
+        model = models.FavProduct
+        fields = ('is_favorite','product',)
+
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:

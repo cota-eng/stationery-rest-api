@@ -33,8 +33,8 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
     EX
     endpoint:http://localhost:8000/api/fav/?fav_user=01F02WMKMEP7AMQ859595GEK37&product=01EYZ0NBPVP428BF7ZERHBEQVH
     """
-    queryset = models.Fav.objects.all()
-    serializer_class = serializers.FavSerializer
+    queryset = models.FavProduct.objects.all()
+    serializer_class = serializers.FavProductSerializer
     permission_classes = (permissions.IsAuthenticated,)
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = OwnFavFilter
@@ -75,10 +75,10 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
         user = request.user
         try:
             fav = models.Fav.objects.get(Q(fav_user__exact=user) & Q(product__exact=product))
-        except models.Fav.DoesNotExist:
+        except models.FavProduct.DoesNotExist:
             response = {'message': 'not faved'}
             return Response(response, status=status.HTTP_204_NO_CONTENT)
-        serializer = serializers.FavSerializer(fav, many=False)
+        serializer = serializers.FavProductSerializer(fav, many=False)
         response = {'message': 'Fav cheked', 'result': serializer.data["is_favorite"]}
         return Response(response, status=status.HTTP_200_OK)
 
@@ -99,9 +99,9 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
         product = models.Product.objects.get(id=pk)
         # productのid入手
         user = request.user
-        # get_or_create
+        # TODO: get_or_create is better?
         try:
-            fav = models.Fav.objects.get(fav_user=user.pk, product=product)
+            fav = models.FavProduct.objects.get(fav_user=user.pk, product=product)
             if fav.is_favorite:
                 fav.is_favorite = False
             else:
@@ -111,7 +111,7 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
             response = {'message': 'Fav changed', 'result': serializer.data}
             return Response(response, status=status.HTTP_200_OK)
         except models.Fav.DoesNotExist:
-            fav = models.Fav.objects.create(
+            fav = models.FavProduct.objects.create(
                 fav_user=user,
                 product=product,
                 is_favorite=True,
@@ -238,11 +238,11 @@ class ProductSearchByAllConditions(mixins.ListModelMixin,
     queryset = models.Product.objects.all()
     serializer_class = serializers.ProductSerializer
     permission_classes = (permissions.AllowAny,)
+    filter_backends = [filters.DjangoFilterBackend]
+    filterset_class = ProductOriginalFilter
     # pagination_class = FilteredResultPagination
     # pagination_class = pagination.LimitOffsetPagination
     # add &?limit=100&offset=500
-    filter_backends = [filters.DjangoFilterBackend]
-    filterset_class = ProductOriginalFilter
 
 
 # class PenCategoryFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
@@ -296,7 +296,7 @@ class ProductTagFilteredReadOnlyViewSet(mixins.ListModelMixin,
 
 class OwnReviewViewSet(mixins.ListModelMixin,
                        mixins.RetrieveModelMixin,
-                       mixins.UpdateModelMixin, 
+                       mixins.UpdateModelMixin,
                        viewsets.GenericViewSet):
     """
     View that get data reviewed by request user:IsAuthenticated
@@ -312,7 +312,7 @@ class OwnReviewViewSet(mixins.ListModelMixin,
 
 class ReviewViewSet(mixins.ListModelMixin,
                     mixins.RetrieveModelMixin,
-                    mixins.CreateModelMixin,
+                    # mixins.CreateModelMixin,
                     viewsets.GenericViewSet):
     """
     can review specific pen 
@@ -320,14 +320,21 @@ class ReviewViewSet(mixins.ListModelMixin,
     """
     queryset = models.Review.objects.all()
     serializer_class = serializers.ReviewSerialier
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
     # lookup_field = ''
     # def perform_create(self, serializer):
     #     serializer.save(reviewer=self.request.user)
     @action(detail=True,methods=["POST"], permission_classes=[permissions.IsAuthenticated])
-    def review(self, request, pk=None):
+    def create_review(self, request, pk=None):
+        """
+        review specific pen 
+        ex) http://localhost:8000/api/review/<int:product_id>/create_review/
+        """
         if 'title' in request.data:
             product = models.Product.objects.get(id=pk)
+            """
+            TODO: リスト内包表記で単純化、行数減らす
+            """
             title = request.data['title']
             stars_of_design = request.data['stars_of_design']
             stars_of_durability = request.data['stars_of_durability']
