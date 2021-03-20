@@ -89,6 +89,27 @@ class TagUsingPenSerializer(serializers.ModelSerializer):
         # depth = 1
 
 
+class ReviewNotIncludeUserSerialier(serializers.ModelSerializer):
+    created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
+    """
+    reviewer - avatar, nickname, id
+    """
+    class Meta:
+        model = models.Review
+        fields = (
+            'id',
+            'title',
+            'stars_of_design',
+            'stars_of_durability',
+            'stars_of_usefulness',
+            'stars_of_function',
+            'stars_of_easy_to_get',
+            'avarage_star',
+            'good_point_text',
+            'bad_point_text',
+            'created_at',
+            )
+
 class ReviewSerialier(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     """
@@ -117,7 +138,7 @@ class ReviewSerialier(serializers.ModelSerializer):
         """
         extra_kwargs = {
             "title": {
-                'max_length':20,
+                'max_length':100,
             }
         }
 
@@ -129,8 +150,9 @@ class ProductSerializer(serializers.ModelSerializer):
     category = CategoryUsingProductSerializer(read_only=True)
     brand = BrandSerializer(read_only=True)
     tag = TagUsingPenSerializer(many=True,read_only=True)
-    review = ReviewSerialier()
-    # review = ReviewSerialier(many=True)
+    # review = ReviewSerialier()
+    # for rate action, many = false is must
+    review = ReviewSerialier(many = True)
     # description = serializers.SerializerMethodField()
 
     # def get_description(self, instance):
@@ -138,24 +160,35 @@ class ProductSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = models.Product
-        fields = ('review',
+        fields = ('id',
+                  'name',
+                  'description',
+                  'price_yen',
+                  'image',
+                  'image_src',
+                  'amazon_link_to_buy',
+                  'rakuten_link_to_buy',
+                  'mercari_link_to_buy',
+                  'number_of_review',
+                  'avarage_of_review_star',
+                  'review',
                   'created_at',
                   'updated_at',
                   'category',
                   'brand',
                   'tag',)
         read_only_fields = (
-            'id',
-            'name',
-            'description',
-            'price_yen',
-            'image',
-            'image_src',
-            'amazon_link_to_buy',
-            'rakuten_link_to_buy',
-            'mercari_link_to_buy',
-            'number_of_review',
-            'avarage_of_review_star',
+                'id',
+                'name',
+                'description',
+                'price_yen',
+                'image',
+                'image_src',
+                'amazon_link_to_buy',
+                'rakuten_link_to_buy',
+                'mercari_link_to_buy',
+                'number_of_review',
+                'avarage_of_review_star',
             )
         depth = 1
 
