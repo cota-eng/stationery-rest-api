@@ -9,19 +9,24 @@ import os
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.apps import apps
 from django.contrib import auth
-from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.hashers import make_password
-from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import PermissionDenied
-from django.core.mail import send_mail
-from django.db import models
-from django.db.models.manager import EmptyManager
+# from django.contrib.contenttypes.models import ContentType
+# from django.core.exceptions import PermissionDenied
+# from django.core.mail import send_mail
+# from django.db.models.manager import EmptyManager
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.utils import timezone
 from django.conf import settings
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+import environ
+import requests, json
+import ulid
+from core.models import ULIDField
+env = environ.Env()
+env.read_env('.env')
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -59,9 +64,6 @@ class UserManager(BaseUserManager):
 
         return self._create_user(username, email, password, **extra_fields)
 
-import ulid
-from core.models import ULIDField
-
 
 class User(AbstractBaseUser, PermissionsMixin):
     """
@@ -90,11 +92,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         error_messages={
             'unique': _("A user with that username already exists."),
         },
-    )
-    nickname = models.CharField(
-        _('nickname'),
-        max_length=150,
-        default='初期ユーザー'
     )
     first_name = models.CharField(_('first name'), max_length=150, blank=True)
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
@@ -125,17 +122,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = _('users')
         # abstract = True
 
-    # def get_full_name(self):
-    #     """
-    #     Return the first_name plus the last_name, with a space in between.
-    #     """
-    #     full_name = '%s %s' % (self.first_name, self.last_name)
-    #     return full_name.strip()
-
-    # def get_short_name(self):
-    #     """Return the short name for the user."""
-    #     return self.first_name
-
 
 def profile_avatar_path(instance, filename):
     ext = filename.split('.')[-1]
@@ -164,7 +150,7 @@ class Profile(models.Model):
         related_name="profile",
         on_delete=models.CASCADE
         )
-    nickname = models.CharField(_('nickname'),max_length=50,default="profile nickname")
+    nickname = models.CharField(_('nickname'),max_length=10,default="匿名ユーザー")
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None,null=True,blank=True)
@@ -173,19 +159,13 @@ class Profile(models.Model):
     def __str__(self):
         return f'Profile of {self.user}'
 
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-import environ
 
-env = environ.Env()
-env.read_env('.env')
-import requests, json
 @receiver(post_save, sender=User)
 def create_profile(sender, **kwargs):
     """ 新ユーザー作成時に空のprofileも作成する """
     if kwargs['created']:
         WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
         requests.post(WEB_HOOK_URL, data = json.dumps({
-            'text': f':smile_cat:Profile [ {kwargs["instance"]} ] Created!!',  #通知内容
+            'text': f':smile_cat:Profile [ {kwargs["instance"]} ] Created!!',  
         }))
         profile = Profile.objects.get_or_create(user=kwargs['instance'])
