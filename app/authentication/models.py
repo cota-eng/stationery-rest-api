@@ -1,30 +1,26 @@
 from django.db import models
+import uuid
+import os
+import environ
+import requests
+import json
+import ulid
 from django.contrib.auth.models import (AbstractBaseUser, 
                                        BaseUserManager,
                                        PermissionsMixin)
 from django.contrib.auth import get_user_model
 from django.conf import settings
-import uuid
-import os
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.apps import apps
 from django.contrib import auth
 from django.contrib.auth.hashers import make_password
-# from django.contrib.contenttypes.models import ContentType
-# from django.core.exceptions import PermissionDenied
-# from django.core.mail import send_mail
-# from django.db.models.manager import EmptyManager
-from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.utils import timezone
-from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-import environ
-import requests, json
-import ulid
 from core.models import ULIDField
+
 env = environ.Env()
 env.read_env('.env')
 
@@ -137,7 +133,6 @@ class Profile(models.Model):
     """
     TODO: id is to normal id?
     """
-    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
     id = ULIDField(
         primary_key=True,
         default=ulid.new,
@@ -155,7 +150,6 @@ class Profile(models.Model):
     updated_at = models.DateField(auto_now=True)
     avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None,null=True,blank=True)
     twitter_account = models.CharField(_('twitter username'),null=True,blank=True,max_length=100)
-    # favorite_pen = models.ManyToManyField()
     def __str__(self):
         return f'Profile of {self.user}'
 
