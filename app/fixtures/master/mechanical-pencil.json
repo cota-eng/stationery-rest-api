@@ -1,5 +1,5 @@
 [{
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBP4GT46K3KJTFMEXYYR",
         "fields": {
             "name": "s20",
@@ -17,7 +17,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk":"01EYZ0NBP4W5BYWQE7ENE7CSY6",
         "fields": {
             "name": "クルトガ　スタンダードモデル",
@@ -35,7 +35,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBP56N7G3VQVGH5R51X2",
         "fields": {
             "name": "ドクターグリップ　Gスペック",
@@ -53,7 +53,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBP5AYWANHYESCYAGAP3",
         "fields": {
             "name": "クルトガ ラバーグリップ付",
@@ -71,7 +71,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPNK540VZAPMNJ201JY",
         "fields": {
             "name": "クルトガ ハイグレードモデル",
@@ -89,7 +89,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPP79DR9SDCES9XPJJK",
         "fields": {
             "name": "クルトガ ローレットモデル",
@@ -107,7 +107,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPQWRJ334W8KVQD82YX",
         "fields": {
             "name": "クルトガアドバンス",
@@ -125,7 +125,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPQJ0V6YHK8T9H2KQZ5",
         "fields": {
             "name": "クルトガアドバンス　アップグレードモデル",
@@ -143,7 +143,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPR8FS3VXWNFD9CC9ZY",
         "fields": {
             "name": "アルファゲル スイッチ",
@@ -161,7 +161,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPRJCQQ2ZCQ2F4KK9HA",
         "fields": {
             "name": "アルファゲル <クルトガエンジン搭載タイプ>",
@@ -179,7 +179,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPSMWX131SYGNGFXC9C",
         "fields": {
             "name": "アルファゲル<スリムタイプ>",
@@ -197,7 +197,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPS6B8H28XARPAMTVND",
         "fields": {
             "name": "アルファゲル<シャカシャカ機構搭載モデル>",
@@ -215,7 +215,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPT7C21HSKQT1WM6KAN",
         "fields": {
             "name": "シフト",
@@ -233,7 +233,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPVPN580RK42KF6C51N",
         "fields": {
             "name": "ピュアモルト（オークウッド・プレミアム・エディション） キャップ式",
@@ -251,7 +251,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPWRSQVV619N00E0G90",
         "fields": {
             "name": "ピュアモルト",
@@ -269,7 +269,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPWP2B57R4P7T3TK0Z0",
         "fields": {
             "name": "ピュアモルト（オークウッド・プレミアム・エディション） ノック式",
@@ -287,7 +287,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPWP2B57R4P7T3TK0Z0",
         "fields": {
             "name": "ドクターグリップエース",
@@ -305,7 +305,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ3N5AHDM90SVDGRVRHZ0RNF",
         "fields": {
             "name": "デルガード タイプGR",
@@ -323,7 +323,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ3N5AHDVC525TC4SZ508NRW",
         "fields": {
             "name": "デルガード+2C",

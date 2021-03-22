@@ -1,19 +1,17 @@
 from rest_framework import serializers
 from django.conf import settings
 from django.contrib.auth import get_user_model, authenticate
-from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from django.utils.encoding import smart_str, force_str, DjangoUnicodeDecodeError
-from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
+# from django.contrib.auth.tokens import PasswordResetTokenGenerator
+# from django.utils.encoding import smart_str, force_str, DjangoUnicodeDecodeError
+# from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from rest_framework import exceptions
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken,TokenError
-from django.contrib.auth import get_user_model
 from . import models
 from django.utils.text import gettext_lazy as _
-from rest_framework import serializers
-from rest_framework_simplejwt.tokens import RefreshToken, TokenError
+# from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 
 # class LoginSerializer(serializers.ModelSerializer):
 #     tokens = serializers.SerializerMethodField()
@@ -30,31 +28,68 @@ from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 #             'access':user.tokens()['access'],
 #             'refresh':user.tokens()['refresh'],
 #         }
+import environ
+env = environ.Env()
+env.read_env('.env')
+import requests, json
+from pen.models import Review,FavProduct
 
 class UserSerializer(serializers.ModelSerializer):
+    nickname = serializers.SerializerMethodField(read_only=True)
+    twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
+
+    def get_nickname(self, obj):
+        return obj.profile.nickname
+
     class Meta:
         model = get_user_model()
-        fields = ('id','nickname','profile',)
-        # fields = ('id','email','nickname', 'password','profile',)
-        extra_kwargs = {'password': {
-            'write_only': True,
-            'style': {'input_type': 'password'}
+        fields = ('id','profile','nickname','twitter_account',)
+        extra_kwargs = {
+            'password': {
+                'write_only': True,
+                'style': {'input_type': 'password'}
+            },
+            # 'email': {
+            #     'read_only':True
+            # },
         }
-            }
-
+    # def create(self, validated_data):
+    #     response = super().create(validated_data)
+    #     WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+    #     requests.post(WEB_HOOK_URL, data = json.dumps({
+    #         'text': f':smile_cat:UserCreated [ {validated_data["email"]} ] ',  
+    #     }))
+    #     return response
     # def create(self, validated_data):
     #     return get_user_model().objects.create_user(**validated_data)
+from pen.serializers import ReviewNotIncludeUserSerialier,FavUsedByProfileSerializer
 
 class ProfileSerializer(serializers.ModelSerializer):
     """
     read only 
     """
+    # user = UserSerializer(read_only=True)
     created_at = serializers.DateField(format="%Y/%m/%d",read_only=True)
     updated_at = serializers.DateField(format="%Y/%m/%d", read_only=True)
     # user_profile = UserSerializer()
+    review = serializers.SerializerMethodField()
+    faved_product = serializers.SerializerMethodField()
+
+    def get_review(self, obj):
+        own_review = Review.objects.filter(reviewer__id=obj.user.id)
+        print(own_review)
+        serializer = ReviewNotIncludeUserSerialier(instance=own_review,many=True)
+        return serializer.data
+    
+    def get_faved_product(self, obj):
+        faved_product = FavProduct.objects.filter(fav_user=obj.user)
+        print(faved_product)
+        serializer = FavUsedByProfileSerializer(instance=faved_product, many=True)
+        return serializer.data
+
     class Meta:
         model = models.Profile
-        fields = ('id','created_at', 'updated_at',  'avatar', )
+        fields = ('id','nickname','review','faved_product','created_at', 'updated_at',  'avatar', )
         # fields = ('id', 'nickname','created_at', 'updated_at',  'avatar', 'user_profile')
         # extra_kwargs = {'user_profile': {'read_only': True}}
     # def validate(self, attrs):

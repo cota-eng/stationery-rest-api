@@ -67,6 +67,8 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
     # 'debug_toolbar',
+    # 'whitenoise.runserver_nostatic',
+
 ]
 
 MIDDLEWARE = [
@@ -78,15 +80,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-SECURE_HSTS_SECONDS = 31536000
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE=True
-SECURE_SSL_REDIRECT = True
-SECURE_HSTS_PRELOAD=True
+
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
@@ -155,8 +152,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 AUTHENTICATION_BACKENDS = [
    "django.contrib.auth.backends.AllowAllUsersModelBackend",
@@ -203,10 +198,9 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),# in local
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
-    'ROTATE_REFRESH_TOKENS': True,
-    'BLACKLIST_AFTER_ROTATION': True,
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': False,
     'UPDATE_LAST_LOGIN': True,
-
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
     'VERIFYING_KEY': None,
@@ -261,12 +255,9 @@ CORS_ALLOW_CREDENTIALS = True  # Access-control-Allow-Credentials: true
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-# MEDIA_ROOT = '/vol/web/media/'
-STATIC_ROOT = '/static/'
-# STATIC_ROOT = '/vol/web/static/'
+
 
 
 AUTH_USER_MODEL = 'authentication.User'
@@ -301,7 +292,6 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
-
 
 REST_USE_JWT = True
 # JWT_AUTH_COOKIE = 'jwt-auth'

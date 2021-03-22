@@ -18,7 +18,7 @@ schema_view = get_schema_view(
 )
 
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import environ
 env = environ.Env()
 env.read_env(os.path.join(BASE_DIR, '.env'))

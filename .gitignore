@@ -5,7 +5,7 @@ media
 __pycache__/
 *.py[cod]
 *$py.class
-
+./requirements-dev.txt
 # C extensions
 *.so
 
