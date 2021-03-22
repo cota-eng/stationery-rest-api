@@ -68,6 +68,9 @@ class Tag(models.Model):
     def __str__(self):
         return f'Tag: {self.name}'
 
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
+
 class Product(models.Model):
     """Model that is main part"""
     id = ULIDField(
@@ -101,11 +104,15 @@ class Product(models.Model):
         Tag,
         related_name="product_tag",
     )
-    image = models.ImageField(
-        upload_to=None,
-        height_field=None,
-        width_field=None,
-        max_length=None,
+    # avatar_thumbnail = ProcessedImageField(upload_to='avatars',
+    #                                        processors=[ResizeToFill(100, 50)],
+    #                                        format='JPEG',
+    #                                        options={'quality': 60})
+    image = ProcessedImageField(
+        upload_to='products',
+        processors=[ResizeToFill(100, 100)],
+        format='JPEG',
+        options={'quality': 60},
         blank=True,
         null=True)
     # in JP 出典
