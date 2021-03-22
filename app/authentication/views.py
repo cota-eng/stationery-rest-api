@@ -54,11 +54,25 @@ class GoogleLogin(SocialLoginView):
 class UserReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     """
     TODO:not needed?
+    変更可能な情報はprofileにのみ存在してるから、、、
+    UserRankingなどに必要かも
     """
     queryset = get_user_model().objects.all()
     serializer_class = serializers.UserSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = "id"
+
+
+class ProfileReadOnlyViewSet(mixins.RetrieveModelMixin,
+                             mixins.ListModelMixin,
+                             viewsets.GenericViewSet):
+    queryset = models.Profile.objects.all()
+    # permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = serializers.ProfileSerializer
+    parser_classes = [parsers.MultiPartParser,
+                      parsers.FormParser,]
+
 
 class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
                                           mixins.ListModelMixin,

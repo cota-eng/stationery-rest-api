@@ -32,13 +32,18 @@ import environ
 env = environ.Env()
 env.read_env('.env')
 import requests, json
+from pen.models import Review,FavProduct
+
 class UserSerializer(serializers.ModelSerializer):
     nickname = serializers.SerializerMethodField(read_only=True)
     twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
+
+    def get_nickname(self, obj):
+        return obj.profile.nickname
+
     class Meta:
         model = get_user_model()
-        fields = ('id','nickname','profile','twitter_account',)
-        # fields = ('id','email','nickname','profile','twitter_account',)
+        fields = ('id','profile','nickname','twitter_account',)
         extra_kwargs = {
             'password': {
                 'write_only': True,
@@ -48,8 +53,6 @@ class UserSerializer(serializers.ModelSerializer):
             #     'read_only':True
             # },
         }
-    def get_nickname(self, obj):
-        return obj.profile.nickname
     # def create(self, validated_data):
     #     response = super().create(validated_data)
     #     WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
@@ -59,18 +62,34 @@ class UserSerializer(serializers.ModelSerializer):
     #     return response
     # def create(self, validated_data):
     #     return get_user_model().objects.create_user(**validated_data)
+from pen.serializers import ReviewNotIncludeUserSerialier,FavUsedByProfileSerializer
 
 class ProfileSerializer(serializers.ModelSerializer):
     """
     read only 
     """
-    user = UserSerializer(read_only=True)
+    # user = UserSerializer(read_only=True)
     created_at = serializers.DateField(format="%Y/%m/%d",read_only=True)
     updated_at = serializers.DateField(format="%Y/%m/%d", read_only=True)
     # user_profile = UserSerializer()
+    review = serializers.SerializerMethodField()
+    faved_product = serializers.SerializerMethodField()
+
+    def get_review(self, obj):
+        own_review = Review.objects.filter(reviewer__id=obj.user.id)
+        print(own_review)
+        serializer = ReviewNotIncludeUserSerialier(instance=own_review,many=True)
+        return serializer.data
+    
+    def get_faved_product(self, obj):
+        faved_product = FavProduct.objects.filter(fav_user=obj.user)
+        print(faved_product)
+        serializer = FavUsedByProfileSerializer(instance=faved_product, many=True)
+        return serializer.data
+
     class Meta:
         model = models.Profile
-        fields = ('id','nickname','created_at', 'updated_at',  'avatar', 'user')
+        fields = ('id','nickname','review','faved_product','created_at', 'updated_at',  'avatar', )
         # fields = ('id', 'nickname','created_at', 'updated_at',  'avatar', 'user_profile')
         # extra_kwargs = {'user_profile': {'read_only': True}}
     # def validate(self, attrs):

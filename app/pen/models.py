@@ -186,6 +186,21 @@ class FavProduct(models.Model):
 
 
 class Review(models.Model):
+
+    # def __init__(self, *args, **kwargs):
+    #     stars_of_design = self.stars_of_design
+    #     stars_of_durability = self.stars_of_durability
+    #     stars_of_usefulness = self.stars_of_usefulness
+    #     stars_of_function = self.stars_of_function
+    #     stars_of_easy_to_get = self.stars_of_easy_to_get
+    #     self.stars_list = [
+    #         stars_of_design,
+    #         stars_of_durability,
+    #         stars_of_usefulness,
+    #         stars_of_function,
+    #         stars_of_easy_to_get,
+    #     ]
+
     """Model that display reviews of pens"""
     id = ULIDField(
         primary_key=True,
@@ -233,21 +248,22 @@ class Review(models.Model):
         _('easy_to_get'),
         validators=[MaxValueValidator(5), MinValueValidator(1)]
         )
-        
-    stars_list = [
-        stars_of_design,
-        stars_of_durability,
-        stars_of_usefulness,
-        stars_of_function,
-        stars_of_easy_to_get,
-        ]
+
+    
 
     @property
     def avarage_star(self):
+        stars_list = [
+            self.stars_of_design,
+            self.stars_of_durability,
+            self.stars_of_usefulness,
+            self.stars_of_function,
+            self.stars_of_easy_to_get,
+        ]
         sum = 0
         for star in stars_list:
-            sum += self.star
-        return float(sum / 5)
+            sum += star
+        return float(sum / len(stars_list))
 
     good_point_text = models.TextField(blank=True,null=True)
     bad_point_text = models.TextField(blank=True,null=True)
