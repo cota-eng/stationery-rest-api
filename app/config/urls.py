@@ -43,9 +43,8 @@ urlpatterns += [
 # else:
 #     path(ADMIN_URL + '/', admin.site.urls),
 
-
-# import debug_toolbar
-# if settings.DEBUG:
-#     urlpatterns += [
-#         path('__debug__/', include(debug_toolbar.urls)),
-#     ] 
+import debug_toolbar
+if settings.DEBUG:
+    urlpatterns += [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] 

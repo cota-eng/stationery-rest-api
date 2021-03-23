@@ -31,15 +31,15 @@ import requests, json
 from pen.models import Review,FavProduct
 
 
-class AvatarSerializer(serializers.ModelSerializer):
-    # id = serializers.SerializerMethodField()
+# class AvatarSerializer(serializers.ModelSerializer):
+#     # id = serializers.SerializerMethodField()
 
-    # def get_id(self, obj):
-    #     return obj.profile.pk
+#     # def get_id(self, obj):
+#     #     return obj.profile.pk
 
-    class Meta:
-        model = models.Avatar
-        fields = ('id','image',)
+#     class Meta:
+#         model = models.Avatar
+#         fields = ('id','image',)
 
 class UserSerializer(serializers.ModelSerializer):
     nickname = serializers.SerializerMethodField(read_only=True)
@@ -88,7 +88,14 @@ class ProfileSerializer(serializers.ModelSerializer):
     # user_profile = UserSerializer()
     review = serializers.SerializerMethodField()
     faved_product = serializers.SerializerMethodField()
-    avatar = AvatarSerializer()
+    avatar = serializers.SerializerMethodField()
+
+    def get_avatar(self, obj):
+        avatar = obj.profile.avatar
+        if avatar:
+            return avatar.name
+        return None
+    # avatar = AvatarSerializer()
 
     def get_review(self, obj):
         own_review = Review.objects.filter(reviewer__id=obj.user.id)

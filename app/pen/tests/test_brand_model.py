@@ -55,3 +55,13 @@ class TestBrandAPI(TestCase):
             slug="brand1",
             official_site_link="brand1.com"
             )
+
+    def test_create_brand_fail_by_blank(self):
+        Brand.objects.create(
+            id=1,
+            name="",
+            slug="brand",
+            official_site_link="brand.com"
+        )
+        self.assertEqual(Brand.objects.filter(name="").count(),1)
+        

@@ -1,7 +1,35 @@
 from rest_framework import serializers
 from . import models
 from authentication.models import User
-from authentication.serializers import UserSerializer
+# from authentication.serializers import UserSerializer
+from django.contrib.auth import get_user_model
+
+class ReviewerSerializer(serializers.ModelSerializer):
+    nickname = serializers.SerializerMethodField(read_only=True)
+    twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
+    avatar = serializers.SerializerMethodField()
+
+    def get_avatar(self, obj):
+        avatar = obj.profile.avatar
+        if avatar:
+            return avatar.name
+        return None
+
+    def get_nickname(self, obj):
+        return obj.profile.nickname
+
+    class Meta:
+        model = get_user_model()
+        fields = ('id','profile','nickname','twitter_account','avatar',)
+        extra_kwargs = {
+            'password': {
+                'write_only': True,
+                'style': {'input_type': 'password'}
+            },
+            # 'email': {
+            #     'read_only':True
+            # },
+        }
 
 class FavProductSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
@@ -121,7 +149,7 @@ class ReviewSerialier(serializers.ModelSerializer):
     """
     reviewer - avatar, nickname, id
     """
-    reviewer = UserSerializer(read_only=True)
+    reviewer = ReviewerSerializer(read_only=True)
     class Meta:
         model = models.Review
         fields = (
