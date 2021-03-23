@@ -1,0 +1,14 @@
+[
+    {
+        "model": "authentication.Profile",
+        "pk": "01F1EAMY1EDWXQCD5C6DVPHDF1",
+        "fields": {
+            "user":"01EYZ0NBPX3WWCH9D1652YGP4G",
+            "nickname":"",
+            "created_at":"",
+            "updated_at":"",
+            "twitter_account":"",
+            "avatar":"1"
+        }
+    }
+]

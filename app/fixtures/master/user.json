@@ -1,0 +1,48 @@
+[
+    {
+        "model": "authentication.User",
+        "pk": "01EYZ0NBPX3WWCH9D1652YGP4G",
+        "fields": {
+            "username":"userb",
+            "email": "b@example.com",
+            "password": "adminadmin"
+        }
+    },
+    {
+        "model": "authentication.User",
+        "pk": "01EYZ0NBPXP9MBC2K1X417ZJAG",
+        "fields": {
+            "username":"userc",
+            "email": "c@example.com",
+            "password": "adminadmin"
+        }
+    },
+    {
+        "model": "authentication.User",
+        "pk": "01EYZ0NBPY53MTZYGFZJK1JGKK",
+        "fields": {
+            "username":"d",
+            "email": "d@example.com",
+            "password": "adminadmin"
+        }
+    },
+    {
+        "model": "authentication.User",
+        "pk": "01EYZ0NBPYKJFEZ94FDQFY0GBA",
+        "fields": {
+            "username":"e",
+            "email": "e@example.com",
+            "password": "adminadmin"
+        }
+    },
+    {
+        "model": "authentication.User",
+        "pk": "01EYZ0NBQAT3SKAQT2CXSC0MYJ",
+        "fields": {
+            "username":"f",
+            "email": "f@example.com",
+            "password": "adminadmin"
+        }
+    }
+   
+]
