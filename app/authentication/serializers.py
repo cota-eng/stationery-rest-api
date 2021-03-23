@@ -1,9 +1,6 @@
 from rest_framework import serializers
 from django.conf import settings
 from django.contrib.auth import get_user_model, authenticate
-# from django.contrib.auth.tokens import PasswordResetTokenGenerator
-# from django.utils.encoding import smart_str, force_str, DjangoUnicodeDecodeError
-# from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from rest_framework import exceptions
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
@@ -11,7 +8,6 @@ from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken,TokenError
 from . import models
 from django.utils.text import gettext_lazy as _
-# from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 
 # class LoginSerializer(serializers.ModelSerializer):
 #     tokens = serializers.SerializerMethodField()
@@ -34,16 +30,34 @@ env.read_env('.env')
 import requests, json
 from pen.models import Review,FavProduct
 
+
+class AvatarSerializer(serializers.ModelSerializer):
+    # id = serializers.SerializerMethodField()
+
+    # def get_id(self, obj):
+    #     return obj.profile.pk
+
+    class Meta:
+        model = models.Avatar
+        fields = ('id','image',)
+
 class UserSerializer(serializers.ModelSerializer):
     nickname = serializers.SerializerMethodField(read_only=True)
     twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
+    avatar = serializers.SerializerMethodField()
+
+    def get_avatar(self, obj):
+        avatar = obj.profile.avatar
+        if avatar:
+            return avatar.name
+        return None
 
     def get_nickname(self, obj):
         return obj.profile.nickname
 
     class Meta:
         model = get_user_model()
-        fields = ('id','profile','nickname','twitter_account',)
+        fields = ('id','profile','nickname','twitter_account','avatar',)
         extra_kwargs = {
             'password': {
                 'write_only': True,
@@ -74,6 +88,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     # user_profile = UserSerializer()
     review = serializers.SerializerMethodField()
     faved_product = serializers.SerializerMethodField()
+    avatar = AvatarSerializer()
 
     def get_review(self, obj):
         own_review = Review.objects.filter(reviewer__id=obj.user.id)
@@ -89,7 +104,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Profile
-        fields = ('id','nickname','review','faved_product','created_at', 'updated_at',  'avatar', )
+        fields = ('id','nickname','review','faved_product','created_at', 'updated_at','avatar', )
         # fields = ('id', 'nickname','created_at', 'updated_at',  'avatar', 'user_profile')
         # extra_kwargs = {'user_profile': {'read_only': True}}
     # def validate(self, attrs):
@@ -114,6 +129,21 @@ class LogoutSerializer(serializers.Serializer):
         except TokenError:
             self.fail('bad_token')
 
+
+# class AvatarSerializer(serializers.ModelSerializer):
+
+#     class Meta:
+#         model = models.Profile
+#         fields = ('avatar',)
+
+#     def save(self, *args, **kwargs):
+#         prev_avatar = self.instance.avatar
+#         if prev_avatar:
+#             prev_avatar.delete()
+#         return super().save(*args, **kwargs)
+    
+#     def update(self, instance, validated_data):
+#         return super().update(instance, validated_data)
 
 # class UserRegisterSerializer(serializers.ModelSerializer):
 #     password = serializers.CharField(style={'input_type':'password'},write_only=True)

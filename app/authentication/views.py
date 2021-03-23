@@ -92,6 +92,27 @@ class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
                       parsers.FormParser,]
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
+
+
+# class AvatarRetrieveUpdateView( mixins.RetrieveModelMixin,
+#                         mixins.ListModelMixin,
+#                         mixins.UpdateModelMixin,
+#                         viewsets.GenericViewSet):
+#     """
+#     if not own profile
+#     404 when access to your own image & cannot change image
+#     """
+#     queryset = models.Profile.objects.all()
+#     parser_classes = (parsers.MultiPartParser,
+#                       parsers.FormParser,)
+#     permission_classes = (
+#         permissions.IsAuthenticated,
+#         # UserIsOwnerOrReadOnly,
+#     )
+#     serializer_class = serializers.AvatarSerializer
+    
+    # def get_queryset(self):
+    #     return self.queryset.filter(user=self.request.user)
     # def destroy(self, request, *args, **kwargs):
     #     """
     #     delete is invalid

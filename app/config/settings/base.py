@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
+    'imagekit',
     # 'debug_toolbar',
     # 'whitenoise.runserver_nostatic',
 

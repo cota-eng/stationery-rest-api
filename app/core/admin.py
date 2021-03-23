@@ -6,10 +6,13 @@ from django.utils.translation import gettext as _
 
 class ProfileInline(admin.TabularInline):
     model = models.Profile
+# class AvatarInline(admin.TabularInline):
+#     model = models.Avatar
 
 class UserAdmin(BaseUserAdmin):
     inlines = [
-        ProfileInline
+        ProfileInline,
+        # AvatarInline
     ]
     ordering = ['id',]
     list_display = ['email','username','last_login']
@@ -27,7 +30,12 @@ class UserAdmin(BaseUserAdmin):
             {
                 'fields': ('last_login',)
                 }
-        )
+        ),
+        # (_('avatar'),
+        #     {
+        #         'fields': ('avatar',)
+        #         }
+        # ),
     )
     add_fieldsets = (
         (None, {
