@@ -1,9 +1,122 @@
 [
     {
-        "model": "authentication.avatar",
+        "model": "authentication.Avatar",
         "pk": "1",
         "fields": {
-            "avatar": "avatar/profile.png"
+            "name":"airplane",
+            "image": "avatar/airplane.svg"
+        }
+    },
+    {
+        "model": "authentication.Avatar",
+        "pk": "2",
+        "fields": {
+            "name":"beach",
+            "image": "avatar/beach.svg"
+        }
+    },
+    {
+        "model": "authentication.Avatar",
+        "pk": "3",
+        "fields": {
+            "name":"boy",
+            "image": "avatar/boy.svg"
+        }
+    },
+    {
+        "model": "authentication.Avatar",
+        "pk": "4",
+        "fields": {
+            "name":"female",
+            "image": "avatar/female.svg"
+        }
+    },
+    {
+        "model": "authentication.Avatar",
+        "pk": "5",
+        "fields": {
+            "name":"girl",
+            "image": "avatar/girl.svg"
+        }
+    },
+    {
+        "model": "authentication.Avatar",
+        "pk": "6",
+        "fields": {
+            "name":"male",
+            "image": "avatar/male.svg"
+        }
+    },
+    {
+        "model": "authentication.Avatar",
+        "pk": "7",
+        "fields": {
+            "name":"malecostume",
+            "image": "avatar/malecostume.svg"
+        }
+    },
+    {
+        "model": "authentication.Avatar",
+        "pk": "8",
+        "fields": {
+            "name":"matureman1",
+            "image": "avatar/matureman1.svg"
+        }
+    },
+    {
+        "model": "authentication.Avatar",
+        "pk": "9",
+        "fields": {
+            "name":"matureman2",
+            "image": "avatar/matureman2.svg"
+        }
+    },
+    {
+        "model": "authentication.Avatar",
+        "pk": "10",
+        "fields": {
+            "name":"maturewoman",
+            "image": "avatar/maturewoman.svg"
+        }
+    },
+    {
+        "model": "authentication.Avatar",
+        "pk": "11",
+        "fields": {
+            "name":"ship",
+            "image": "avatar/ship.svg"
+        }
+    },
+    {
+        "model": "authentication.Avatar",
+        "pk": "12",
+        "fields": {
+            "name":"supportfemale",
+            "image": "avatar/supportfemale.svg"
+        }
+    },
+    {
+        "model": "authentication.Avatar",
+        "pk": "13",
+        "fields": {
+            "name":"supportmale",
+            "image": "avatar/supportmale.svg"
+        }
+    },
+    {
+        "model": "authentication.Avatar",
+        "pk": "14",
+        "fields": {
+            "name":"unknown_1",
+            "image": "avatar/unknown_1.svg"
+        }
+    },
+    {
+        "model": "authentication.Avatar",
+        "pk": "15",
+        "fields": {
+            "name":"unknown2",
+            "image": "avatar/unknown2.svg"
         }
     }
 ]

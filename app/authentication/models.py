@@ -129,12 +129,12 @@ def profile_avatar_resize():
     pass
 
 class Avatar(models.Model):
-    image = models.ImageField(upload_to="avatar", name="avatar", width_field=None, height_field=None, null=True, blank=True)
-    
+    name = models.CharField(_("name"),max_length=20,null=True,blank=True)
+    image = models.ImageField(upload_to="avatar",  width_field=None, height_field=None, null=True, blank=True)
     def __str__(self):
-        return f'{self.profile}'
+        return f'{self.image}'
     
-    
+
 class Profile(models.Model):
     """Model that has avatar and dates of create and update"""
     """

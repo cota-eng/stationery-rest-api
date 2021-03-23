@@ -7,8 +7,8 @@ class ProfileAdmin(admin.ModelAdmin):
     # list_filter = ('name',)
 
 
-# class AvatarAdmin(admin.ModelAdmin):
-#     list_display = ('avatar',)
+class AvatarAdmin(admin.ModelAdmin):
+    list_display = ('name','image')
 
 admin.site.register(Profile, ProfileAdmin)
-admin.site.register(Avatar,)
+admin.site.register(Avatar,AvatarAdmin)
