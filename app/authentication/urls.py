@@ -12,11 +12,10 @@ router = DefaultRouter()
 router.register('user',views.UserReadOnlyViewSet)
 router.register('profile',views.OwnProfileListRetrieveUpdateViewSet)
 router.register('allprofile',views.ProfileReadOnlyViewSet)
-# router.register('avatar',views.AvatarUploadView)
+# router.register('avatar',views.AvatarRetrieveUpdateView)
 
 
 urlpatterns = [
-    # path('avatar/',views.AvatarUploadView.as_view(),name="avatar"),
     path('login/',views.GoogleLogin.as_view(), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

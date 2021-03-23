@@ -164,7 +164,9 @@ class Profile(models.Model):
 
 @receiver(post_save, sender=User)
 def create_profile(sender, **kwargs):
-    """ 新ユーザー作成時に空のprofileも作成する """
+    """
+    when user created, own profile automatically created
+    """
     if kwargs['created']:
         WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
         requests.post(WEB_HOOK_URL, data = json.dumps({

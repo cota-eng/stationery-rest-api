@@ -94,8 +94,8 @@ class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
         return self.queryset.filter(user=self.request.user)
 
 
-# class AvatarUploadView( mixins.RetrieveModelMixin,
-#                         # mixins.ListModelMixin,
+# class AvatarRetrieveUpdateView( mixins.RetrieveModelMixin,
+#                         mixins.ListModelMixin,
 #                         mixins.UpdateModelMixin,
 #                         viewsets.GenericViewSet):
 #     """
@@ -107,12 +107,12 @@ class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
 #                       parsers.FormParser,)
 #     permission_classes = (
 #         permissions.IsAuthenticated,
-#         UserIsOwnerOrReadOnly,
+#         # UserIsOwnerOrReadOnly,
 #     )
 #     serializer_class = serializers.AvatarSerializer
     
-#     def get_queryset(self):
-#         return self.queryset.filter(user=self.request.user)
+    # def get_queryset(self):
+    #     return self.queryset.filter(user=self.request.user)
     # def destroy(self, request, *args, **kwargs):
     #     """
     #     delete is invalid
