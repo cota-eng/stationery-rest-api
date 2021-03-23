@@ -37,6 +37,12 @@ from pen.models import Review,FavProduct
 class UserSerializer(serializers.ModelSerializer):
     nickname = serializers.SerializerMethodField(read_only=True)
     twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
+    # avatar = serializers.SerializerMethodField()
+
+    # def get_avatar(self, obj):
+    #     if obj.avatar.image:
+    #         return obj.avatar.id
+    #     return None
 
     def get_nickname(self, obj):
         return obj.profile.nickname
@@ -89,7 +95,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Profile
-        fields = ('id','nickname','review','faved_product','created_at', 'updated_at',  'avatar', )
+        fields = ('id','nickname','review','faved_product','created_at', 'updated_at',   )
         # fields = ('id', 'nickname','created_at', 'updated_at',  'avatar', 'user_profile')
         # extra_kwargs = {'user_profile': {'read_only': True}}
     # def validate(self, attrs):
@@ -114,6 +120,21 @@ class LogoutSerializer(serializers.Serializer):
         except TokenError:
             self.fail('bad_token')
 
+
+# class AvatarSerializer(serializers.ModelSerializer):
+
+#     class Meta:
+#         model = models.Profile
+#         fields = ('avatar',)
+
+#     def save(self, *args, **kwargs):
+#         prev_avatar = self.instance.avatar
+#         if prev_avatar:
+#             prev_avatar.delete()
+#         return super().save(*args, **kwargs)
+    
+#     def update(self, instance, validated_data):
+#         return super().update(instance, validated_data)
 
 # class UserRegisterSerializer(serializers.ModelSerializer):
 #     password = serializers.CharField(style={'input_type':'password'},write_only=True)

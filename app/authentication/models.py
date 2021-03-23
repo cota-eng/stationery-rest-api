@@ -108,7 +108,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
     objects = UserManager()
-
+    
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']
@@ -128,6 +128,13 @@ def profile_avatar_path(instance, filename):
 def profile_avatar_resize():
     pass
 
+class Avatar(models.Model):
+    image = models.ImageField(upload_to="avatar", name="avatar", width_field=None, height_field=None, null=True, blank=True)
+    
+    def __str__(self):
+        return f'{self.profile}'
+    
+    
 class Profile(models.Model):
     """Model that has avatar and dates of create and update"""
     """
@@ -148,7 +155,8 @@ class Profile(models.Model):
     nickname = models.CharField(_('nickname'),max_length=10,default="匿名ユーザー")
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
-    avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None,null=True,blank=True)
+    # avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None,null=True,blank=True)
+    avatar = models.ForeignKey(Avatar,on_delete=models.PROTECT,related_name="profile")
     twitter_account = models.CharField(_('twitter username'),null=True,blank=True,max_length=100)
     def __str__(self):
         return f'Profile of {self.user}'
@@ -162,4 +170,5 @@ def create_profile(sender, **kwargs):
         requests.post(WEB_HOOK_URL, data = json.dumps({
             'text': f':smile_cat:Profile [ {kwargs["instance"]} ] Created!!',  
         }))
-        profile = Profile.objects.get_or_create(user=kwargs['instance'])
+        avatar = Avatar.objects.get(pk=1)
+        profile = Profile.objects.get_or_create(user=kwargs['instance'],avatar=avatar)

@@ -1,0 +1,9 @@
+[
+    {
+        "model": "authentication.avatar",
+        "pk": "1",
+        "fields": {
+            "avatar": "avatar/profile.png"
+        }
+    }
+]
