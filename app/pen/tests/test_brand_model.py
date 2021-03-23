@@ -7,9 +7,8 @@ from pen.serializers import BrandSerializer
 """
 作成するTestCase
 モデルの作成success,fail(error)
-failは、空欄、
-モデルUpdate
-CRUD対応のものはCRUD
+fail　空欄、字数制限、だぶり
+
 """
 BRAND_LIST_URL = reverse('pen:brand-list')
 
@@ -31,7 +30,7 @@ class TestBrandAPI(TestCase):
         self.assertEquals(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data[0]["name"], SampleBrand.name)
     
-    def test_create_brand_invalid_method(self):
+    def test_create_brand_fail_by_invalid_method(self):
         payload = {
             'name': 'brand2',
             'slug': 'brand2',
@@ -39,3 +38,20 @@ class TestBrandAPI(TestCase):
             }
         res = self.client.post(BRAND_LIST_URL)
         self.assertEqual(res.status_code,status.HTTP_405_METHOD_NOT_ALLOWED)
+
+    def test_create_brand_fail_by_not_unique(self):
+        brand1 = Brand.objects.create(
+            id=1,
+            name="brand1",
+            slug="brand1",
+            official_site_link="brand1.com"
+        )
+        
+        from django.db import IntegrityError
+        with self.assertRaises(IntegrityError):
+            Brand.objects.create(
+            id=2,
+            name="brand1",
+            slug="brand1",
+            official_site_link="brand1.com"
+            )
