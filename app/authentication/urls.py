@@ -8,12 +8,12 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView
 )
 from rest_framework.routers import DefaultRouter
+app_name="authentication"
 router = DefaultRouter()
 router.register('user',views.UserReadOnlyViewSet)
 router.register('profile',views.OwnProfileListRetrieveUpdateViewSet)
 router.register('allprofile',views.ProfileReadOnlyViewSet)
 # router.register('avatar',views.AvatarRetrieveUpdateView)
-
 
 urlpatterns = [
     path('login/',views.GoogleLogin.as_view(), name='login'),

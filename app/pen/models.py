@@ -45,7 +45,7 @@ class Brand(models.Model):
          _("brand link"),
          max_length=255,
          unique=True
-         )
+        )
 
     def __str__(self):
         return f'Brand: {self.name}'
@@ -104,10 +104,6 @@ class Product(models.Model):
         Tag,
         related_name="product_tag",
     )
-    # avatar_thumbnail = ProcessedImageField(upload_to='avatars',
-    #                                        processors=[ResizeToFill(100, 50)],
-    #                                        format='JPEG',
-    #                                        options={'quality': 60})
     image = ProcessedImageField(
         upload_to='products',
         processors=[ResizeToFill(100, 100)],
@@ -134,6 +130,9 @@ class Product(models.Model):
         null=True,
         max_length=500)
 
+    """
+    TODO: not needed? this field is able to be impletemted in front end
+    """
     @property
     def mercari_link_to_buy(self):
         return f'https://www.mercari.com/jp/search/?keyword={self.name}'
@@ -143,7 +142,7 @@ class Product(models.Model):
         reviews = Review.objects.filter(product=self)
         return len(reviews)
 
-    # TODO:アベレージ考え中
+    # TODO: thinking of Aveerage (will be ordered by score...)
     @property
     def avarage_of_review_star(self):
         sum: int = 0
