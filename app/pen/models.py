@@ -104,10 +104,6 @@ class Product(models.Model):
         Tag,
         related_name="product_tag",
     )
-    # avatar_thumbnail = ProcessedImageField(upload_to='avatars',
-    #                                        processors=[ResizeToFill(100, 50)],
-    #                                        format='JPEG',
-    #                                        options={'quality': 60})
     image = ProcessedImageField(
         upload_to='products',
         processors=[ResizeToFill(100, 100)],
