@@ -8,11 +8,11 @@ from pen.serializers import BrandSerializer
 作成するTestCase
 モデルの作成success,fail(error)
 fail　空欄、字数制限、だぶり
-
+brand list,retrieve only
 """
 BRAND_LIST_URL = reverse('pen:brand-list')
 
-class TestBrandAPI(TestCase):
+class BrandTests(TestCase):
     def setUp(self):
         self.client = APIClient()
 
@@ -36,8 +36,8 @@ class TestBrandAPI(TestCase):
             'slug': 'brand2',
             'official_site_link':"brand2.com"
             }
-        res = self.client.post(BRAND_LIST_URL)
-        self.assertEqual(res.status_code,status.HTTP_405_METHOD_NOT_ALLOWED)
+        res = self.client.post(BRAND_LIST_URL,payload)
+        self.assertEqual(res.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
 
     def test_create_brand_fail_by_not_unique(self):
         brand1 = Brand.objects.create(
