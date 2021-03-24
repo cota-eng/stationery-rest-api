@@ -27,24 +27,24 @@ ADMIN_URL = env('ADMIN_URL')
 urlpatterns = [
     path('api/', include("authentication.urls")),
     path('api/', include("pen.urls")),
+    path('admin/', admin.site.urls),
 ]
 
 from django.conf.urls.static import static
 from django.conf import settings
 
 # if settings.DEBUG:
+import debug_toolbar
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += [
-    path('admin/', admin.site.urls),
     path('dj/', include("dj_rest_auth.urls")),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc')
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('__debug__/', include(debug_toolbar.urls)),
 ]
 # else:
 #     path(ADMIN_URL + '/', admin.site.urls),
 
-import debug_toolbar
-if settings.DEBUG:
-    urlpatterns += [
-        path('__debug__/', include(debug_toolbar.urls)),
-    ] 
+# if settings.DEBUG:
+#     urlpatterns += [
+#     ] 
