@@ -102,12 +102,109 @@
             "slug": "full-color"
         }
     },
+
     {
         "model": "pen.Tag",
         "pk": 13,
         "fields": {
-            "name": "極細",
-            "slug": "extra-fine"
+            "name": "日本",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "海外",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "クリップなし",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "軽い",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "重い",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "定番",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "ゲル",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "折れにくい",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "芯径豊富",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "",
+            "slug": ""
         }
     }
 ]
