@@ -108,7 +108,7 @@
         "pk": 13,
         "fields": {
             "name": "日本",
-            "slug": ""
+            "slug": "japan"
         }
     },
     {
@@ -116,7 +116,7 @@
         "pk": 13,
         "fields": {
             "name": "海外",
-            "slug": ""
+            "slug": "foreign"
         }
     },
     {
@@ -124,7 +124,7 @@
         "pk": 13,
         "fields": {
             "name": "クリップなし",
-            "slug": ""
+            "slug": "no-grip"
         }
     },
     {
@@ -132,7 +132,7 @@
         "pk": 13,
         "fields": {
             "name": "軽い",
-            "slug": ""
+            "slug": "light"
         }
     },
     {
@@ -140,7 +140,7 @@
         "pk": 13,
         "fields": {
             "name": "重い",
-            "slug": ""
+            "slug": "weight"
         }
     },
     {
@@ -172,15 +172,15 @@
         "pk": 13,
         "fields": {
             "name": "芯径豊富",
-            "slug": ""
+            "slug": "variable-bold"
         }
     },
     {
         "model": "pen.Tag",
         "pk": 13,
         "fields": {
-            "name": "",
-            "slug": ""
+            "name": "頑丈",
+            "slug": "tough"
         }
     },
     {
