@@ -13,7 +13,9 @@ class Post(models.Model):
         )
     published_at = models.DateTimeField(auto_now_add=True)
 
-    
+    class Meta:
+        ordering = ["-published_at"]
+
     def get_markdown(self):
         content = self.content
         markdown_text = markdown(content)
