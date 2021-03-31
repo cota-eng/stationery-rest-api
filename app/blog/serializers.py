@@ -15,4 +15,22 @@ class PostSerializer(ModelSerializer):
         return obj.get_markdown()
 
 class CommentSerializer(ModelSerializer):
-    pass
+    class Meta:
+        model = models.Comment
+        fields = "__all__"
+
+
+class CommentChildSerializer(ModelSerializer):
+    class Meta:
+        model = models.Comment
+        fields = "__all__"
+    
+class CommentDetailSerializer(ModelSerializer):
+    replies = SerializerMethodField()
+    class Meta:
+        model = models.Comment
+        fields = "__all__"
+    def get_replies(self, obj):
+        if obj.is_parent:
+            return CommentChildSerializer(obj.children(), many=True).data
+        return None
