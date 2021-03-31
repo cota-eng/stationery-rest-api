@@ -1,6 +1,12 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from markdown import markdown,mark_safe
+
+class PostManager(models.Manager):
+    def active(self, *args, **kwargs):
+        return super(PostManager,self).filter(is_public=True).filter(pub)
+
+
 class Post(models.Model):
     title = models.CharField(max_length=30)
     slug = models.SlugField()
@@ -26,6 +32,21 @@ class Post(models.Model):
         instance = self
         qs = Comment.objects.filter_by_instance(instance)
         return qs
+
+    # @property
+    # def get_content_type(self):
+    #     instance = self
+    #     content_type = ContentType.objects.get_for_model(instance.__class__)
+    #     return content_type
+
+
+# def create_slug(instance, new_slug=None):
+#     slug = slugify(instance.title)
+#     if new_slug is not None:
+#         slug = new_slug
+#     qs = Post.objects.filter(slug=slug).order_by("-id")
+    
+
 
 class Comment(models.Model):
     content = models.TextField()
