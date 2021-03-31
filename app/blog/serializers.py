@@ -3,10 +3,39 @@ from rest_framework.serializers import (
     HyperlinkedIdentityField,
     SerializerMethodField,
 )
-from . import models 
+from .models import Post,Comment
 from rest_framework.exceptions import  ValidationError
+from django.contrib.auth import get_user_model
+
+class PostListSerializer(ModelSerializer):
+    class Meta:
+        model = Post
+        fields = (
+            "id",
+            "title",
+            "content",
+            "slug",
+            "is_public",
+            "author",
+            "created_at",
+            "updated_at",
+        )
+
 
 class PostSerializer(ModelSerializer):
+    class Meta:
+        model = Post
+        fields = (
+            "id",
+            "title",
+            "content",
+            "slug",
+            "is_public",
+            "author",
+            "created_at",
+            "updated_at",
+        )
+
     url = HyperlinkedIdentityField(
         view_name="",
         lookup_field="",
@@ -20,16 +49,17 @@ class PostSerializer(ModelSerializer):
     def get_comments(self, obj):
         content_type = obj.get_content_type
         object_id = obj.id
-        comment_qs = models.Comment.objects.filter_by_instance(obj)
+        comment_qs = Comment.objects.filter_by_instance(obj)
         comments = CommentSerializer(data=comment_qs, many=True).data
         return comments
+
 from django.contrib.contenttypes.models import ContentType
 
-def create_comment_serializer(model_type="post", slug=None, parent_id=None):
-    
+def create_comment_serializer(model_type="post", slug=None, parent_id=None,user=None):
+
     class CommentCreateSeralizer(ModelSerializer):
         class Meta:
-            model = models.Comment
+            model = Comment
             fields = (
                 'id',
                 'parent',
@@ -41,7 +71,7 @@ def create_comment_serializer(model_type="post", slug=None, parent_id=None):
             self.slug = slug
             self.parent_obj = None
             if self.parent_id:
-                parent_qs = models.Comment.filter(id=parent_id)
+                parent_qs = Comment.filter(id=parent_id)
                 if parent_qs.exists() and parent_qs.count() == 1:
                     self.parent_id = parent_qs.first()
 
@@ -58,12 +88,30 @@ def create_comment_serializer(model_type="post", slug=None, parent_id=None):
                 raise ValidationError("error")
             return attrs
 
+        def create(self, validated_data):
+            content = validated_data.get("content")
+            if user:
+                main_user = user
+            else:
+                main_user = get_user_model().objects.all().first()
+            model_type = self.model_type
+            slug = self.slug
+            parent_obj = self.parent_obj
+            comment = Comment.objects.create_by_model_type(
+                model_type,
+                slug,
+                content,
+                main_user,
+                parent_obj=parent_obj,
+            )
+            return comment
+
     return CommentCreateSeralizer
 
 class CommentSerializer(ModelSerializer):
     reply_count = SerializerMethodField()
     class Meta:
-        model = models.Comment
+        model = Comment
         fields = "__all__"
     def get_reply_count(self, obj)->int:
         if obj.is_parent:
@@ -73,13 +121,13 @@ class CommentSerializer(ModelSerializer):
 
 class CommentChildSerializer(ModelSerializer):
     class Meta:
-        model = models.Comment
+        model = Comment
         fields = "__all__"
     
 class CommentDetailSerializer(ModelSerializer):
     replies = SerializerMethodField()
     class Meta:
-        model = models.Comment
+        model = Comment
         fields = "__all__"
     def get_replies(self, obj):
         if obj.is_parent:
