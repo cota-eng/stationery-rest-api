@@ -20,10 +20,10 @@ class Post(models.Model):
         related_name="author",
         on_delete=models.CASCADE
         )
-    published_at = models.DateTimeField(auto_now_add=True)
-
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     class Meta:
-        ordering = ["-published_at"]
+        ordering = ["-created_at"]
 
     def get_markdown(self):
         content = self.content
@@ -36,19 +36,29 @@ class Post(models.Model):
         qs = Comment.objects.filter_by_instance(instance)
         return qs
 
-    # @property
-    # def get_content_type(self):
-    #     instance = self
-    #     content_type = ContentType.objects.get_for_model(instance.__class__)
-    #     return content_type
+    @property
+    def get_content_type(self):
+        instance = self
+        content_type = ContentType.objects.get_for_model(instance.__class__)
+        return content_type
 
 
-# def create_slug(instance, new_slug=None):
-#     slug = slugify(instance.title)
-#     if new_slug is not None:
-#         slug = new_slug
-#     qs = Post.objects.filter(slug=slug).order_by("-id")
+def create_slug(instance, new_slug=None):
+    slug = slugify(instance.title)
+    if new_slug is not None:
+        slug = new_slug
+    qs = Post.objects.filter(slug=slug).order_by("-id")
+    is_exist = qs.exists()
+    if is_exist:
+        new_slug = f"{slug}-{qs.first().id}"
+        return create_slug(instance, new_slug=new_slug)
+    return slug
     
+
+def pre_save_post_reciewver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = create_slug(instance)
+
 class CommentManager(models.Manager):
     def filter_by_instance(self, instance):
         content_type = ContentType.objects.get_for_model(instance.__class__)
@@ -69,8 +79,17 @@ class Comment(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey(ct_field='content_type',fk_field='object_id') 
     objects = CommentManager()
-
+    parent = models.ForeignKey("self",null=True,blank=True)
     
     
     def __str__(self):
         return str(self.commentator.username)
+    
+    def children(self):
+        return Comment.objects.filter(parent=self)
+
+    @property
+    def is_parent(self):
+        if self.parent is not None:
+            return False
+        return True
