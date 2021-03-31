@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from markdown import markdown,mark_safe
-
+from django.utils.safestring import mark_safe
+from django.utils.text import slugify
+from django.contrib.contenttypes.fields import GenericForeignKey,GenericRelation  
+from django.contrib.contenttypes.models import ContentType
 class PostManager(models.Manager):
     def active(self, *args, **kwargs):
         return super(PostManager,self).filter(is_public=True).filter(pub)
@@ -50,9 +53,16 @@ class Post(models.Model):
 
 class Comment(models.Model):
     content = models.TextField()
+    post = models.ForeignKey(Post,related_name="comment",on_delete=models.CASCAD)
     commentator = models.ForeignKey(
         get_user_model(),
         related_name="commentator",
         on_delete=models.CASCADE
         )
-    # parent = 
+    content_type = models.ForeignKey(ContentType, on_delete=models.SET_NULL)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey(ct_field='content_type',fk_field='object_id') 
+    # parent =
+    
+    def __str__(self):
+        return str(self.commentator.username)
