@@ -20,9 +20,22 @@ class PostListSerializer(ModelSerializer):
             "created_at",
             "updated_at",
         )
+class PostCreateSerializer(ModelSerializer):
+    class Meta:
+        model = Post
+        fields = (
+            "id",
+            "title",
+            "content",
+            "slug",
+            "is_public",
+            "author",
+            "created_at",
+            "updated_at",
+        )
 
 
-class PostSerializer(ModelSerializer):
+class PostDetailSerializer(ModelSerializer):
     class Meta:
         model = Post
         fields = (
