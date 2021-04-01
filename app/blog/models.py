@@ -24,6 +24,7 @@ class Post(models.Model):
         )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    read_time = models.IntegerField(default=0)
     class Meta:
         ordering = ["-created_at"]
 
@@ -56,10 +57,12 @@ def create_slug(instance, new_slug=None):
         return create_slug(instance, new_slug=new_slug)
     return slug
     
-
+@receiver(post_save, sender=User)
 def pre_save_post_reciewver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = create_slug(instance)
+
+
 
 class CommentManager(models.Manager):
 
