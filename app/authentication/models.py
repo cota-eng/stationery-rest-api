@@ -163,7 +163,7 @@ class Profile(models.Model):
 
 from django.db.models.signals import post_save
 
-@receiver(post_save, sender=Post)
+@receiver(post_save, sender=User)
 def create_profile(sender, **kwargs):
     """
     when user created, own profile automatically created

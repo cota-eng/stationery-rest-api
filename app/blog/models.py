@@ -1,15 +1,15 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from markdown import markdown,mark_safe
+from markdown import markdown
 from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 from django.contrib.contenttypes.fields import GenericForeignKey,GenericRelation  
 from django.contrib.contenttypes.models import ContentType
-
+from django.utils import  timezone
 
 class PostManager(models.Manager):
     def active(self, *args, **kwargs):
-        return super(PostManager,self).filter(is_public=True).filter(pub)
+        return super(PostManager,self).filter(is_public=True).filter(created_at__lte=timezone.now())
 
 
 class Post(models.Model):
@@ -57,10 +57,10 @@ def create_slug(instance, new_slug=None):
         return create_slug(instance, new_slug=new_slug)
     return slug
     
-@receiver(post_save, sender=User)
-def pre_save_post_reciewver(sender, instance, *args, **kwargs):
-    if not instance.slug:
-        instance.slug = create_slug(instance)
+# @receiver(post_save, sender=Post)
+# def pre_save_post_reciewver(sender, instance, *args, **kwargs):
+#     if not instance.slug:
+#         instance.slug = create_slug(instance)
 
 
 
@@ -97,17 +97,17 @@ class CommentManager(models.Manager):
 
 class Comment(models.Model):
     content = models.TextField()
-    post = models.ForeignKey(Post,related_name="comment",on_delete=models.CASCAD)
+    post = models.ForeignKey(Post,related_name="comment",on_delete=models.CASCADE)
     commentator = models.ForeignKey(
         get_user_model(),
         related_name="commentator",
         on_delete=models.CASCADE
         )
-    content_type = models.ForeignKey(ContentType, on_delete=models.SET_NULL)
+    content_type = models.ForeignKey(ContentType,null=True,blank=True, on_delete=models.SET_NULL)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey(ct_field='content_type',fk_field='object_id') 
     objects = CommentManager()
-    parent = models.ForeignKey("self",null=True,blank=True)
+    parent = models.ForeignKey("self",null=True,blank=True,on_delete=models.SET_NULL)
     
     
     def __str__(self):

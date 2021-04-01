@@ -60,8 +60,8 @@ class PostDetailSerializer(ModelSerializer):
         return obj.get_markdown()
 
     def get_comments(self, obj):
-        content_type = obj.get_content_type
-        object_id = obj.id
+        # content_type = obj.get_content_type
+        # object_id = obj.id
         comment_qs = Comment.objects.filter_by_instance(obj)
         comments = CommentSerializer(data=comment_qs, many=True).data
         return comments

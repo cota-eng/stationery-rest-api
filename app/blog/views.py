@@ -28,6 +28,7 @@ class PostListAPIView(generics.ListAPIView):
                 Q(titel__icontains=query) |
                 Q(content__icontains=query)
             ).distinct()
+        return queryset
 
 class PostDetailAPIView(generics.RetrieveAPIView):
     serializer_class = PostListSerializer
