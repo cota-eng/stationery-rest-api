@@ -36,30 +36,30 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
     queryset = models.FavProduct.objects.all()
     serializer_class = serializers.FavProductSerializer
     permission_classes = (permissions.IsAuthenticated,)
-    filter_backends = [filters.DjangoFilterBackend]
-    filterset_class = OwnFavFilter
+    # filter_backends = [filters.DjangoFilterBackend]
+    # filterset_class = OwnFavFilter
     """
     below is return single obj...
     """
     # lookup_field = "product"
     # lookup_url_kwarg = "fav_user"
 
-    def list(self, request, *args, **kwargs):
-        queryset = self.filter_queryset(self.get_queryset())
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.filter_queryset(self.get_queryset())
 
-        page = self.paginate_queryset(queryset)
-        if page is not None:
-            serializer = self.get_serializer(page, many=True)
-            return self.get_paginated_response(serializer.data)
+    #     page = self.paginate_queryset(queryset)
+    #     if page is not None:
+    #         serializer = self.get_serializer(page, many=True)
+    #         return self.get_paginated_response(serializer.data)
 
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
+    #     serializer = self.get_serializer(queryset, many=True)
+    #     return Response(serializer.data)
 
-    def retrieve(self, request, *args, **kwargs):
-        instance = self.get_object()
-        print(instance)
-        serializer = self.get_serializer(instance)
-        return Response(serializer.data)
+    # def retrieve(self, request, *args, **kwargs):
+    #     instance = self.get_object()
+    #     print(instance)
+    #     serializer = self.get_serializer(instance)
+    #     return Response(serializer.data)
 
     # def get(self, request, pk=None):
     #     """
@@ -70,11 +70,11 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
     #     return Response(serializer.data)
   
     @action(detail=True, methods=["GET"], permission_classes=[permissions.IsAuthenticated])
-    def check_fav(self, request, pk=None):
+    def check(self, request, pk=None):
         product = models.Product.objects.get(id=pk)
-        user = request.user
+        user = self.request.user
         try:
-            fav = models.Fav.objects.get(Q(fav_user__exact=user) & Q(product__exact=product))
+            fav = models.FavProduct.objects.get(Q(fav_user__exact=user) & Q(product__exact=product))
         except models.FavProduct.DoesNotExist:
             response = {'message': 'not faved'}
             return Response(response, status=status.HTTP_204_NO_CONTENT)
@@ -104,13 +104,17 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
             fav = models.FavProduct.objects.get(fav_user=user.pk, product=product)
             if fav.is_favorite:
                 fav.is_favorite = False
+                fav.save()
+                serializer = serializers.FavProductSerializer(fav, many=False)
+                response = {'message': 'unfaved', 'result': serializer.data}
+                return Response(response, status=status.HTTP_200_OK)
             else:
                 fav.is_favorite = True
-            fav.save()
-            serializer = serializers.FavSerializer(fav, many=False)
-            response = {'message': 'Fav changed', 'result': serializer.data}
-            return Response(response, status=status.HTTP_200_OK)
-        except models.Fav.DoesNotExist:
+                fav.save()
+                serializer = serializers.FavProductSerializer(fav, many=False)
+                response = {'message': 'faved', 'result': serializer.data}
+                return Response(response, status=status.HTTP_200_OK)
+        except models.FavProduct.DoesNotExist:
             fav = models.FavProduct.objects.create(
                 fav_user=user,
                 product=product,
@@ -131,6 +135,14 @@ class CategoryReadOnlyViewSet(mixins.ListModelMixin,
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
         
+from .pagination import NormalPagination
+class ProductPagingReadOnlyViewSet(mixins.ListModelMixin,
+                             mixins.RetrieveModelMixin,
+                             viewsets.GenericViewSet):
+    queryset = models.Product.objects.all()
+    serializer_class = serializers.ProductSerializer
+    permission_classes = (permissions.AllowAny,)
+    pagination_class = NormalPagination
 
 class ProductReadOnlyViewSet(mixins.ListModelMixin,
                              mixins.RetrieveModelMixin,
