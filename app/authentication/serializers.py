@@ -78,6 +78,35 @@ class UserSerializer(serializers.ModelSerializer):
     #     return get_user_model().objects.create_user(**validated_data)
 from pen.serializers import ReviewNotIncludeUserSerialier,FavUsedByProfileSerializer
 
+class WhoAmISerializer(serializers.ModelSerializer):
+    avatar = serializers.SerializerMethodField()
+
+    def get_avatar(self, obj):
+        avatar = obj.avatar
+        if avatar:
+            return avatar.image
+        return None
+    class Meta:
+        model = models.Profile
+        fields = ('id','nickname','avatar', 'user')
+       
+
+class OwnProfileEditSerializer(serializers.ModelSerializer):
+    # user = UserSerializer(read_only=True)
+    # user_profile = UserSerializer()
+    avatar = serializers.SerializerMethodField()
+
+    def get_avatar(self, obj):
+        avatar = obj.avatar
+        if avatar:
+            return avatar.name
+        return None
+    # avatar = AvatarSerializer()
+
+    class Meta:
+        model = models.Profile
+        fields = ('id', 'nickname','user', 'avatar','twitter_account')
+        read_only_fields = ('user',)
 class ProfileSerializer(serializers.ModelSerializer):
     """
     read only 
@@ -91,7 +120,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     avatar = serializers.SerializerMethodField()
 
     def get_avatar(self, obj):
-        avatar = obj.profile.avatar
+        avatar = obj.avatar
         if avatar:
             return avatar.name
         return None

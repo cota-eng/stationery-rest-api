@@ -161,6 +161,7 @@ class Profile(models.Model):
     def __str__(self):
         return f'Profile of {self.user}'
 
+from django.db.models.signals import post_save
 
 @receiver(post_save, sender=User)
 def create_profile(sender, **kwargs):
