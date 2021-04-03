@@ -87,8 +87,7 @@ def create_comment_serializer(model_type="post", slug=None, parent_id=None,user=
                 parent_qs = Comment.filter(id=parent_id)
                 if parent_qs.exists() and parent_qs.count() == 1:
                     self.parent_id = parent_qs.first()
-
-            return super(CommentCreateSeralizer, self).__init__(*args, **kwargs)
+            super(CommentCreateSeralizer, self).__init__(*args, **kwargs)
         
         def validate(self, attrs):
             model_type = self.model_type
