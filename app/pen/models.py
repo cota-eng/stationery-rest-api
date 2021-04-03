@@ -68,8 +68,8 @@ class Tag(models.Model):
     def __str__(self):
         return f'Tag: {self.name}'
 
-# from imagekit.models import ProcessedImageField
-# from imagekit.processors import ResizeToFill
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 
 class Product(models.Model):
     """Model that is main part"""
