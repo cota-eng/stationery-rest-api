@@ -91,7 +91,7 @@
         "pk": 12,
         "fields": {
             "name": "製図用",
-            "slug": "new"
+            "slug": "draft"
         }
     },
     {
@@ -102,12 +102,109 @@
             "slug": "full-color"
         }
     },
+
     {
         "model": "pen.Tag",
         "pk": 13,
         "fields": {
-            "name": "極細",
-            "slug": "extra-fine"
+            "name": "日本",
+            "slug": "japan"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "海外",
+            "slug": "foreign"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "クリップなし",
+            "slug": "no-grip"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "軽い",
+            "slug": "light"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "重い",
+            "slug": "weight"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "定番",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "ゲル",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "折れにくい",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "芯径豊富",
+            "slug": "variable-bold"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "頑丈",
+            "slug": "tough"
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "",
+            "slug": ""
+        }
+    },
+    {
+        "model": "pen.Tag",
+        "pk": 13,
+        "fields": {
+            "name": "",
+            "slug": ""
         }
     }
 ]

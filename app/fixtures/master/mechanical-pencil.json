@@ -1,5 +1,5 @@
 [{
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBP4GT46K3KJTFMEXYYR",
         "fields": {
             "name": "s20",
@@ -8,7 +8,7 @@
             "price_yen": 2000,
             "brand": 2,
             "tag": [1, 2,5],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -17,7 +17,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk":"01EYZ0NBP4W5BYWQE7ENE7CSY6",
         "fields": {
             "name": "クルトガ　スタンダードモデル",
@@ -26,7 +26,7 @@
             "price_yen": 450,
             "brand": 1,
             "tag": [3,8],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -35,7 +35,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBP56N7G3VQVGH5R51X2",
         "fields": {
             "name": "ドクターグリップ　Gスペック",
@@ -44,7 +44,7 @@
             "price_yen": 800,
             "brand": 2,
             "tag": [4,8],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -53,7 +53,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBP5AYWANHYESCYAGAP3",
         "fields": {
             "name": "クルトガ ラバーグリップ付",
@@ -62,7 +62,7 @@
             "price_yen": 650,
             "brand": 1,
             "tag": [4],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -71,7 +71,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPNK540VZAPMNJ201JY",
         "fields": {
             "name": "クルトガ ハイグレードモデル",
@@ -80,7 +80,7 @@
             "price_yen": 1000,
             "brand": 1,
             "tag": [7,9,10],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -89,7 +89,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPP79DR9SDCES9XPJJK",
         "fields": {
             "name": "クルトガ ローレットモデル",
@@ -98,7 +98,7 @@
             "price_yen": 1300,
             "brand": 1,
             "tag": [7,9,10],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -107,7 +107,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPQWRJ334W8KVQD82YX",
         "fields": {
             "name": "クルトガアドバンス",
@@ -116,7 +116,7 @@
             "price_yen": 550,
             "brand": 2,
             "tag": [3,10],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -125,7 +125,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPQJ0V6YHK8T9H2KQZ5",
         "fields": {
             "name": "クルトガアドバンス　アップグレードモデル",
@@ -134,7 +134,7 @@
             "price_yen": 1000,
             "brand":1,
             "tag": [7,10],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -143,7 +143,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPR8FS3VXWNFD9CC9ZY",
         "fields": {
             "name": "アルファゲル スイッチ",
@@ -152,7 +152,7 @@
             "price_yen": 1000,
             "brand":1,
             "tag": [4,10],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -161,7 +161,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPRJCQQ2ZCQ2F4KK9HA",
         "fields": {
             "name": "アルファゲル <クルトガエンジン搭載タイプ>",
@@ -170,7 +170,7 @@
             "price_yen": 850,
             "brand":1,
             "tag": [4, 10],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -179,7 +179,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPSMWX131SYGNGFXC9C",
         "fields": {
             "name": "アルファゲル<スリムタイプ>",
@@ -188,7 +188,7 @@
             "price_yen": 800,
             "brand":1,
             "tag": [4],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -197,7 +197,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPS6B8H28XARPAMTVND",
         "fields": {
             "name": "アルファゲル<シャカシャカ機構搭載モデル>",
@@ -206,7 +206,7 @@
             "price_yen": 600,
             "brand":1,
             "tag": [4],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -215,7 +215,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPT7C21HSKQT1WM6KAN",
         "fields": {
             "name": "シフト",
@@ -224,7 +224,7 @@
             "price_yen": 1000,
             "brand":1,
             "tag": [7,10,12],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -233,7 +233,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPVPN580RK42KF6C51N",
         "fields": {
             "name": "ピュアモルト（オークウッド・プレミアム・エディション） キャップ式",
@@ -242,7 +242,7 @@
             "price_yen": 5000,
             "brand":1,
             "tag": [1, 2],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -251,7 +251,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPWRSQVV619N00E0G90",
         "fields": {
             "name": "ピュアモルト",
@@ -260,7 +260,7 @@
             "price_yen": 1000,
             "brand":1,
             "tag": [1],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -269,7 +269,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPWP2B57R4P7T3TK0Z0",
         "fields": {
             "name": "ピュアモルト（オークウッド・プレミアム・エディション） ノック式",
@@ -278,7 +278,7 @@
             "price_yen": 2000,
             "brand":1,
             "tag": [1, 2],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -287,7 +287,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPWP2B57R4P7T3TK0Z0",
         "fields": {
             "name": "ドクターグリップエース",
@@ -296,7 +296,7 @@
             "price_yen":800 ,
             "brand":2,
             "tag": [4,10],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -305,7 +305,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ3N5AHDM90SVDGRVRHZ0RNF",
         "fields": {
             "name": "デルガード タイプGR",
@@ -314,7 +314,7 @@
             "price_yen": 700,
             "brand":4,
             "tag": [7],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -323,7 +323,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ3N5AHDVC525TC4SZ508NRW",
         "fields": {
             "name": "デルガード+2C",
@@ -332,7 +332,7 @@
             "price_yen": 1200,
             "brand":3,
             "tag": [4,10],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",

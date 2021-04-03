@@ -1,6 +1,6 @@
 [
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPTGKR2N4E5DWZWCTM9",
         "fields": {
             "name": "ジェットストリーム スタンダード",
@@ -9,7 +9,7 @@
             "price_yen": 150,
             "brand":1,
             "tag": [3],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -18,7 +18,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EYZ0NBPVP428BF7ZERHBEQVH",
         "fields": {
             "name": "ジェットストリーム アルファゲルグリップ",
@@ -27,7 +27,7 @@
             "price_yen": 1000,
             "brand":1,
             "tag": [4],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -36,7 +36,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ3N82PNSJGJ2WYZT918Y217",
         "fields": {
             "name": "ジェットストリーム　エッジ",
@@ -45,7 +45,7 @@
             "price_yen":1000 ,
             "brand":1,
             "tag": [5,7,13],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -54,7 +54,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ3N82PP76EPZQMS6839DVWA",
         "fields": {
             "name": "ジェットストリーム プライム 回転繰り出し式シングル",
@@ -63,7 +63,7 @@
             "price_yen":3000 ,
             "brand":1,
             "tag": [2,7],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -72,7 +72,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ3N82PP39GY8W7BD2AQ2Z74",
         "fields": {
             "name": "スーパーグリップG　ノック式",
@@ -81,7 +81,7 @@
             "price_yen": 100,
             "brand":2,
             "tag": [3],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -90,7 +90,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ3N82PR0ZNGQ8A31EGJKXNK",
         "fields": {
             "name": "タプリクリップ",
@@ -99,7 +99,7 @@
             "price_yen": 100,
             "brand":3,
             "tag": [3],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",

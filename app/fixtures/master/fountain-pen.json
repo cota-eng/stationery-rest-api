@@ -1,6 +1,6 @@
 [
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ6HCSZHMKTBHFNQPDYRRT2H",
         "fields": {
             "name": "キャップレスLS",
@@ -9,7 +9,7 @@
             "price_yen": 35000,
             "brand":2,
             "tag": [2],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -18,7 +18,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ6HCSZHWGMPMHGEQAP4702M",
         "fields": {
             "name": "カスタム 743",
@@ -27,7 +27,7 @@
             "price_yen": 30000,
             "brand":2,
             "tag": [2],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -36,7 +36,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ6HCSZH0RNBMGA60GXA333P",
         "fields": {
             "name": "LAMY safari candy mango 万年筆",
@@ -45,7 +45,7 @@
             "price_yen":1000 ,
             "brand":5,
             "tag": [2],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -54,7 +54,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ6HCSZKSBMN82XTBA7M8G23",
         "fields": {
             "name": "ブライヤー #63 ブライヤーシェル",
@@ -63,7 +63,7 @@
             "price_yen":50000 ,
             "brand":14,
             "tag": [2],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",
@@ -72,7 +72,7 @@
         }
     },
     {
-        "model": "pen.Pen",
+        "model": "pen.Product",
         "pk": "01EZ6HCSZKE2CT65CXM1FAEBY1",
         "fields": {
             "name": "スペシャル ブルー 万年筆",
@@ -81,7 +81,7 @@
             "price_yen": 11000,
             "brand":8,
             "tag": [2],
-            "image": "",
+            "image": "products/default.jpg",
             "image_src": "",
             "created_at": "2021-02-20T12:00:00.000Z",
             "updated_at": "2021-02-20T12:00:00.000Z",

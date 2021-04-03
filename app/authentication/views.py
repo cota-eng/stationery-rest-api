@@ -1,17 +1,9 @@
 from django.shortcuts import render
-from rest_framework.response import Response
-from rest_framework import status,views
-from rest_framework import generics
-from rest_framework import permissions
+from rest_framework import views
 from rest_framework import viewsets
 from rest_framework_simplejwt.tokens import RefreshToken
 from . import models,serializers
-from django.contrib.sites.shortcuts import get_current_site
-from django.urls import reverse
 from django.conf import settings
-# from drf_yasg.utils import swagger_auto_schema
-# from drf_yasg import openapi
-# from django.utils.encoding import smart_bytes,smart_str, force_str, DjangoUnicodeDecodeError
 # from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from rest_framework import exceptions
 from django.contrib.sites.shortcuts import get_current_site
@@ -23,21 +15,23 @@ from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from dj_rest_auth.registration.views import SocialLoginView
 from allauth.socialaccount.providers.oauth2.client import OAuth2Client
 from django.conf import settings
-
-
-# from rest_framework_simplejwt.tokens import RefreshToken
-# from rest_framework.views import APIView
 from rest_framework import permissions, status
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from .serializers import LogoutSerializer
+from .permissions import UserIsOwnerOrReadOnly
+from django.shortcuts import get_object_or_404
+from django.contrib.auth import get_user_model
+from rest_framework import parsers
+from rest_framework import mixins
+from rest_framework import generics
 
 """
 4 views needed
 - Google login 
 - user profile list/get read only
 - profile update only owner
-logout
+- logout
 """
 
 # class LoginAPIView(generics.GenericAPIView):
@@ -56,92 +50,101 @@ class GoogleLogin(SocialLoginView):
     callback_url = "http://localhost:3000"
     client_class = OAuth2Client
 
-# class MyProfileView(viewsets.ModelViewSet):
-#     queryset = models.Profile.objects.all()
-#     serializer_class = serializers.ProfileSerializer
-#     permission_classes = (permissions.IsAuthenticated,)
-#     def get_queryset(self):
-#             return self.queryset.filter(user_profile=self.request.user)
-# put only ?
 
-class ProfileReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = models.Profile.objects.all()
-    serializer_class = serializers.ProfileSerializer
+class UserReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    TODO:not needed?
+    変更可能な情報はprofileにのみ存在してるから、、、
+    UserRankingなどに必要かも
+    """
+    queryset = get_user_model().objects.all()
+    serializer_class = serializers.UserSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = "id"
 
-from .permissions import UserIsOwnerOrReadOnly
-from django.shortcuts import get_object_or_404
-from django.contrib.auth import get_user_model
-from rest_framework import parsers
-
-class ProfileRetrieveUpdateViewSet(viewsets.ModelViewSet):
-    queryset = models.User.objects.all()
-    permission_classes = (permissions.IsAuthenticated,
-                          UserIsOwnerOrReadOnly,
-                          )
-    serializer_class = serializers.UserSerializer
-    def destroy(self, request, *args, **kwargs):
-        """
-        delete is invalid
-        """
-        response = {'message': 'DELETE method is not allowed'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
-
-    def list(self, request, *args, **kwargs):
-        """
-        list is invalid
-        """
-        response = {'message': 'list method is not allowed'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
-
-    def post(self, request, *args, **kwargs):
-        """
-        psot is invalid
-        """
-        response = {'message': 'post method is not allowed'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
-
-
-class ProfileRetrieveUpdateViewSet(viewsets.ModelViewSet):
+class WhoAmIView(
+    mixins.ListModelMixin,
+    viewsets.GenericViewSet):
     queryset = models.Profile.objects.all()
-    permission_classes = (permissions.IsAuthenticated,
-                          UserIsOwnerOrReadOnly,
-                          )
+    # permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = serializers.WhoAmISerializer
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
+
+
+class ProfileReadOnlyViewSet(mixins.RetrieveModelMixin,
+                             mixins.ListModelMixin,
+                             viewsets.GenericViewSet):
+    queryset = models.Profile.objects.all()
+    # permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.AllowAny,)
     serializer_class = serializers.ProfileSerializer
     parser_classes = [parsers.MultiPartParser,
                       parsers.FormParser,]
-    def destroy(self, request, *args, **kwargs):
-        """
-        delete is invalid
-        """
-        response = {'message': 'DELETE method is not allowed'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
-    def list(self, request, *args, **kwargs):
-        """
-        list is invalid
-        """
-        response = {'message': 'list method is not allowed'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
-    def post(self, request, *args, **kwargs):
-        """
-        psot is invalid
-        """
-        response = {'message': 'post method is not allowed'}
-        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
+                                          mixins.ListModelMixin,
+                                          mixins.UpdateModelMixin,
+                                          viewsets.GenericViewSet):
+    """
+    for your own profile
+    """
+    queryset = models.Profile.objects.all()
+    # permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,
+                          UserIsOwnerOrReadOnly,
+                          )
+    serializer_class = serializers.OwnProfileEditSerializer
+    """for img uplaod"""
+    # parser_classes = [parsers.MultiPartParser,
+    #                   parsers.FormParser,]
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
 
-"""
-not needed
-"""
-# class ProfileListView(generics.ListAPIView):
+
+# class AvatarRetrieveUpdateView( mixins.RetrieveModelMixin,
+#                         mixins.ListModelMixin,
+#                         mixins.UpdateModelMixin,
+#                         viewsets.GenericViewSet):
+#     """
+#     if not own profile
+#     404 when access to your own image & cannot change image
+#     """
 #     queryset = models.Profile.objects.all()
-#     serializer_class = serializers.ProfileSerializer
-    # permission_classes = (permissions.IsAuthenticated,)
+#     parser_classes = (parsers.MultiPartParser,
+#                       parsers.FormParser,)
+#     permission_classes = (
+#         permissions.IsAuthenticated,
+#         # UserIsOwnerOrReadOnly,
+#     )
+#     serializer_class = serializers.AvatarSerializer
+    
     # def get_queryset(self):
-    #     return self.queryset.filter(userProfile=self.request.user)
- 
+    #     return self.queryset.filter(user=self.request.user)
+    # def destroy(self, request, *args, **kwargs):
+    #     """
+    #     delete is invalid
+    #     """
+    #     response = {'message': 'DELETE method is not allowed'}
+    #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+    # def list(self, request, *args, **kwargs):
+    #     """
+    #     list is invalid
+    #     """
+    #     response = {'message': 'list method is not allowed'}
+    #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+    # def post(self, request, *args, **kwargs):
+    #     """
+    #     psot is invalid
+    #     """
+    #     response = {'message': 'post method is not allowed'}
+    #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
+   
+
 class LogoutView(GenericAPIView):
     serializer_class = LogoutSerializer
     permission_classes = (permissions.AllowAny, )

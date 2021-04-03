@@ -15,10 +15,14 @@ class Category(models.Model):
     """
     name = models.CharField(
         _("category name"),
-        max_length=50)
+        max_length=50,
+        unique=True,
+        )
     slug = models.CharField(
         _("category slug"),
-        max_length=50)
+        max_length=50,
+        unique=True,
+        )
     
     def __str__(self):
         return f'Category: {self.name}'
@@ -29,16 +33,22 @@ class Brand(models.Model):
     """
     name = models.CharField(
         _('brand name'),
-        max_length=50)
+        max_length=50,
+        unique=True,
+    )
     slug = models.CharField(
         _("brand slug"),
-        max_length=50)
+        max_length=50,
+        unique=True,
+        )
     official_site_link = models.CharField(
          _("brand link"),
-         max_length=255)
+         max_length=255,
+         unique=True
+        )
 
     def __str__(self):
-        return f'Productor: {self.name}'
+        return f'Brand: {self.name}'
 
 class Tag(models.Model):
     """
@@ -46,15 +56,22 @@ class Tag(models.Model):
     """
     name = models.CharField(
         _("category name"),
-        max_length=50)
+        max_length=50,
+        unique=True,
+        )
     slug = models.CharField(
         _("category slug"),
-        max_length=50)
+        max_length=50,
+        unique=True,
+        )
     
     def __str__(self):
         return f'Tag: {self.name}'
 
-class Pen(models.Model):
+# from imagekit.models import ProcessedImageField
+# from imagekit.processors import ResizeToFill
+
+class Product(models.Model):
     """Model that is main part"""
     id = ULIDField(
         primary_key=True,
@@ -70,8 +87,8 @@ class Pen(models.Model):
         _('description'))
     category = models.ForeignKey(
         Category,
-        related_name="pen_category",
-        # TODO CASCADE -> SETNULL
+        related_name="product_category",
+        # TODO: CASCADE -> SETNULL
         on_delete=models.CASCADE
         )
     price_yen = models.PositiveIntegerField(
@@ -80,20 +97,21 @@ class Pen(models.Model):
         )
     brand = models.ForeignKey(
         Brand,
-        related_name="pen_brand",
+        related_name="product_brand",
         on_delete=models.CASCADE
     )
     tag = models.ManyToManyField(
         Tag,
-        related_name="pen_tag",
+        related_name="product_tag",
     )
-    image = models.ImageField(
-        upload_to=None,
-        height_field=None,
-        width_field=None,
-        max_length=None,
+    image = ProcessedImageField(
+        upload_to='products',
+        processors=[ResizeToFill(100, 100)],
+        format='JPEG',
+        options={'quality': 60},
         blank=True,
         null=True)
+    # in JP 出典
     image_src = models.CharField(
         blank=True,
         null=True,
@@ -112,20 +130,23 @@ class Pen(models.Model):
         null=True,
         max_length=500)
 
+    """
+    TODO: not needed? this field is able to be impletemted in front end
+    """
     @property
     def mercari_link_to_buy(self):
         return f'https://www.mercari.com/jp/search/?keyword={self.name}'
 
     @property
     def number_of_review(self):
-        reviews = Review.objects.filter(pen=self)
+        reviews = Review.objects.filter(product=self)
         return len(reviews)
 
-    # TODO:アベレージ考え中
+    # TODO: thinking of Aveerage (will be ordered by score...)
     @property
     def avarage_of_review_star(self):
         sum: int = 0
-        reviews = Review.objects.filter(pen=self)
+        reviews = Review.objects.filter(product=self)
         if len(reviews) != 0:
             for review in reviews:
                 sum += review.avarage_star
@@ -134,14 +155,14 @@ class Pen(models.Model):
             return 0
         
     def __str__(self):
-        return f'Pen: {self.name} Price: {self.price_yen}'
+        return f'product: {self.name} Price: {self.price_yen}'
     
 
-class FavPen(models.Model):
+class FavProduct(models.Model):
     """
     Fav is Favorite
     """
-    # is_favorite = models.BooleanField(default=False)
+    is_favorite = models.BooleanField(default=False)
     """
     TODO:
     connect to User or Profile
@@ -151,23 +172,41 @@ class FavPen(models.Model):
         related_name="fav",
         on_delete=models.CASCADE
     )
-    pen = models.ForeignKey(
-        Pen,
+    product = models.ForeignKey(
+        Product,
         related_name="faved",
         on_delete=models.CASCADE
     )
-    created_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
         """
         one review for one person 
         """
-        unique_together = (('fav_user','pen'))
-        index_together = (('fav_user', 'pen'))
+        unique_together = (('fav_user','product'))
+        index_together = (('fav_user', 'product'))
+        ordering = ['-created_at']
+
     def __str__(self):
-        return f"stock {self.pen.name} user {self.fav_user}"
+        return f"stock {self.product.name} user {self.fav_user.username}"
+
 
 class Review(models.Model):
+
+    # def __init__(self, *args, **kwargs):
+    #     stars_of_design = self.stars_of_design
+    #     stars_of_durability = self.stars_of_durability
+    #     stars_of_usefulness = self.stars_of_usefulness
+    #     stars_of_function = self.stars_of_function
+    #     stars_of_easy_to_get = self.stars_of_easy_to_get
+    #     self.stars_list = [
+    #         stars_of_design,
+    #         stars_of_durability,
+    #         stars_of_usefulness,
+    #         stars_of_function,
+    #         stars_of_easy_to_get,
+    #     ]
+
     """Model that display reviews of pens"""
     id = ULIDField(
         primary_key=True,
@@ -176,8 +215,8 @@ class Review(models.Model):
         editable=False,
         db_index=True
         )
-    pen = models.ForeignKey(
-        Pen,
+    product = models.ForeignKey(
+        Product,
         related_name='review',
         on_delete=models.CASCADE)
     """
@@ -216,15 +255,21 @@ class Review(models.Model):
         validators=[MaxValueValidator(5), MinValueValidator(1)]
         )
 
+    
+
     @property
     def avarage_star(self):
+        stars_list = [
+            self.stars_of_design,
+            self.stars_of_durability,
+            self.stars_of_usefulness,
+            self.stars_of_function,
+            self.stars_of_easy_to_get,
+        ]
         sum = 0
-        sum += self.stars_of_design
-        sum += self.stars_of_durability
-        sum += self.stars_of_usefulness
-        sum += self.stars_of_function
-        sum += self.stars_of_easy_to_get
-        return float(sum / 5)
+        for star in stars_list:
+            sum += star
+        return float(sum / len(stars_list))
 
     good_point_text = models.TextField(blank=True,null=True)
     bad_point_text = models.TextField(blank=True,null=True)
@@ -233,15 +278,25 @@ class Review(models.Model):
         related_name='reviewer',
         on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True)
+
     class Meta:
         """
         one review for one person 
         """
-        unique_together = (('reviewer','pen'))
-        index_together = (('reviewer', 'pen'))
+        constraints = [
+            models.UniqueConstraint(fields=['reviewer', 'product'], name='unique_booking'),
+        ]
+        indexes = [
+            models.Index(fields=['reviewer', 'product'])
+        ]
+        """
+        in the future, cannot use below code
+        """
+        # unique_together = (('reviewer','product'))
+        # index_together = (('reviewer', 'product'))
 
     def __str__(self):
-        return f'Reviewd Pen: {self.pen.name} / Reviewer: {self.reviewer.nickname}'
+        return f'Reviewd product: {self.product.name} / Reviewer: {self.reviewer.username}'
     
 # class Comment(models.Model):
 #     pass

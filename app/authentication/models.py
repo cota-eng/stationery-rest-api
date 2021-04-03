@@ -1,27 +1,28 @@
 from django.db import models
+import uuid
+import os
+import environ
+import requests
+import json
+import ulid
 from django.contrib.auth.models import (AbstractBaseUser, 
                                        BaseUserManager,
                                        PermissionsMixin)
 from django.contrib.auth import get_user_model
 from django.conf import settings
-import uuid
-import os
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.apps import apps
 from django.contrib import auth
-from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.hashers import make_password
-from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import PermissionDenied
-from django.core.mail import send_mail
-from django.db import models
-from django.db.models.manager import EmptyManager
-from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.utils import timezone
-from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from core.models import ULIDField
 
+env = environ.Env()
+env.read_env('.env')
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -59,34 +60,6 @@ class UserManager(BaseUserManager):
 
         return self._create_user(username, email, password, **extra_fields)
 
-    # def with_perm(self, perm, is_active=True, include_superusers=True, backend=None, obj=None):
-    #     if backend is None:
-    #         backends = auth._get_backends(return_tuples=True)
-    #         if len(backends) == 1:
-    #             backend, _ = backends[0]
-    #         else:
-    #             raise ValueError(
-    #                 'You have multiple authentication backends configured and '
-    #                 'therefore must provide the `backend` argument.'
-    #             )
-    #     elif not isinstance(backend, str):
-    #         raise TypeError(
-    #             'backend must be a dotted import path string (got %r).'
-    #             % backend
-    #         )
-    #     else:
-    #         backend = auth.load_backend(backend)
-    #     if hasattr(backend, 'with_perm'):
-    #         return backend.with_perm(
-    #             perm,
-    #             is_active=is_active,
-    #             include_superusers=include_superusers,
-    #             obj=obj,
-    #         )
-    #     return self.none()
-import ulid
-from core.models import ULIDField
-
 
 class User(AbstractBaseUser, PermissionsMixin):
     """
@@ -105,6 +78,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         editable=False,
         db_index=True
         )
+    # oauth email automatically add
     username = models.CharField(
         _('username'),
         max_length=150,
@@ -114,11 +88,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         error_messages={
             'unique': _("A user with that username already exists."),
         },
-    )
-    nickname = models.CharField(
-        _('nickname'),
-        max_length=150,
-        default='初期ユーザー'
     )
     first_name = models.CharField(_('first name'), max_length=150, blank=True)
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
@@ -139,7 +108,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
     objects = UserManager()
-
+    
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']
@@ -148,21 +117,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name = _('user')
         verbose_name_plural = _('users')
         # abstract = True
-
-    def clean(self):
-        super().clean()
-        self.email = self.__class__.objects.normalize_email(self.email)
-
-    # def get_full_name(self):
-    #     """
-    #     Return the first_name plus the last_name, with a space in between.
-    #     """
-    #     full_name = '%s %s' % (self.first_name, self.last_name)
-    #     return full_name.strip()
-
-    # def get_short_name(self):
-    #     """Return the short name for the user."""
-    #     return self.first_name
 
 
 def profile_avatar_path(instance, filename):
@@ -174,12 +128,18 @@ def profile_avatar_path(instance, filename):
 def profile_avatar_resize():
     pass
 
+class Avatar(models.Model):
+    name = models.CharField(_("name"),max_length=20,null=True,blank=True)
+    image = models.ImageField(upload_to="avatar",  width_field=None, height_field=None, null=True, blank=True)
+    def __str__(self):
+        return f'{self.image}'
+    
+
 class Profile(models.Model):
     """Model that has avatar and dates of create and update"""
     """
     TODO: id is to normal id?
     """
-    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
     id = ULIDField(
         primary_key=True,
         default=ulid.new,
@@ -192,20 +152,26 @@ class Profile(models.Model):
         related_name="profile",
         on_delete=models.CASCADE
         )
-    # nickname = models.CharField(_('nickname'),max_length=50,default="profile nickname")
+    nickname = models.CharField(_('nickname'),max_length=10,default="匿名ユーザー")
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
-    avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None,null=True,blank=True)
+    # avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None,null=True,blank=True)
+    avatar = models.ForeignKey(Avatar,on_delete=models.PROTECT,related_name="profile")
     twitter_account = models.CharField(_('twitter username'),null=True,blank=True,max_length=100)
-    # favorite_pen = models.ManyToManyField()
     def __str__(self):
         return f'Profile of {self.user}'
 
 from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 @receiver(post_save, sender=User)
 def create_profile(sender, **kwargs):
-    """ 新ユーザー作成時に空のprofileも作成する """
+    """
+    when user created, own profile automatically created
+    """
     if kwargs['created']:
-        profile = Profile.objects.get_or_create(user=kwargs['instance'])
+        WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+        requests.post(WEB_HOOK_URL, data = json.dumps({
+            'text': f':smile_cat:Profile [ {kwargs["instance"]} ] Created!!',  
+        }))
+        avatar = Avatar.objects.get(pk=1)
+        profile = Profile.objects.get_or_create(user=kwargs['instance'],avatar=avatar)
