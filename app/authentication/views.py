@@ -62,6 +62,16 @@ class UserReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (permissions.AllowAny,)
     lookup_field = "id"
 
+class WhoAmIView(
+    mixins.ListModelMixin,
+    viewsets.GenericViewSet):
+    queryset = models.Profile.objects.all()
+    # permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = serializers.WhoAmISerializer
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
+
 
 class ProfileReadOnlyViewSet(mixins.RetrieveModelMixin,
                              mixins.ListModelMixin,
@@ -86,10 +96,10 @@ class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
     permission_classes = (permissions.IsAuthenticated,
                           UserIsOwnerOrReadOnly,
                           )
-    serializer_class = serializers.ProfileSerializer
+    serializer_class = serializers.OwnProfileEditSerializer
     """for img uplaod"""
-    parser_classes = [parsers.MultiPartParser,
-                      parsers.FormParser,]
+    # parser_classes = [parsers.MultiPartParser,
+    #                   parsers.FormParser,]
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
 
