@@ -13,6 +13,7 @@ router = DefaultRouter()
 router.register('user',views.UserReadOnlyViewSet)
 router.register('profile',views.OwnProfileListRetrieveUpdateViewSet)
 router.register('allprofile',views.ProfileReadOnlyViewSet)
+router.register('whoami',views.WhoAmIView)
 # router.register('avatar',views.AvatarRetrieveUpdateView)
 
 urlpatterns = [
