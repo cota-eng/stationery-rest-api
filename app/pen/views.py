@@ -20,16 +20,16 @@ env.read_env('.env')
 import requests, json
 from .pagination import NormalPagination
 
-
+from django.db.models import  Q
 
 class ReturnFavProductAPIView(generics.ListAPIView):
     queryset = models.FavProduct.objects.all()
     serializer_class = serializers.FavUsedInProfileSerializer
     permission_classes = (permissions.IsAuthenticated,)
-    pagination_class = NormalPagination
+    # pagination_class = NormalPagination
 
     def get_queryset(self):
-        return self.queryset.filter(fav_user=self.request.user)
+        return self.queryset.filter(Q(fav_user=self.request.user)&Q(is_favorite=True))
         
 
 class FavProductAPIView(mixins.RetrieveModelMixin,
