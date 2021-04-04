@@ -10,10 +10,10 @@ class ReviewerSerializer(serializers.ModelSerializer):
     nickname = serializers.SerializerMethodField(read_only=True)
     # twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
     avatar = serializers.SerializerMethodField()
-    @staticmethod
-    def setup_for_query(queryset):
-        queryset = queryset.select_related('profile')
-        return queryset
+    # @staticmethod
+    # def setup_for_query(queryset):
+    #     queryset = queryset.select_related('profile')
+    #     return queryset
 
     def get_avatar(self, obj):
         avatar = obj.profile.avatar
@@ -150,6 +150,10 @@ class TagSerializer(serializers.ModelSerializer):
         # depth = 1
 
 class TagUsingPenSerializer(serializers.ModelSerializer):
+    @staticmethod
+    def setup_for_query(queryset):
+        queryset = queryset.select_related('product')
+        return queryset
     class Meta:
         model = models.Tag
         fields = (
@@ -186,6 +190,8 @@ class ReviewSerialier(serializers.ModelSerializer):
     reviewer - avatar, nickname, id
     """
     reviewer = ReviewerSerializer(read_only=True)
+
+
     class Meta:
         model = models.Review
         fields = (
@@ -229,10 +235,14 @@ class ProductSerializer(serializers.ModelSerializer):
     
     @staticmethod
     def setup_for_query(queryset):
-        queryset = queryset.select_related('category')
-        queryset = queryset.select_related('brand')
-        queryset = queryset.prefetch_related('tag')
-        queryset = queryset.prefetch_related('review')
+        """
+        to many - tag, review
+        to one  - category, brand
+
+        reviwew - filter each product...
+        """
+        queryset = queryset.prefetch_related('tag','review__reviewer','review__reviewer__profile','review__reviewer__profile__avatar','review__product')
+        queryset = queryset.select_related('category','brand')
         return queryset
 
     class Meta:
