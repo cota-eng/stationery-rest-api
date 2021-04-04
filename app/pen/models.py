@@ -102,7 +102,7 @@ class Product(models.Model):
     )
     tag = models.ManyToManyField(
         Tag,
-        related_name="product_tag",
+        related_name="product",
     )
     image = ProcessedImageField(
         upload_to='products',
