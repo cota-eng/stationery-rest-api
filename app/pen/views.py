@@ -29,8 +29,9 @@ class ReturnFavProductAPIView(generics.ListAPIView):
     # pagination_class = NormalPagination
 
     def get_queryset(self):
-        return self.queryset.filter(Q(fav_user=self.request.user)&Q(is_favorite=True))
-        
+        # below two code is equal in sql...
+        # return self.queryset.filter(Q(fav_user=self.request.user)&Q(is_favorite=True))
+        return self.queryset.prefetch_related('product').select_related('fav_user').filter(fav_user=self.request.user).filter(is_favorite=True)
 
 class FavProductAPIView(mixins.RetrieveModelMixin,
                            mixins.ListModelMixin,
