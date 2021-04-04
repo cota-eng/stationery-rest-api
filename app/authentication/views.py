@@ -93,7 +93,7 @@ class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
     """
     for your own profile
     """
-    queryset = models.Profile.objects.all()
+    queryset = models.Profile.objects.all().select_related("avatar")
     # permission_classes = (permissions.AllowAny,)
     permission_classes = (permissions.IsAuthenticated,
                           UserIsOwnerOrReadOnly,

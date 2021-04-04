@@ -52,11 +52,13 @@ default 11.56 ms (11 queries including 10 similar and 10 duplicates )
 ```
 
 
-## api/
-
+## api/profile
 ```md
-
+default 5.54 ms (3 queries )
+=>
+ default 4.01 ms (2 queries )
 ```
+
 ## api/
 
 ```md
