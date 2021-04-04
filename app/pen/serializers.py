@@ -3,11 +3,17 @@ from . import models
 from authentication.models import User
 # from authentication.serializers import UserSerializer
 from django.contrib.auth import get_user_model
+from authentication.models import User
+
 
 class ReviewerSerializer(serializers.ModelSerializer):
     nickname = serializers.SerializerMethodField(read_only=True)
-    twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
+    # twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
     avatar = serializers.SerializerMethodField()
+    # @staticmethod
+    # def setup_for_query(queryset):
+    #     queryset = queryset.select_related('profile')
+    #     return queryset
 
     def get_avatar(self, obj):
         avatar = obj.profile.avatar
@@ -19,8 +25,8 @@ class ReviewerSerializer(serializers.ModelSerializer):
         return obj.profile.nickname
 
     class Meta:
-        model = get_user_model()
-        fields = ('id','profile','nickname','twitter_account','avatar',)
+        model = User
+        fields = ('id','profile','nickname','avatar',)
         extra_kwargs = {
             'password': {
                 'write_only': True,
@@ -31,19 +37,49 @@ class ReviewerSerializer(serializers.ModelSerializer):
             # },
         }
 
+class ProductInFavListSerializer(serializers.ModelSerializer):
+    # category = CategoryUsingProductSerializer(read_only=True)
+    # brand = BrandSerializer(read_only=True)
+    # tag = TagUsingPenSerializer(many=True,read_only=True)
+    class Meta:
+        model = models.Product
+        fields = ('id',
+                  'name',
+                #   'price_yen',
+                  'image',
+                #   'number_of_review',
+                #   'avarage_of_review_star',
+                #   'category',
+                #   'brand',
+                #   'tag',
+                  )
+        read_only_fields = (
+                'id',
+                'name',
+                # 'price_yen',
+                'image',
+                # 'image_src',
+                # 'amazon_link_to_buy',
+                # 'rakuten_link_to_buy',
+                # 'mercari_link_to_buy',
+                # 'number_of_review',
+                # 'avarage_of_review_star',
+            )
+
 class FavProductSerializer(serializers.ModelSerializer):
-    created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
+    # created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     is_favorite = serializers.BooleanField(read_only=True)
     # lookup_field = 'faved.pk'
     class Meta:
         model = models.FavProduct
-        fields = ('is_favorite','fav_user','product','created_at',)
+        fields = ('is_favorite','fav_user','product',)
+        read_only_fields = ('is_favorite','fav_user','product',)
     
-class FavUsedByProfileSerializer(serializers.ModelSerializer):
-    is_favorite = serializers.BooleanField(read_only=True)
+class FavUsedInProfileSerializer(serializers.ModelSerializer):
+    product = ProductInFavListSerializer()
     class Meta:
         model = models.FavProduct
-        fields = ('is_favorite','product',)
+        fields = ('product',)
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -109,11 +145,15 @@ class TagSerializer(serializers.ModelSerializer):
         fields = (
             'name',
             'slug',
-            'product_tag',
+            'product',
             )
         # depth = 1
 
 class TagUsingPenSerializer(serializers.ModelSerializer):
+    @staticmethod
+    def setup_for_query(queryset):
+        queryset = queryset.select_related('product')
+        return queryset
     class Meta:
         model = models.Tag
         fields = (
@@ -150,6 +190,8 @@ class ReviewSerialier(serializers.ModelSerializer):
     reviewer - avatar, nickname, id
     """
     reviewer = ReviewerSerializer(read_only=True)
+
+
     class Meta:
         model = models.Review
         fields = (
@@ -166,7 +208,6 @@ class ReviewSerialier(serializers.ModelSerializer):
             'reviewer',
             'created_at',
             )
-        depth = 1
         """
         TODO: validation add!
         """
@@ -184,14 +225,26 @@ class ProductSerializer(serializers.ModelSerializer):
     category = CategoryUsingProductSerializer(read_only=True)
     brand = BrandSerializer(read_only=True)
     tag = TagUsingPenSerializer(many=True,read_only=True)
-    # review = ReviewSerialier()
+    review = ReviewSerialier(many=True)
+    
     # for rate action, many = false is must
-    review = ReviewSerialier(many = True)
     # description = serializers.SerializerMethodField()
 
     # def get_description(self, instance):
     #     return markdown.markdown(instance.description)
     
+    @staticmethod
+    def setup_for_query(queryset):
+        """
+        to many - tag, review
+        to one  - category, brand
+
+        reviwew - filter each product...
+        """
+        queryset = queryset.prefetch_related('tag','review__reviewer','review__reviewer__profile','review__reviewer__profile__avatar','review__product')
+        queryset = queryset.select_related('category','brand')
+        return queryset
+
     class Meta:
         model = models.Product
         fields = ('id',

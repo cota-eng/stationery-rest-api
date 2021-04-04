@@ -102,7 +102,7 @@ class Product(models.Model):
     )
     tag = models.ManyToManyField(
         Tag,
-        related_name="product_tag",
+        related_name="product",
     )
     image = ProcessedImageField(
         upload_to='products',
@@ -139,14 +139,14 @@ class Product(models.Model):
 
     @property
     def number_of_review(self):
-        reviews = Review.objects.filter(product=self)
+        reviews = self.objects.prefetch_related('review').filter(product=self)
         return len(reviews)
 
     # TODO: thinking of Aveerage (will be ordered by score...)
     @property
     def avarage_of_review_star(self):
         sum: int = 0
-        reviews = Review.objects.filter(product=self)
+        reviews = self.objects.prefetch_related('review').filter(product=self)
         if len(reviews) != 0:
             for review in reviews:
                 sum += review.avarage_star

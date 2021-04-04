@@ -76,7 +76,7 @@ class UserSerializer(serializers.ModelSerializer):
     #     return response
     # def create(self, validated_data):
     #     return get_user_model().objects.create_user(**validated_data)
-from pen.serializers import ReviewNotIncludeUserSerialier,FavUsedByProfileSerializer
+from pen.serializers import ReviewNotIncludeUserSerialier,FavProductSerializer
 
 class WhoAmISerializer(serializers.ModelSerializer):
     avatar = serializers.SerializerMethodField()
@@ -135,7 +135,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     def get_faved_product(self, obj):
         faved_product = FavProduct.objects.filter(fav_user=obj.user)
         print(faved_product)
-        serializer = FavUsedByProfileSerializer(instance=faved_product, many=True)
+        serializer = FavProductSerializer(instance=faved_product, many=True)
         return serializer.data
 
     class Meta:

@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 from . import serializers
 from . import models
+from .permissions import IsOwnerOrReadOnly
 from rest_framework import permissions
 from rest_framework import generics
 from rest_framework.response import Response
@@ -17,13 +18,20 @@ import environ
 env = environ.Env()
 env.read_env('.env')
 import requests, json
+from .pagination import NormalPagination
 
-class FilteredResultPagination(pagination.PageNumberPagination):
-    page_size = 12
+from django.db.models import  Q
 
-# class FilteredResultPagination(pagination.LimitOffsetPagination):
-#     default = 2
-#     max_limit = 10
+class ReturnFavProductAPIView(generics.ListAPIView):
+    queryset = models.FavProduct.objects.all()
+    serializer_class = serializers.FavUsedInProfileSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+    # pagination_class = NormalPagination
+
+    def get_queryset(self):
+        # below two code is equal in sql...
+        # return self.queryset.filter(Q(fav_user=self.request.user)&Q(is_favorite=True))
+        return self.queryset.prefetch_related('product').select_related('fav_user').filter(fav_user=self.request.user).filter(is_favorite=True)
 
 class FavProductAPIView(mixins.RetrieveModelMixin,
                            mixins.ListModelMixin,
@@ -35,7 +43,11 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
     """
     queryset = models.FavProduct.objects.all()
     serializer_class = serializers.FavProductSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated,IsOwnerOrReadOnly,)
+
+    # def get_queryset(self):
+    #     return self.queryset.filter(fav_user=self.request.user)
+        
     # filter_backends = [filters.DjangoFilterBackend]
     # filterset_class = OwnFavFilter
     """
@@ -43,31 +55,6 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
     """
     # lookup_field = "product"
     # lookup_url_kwarg = "fav_user"
-
-    # def list(self, request, *args, **kwargs):
-    #     queryset = self.filter_queryset(self.get_queryset())
-
-    #     page = self.paginate_queryset(queryset)
-    #     if page is not None:
-    #         serializer = self.get_serializer(page, many=True)
-    #         return self.get_paginated_response(serializer.data)
-
-    #     serializer = self.get_serializer(queryset, many=True)
-    #     return Response(serializer.data)
-
-    # def retrieve(self, request, *args, **kwargs):
-    #     instance = self.get_object()
-    #     print(instance)
-    #     serializer = self.get_serializer(instance)
-    #     return Response(serializer.data)
-
-    # def get(self, request, pk=None):
-    #     """
-    #     fav/fav_id/ => get is_favorite
-    #     """
-    #     queryset = self.get_queryset()
-    #     serializer = serializers.FavSerializer
-    #     return Response(serializer.data)
   
     @action(detail=True, methods=["GET"], permission_classes=[permissions.IsAuthenticated])
     def check(self, request, pk=None):
@@ -82,7 +69,7 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
         response = {'message': 'Fav cheked', 'result': serializer.data["is_favorite"]}
         return Response(response, status=status.HTTP_200_OK)
 
-    @action(detail=True, methods=["POST"], permission_classes=[permissions.IsAuthenticated])
+    @action(detail=True, methods=["POST"], permission_classes=[permissions.IsAuthenticated,IsOwnerOrReadOnly])
     def fav(self, request, pk=None):
         """
         FAV
@@ -135,7 +122,6 @@ class CategoryReadOnlyViewSet(mixins.ListModelMixin,
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
         
-from .pagination import NormalPagination
 class ProductPagingReadOnlyViewSet(mixins.ListModelMixin,
                              mixins.RetrieveModelMixin,
                              viewsets.GenericViewSet):
@@ -150,70 +136,15 @@ class ProductReadOnlyViewSet(mixins.ListModelMixin,
     queryset = models.Product.objects.all()
     serializer_class = serializers.ProductSerializer
     permission_classes = (permissions.AllowAny,)
+    
+    def get_queryset(self):
+        qs = self.queryset
+        qs = self.get_serializer_class().setup_for_query(qs)
+        return qs
     # lookup_field = 'slug'
     """
     TODO: not working below
     """
-    # @action(detail=True,methods=["POST"], permission_classes=[permissions.IsAuthenticated])
-    # def rate(self, request, pk=None):
-    #     if 'title' in request.data:
-    #         product = models.Product.objects.get(id=pk)
-    #         title = request.data['title']
-    #         stars_of_design = request.data['stars_of_design']
-    #         stars_of_durability = request.data['stars_of_durability']
-    #         stars_of_usefulness = request.data['stars_of_usefulness']
-    #         stars_of_function = request.data['stars_of_function']
-    #         stars_of_easy_to_get = request.data['stars_of_easy_to_get']
-    #         good_point_text = request.data['good_point_text']
-    #         bad_point_text = request.data['bad_point_text']
-    #         user = request.user
-    #         print("start")
-    #         try:
-    #             review = models.Review.objects.get(reviewer=user, product=product)
-    #             review.title = title
-    #             review.stars_of_design = int(stars_of_design)
-    #             review.stars_of_durability = int(stars_of_durability)
-    #             review.stars_of_usefulness = int(stars_of_usefulness)
-    #             review.stars_of_function = int(stars_of_function)
-    #             review.stars_of_easy_to_get = int(stars_of_easy_to_get)
-    #             review.good_point_text = good_point_text
-    #             review.bad_point_text = bad_point_text
-    #             review.save()
-    #             serializer = serializers.ReviewSerialier(review, many=False)
-    #             response = {'message': 'Rating updated', 'result': serializer.data}
-    #             WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
-    #             requests.post(WEB_HOOK_URL, data = json.dumps({
-    #                 'text': f':smile_cat:Review Updated by {user} !!',  
-    #             }))
-    #             return Response(response, status=status.HTTP_200_OK)
-    #         except models.Review.DoesNotExist:
-    #             review = models.Review.objects.create(
-    #                 reviewer=user,
-    #                 product=product,
-    #                 title=title,
-    #                 stars_of_design=int(stars_of_design),
-    #                 stars_of_durability=int(stars_of_durability),
-    #                 stars_of_usefulness=int(stars_of_usefulness),
-    #                 stars_of_function=int(stars_of_function),
-    #                 stars_of_easy_to_get=int(stars_of_easy_to_get),
-    #                 good_point_text=good_point_text,
-    #                 bad_point_text=bad_point_text
-    #                 )
-    #             review.save()
-    #             serializer = serializers.ReviewSerialier(review, many=False)
-    #             WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
-    #             requests.post(WEB_HOOK_URL, data = json.dumps({
-    #                 'text': f':smile_cat:Review Created by !!',  
-    #             }))
-    #             response = {'message': 'review created','result': serializer.data}
-    #             return Response(response, status=status.HTTP_200_OK)
-    #     else:
-    #         WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
-    #         requests.post(WEB_HOOK_URL, data = json.dumps({
-    #             'text': f':smile_cat:Review Failed by  !!',  
-    #         }))
-    #         response = {'message': 'error evoled'}
-    #         return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
 class TagReadOnlyViewSet(mixins.ListModelMixin,
@@ -222,7 +153,7 @@ class TagReadOnlyViewSet(mixins.ListModelMixin,
     for list tag view \n
     display tag related product !
     """
-    queryset = models.Tag.objects.all()
+    queryset = models.Tag.objects.all().prefetch_related("product")
     serializer_class = serializers.TagSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'

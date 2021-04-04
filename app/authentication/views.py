@@ -50,6 +50,8 @@ class GoogleLogin(SocialLoginView):
     callback_url = "http://localhost:3000"
     client_class = OAuth2Client
 
+class FavedProductAPIView(mixins.ListModelMixin, mixins.RetrieveModelMixin,viewsets.GenericViewSet):
+    pass
 
 class UserReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     """
@@ -57,7 +59,7 @@ class UserReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     変更可能な情報はprofileにのみ存在してるから、、、
     UserRankingなどに必要かも
     """
-    queryset = get_user_model().objects.all()
+    queryset = get_user_model().objects.all().select_related('profile','profile__avatar')
     serializer_class = serializers.UserSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = "id"
