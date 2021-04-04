@@ -153,7 +153,7 @@ class TagReadOnlyViewSet(mixins.ListModelMixin,
     for list tag view \n
     display tag related product !
     """
-    queryset = models.Tag.objects.all()
+    queryset = models.Tag.objects.all().prefetch_related("product")
     serializer_class = serializers.TagSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
