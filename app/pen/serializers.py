@@ -3,11 +3,17 @@ from . import models
 from authentication.models import User
 # from authentication.serializers import UserSerializer
 from django.contrib.auth import get_user_model
+from authentication.models import User
+
 
 class ReviewerSerializer(serializers.ModelSerializer):
     nickname = serializers.SerializerMethodField(read_only=True)
-    twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
+    # twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
     avatar = serializers.SerializerMethodField()
+    @staticmethod
+    def setup_for_query(queryset):
+        queryset = queryset.select_related('profile')
+        return queryset
 
     def get_avatar(self, obj):
         avatar = obj.profile.avatar
@@ -19,8 +25,8 @@ class ReviewerSerializer(serializers.ModelSerializer):
         return obj.profile.nickname
 
     class Meta:
-        model = get_user_model()
-        fields = ('id','profile','nickname','twitter_account','avatar',)
+        model = User
+        fields = ('id','profile','nickname','avatar',)
         extra_kwargs = {
             'password': {
                 'write_only': True,
@@ -196,7 +202,6 @@ class ReviewSerialier(serializers.ModelSerializer):
             'reviewer',
             'created_at',
             )
-        depth = 1
         """
         TODO: validation add!
         """
@@ -214,14 +219,22 @@ class ProductSerializer(serializers.ModelSerializer):
     category = CategoryUsingProductSerializer(read_only=True)
     brand = BrandSerializer(read_only=True)
     tag = TagUsingPenSerializer(many=True,read_only=True)
-    # review = ReviewSerialier()
+    review = ReviewSerialier(many=True)
+    
     # for rate action, many = false is must
-    review = ReviewSerialier(many = True)
     # description = serializers.SerializerMethodField()
 
     # def get_description(self, instance):
     #     return markdown.markdown(instance.description)
     
+    @staticmethod
+    def setup_for_query(queryset):
+        queryset = queryset.select_related('category')
+        queryset = queryset.select_related('brand')
+        queryset = queryset.prefetch_related('tag')
+        queryset = queryset.prefetch_related('review')
+        return queryset
+
     class Meta:
         model = models.Product
         fields = ('id',
