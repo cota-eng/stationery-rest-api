@@ -19,5 +19,6 @@ router.register('review',views.ReviewViewSet)
 router.register('my-review',views.OwnReviewViewSet)
 app_name="pen"
 urlpatterns = [
+    path("fav-list/",views.ReturnFavProductAPIView.as_view(),name="fav-list"),
     path('',include(router.urls))
 ]
