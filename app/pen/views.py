@@ -18,15 +18,19 @@ import environ
 env = environ.Env()
 env.read_env('.env')
 import requests, json
+from .pagination import NormalPagination
 
 
 
-# class FilteredResultPagination(pagination.LimitOffsetPagination):
-#     default = 2
-#     max_limit = 10
+class ReturnFavProductAPIView(generics.ListAPIView):
+    queryset = models.FavProduct.objects.all()
+    serializer_class = serializers.FavUsedInProfileSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+    pagination_class = NormalPagination
 
-class ReturnFavProductAPIView(mixins.RetrieveModelMixin,mixins.ListModelMixin,viewsets.GenericViewSet):
-    pass
+    def get_queryset(self):
+        return self.queryset.filter(fav_user=self.request.user)
+        
 
 class FavProductAPIView(mixins.RetrieveModelMixin,
                            mixins.ListModelMixin,
@@ -40,8 +44,8 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
     serializer_class = serializers.FavProductSerializer
     permission_classes = (permissions.IsAuthenticated,IsOwnerOrReadOnly,)
 
-    def get_queryset(self):
-        return self.queryset.filter(fav_user=self.request.user)
+    # def get_queryset(self):
+    #     return self.queryset.filter(fav_user=self.request.user)
         
     # filter_backends = [filters.DjangoFilterBackend]
     # filterset_class = OwnFavFilter
@@ -117,7 +121,6 @@ class CategoryReadOnlyViewSet(mixins.ListModelMixin,
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
         
-from .pagination import NormalPagination
 class ProductPagingReadOnlyViewSet(mixins.ListModelMixin,
                              mixins.RetrieveModelMixin,
                              viewsets.GenericViewSet):
