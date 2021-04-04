@@ -31,4 +31,18 @@ after
 default 11.53 ms (3 queries )
 ```
 
+## api/tag
+
+```md
+before
+default 19.96 ms (15 queries including 13 similar )
+after
+default 9.83 ms (3 queries )
+```
+
 ## api/
+
+```md
+
+```
+
