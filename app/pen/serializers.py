@@ -145,7 +145,7 @@ class TagSerializer(serializers.ModelSerializer):
         fields = (
             'name',
             'slug',
-            'product_tag',
+            'product',
             )
         # depth = 1
 
