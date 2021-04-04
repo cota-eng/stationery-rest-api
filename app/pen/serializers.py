@@ -59,7 +59,6 @@ class ProductInFavListSerializer(serializers.ModelSerializer):
                 # 'number_of_review',
                 # 'avarage_of_review_star',
             )
-        depth = 1
 
 class FavProductSerializer(serializers.ModelSerializer):
     # created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
@@ -71,11 +70,10 @@ class FavProductSerializer(serializers.ModelSerializer):
         read_only_fields = ('is_favorite','fav_user','product',)
     
 class FavUsedInProfileSerializer(serializers.ModelSerializer):
-    is_favorite = serializers.BooleanField(read_only=True)
-    product = ProductInFavListSerializer(many=True)
+    product = ProductInFavListSerializer()
     class Meta:
         model = models.FavProduct
-        fields = ('fav_user','is_favorite','product',)
+        fields = ('product',)
 
 
 class CategorySerializer(serializers.ModelSerializer):
