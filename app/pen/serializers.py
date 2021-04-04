@@ -31,19 +31,51 @@ class ReviewerSerializer(serializers.ModelSerializer):
             # },
         }
 
+class ProductInFavListSerializer(serializers.ModelSerializer):
+    # category = CategoryUsingProductSerializer(read_only=True)
+    # brand = BrandSerializer(read_only=True)
+    # tag = TagUsingPenSerializer(many=True,read_only=True)
+    class Meta:
+        model = models.Product
+        fields = ('id',
+                  'name',
+                #   'price_yen',
+                  'image',
+                #   'number_of_review',
+                #   'avarage_of_review_star',
+                #   'category',
+                #   'brand',
+                #   'tag',
+                  )
+        read_only_fields = (
+                'id',
+                'name',
+                # 'price_yen',
+                'image',
+                # 'image_src',
+                # 'amazon_link_to_buy',
+                # 'rakuten_link_to_buy',
+                # 'mercari_link_to_buy',
+                # 'number_of_review',
+                # 'avarage_of_review_star',
+            )
+        depth = 1
+
 class FavProductSerializer(serializers.ModelSerializer):
-    created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
+    # created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     is_favorite = serializers.BooleanField(read_only=True)
     # lookup_field = 'faved.pk'
     class Meta:
         model = models.FavProduct
-        fields = ('is_favorite','fav_user','product','created_at',)
+        fields = ('is_favorite','fav_user','product',)
+        read_only_fields = ('is_favorite','fav_user','product',)
     
-class FavUsedByProfileSerializer(serializers.ModelSerializer):
+class FavUsedInProfileSerializer(serializers.ModelSerializer):
     is_favorite = serializers.BooleanField(read_only=True)
+    product = ProductInFavListSerializer(many=True)
     class Meta:
         model = models.FavProduct
-        fields = ('is_favorite','product',)
+        fields = ('fav_user','is_favorite','product',)
 
 
 class CategorySerializer(serializers.ModelSerializer):
