@@ -135,6 +135,11 @@ class ProductReadOnlyViewSet(mixins.ListModelMixin,
     queryset = models.Product.objects.all()
     serializer_class = serializers.ProductSerializer
     permission_classes = (permissions.AllowAny,)
+    
+    def get_queryset(self):
+        qs = self.queryset
+        qs = self.get_serializer_class().setup_for_query(qs)
+        return qs
     # lookup_field = 'slug'
     """
     TODO: not working below
