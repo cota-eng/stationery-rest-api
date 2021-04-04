@@ -22,4 +22,13 @@ after
 default 19.51 ms (6 queries )
 ```
 
+## api/fav-list
+
+```md
+before
+default 11.13 ms (5 queries including 3 similar )
+after
+default 11.53 ms (3 queries )
+```
+
 ## api/
