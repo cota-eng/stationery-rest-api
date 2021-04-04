@@ -50,6 +50,8 @@ class GoogleLogin(SocialLoginView):
     callback_url = "http://localhost:3000"
     client_class = OAuth2Client
 
+class FavedProductAPIView(mixins.ListModelMixin, mixins.RetrieveModelMixin,viewsets.GenericViewSet):
+    pass
 
 class UserReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     """
