@@ -40,6 +40,28 @@ after
 default 9.83 ms (3 queries )
 ```
 
+## api/user
+
+```md
+
+default 23.77 ms (22 queries including 20 similar and 10 duplicates )
+=>
+default 11.56 ms (11 queries including 10 similar and 10 duplicates )
+=>
+ default 3.50 ms (1 query )
+```
+
+
+## api/
+
+```md
+
+```
+## api/
+
+```md
+
+```
 ## api/
 
 ```md

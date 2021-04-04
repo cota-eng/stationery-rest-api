@@ -59,7 +59,7 @@ class UserReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     変更可能な情報はprofileにのみ存在してるから、、、
     UserRankingなどに必要かも
     """
-    queryset = get_user_model().objects.all()
+    queryset = get_user_model().objects.all().select_related('profile','profile__avatar')
     serializer_class = serializers.UserSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = "id"
