@@ -159,6 +159,8 @@ class Product(models.Model):
 class FavProduct(models.Model):
     """
     Fav is Favorite
+    TODO: user content-type
+    {"liked":false,"likable_id":29686,"likable_type":"Article"}
     """
     is_favorite = models.BooleanField(default=False)
     """
