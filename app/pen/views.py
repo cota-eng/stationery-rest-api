@@ -126,15 +126,26 @@ class ProductPagingReadOnlyViewSet(mixins.ListModelMixin,
                              mixins.RetrieveModelMixin,
                              viewsets.GenericViewSet):
     queryset = models.Product.objects.all()
-    serializer_class = serializers.ProductSerializer
+    serializer_class = serializers.ProductRetrieveSerializer
     permission_classes = (permissions.AllowAny,)
     pagination_class = NormalPagination
 
-class ProductReadOnlyViewSet(mixins.ListModelMixin,
-                             mixins.RetrieveModelMixin,
-                             viewsets.GenericViewSet):
+class ProductListAPIView(generics.ListAPIView):
     queryset = models.Product.objects.all()
-    serializer_class = serializers.ProductSerializer
+    # serializer_class = serializers.ProductListSerializer
+    serializer_class = serializers.ProductRetrieveSerializer
+    permission_classes = (permissions.AllowAny,)
+    
+    def get_queryset(self):
+        qs = self.queryset
+        qs = self.get_serializer_class().setup_for_query(qs)
+        return qs
+    
+
+
+class ProductRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = models.Product.objects.all()
+    serializer_class = serializers.ProductRetrieveSerializer
     permission_classes = (permissions.AllowAny,)
     
     def get_queryset(self):
