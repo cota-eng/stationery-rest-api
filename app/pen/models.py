@@ -138,8 +138,7 @@ class Product(models.Model):
 
     @property
     def number_of_fav(self):
-        return self.faved.count()
-        # return favs.count()
+        return self.prefetch_related('faved').count()
 
     # TODO: thinking of Average (will be ordered by score...)
     # @property
