@@ -112,6 +112,7 @@ class BrandSerializer(serializers.ModelSerializer):
             'name',
             'slug',
             'official_site_link',
+            'product'
             )
         # depth = 1
 

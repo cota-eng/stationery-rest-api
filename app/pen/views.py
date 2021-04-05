@@ -165,7 +165,7 @@ class BrandReadOnlyViewSet(mixins.ListModelMixin,
     for list brand view \n
     display brand related product !
     """
-    queryset = models.Brand.objects.all()
+    queryset = models.Brand.objects.all().prefetch_related("product")
     serializer_class = serializers.BrandSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
