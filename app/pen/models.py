@@ -136,9 +136,9 @@ class Product(models.Model):
     # def mercari_link_to_buy(self):
     #     return f'https://www.mercari.com/jp/search/?keyword={self.name}'
 
-    @property
-    def number_of_fav(self):
-        return self.prefetch_related('faved').count()
+    # @property
+    # def number_of_fav(self):
+    #     return self.prefetch_related('faved').count()
 
     # TODO: thinking of Average (will be ordered by score...)
     # @property
