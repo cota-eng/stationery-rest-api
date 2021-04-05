@@ -34,16 +34,6 @@ from rest_framework import generics
 - logout
 """
 
-# class LoginAPIView(generics.GenericAPIView):
-#     authentication_classes = [] # disable authentication
-#     permission_classes = (permissions.AllowAny,)
-#     serializer_class = serializers.LoginSerializer
-#     def post(self, request):
-#         serialier = self.serializer_class(data=request.data)
-#         serialier.is_valid(raise_exception=True)
-
-#         return Response(serialier.data,status=status.HTTP_200_OK)
-
 class GoogleLogin(SocialLoginView):
     authentication_classes = [] # disable authentication
     adapter_class = GoogleOAuth2Adapter
@@ -67,6 +57,9 @@ class UserReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
 class WhoAmIView(
     mixins.ListModelMixin,
     viewsets.GenericViewSet):
+    """
+    TODO: serializer - ok
+    """
     queryset = models.Profile.objects.all()
     # permission_classes = (permissions.AllowAny,)
     permission_classes = (permissions.IsAuthenticated,)
@@ -109,6 +102,25 @@ class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
 
+class LogoutView(GenericAPIView):
+    serializer_class = LogoutSerializer
+    permission_classes = (permissions.AllowAny, )
+
+    def post(self, request, *args):
+        sz = self.get_serializer(data=request.data)
+        sz.is_valid(raise_exception=True)
+        sz.save()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+# class LoginAPIView(generics.GenericAPIView):
+#     authentication_classes = [] # disable authentication
+#     permission_classes = (permissions.AllowAny,)
+#     serializer_class = serializers.LoginSerializer
+#     def post(self, request):
+#         serialier = self.serializer_class(data=request.data)
+#         serialier.is_valid(raise_exception=True)
+
+#         return Response(serialier.data,status=status.HTTP_200_OK)
 
 # class AvatarRetrieveUpdateView( mixins.RetrieveModelMixin,
 #                         mixins.ListModelMixin,
@@ -150,13 +162,3 @@ class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
     #     response = {'message': 'post method is not allowed'}
     #     return Response(response, status=status.HTTP_400_BAD_REQUEST)
    
-
-class LogoutView(GenericAPIView):
-    serializer_class = LogoutSerializer
-    permission_classes = (permissions.AllowAny, )
-
-    def post(self, request, *args):
-        sz = self.get_serializer(data=request.data)
-        sz.is_valid(raise_exception=True)
-        sz.save()
-        return Response(status=status.HTTP_204_NO_CONTENT)
