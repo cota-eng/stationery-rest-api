@@ -70,6 +70,27 @@ default 20.18 ms (14 queries including 10 similar )
 =>
 
 ```
+
+## api/category
+
+```md
+ default 6.78 ms (5 queries including 3 similar )
+=>
+default 7.55 ms (3 queries )
+```
+
+## api/
+
+```md
+
+```
+
+## api/
+
+```md
+
+```
+
 ## api/
 
 ```md

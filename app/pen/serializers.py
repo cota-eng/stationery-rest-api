@@ -88,7 +88,7 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = (
             'name',
             'slug',
-            'product_category',
+            'product',
             )
         # ex read_only_fields = ('name',)
         # depth = 1

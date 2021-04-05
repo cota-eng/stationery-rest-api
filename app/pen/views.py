@@ -117,7 +117,7 @@ class CategoryReadOnlyViewSet(mixins.ListModelMixin,
     for list category view \n
     display category related product !
     """
-    queryset = models.Category.objects.all()
+    queryset = models.Category.objects.all().prefetch_related("product")
     serializer_class = serializers.CategorySerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
