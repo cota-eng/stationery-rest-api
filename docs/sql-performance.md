@@ -59,9 +59,15 @@ default 5.54 ms (3 queries )
  default 4.01 ms (2 queries )
 ```
 
-## api/
+## api/allprofile
 
 ```md
+default 79.65 ms (48 queries including 47 similar and 18 duplicates )
+=>
+default 41.29 ms (28 queries including 26 similar )
+=>
+default 20.18 ms (14 queries including 10 similar )
+=>
 
 ```
 ## api/
