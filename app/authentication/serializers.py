@@ -5,7 +5,7 @@ from rest_framework import exceptions
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken,TokenError
+from rest_framework_simplejwt.tokens import RefreshToken,TokenError,AccessToken
 from . import models
 from django.utils.text import gettext_lazy as _
 
@@ -158,17 +158,20 @@ class ProfileSerializer(serializers.ModelSerializer):
     #     return super().validate(attrs)
 
 class LogoutSerializer(serializers.Serializer):
+    # access = serializers.CharField()
     refresh = serializers.CharField()
     default_error_messages = {
         'bad_token': _('invalid token')
     }
 
     def validate(self, attrs):
+        # self.token = attrs['access']
         self.token = attrs['refresh']
         return attrs
 
     def save(self, **kwargs):
         try:
+            # AccessToken(self.token).blacklist()
             RefreshToken(self.token).blacklist()
         except TokenError:
             self.fail('bad_token')

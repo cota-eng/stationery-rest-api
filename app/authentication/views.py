@@ -104,7 +104,7 @@ class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
 
 class LogoutView(GenericAPIView):
     serializer_class = LogoutSerializer
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.IsAuthenticated,)
 
     def post(self, request, *args):
         sz = self.get_serializer(data=request.data)
