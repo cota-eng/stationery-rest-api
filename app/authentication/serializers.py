@@ -84,7 +84,7 @@ class WhoAmISerializer(serializers.ModelSerializer):
     def get_avatar(self, obj):
         avatar = obj.avatar
         if avatar:
-            return avatar.image
+            return avatar.name
         return None
     class Meta:
         model = models.Profile
@@ -116,7 +116,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     updated_at = serializers.DateField(format="%Y/%m/%d", read_only=True)
     # user_profile = UserSerializer()
     review = serializers.SerializerMethodField()
-    faved_product = serializers.SerializerMethodField()
+    # faved_product = serializers.SerializerMethodField()
     avatar = serializers.SerializerMethodField()
 
     def get_avatar(self, obj):
@@ -128,21 +128,24 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def get_review(self, obj):
         own_review = Review.objects.filter(reviewer__id=obj.user.id)
-        print(own_review)
+        # print(own_review)
         serializer = ReviewNotIncludeUserSerialier(instance=own_review,many=True)
         return serializer.data
     
-    def get_faved_product(self, obj):
-        faved_product = FavProduct.objects.filter(fav_user=obj.user)
-        print(faved_product)
-        serializer = FavProductSerializer(instance=faved_product, many=True)
-        return serializer.data
+    @staticmethod
+    def setup_for_query(queryset):
+        # to-one
+        qs = queryset.select_related("avatar").prefetch_related()
+        return qs
+    # def get_faved_product(self, obj):
+    #     faved_product = FavProduct.objects.filter(fav_user=obj.user)
+    #     print(faved_product)
+    #     serializer = FavProductSerializer(instance=faved_product, many=True)
+    #     return serializer.data
 
     class Meta:
         model = models.Profile
-        fields = ('id','nickname','review','faved_product','created_at', 'updated_at','avatar', )
-        # fields = ('id', 'nickname','created_at', 'updated_at',  'avatar', 'user_profile')
-        # extra_kwargs = {'user_profile': {'read_only': True}}
+        fields = ('id','nickname','review','created_at', 'updated_at','avatar', )
     # def validate(self, attrs):
     #     nickname = attrs.get('nickname')
     #     if not nickname.isalnum():
