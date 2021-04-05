@@ -133,7 +133,7 @@ class ProductPagingReadOnlyViewSet(mixins.ListModelMixin,
 class ProductListAPIView(generics.ListAPIView):
     queryset = models.Product.objects.all()
     # serializer_class = serializers.ProductListSerializer
-    serializer_class = serializers.ProductRetrieveSerializer
+    serializer_class = serializers.ProductListSerializer
     permission_classes = (permissions.AllowAny,)
     
     def get_queryset(self):
