@@ -138,19 +138,20 @@ class Product(models.Model):
 
     @property
     def number_of_fav(self):
-        favs = self.objects.prefetch_related("faved")
+        return self.faved.count()
+        # return favs.count()
 
     # TODO: thinking of Average (will be ordered by score...)
-    @property
-    def avarage_of_review_star(self):
-        sum: int = 0
-        reviews = self.objects.prefetch_related('review').filter(product=self)
-        if len(reviews) != 0:
-            for review in reviews:
-                sum += review.avarage_star
-            return sum / len(reviews)
-        else:
-            return 0
+    # @property
+    # def avarage_of_review_star(self):
+    #     sum: int = 0
+    #     reviews = self.objects.prefetch_related('review').filter(product=self)
+    #     if len(reviews) != 0:
+    #         for review in reviews:
+    #             sum += review.avarage_star
+    #         return sum / len(reviews)
+    #     else:
+    #         return 0
         
     def __str__(self):
         return f'product: {self.name} Price: {self.price_yen}'

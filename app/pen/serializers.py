@@ -242,11 +242,25 @@ class ProductSerializer(serializers.ModelSerializer):
     brand = BrandForProductSerializer(read_only=True)
     tag = TagUsingPenSerializer(many=True,read_only=True)
     review = ReviewSerialier(many=True)
+    number_of_review = serializers.SerializerMethodField()
+    description = serializers.SerializerMethodField()
+    # avarage_of_review_star = serializers.SerializerMethodField()
+
+    # def get_avarage_of_review_star(self, instance):
+    #     return instance.review.avarage_star()
+        # sum: int = 0
+        # reviews = inctance.review.filter(product=self)
+        # if reviews.exists():
+        #     for review in reviews:
+        #         sum += review.avarage_star
+        #     return sum / reviews.count()
+        # else:
+        #     return 0
+
+    def get_number_of_review(self,instance):
+        return instance.review.count()
+    #     return instance.review.average_star.all()
     
-    # for rate action, many = false is must
-    # description = serializers.SerializerMethodField()
-    
-    @property
     def get_description(self, instance):
         return markdown.markdown(instance.description)
     
@@ -272,15 +286,17 @@ class ProductSerializer(serializers.ModelSerializer):
                   'image_src',
                   'amazon_link_to_buy',
                   'rakuten_link_to_buy',
-                  'mercari_link_to_buy',
+                #   'mercari_link_to_buy',
                   'number_of_review',
-                  'avarage_of_review_star',
+                #   'avarage_of_review_star',
                   'review',
                   'created_at',
                   'updated_at',
                   'category',
                   'brand',
-                  'tag',)
+                  'tag',
+                  'number_of_fav',
+                  )
         read_only_fields = (
                 'id',
                 'name',
@@ -290,9 +306,8 @@ class ProductSerializer(serializers.ModelSerializer):
                 'image_src',
                 'amazon_link_to_buy',
                 'rakuten_link_to_buy',
-                'mercari_link_to_buy',
-                'number_of_review',
-                'avarage_of_review_star',
+                # 'mercari_link_to_buy',
+                'number_of_fav,'
             )
         depth = 1
 
