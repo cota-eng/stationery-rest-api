@@ -310,7 +310,6 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
                 'number_of_fav,'
             )
         depth = 1
-
         
 class ProductSerializer(serializers.ModelSerializer):
     """
