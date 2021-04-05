@@ -4,6 +4,7 @@ from authentication.models import User
 # from authentication.serializers import UserSerializer
 from django.contrib.auth import get_user_model
 from authentication.models import User
+import markdown
 
 
 class ReviewerSerializer(serializers.ModelSerializer):
@@ -94,7 +95,7 @@ class CategorySerializer(serializers.ModelSerializer):
         # depth = 1
 
 
-class CategoryUsingProductSerializer(serializers.ModelSerializer):
+class CategoryForProductSerialier(serializers.ModelSerializer):
     class Meta:
         model = models.Category
         fields = (
@@ -115,6 +116,17 @@ class BrandSerializer(serializers.ModelSerializer):
             'product'
             )
         # depth = 1
+        
+class BrandForProductSerializer(serializers.ModelSerializer):
+    # pen = PenSerializer()
+    class Meta:
+        model = models.Brand
+        fields = (
+            'id',
+            'name',
+            'slug',
+            'official_site_link',
+            )
 
 class BrandFilteredProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -218,21 +230,25 @@ class ReviewSerialier(serializers.ModelSerializer):
             }
         }
 
-import markdown
 
 class ProductSerializer(serializers.ModelSerializer):
+    """
+    serializer - BrandForProductSerializer,CategoryForProductSerialier
+
+    """
     created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     updated_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
-    category = CategoryUsingProductSerializer(read_only=True)
-    brand = BrandSerializer(read_only=True)
+    category = CategoryForProductSerialier(read_only=True)
+    brand = BrandForProductSerializer(read_only=True)
     tag = TagUsingPenSerializer(many=True,read_only=True)
     review = ReviewSerialier(many=True)
     
     # for rate action, many = false is must
     # description = serializers.SerializerMethodField()
-
-    # def get_description(self, instance):
-    #     return markdown.markdown(instance.description)
+    
+    @property
+    def get_description(self, instance):
+        return markdown.markdown(instance.description)
     
     @staticmethod
     def setup_for_query(queryset):
@@ -242,7 +258,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
         reviwew - filter each product...
         """
-        queryset = queryset.prefetch_related('tag','review__reviewer','review__reviewer__profile','review__reviewer__profile__avatar','review__product')
+        queryset = queryset.prefetch_related('tag','review__reviewer','review__reviewer__profile','review__reviewer__profile__avatar','review__product',)
         queryset = queryset.select_related('category','brand')
         return queryset
 
