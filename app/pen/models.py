@@ -87,7 +87,7 @@ class Product(models.Model):
         _('description'))
     category = models.ForeignKey(
         Category,
-        related_name="product_category",
+        related_name="product",
         # TODO: CASCADE -> SETNULL
         on_delete=models.CASCADE
         )
@@ -97,7 +97,7 @@ class Product(models.Model):
         )
     brand = models.ForeignKey(
         Brand,
-        related_name="product_brand",
+        related_name="product",
         on_delete=models.CASCADE
     )
     tag = models.ManyToManyField(
