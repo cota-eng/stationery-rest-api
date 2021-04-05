@@ -390,5 +390,54 @@ class ProductSerializer(serializers.ModelSerializer):
                 'number_of_fav,'
             )
         depth = 1
+class ProductListSerializer(serializers.ModelSerializer):
+    """
+    For Listing Product
+    """
+    category = CategoryForProductSerialier(read_only=True)
+    brand = BrandForProductSerializer(read_only=True)
+    tag = TagUsingPenSerializer(many=True,read_only=True)
+    number_of_review = serializers.SerializerMethodField()
+    number_of_fav = serializers.SerializerMethodField()
+
+
+    def get_number_of_review(self,instance):
+        return instance.review.count()
+
+    def get_number_of_fav(self,instance):
+        return instance.faved.count()
+
+    @staticmethod
+    def setup_for_query(queryset):
+        """
+        to many - tag, review, fav
+        to one  - category, brand
+        reviwew - filter each product...
+        """
+        queryset = queryset.prefetch_related('tag','review__reviewer','review__reviewer__profile','review__reviewer__profile__avatar','review__product','faved',)
+        queryset = queryset.select_related('category','brand')
+        return queryset
+
+    class Meta:
+        model = models.Product
+        fields = ('id',
+                  'name',
+                  'price_yen',
+                  'image',
+                  'number_of_review',
+                  'category',
+                  'brand',
+                  'tag',
+                  'number_of_fav',
+                  )
+        read_only_fields = (
+                'id',
+                'name',
+                'description',
+                'price_yen',
+                'image',
+                'image_src',
+                'number_of_fav,'
+            )
 
     
