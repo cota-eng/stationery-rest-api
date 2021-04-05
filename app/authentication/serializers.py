@@ -8,22 +8,7 @@ from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken,TokenError,AccessToken
 from . import models
 from django.utils.text import gettext_lazy as _
-
-# class LoginSerializer(serializers.ModelSerializer):
-#     tokens = serializers.SerializerMethodField()
-#     email = serializers.EmailField(max_length=255)
-#     password = serializers.CharField(max_length=255, min_length=4, write_only=True)
-#     tokens = serializers.CharField(read_only=True)
-#     class Meta:
-#         model = models.User
-#         fields = ('email', 'password','tokens',)
-#     # need to check
-#     def get_tokens(self, obj):
-#         user = models.User.objects.get(email=obj['email'])
-#         return {
-#             'access':user.tokens()['access'],
-#             'refresh':user.tokens()['refresh'],
-#         }
+from pen.serializers import ReviewNotIncludeUserSerialier,FavProductSerializer
 import environ
 env = environ.Env()
 env.read_env('.env')
@@ -31,15 +16,13 @@ import requests, json
 from pen.models import Review,FavProduct
 
 
-# class AvatarSerializer(serializers.ModelSerializer):
-#     # id = serializers.SerializerMethodField()
-
-#     # def get_id(self, obj):
-#     #     return obj.profile.pk
-
-#     class Meta:
-#         model = models.Avatar
-#         fields = ('id','image',)
+class AvatarSerializer(serializers.ModelSerializer):
+    # id = serializers.SerializerMethodField()
+    # def get_id(self, obj):
+    #     return obj.profile.pk
+    class Meta:
+        model = models.Avatar
+        fields = ('id','image',)
 
 class UserSerializer(serializers.ModelSerializer):
     nickname = serializers.SerializerMethodField(read_only=True)
@@ -63,10 +46,17 @@ class UserSerializer(serializers.ModelSerializer):
                 'write_only': True,
                 'style': {'input_type': 'password'}
             },
-            # 'email': {
-            #     'read_only':True
-            # },
         }
+
+    @staticmethod
+    def setup_for_query(queryset):
+        """
+        to many - 
+        to one  - profile, avatar
+        """
+        queryset = queryset.prefetch_related()
+        queryset = queryset.select_related('profile','profile__avatar')
+        return queryset
     # def create(self, validated_data):
     #     response = super().create(validated_data)
     #     WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
@@ -74,9 +64,6 @@ class UserSerializer(serializers.ModelSerializer):
     #         'text': f':smile_cat:UserCreated [ {validated_data["email"]} ] ',  
     #     }))
     #     return response
-    # def create(self, validated_data):
-    #     return get_user_model().objects.create_user(**validated_data)
-from pen.serializers import ReviewNotIncludeUserSerialier,FavProductSerializer
 
 class WhoAmISerializer(serializers.ModelSerializer):
     avatar = serializers.SerializerMethodField()
@@ -310,3 +297,20 @@ class LogoutSerializer(serializers.Serializer):
 #                 raise exceptions.AuthenticationFailed('reset link is invalid, try again!', 401)
                 
 #         return super().validate(attrs)
+
+
+# class LoginSerializer(serializers.ModelSerializer):
+#     tokens = serializers.SerializerMethodField()
+#     email = serializers.EmailField(max_length=255)
+#     password = serializers.CharField(max_length=255, min_length=4, write_only=True)
+#     tokens = serializers.CharField(read_only=True)
+#     class Meta:
+#         model = models.User
+#         fields = ('email', 'password','tokens',)
+#     # need to check
+#     def get_tokens(self, obj):
+#         user = models.User.objects.get(email=obj['email'])
+#         return {
+#             'access':user.tokens()['access'],
+#             'refresh':user.tokens()['refresh'],
+#         }

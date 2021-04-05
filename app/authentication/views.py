@@ -2,15 +2,12 @@ from django.shortcuts import render
 from rest_framework import views
 from rest_framework import viewsets
 from rest_framework_simplejwt.tokens import RefreshToken
-from . import models,serializers
+from . import models
+from . import serializers
 from django.conf import settings
-# from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from rest_framework import exceptions
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
-# from django.contrib.auth.tokens import PasswordResetTokenGenerator
-# from django.shortcuts import redirect
-# from django.http import HttpResponsePermanentRedirect
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from dj_rest_auth.registration.views import SocialLoginView
 from allauth.socialaccount.providers.oauth2.client import OAuth2Client
@@ -25,6 +22,10 @@ from django.contrib.auth import get_user_model
 from rest_framework import parsers
 from rest_framework import mixins
 from rest_framework import generics
+# from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
+# from django.contrib.auth.tokens import PasswordResetTokenGenerator
+# from django.shortcuts import redirect
+# from django.http import HttpResponsePermanentRedirect
 
 """
 4 views needed
@@ -51,10 +52,15 @@ class UserReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     UserRankingなどに必要かも
     """
     # TODO: serializer - 
-    queryset = get_user_model().objects.all().select_related('profile','profile__avatar')
+    queryset = get_user_model().objects.all()
     serializer_class = serializers.UserSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = "id"
+
+    def get_queryset(self):
+        qs = self.queryset
+        qs = self.get_serializer_class().setup_for_query(qs)
+        return qs
 
 class WhoAmIView(
     mixins.ListModelMixin,
