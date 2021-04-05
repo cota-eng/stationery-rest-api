@@ -35,7 +35,10 @@ from rest_framework import generics
 """
 
 class GoogleLogin(SocialLoginView):
-    authentication_classes = [] # disable authentication
+    """
+    For google oauth
+    """
+    authentication_classes = [] 
     adapter_class = GoogleOAuth2Adapter
     callback_url = "http://localhost:3000"
     client_class = OAuth2Client
@@ -49,6 +52,7 @@ class UserReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     変更可能な情報はprofileにのみ存在してるから、、、
     UserRankingなどに必要かも
     """
+    # TODO: serializer - 
     queryset = get_user_model().objects.all().select_related('profile','profile__avatar')
     serializer_class = serializers.UserSerializer
     permission_classes = (permissions.AllowAny,)
@@ -57,9 +61,7 @@ class UserReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
 class WhoAmIView(
     mixins.ListModelMixin,
     viewsets.GenericViewSet):
-    """
-    TODO: serializer - ok
-    """
+    # TODO: serializer - ok
     queryset = models.Profile.objects.all()
     # permission_classes = (permissions.AllowAny,)
     permission_classes = (permissions.IsAuthenticated,)
