@@ -94,19 +94,24 @@ class WhoAmISerializer(serializers.ModelSerializer):
 class OwnProfileEditSerializer(serializers.ModelSerializer):
     # user = UserSerializer(read_only=True)
     # user_profile = UserSerializer()
-    avatar = serializers.SerializerMethodField()
+    # avatar = serializers.SerializerMethodField()
 
-    def get_avatar(self, obj):
-        avatar = obj.avatar
-        if avatar:
-            return avatar.name
-        return None
+    # def get_avatar(self, obj):
+    #     avatar = obj.avatar
+    #     if avatar:
+    #         return avatar.name
+    #     return None
     # avatar = AvatarSerializer()
 
     class Meta:
         model = models.Profile
         fields = ('id', 'nickname','user', 'avatar','twitter_account')
         read_only_fields = ('user',)
+
+    # def update(self, instance, validated_data):
+    #     pass
+        
+
 class ProfileSerializer(serializers.ModelSerializer):
     """
     read only 

@@ -78,13 +78,17 @@ class WhoAmIView(
 class ProfileReadOnlyViewSet(mixins.RetrieveModelMixin,
                              mixins.ListModelMixin,
                              viewsets.GenericViewSet):
-    queryset = models.Profile.objects.all()
+    queryset = models.Profile.objects.all().prefetch_related("user__reviewer")
     # permission_classes = (permissions.AllowAny,)
     permission_classes = (permissions.AllowAny,)
     serializer_class = serializers.ProfileSerializer
-    parser_classes = [parsers.MultiPartParser,
-                      parsers.FormParser,]
-
+    #TODO serializer Recreate
+    # parser_classes = [parsers.MultiPartParser,
+    #                   parsers.FormParser,]
+    def get_queryset(self):
+        qs = self.queryset
+        qs = self.get_serializer_class().setup_for_query(qs)
+        return qs
 
 class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
                                           mixins.ListModelMixin,
