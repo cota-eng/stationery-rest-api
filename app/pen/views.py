@@ -22,9 +22,9 @@ from .pagination import NormalPagination
 
 from django.db.models import  Q
 
-class OwnFavProductAPIView(generics.ListAPIView):
+class OwnFavProductListAPIView(generics.ListAPIView):
     queryset = models.FavProduct.objects.all()
-    serializer_class = serializers.FavUsedInProfileSerializer
+    serializer_class = serializers.OwnFavListSerializer
     permission_classes = (permissions.IsAuthenticated,)
     # pagination_class = NormalPagination
 
@@ -34,7 +34,7 @@ class OwnFavProductAPIView(generics.ListAPIView):
         return self.queryset.prefetch_related('product').select_related('fav_user').filter(fav_user=self.request.user).filter(is_favorite=True)
 
 class FavProductAPIView(mixins.RetrieveModelMixin,
-                           mixins.ListModelMixin,
+                           mixins.ListModelMixin,#TODO in production, not needed?
                            viewsets.GenericViewSet):
     """
     get specific fav info
@@ -110,6 +110,17 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
             response = {'message': 'first faved'}
             return Response(response, status=status.HTTP_200_OK)
      
+class OwnReviewProductListAPIView(generics.ListAPIView):
+    """
+    View that get data reviewed by request user:IsAuthenticated
+    """
+    queryset = models.Review.objects.all()
+    serializer_class = serializers.ReviewSerialier
+    permission_classes = (permissions.IsAuthenticated,)
+    
+    def get_queryset(self):
+        user = self.request.user
+        return models.Review.objects.filter(reviewer=user)
 
 class CategoryReadOnlyViewSet(mixins.ListModelMixin,
                               viewsets.GenericViewSet):
@@ -256,20 +267,6 @@ class ProductTagFilteredReadOnlyViewSet(mixins.ListModelMixin,
         return self.queryset.filter(tag__slug=slug)
 
 
-class OwnReviewViewSet(mixins.ListModelMixin,
-                       mixins.RetrieveModelMixin,
-                       mixins.UpdateModelMixin,
-                       viewsets.GenericViewSet):
-    """
-    View that get data reviewed by request user:IsAuthenticated
-    """
-    queryset = models.Review.objects.all()
-    serializer_class = serializers.ReviewSerialier
-    permission_classes = (permissions.IsAuthenticated,)
-    
-    def get_queryset(self):
-        user = self.request.user
-        return models.Review.objects.filter(reviewer=user)
     
 
 class ReviewViewSet(mixins.ListModelMixin,
