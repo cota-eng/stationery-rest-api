@@ -109,7 +109,7 @@ class Product(models.Model):
         blank=True,
         null=True)
     # in JP 出典
-    image_src = models.CharField(
+    image_src = models.URLField(
         blank=True,
         null=True,
         max_length=500)
@@ -118,11 +118,11 @@ class Product(models.Model):
     """
     in the future, set affiliate link, so is charfield
     """
-    amazon_link_to_buy = models.CharField(
+    amazon_link_to_buy = models.URLField(
         blank=True,
         null=True,
         max_length=500)
-    rakuten_link_to_buy = models.CharField(
+    rakuten_link_to_buy = models.URLField(
         blank=True,
         null=True,
         max_length=500)
