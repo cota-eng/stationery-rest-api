@@ -1,5 +1,0 @@
-# authentication
-
-## Login
-
-## Logout

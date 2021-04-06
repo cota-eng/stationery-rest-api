@@ -1,8 +1,5 @@
 {
-    "python.autoComplete.extraPaths": [
-        "./app"
-    ],
-    "python.linting.pylintEnabled": true
+    "python.autoComplete.extraPaths": ["./app"]
     // "python.pythonPath": "python",
     // "python.envFile": "${workspaceFolder}/.env"
 }
