@@ -13,27 +13,32 @@ from rest_framework.filters import (
 )
 
 from django.db.models import Q
+from rest_framework.permissions import AllowAny, IsAuthenticated
+
+
 
 class PostListAPIView(generics.ListAPIView):
     serializer_class = PostListSerializer
     queryset = Post.objects.all()
-    filter_backends = [SearchFilter]
-    search_fields = ["title", "content",]
+    permission_classes = (AllowAny,)
+    # filter_backends = [SearchFilter]
+    # search_fields = ["title", "content",]
     
-    def get_queryset(self):
-        # super(PostListAPIView,self).get_queryset(self)
-        query = self.request.GET.get("q")
-        if query:
-            queryset = queryset.filter(
-                Q(titel__icontains=query) |
-                Q(content__icontains=query)
-            ).distinct()
-        return queryset
+    # def get_queryset(self):
+    #     # super(PostListAPIView,self).get_queryset(self)
+    #     query = self.request.GET.get("q")
+    #     if query:
+    #         queryset = queryset.filter(
+    #             Q(titel__icontains=query) |
+    #             Q(content__icontains=query)
+    #         ).distinct()
+    #     return queryset
 
 class PostDetailAPIView(generics.RetrieveAPIView):
     serializer_class = PostListSerializer
     queryset = Post.objects.all()
     lookup_field = "slug"
+    permission_classes = (AllowAny,)
 
 class PostCreateAPIView(generics.CreateAPIView):
     serializer_class = PostListSerializer

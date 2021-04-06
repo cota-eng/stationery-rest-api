@@ -5,7 +5,19 @@ from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 from django.contrib.contenttypes.fields import GenericForeignKey,GenericRelation  
 from django.contrib.contenttypes.models import ContentType
-from django.utils import  timezone
+from django.utils import timezone
+
+
+class Like(models.Model):
+    
+    liked_by = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    # Listed below are the mandatory fields for a generic relation
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey()    
+
 
 class PostManager(models.Manager):
     def active(self, *args, **kwargs):
@@ -17,7 +29,7 @@ class Post(models.Model):
     slug = models.SlugField()
     content = models.TextField()
     is_public = models.BooleanField(default=False)
-    author = models.ForeignKey(
+    written_by = models.ForeignKey(
         get_user_model(),
         related_name="author",
         on_delete=models.CASCADE
@@ -25,7 +37,14 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     read_time = models.IntegerField(default=0)
-    comments = GenericRelation("Comment")
+    comments = GenericRelation(
+        "Comment",
+        # content_type_field='content_type',
+        # object_id_field='object_id',
+        # related_query_name='post'
+        )
+    likes = GenericRelation(Like)
+
     class Meta:
         ordering = ["-created_at"]
 
@@ -68,6 +87,9 @@ def create_slug(instance, new_slug=None):
 class CommentManager(models.Manager):
 
     def all(self):
+        """
+        Return all parent Comment, not include children
+        """
         qs = super(CommentManager, self).filter(parent=None)
         return qs
 
@@ -94,26 +116,27 @@ class CommentManager(models.Manager):
                 return instance
         return None
 
-    
 
 class Comment(models.Model):
     content = models.TextField()
     post = models.ForeignKey(Post,related_name="comment",on_delete=models.CASCADE)
-    commentator = models.ForeignKey(
+    comment_by = models.ForeignKey(
         get_user_model(),
         related_name="commentator",
         on_delete=models.CASCADE
         )
-    content_type = models.ForeignKey(ContentType,null=True,blank=True, on_delete=models.SET_NULL)
+
+    content_type = models.ForeignKey(ContentType,null=True,blank=True, on_delete=models.SET_NULL,related_name="comment")
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey(ct_field='content_type', fk_field='object_id')
     #changed
+    objects = models.Manager()
     comment_objects = CommentManager()
     parent = models.ForeignKey("self",null=True,blank=True,on_delete=models.SET_NULL)
-    
+    likes = GenericRelation(Like)
     
     def __str__(self):
-        return str(self.commentator.username)
+        return str(self.content)
     
     def children(self):
         return Comment.objects.filter(parent=self)

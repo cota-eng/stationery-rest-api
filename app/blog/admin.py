@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Post,Comment
+from .models import Post,Comment,Like
 
 # class PostModelAdmin(admin.ModelAdmin):
 #     list_display = ["titie", "updated_at"]
@@ -8,10 +8,10 @@ from .models import Post,Comment
 #     list_editable = ["title"]
 #     list_filter = ["updated_at"]
 #     search_fields = ["title", "content"]
-    
 #     class Meta:
 #         model = Post
         
+admin.site.register(Like)
 admin.site.register(Post)
 admin.site.register(Comment)
 # admin.site.register(Post,PostModelAdmin)

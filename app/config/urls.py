@@ -30,6 +30,7 @@ import debug_toolbar
 urlpatterns = [
     path('api/', include("authentication.urls")),
     path('api/', include("pen.urls")),
+    path('api/', include("blog.urls")),
     path('admin/', admin.site.urls),
     # path('api/blog/',include("blog.urls"),
 ]

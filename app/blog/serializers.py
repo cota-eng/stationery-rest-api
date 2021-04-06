@@ -16,10 +16,20 @@ class PostListSerializer(ModelSerializer):
             "content",
             "slug",
             "is_public",
-            "author",
+            "written_by",
             "created_at",
             "updated_at",
+            "comments",
         )
+    comments = SerializerMethodField()
+
+    def get_comments(self, obj):
+        # content_type = obj.get_content_type
+        # object_id = obj.id
+        comment_qs = Comment.comment_objects.filter_by_instance(obj)
+        comments = CommentSerializer(data=comment_qs, many=True).data
+        return comments
+
 class PostCreateSerializer(ModelSerializer):
     class Meta:
         model = Post
@@ -29,7 +39,7 @@ class PostCreateSerializer(ModelSerializer):
             "content",
             "slug",
             "is_public",
-            "author",
+            "written_by",
             "created_at",
             "updated_at",
         )
@@ -44,9 +54,10 @@ class PostDetailSerializer(ModelSerializer):
             "content",
             "slug",
             "is_public",
-            "author",
+            "written_by",
             "created_at",
             "updated_at",
+
         )
 
     url = HyperlinkedIdentityField(

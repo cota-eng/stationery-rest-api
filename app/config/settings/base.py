@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     #  "rest_framework.authtoken",
     # for social login
     "django.contrib.sites",
+    'django_extensions',
     "dj_rest_auth",
     "dj_rest_auth.registration",
     "allauth",
