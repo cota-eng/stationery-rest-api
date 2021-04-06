@@ -125,16 +125,24 @@ class CategoryReadOnlyViewSet(mixins.ListModelMixin,
 class ProductPagingReadOnlyViewSet(mixins.ListModelMixin,
                              mixins.RetrieveModelMixin,
                              viewsets.GenericViewSet):
+    """
+    for testing
+    """
     queryset = models.Product.objects.all()
     serializer_class = serializers.ProductRetrieveSerializer
     permission_classes = (permissions.AllowAny,)
     pagination_class = NormalPagination
 
 class ProductListAPIView(generics.ListAPIView):
+    """
+    For listing product API
+    """
     queryset = models.Product.objects.all()
     # serializer_class = serializers.ProductListSerializer
     serializer_class = serializers.ProductListSerializer
     permission_classes = (permissions.AllowAny,)
+    # pagination_class = NormalPagination
+
     
     def get_queryset(self):
         qs = self.queryset
@@ -144,6 +152,9 @@ class ProductListAPIView(generics.ListAPIView):
 
 
 class ProductRetrieveAPIView(generics.RetrieveAPIView):
+    """
+    For product retrieve API
+    """
     queryset = models.Product.objects.all()
     serializer_class = serializers.ProductRetrieveSerializer
     permission_classes = (permissions.AllowAny,)
@@ -190,7 +201,7 @@ class ProductSearchByAllConditions(mixins.ListModelMixin,
     all condition searching
     """
     queryset = models.Product.objects.all()
-    serializer_class = serializers.ProductSerializer
+    serializer_class = serializers.ProductListSerializer
     permission_classes = (permissions.AllowAny,)
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = ProductOriginalFilter
