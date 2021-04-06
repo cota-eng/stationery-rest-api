@@ -22,6 +22,18 @@ from .pagination import NormalPagination
 
 from django.db.models import  Q
 
+class SampleAPIView(generics.ListAPIView):
+    queryset = models.Product.objects.all().prefetch_related()
+    serializer_class = serializers.ProductListSerializer
+    permission_classes = (permissions.AllowAny,)
+    pagination_class = NormalPagination
+    def get_queryset(self):
+        # if self.kwargs['category__slug'] is None:
+        #     return None
+        qs = self.queryset
+        qs = self.get_serializer_class().setup_for_query(qs)
+        return qs.filter(category__slug=self.kwargs['category__slug'])
+
 class OwnFavProductListAPIView(generics.ListAPIView):
     queryset = models.FavProduct.objects.all()
     serializer_class = serializers.OwnFavListSerializer
