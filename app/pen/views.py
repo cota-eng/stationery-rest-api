@@ -22,7 +22,7 @@ from .pagination import NormalPagination
 
 from django.db.models import  Q
 
-class ReturnFavProductAPIView(generics.ListAPIView):
+class OwnFavProductAPIView(generics.ListAPIView):
     queryset = models.FavProduct.objects.all()
     serializer_class = serializers.FavUsedInProfileSerializer
     permission_classes = (permissions.IsAuthenticated,)
