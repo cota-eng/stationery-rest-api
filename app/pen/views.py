@@ -115,12 +115,14 @@ class OwnReviewProductListAPIView(generics.ListAPIView):
     View that get data reviewed by request user:IsAuthenticated
     """
     queryset = models.Review.objects.all()
-    serializer_class = serializers.ReviewSerialier
+    serializer_class = serializers.OwnReviewListSerialier
     permission_classes = (permissions.IsAuthenticated,)
     
     def get_queryset(self):
+        qs = self.queryset
+        qs = self.get_serializer_class().setup_for_query(qs)
         user = self.request.user
-        return models.Review.objects.filter(reviewer=user)
+        return qs.filter(reviewer=user)
 
 class CategoryReadOnlyViewSet(mixins.ListModelMixin,
                               viewsets.GenericViewSet):
