@@ -115,7 +115,7 @@ class OwnReviewProductListAPIView(generics.ListAPIView):
     View that get data reviewed by request user:IsAuthenticated
     """
     queryset = models.Review.objects.all()
-    serializer_class = serializers.OwnReviewListSerialier
+    serializer_class = serializers.OwnReviewProductListSerialier
     permission_classes = (permissions.IsAuthenticated,)
     
     def get_queryset(self):
@@ -177,9 +177,6 @@ class ProductRetrieveAPIView(generics.RetrieveAPIView):
         qs = self.get_serializer_class().setup_for_query(qs)
         return qs
     # lookup_field = 'slug'
-    """
-    TODO: not working below
-    """
 
 
 class TagReadOnlyViewSet(mixins.ListModelMixin,
