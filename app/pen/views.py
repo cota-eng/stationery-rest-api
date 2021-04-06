@@ -117,7 +117,7 @@ class CategoryReadOnlyViewSet(mixins.ListModelMixin,
     for list category view \n
     display category related product !
     """
-    queryset = models.Category.objects.all()
+    queryset = models.Category.objects.all().prefetch_related("product")
     serializer_class = serializers.CategorySerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
@@ -125,16 +125,38 @@ class CategoryReadOnlyViewSet(mixins.ListModelMixin,
 class ProductPagingReadOnlyViewSet(mixins.ListModelMixin,
                              mixins.RetrieveModelMixin,
                              viewsets.GenericViewSet):
+    """
+    for testing
+    """
     queryset = models.Product.objects.all()
-    serializer_class = serializers.ProductSerializer
+    serializer_class = serializers.ProductRetrieveSerializer
     permission_classes = (permissions.AllowAny,)
     pagination_class = NormalPagination
 
-class ProductReadOnlyViewSet(mixins.ListModelMixin,
-                             mixins.RetrieveModelMixin,
-                             viewsets.GenericViewSet):
+class ProductListAPIView(generics.ListAPIView):
+    """
+    For listing product API
+    """
     queryset = models.Product.objects.all()
-    serializer_class = serializers.ProductSerializer
+    # serializer_class = serializers.ProductListSerializer
+    serializer_class = serializers.ProductListSerializer
+    permission_classes = (permissions.AllowAny,)
+    # pagination_class = NormalPagination
+
+    
+    def get_queryset(self):
+        qs = self.queryset
+        qs = self.get_serializer_class().setup_for_query(qs)
+        return qs
+    
+
+
+class ProductRetrieveAPIView(generics.RetrieveAPIView):
+    """
+    For product retrieve API
+    """
+    queryset = models.Product.objects.all()
+    serializer_class = serializers.ProductRetrieveSerializer
     permission_classes = (permissions.AllowAny,)
     
     def get_queryset(self):
@@ -165,7 +187,7 @@ class BrandReadOnlyViewSet(mixins.ListModelMixin,
     for list brand view \n
     display brand related product !
     """
-    queryset = models.Brand.objects.all()
+    queryset = models.Brand.objects.all().prefetch_related("product")
     serializer_class = serializers.BrandSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
@@ -179,20 +201,17 @@ class ProductSearchByAllConditions(mixins.ListModelMixin,
     all condition searching
     """
     queryset = models.Product.objects.all()
-    serializer_class = serializers.ProductSerializer
+    serializer_class = serializers.ProductListSerializer
     permission_classes = (permissions.AllowAny,)
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = ProductOriginalFilter
+    def get_queryset(self):
+        qs = self.queryset
+        qs = self.get_serializer_class().setup_for_query(qs)
+        return qs
     # pagination_class = FilteredResultPagination
     # pagination_class = pagination.LimitOffsetPagination
     # add &?limit=100&offset=500
-
-
-# class PenCategoryFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
-#     queryset = models.Pen.objects.filter(category=)
-#     serializer_class = serializers.CategorySerializer
-#     permission_classes = (permissions.IsAuthenticated,)
-#     filter_fields = ('slug', )
 
 
 class ProductBrandFilteredReadOnlyViewSet(mixins.ListModelMixin,

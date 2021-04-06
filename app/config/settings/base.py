@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
     'drf_yasg',
-    # 'rest_framework_simplejwt.token_blacklist',
+    'rest_framework_simplejwt.token_blacklist',
     #  "rest_framework.authtoken",
     # for social login
     "django.contrib.sites",
@@ -206,7 +206,7 @@ SIMPLE_JWT = {
     'AUDIENCE': None,
     'ISSUER': None,
 
-    # 'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_TYPES': ('Bearer',),
     # 'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
     # 'USER_ID_FIELD': 'id',
     # 'USER_ID_CLAIM': 'user_id',

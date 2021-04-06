@@ -7,7 +7,8 @@ from django.utils import timezone
 from authentication.models import User
 import ulid
 from core.models import ULIDField
-
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 
 class Category(models.Model):
     """
@@ -68,8 +69,6 @@ class Tag(models.Model):
     def __str__(self):
         return f'Tag: {self.name}'
 
-from imagekit.models import ProcessedImageField
-from imagekit.processors import ResizeToFill
 
 class Product(models.Model):
     """Model that is main part"""
@@ -87,7 +86,7 @@ class Product(models.Model):
         _('description'))
     category = models.ForeignKey(
         Category,
-        related_name="product_category",
+        related_name="product",
         # TODO: CASCADE -> SETNULL
         on_delete=models.CASCADE
         )
@@ -97,7 +96,7 @@ class Product(models.Model):
         )
     brand = models.ForeignKey(
         Brand,
-        related_name="product_brand",
+        related_name="product",
         on_delete=models.CASCADE
     )
     tag = models.ManyToManyField(
@@ -133,26 +132,25 @@ class Product(models.Model):
     """
     TODO: not needed? this field is able to be impletemted in front end
     """
-    @property
-    def mercari_link_to_buy(self):
-        return f'https://www.mercari.com/jp/search/?keyword={self.name}'
+    # @property
+    # def mercari_link_to_buy(self):
+    #     return f'https://www.mercari.com/jp/search/?keyword={self.name}'
 
-    @property
-    def number_of_review(self):
-        reviews = self.objects.prefetch_related('review').filter(product=self)
-        return len(reviews)
+    # @property
+    # def number_of_fav(self):
+    #     return self.prefetch_related('faved').count()
 
-    # TODO: thinking of Aveerage (will be ordered by score...)
-    @property
-    def avarage_of_review_star(self):
-        sum: int = 0
-        reviews = self.objects.prefetch_related('review').filter(product=self)
-        if len(reviews) != 0:
-            for review in reviews:
-                sum += review.avarage_star
-            return sum / len(reviews)
-        else:
-            return 0
+    # TODO: thinking of Average (will be ordered by score...)
+    # @property
+    # def avarage_of_review_star(self):
+    #     sum: int = 0
+    #     reviews = self.objects.prefetch_related('review').filter(product=self)
+    #     if len(reviews) != 0:
+    #         for review in reviews:
+    #             sum += review.avarage_star
+    #         return sum / len(reviews)
+    #     else:
+    #         return 0
         
     def __str__(self):
         return f'product: {self.name} Price: {self.price_yen}'
@@ -161,6 +159,8 @@ class Product(models.Model):
 class FavProduct(models.Model):
     """
     Fav is Favorite
+    TODO: user content-type
+    {"liked":false,"likable_id":29686,"likable_type":"Article"}
     """
     is_favorite = models.BooleanField(default=False)
     """
@@ -221,7 +221,6 @@ class Review(models.Model):
         on_delete=models.CASCADE)
     """
     TODO:
-    avarage自体どうするか
     個人のアベレージと、個人のアベレージを平均したものをペンのトップに載せる
     レビュー自体が参考になったか：きちんとしたレビューは評価され、みんなにより見てもらう必要がある
     """
@@ -254,11 +253,13 @@ class Review(models.Model):
         _('easy_to_get'),
         validators=[MaxValueValidator(5), MinValueValidator(1)]
         )
-
     
 
     @property
     def avarage_star(self):
+        """
+        average of individual star
+        """
         stars_list = [
             self.stars_of_design,
             self.stars_of_durability,
