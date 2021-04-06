@@ -19,7 +19,7 @@ class Category(models.Model):
         max_length=50,
         unique=True,
         )
-    slug = models.CharField(
+    slug = models.SlugField(
         _("category slug"),
         max_length=50,
         unique=True,
@@ -37,12 +37,11 @@ class Brand(models.Model):
         max_length=50,
         unique=True,
     )
-    slug = models.CharField(
+    slug = models.SlugField(
         _("brand slug"),
-        max_length=50,
         unique=True,
         )
-    official_site_link = models.CharField(
+    official_site_link = models.URLField(
          _("brand link"),
          max_length=255,
          unique=True
@@ -60,9 +59,8 @@ class Tag(models.Model):
         max_length=50,
         unique=True,
         )
-    slug = models.CharField(
+    slug = models.SlugField(
         _("category slug"),
-        max_length=50,
         unique=True,
         )
     
