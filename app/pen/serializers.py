@@ -9,7 +9,6 @@ import markdown
 
 class ReviewerSerializer(serializers.ModelSerializer):
     nickname = serializers.SerializerMethodField(read_only=True)
-    # twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
     avatar = serializers.SerializerMethodField()
     # @staticmethod
     # def setup_for_query(queryset):
@@ -33,9 +32,6 @@ class ReviewerSerializer(serializers.ModelSerializer):
                 'write_only': True,
                 'style': {'input_type': 'password'}
             },
-            # 'email': {
-            #     'read_only':True
-            # },
         }
 
 class ProductInFavListSerializer(serializers.ModelSerializer):
@@ -49,7 +45,6 @@ class ProductInFavListSerializer(serializers.ModelSerializer):
         model = models.Product
         fields = ('id',
                   'name',
-                #   'price_yen',
                   'image',
                 #   'number_of_review',
                 #   'avarage_of_review_star',
@@ -71,9 +66,8 @@ class ProductInFavListSerializer(serializers.ModelSerializer):
             )
 
 class FavProductSerializer(serializers.ModelSerializer):
-    # created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     is_favorite = serializers.BooleanField(read_only=True)
-    # lookup_field = 'faved.pk'
+
     class Meta:
         model = models.FavProduct
         fields = ('is_favorite','fav_user','product',)
@@ -95,8 +89,6 @@ class CategorySerializer(serializers.ModelSerializer):
             'slug',
             'product',
             )
-        # ex read_only_fields = ('name',)
-        # depth = 1
 
 
 class CategoryForProductSerialier(serializers.ModelSerializer):
@@ -107,10 +99,8 @@ class CategoryForProductSerialier(serializers.ModelSerializer):
             'slug',
             'name',
             )
-        # depth = 1
 
 class BrandSerializer(serializers.ModelSerializer):
-    # pen = PenSerializer()
     class Meta:
         model = models.Brand
         fields = (
@@ -120,10 +110,8 @@ class BrandSerializer(serializers.ModelSerializer):
             'official_site_link',
             'product'
             )
-        # depth = 1
         
 class BrandForProductSerializer(serializers.ModelSerializer):
-    # pen = PenSerializer()
     class Meta:
         model = models.Brand
         fields = (
@@ -150,12 +138,9 @@ class BrandFilteredProductSerializer(serializers.ModelSerializer):
             'updated_at',
             'amazon_link_to_buy',
             'rakuten_link_to_buy',
-            'mercari_link_to_buy',
             'number_of_review',
             'avarage_of_review_star',
-            # 'reviewed_pen'
             )
-        # depth = 1
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
@@ -165,20 +150,19 @@ class TagSerializer(serializers.ModelSerializer):
             'slug',
             'product',
             )
-        # depth = 1
 
 class TagForProduSerializer(serializers.ModelSerializer):
     @staticmethod
     def setup_for_query(queryset):
         queryset = queryset.select_related('product')
         return queryset
+        
     class Meta:
         model = models.Tag
         fields = (
             'name',
             'slug',
             )
-        # depth = 1
 
 
 class ReviewNotIncludeUserSerialier(serializers.ModelSerializer):
