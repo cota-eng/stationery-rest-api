@@ -20,11 +20,11 @@ router.register('fav',views.FavProductAPIView)
 router.register('pro',views.ProductPagingReadOnlyViewSet)
 router.register('review',views.ReviewViewSet)
 # router.register('review-read',views.ReviewReadOnlyViewSet)
-router.register('my-review',views.OwnReviewViewSet)
 app_name="pen"
 urlpatterns = [
     path("products/",views.ProductListAPIView.as_view(),name="product-list"),
     path("products/<str:pk>/",views.ProductRetrieveAPIView.as_view(),name="product"),
-    path("fav-list/",views.ReturnFavProductAPIView.as_view(),name="fav-list"),
+    path("fav-list/",views.OwnFavProductListAPIView.as_view(),name="fav-list"),
+    path("review-list/",views.OwnReviewProductListAPIView.as_view(),name="review-list"),
     path('',include(router.urls)),
 ]
