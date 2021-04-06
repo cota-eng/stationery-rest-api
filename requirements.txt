@@ -25,4 +25,4 @@ gunicorn
 whitenoise
 django-imagekit
 sphinx
-django-extentions
+django-extensions

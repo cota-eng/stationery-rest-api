@@ -22,4 +22,4 @@ ulid-py
 # django_heroku
 django-imagekit
 sphinx
-django-extentions
+django-extensions
