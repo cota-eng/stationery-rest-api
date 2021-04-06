@@ -205,16 +205,13 @@ class ProductSearchByAllConditions(mixins.ListModelMixin,
     permission_classes = (permissions.AllowAny,)
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = ProductOriginalFilter
+    def get_queryset(self):
+        qs = self.queryset
+        qs = self.get_serializer_class().setup_for_query(qs)
+        return qs
     # pagination_class = FilteredResultPagination
     # pagination_class = pagination.LimitOffsetPagination
     # add &?limit=100&offset=500
-
-
-# class PenCategoryFilteredReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
-#     queryset = models.Pen.objects.filter(category=)
-#     serializer_class = serializers.CategorySerializer
-#     permission_classes = (permissions.IsAuthenticated,)
-#     filter_fields = ('slug', )
 
 
 class ProductBrandFilteredReadOnlyViewSet(mixins.ListModelMixin,

@@ -260,7 +260,10 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
     def get_number_of_review(self,instance):
         return instance.review.count()
     #     return instance.review.average_star.all()
-    
+    number_of_fav = serializers.SerializerMethodField()
+
+    def get_number_of_fav(self,instance):
+        return instance.faved.count()
     def get_description(self, instance):
         return markdown.markdown(instance.description)
     
@@ -340,7 +343,10 @@ class ProductSerializer(serializers.ModelSerializer):
     def get_number_of_review(self,instance):
         return instance.review.count()
     #     return instance.review.average_star.all()
-    
+    number_of_fav = serializers.SerializerMethodField()
+
+    def get_number_of_fav(self,instance):
+        return instance.faved.count()
     def get_description(self, instance):
         return markdown.markdown(instance.description)
     
