@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Post
+from .models import Post,Comment
 
 # class PostModelAdmin(admin.ModelAdmin):
 #     list_display = ["titie", "updated_at"]
@@ -13,4 +13,5 @@ from .models import Post
 #         model = Post
         
 admin.site.register(Post)
+admin.site.register(Comment)
 # admin.site.register(Post,PostModelAdmin)

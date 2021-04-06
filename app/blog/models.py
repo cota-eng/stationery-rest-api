@@ -25,6 +25,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     read_time = models.IntegerField(default=0)
+    comments = GenericRelation("Comment")
     class Meta:
         ordering = ["-created_at"]
 
@@ -105,8 +106,9 @@ class Comment(models.Model):
         )
     content_type = models.ForeignKey(ContentType,null=True,blank=True, on_delete=models.SET_NULL)
     object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey(ct_field='content_type',fk_field='object_id') 
-    objects = CommentManager()
+    content_object = GenericForeignKey(ct_field='content_type', fk_field='object_id')
+    #changed
+    comment_objects = CommentManager()
     parent = models.ForeignKey("self",null=True,blank=True,on_delete=models.SET_NULL)
     
     
