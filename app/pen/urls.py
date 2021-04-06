@@ -4,15 +4,15 @@ from . import views
 
 router = routers.DefaultRouter()
 
-router.register('category',views.CategoryReadOnlyViewSet)
-router.register('brand',views.BrandReadOnlyViewSet)
-router.register('tag', views.TagReadOnlyViewSet)
+router.register('category',views.CategoryFilteredListAPIView)
+router.register('brand',views.BrandFliteredListAPIView)
+router.register('tag', views.TagFilteredProductListAPIView)
 """
 below 3 view is not needed
 """
-router.register('product-category',views.ProductCategoryFilteredReadOnlyViewSet)
-router.register('product-brand',views.ProductBrandFilteredReadOnlyViewSet)
-router.register('product-tag', views.ProductTagFilteredReadOnlyViewSet)
+# router.register('product-category',views.ProductCategoryFilteredReadOnlyViewSet)
+# router.register('product-brand',views.ProductBrandFilteredReadOnlyViewSet)
+# router.register('product-tag', views.ProductTagFilteredReadOnlyViewSet)
 
 router.register('search',views.ProductSearchByAllConditions)
 router.register('fav',views.FavProductAPIView)
