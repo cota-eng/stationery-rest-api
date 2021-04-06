@@ -44,7 +44,7 @@ class ProductInFavListSerializer(serializers.ModelSerializer):
     """
     # category = CategoryUsingProductSerializer(read_only=True)
     # brand = BrandSerializer(read_only=True)
-    # tag = TagUsingPenSerializer(many=True,read_only=True)
+    # tag = TagForProduSerializer(many=True,read_only=True)
     class Meta:
         model = models.Product
         fields = ('id',
@@ -167,7 +167,7 @@ class TagSerializer(serializers.ModelSerializer):
             )
         # depth = 1
 
-class TagUsingPenSerializer(serializers.ModelSerializer):
+class TagForProduSerializer(serializers.ModelSerializer):
     @staticmethod
     def setup_for_query(queryset):
         queryset = queryset.select_related('product')
@@ -289,30 +289,18 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
     updated_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     category = CategoryForProductSerialier(read_only=True)
     brand = BrandForProductSerializer(read_only=True)
-    tag = TagUsingPenSerializer(many=True,read_only=True)
+    tag = TagForProduSerializer(many=True,read_only=True)
     review = ReviewSerialier(many=True)
     number_of_review = serializers.SerializerMethodField()
     description = serializers.SerializerMethodField()
-    # avarage_of_review_star = serializers.SerializerMethodField()
-
-    # def get_avarage_of_review_star(self, instance):
-    #     return instance.review.avarage_star()
-        # sum: int = 0
-        # reviews = inctance.review.filter(product=self)
-        # if reviews.exists():
-        #     for review in reviews:
-        #         sum += review.avarage_star
-        #     return sum / reviews.count()
-        # else:
-        #     return 0
+    number_of_fav = serializers.SerializerMethodField()
 
     def get_number_of_review(self,instance):
         return instance.review.count()
-    #     return instance.review.average_star.all()
-    number_of_fav = serializers.SerializerMethodField()
 
     def get_number_of_fav(self,instance):
         return instance.faved.count()
+
     def get_description(self, instance):
         return markdown.markdown(instance.description)
     
@@ -321,10 +309,11 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
         """
         to many - tag, review
         to one  - category, brand
-
         reviwew - filter each product...
         """
-        queryset = queryset.prefetch_related('tag','review__reviewer','review__reviewer__profile','review__reviewer__profile__avatar','review__product',)
+        queryset = queryset.prefetch_related(
+            'tag', 'review__reviewer', 'review__reviewer__profile', 'review__reviewer__profile__avatar', 'review__product',
+            )
         queryset = queryset.select_related('category','brand')
         return queryset
 
@@ -338,7 +327,6 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
                   'image_src',
                   'amazon_link_to_buy',
                   'rakuten_link_to_buy',
-                #   'mercari_link_to_buy',
                   'number_of_review',
                 #   'avarage_of_review_star',
                   'review',
@@ -358,44 +346,30 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
                 'image_src',
                 'amazon_link_to_buy',
                 'rakuten_link_to_buy',
-                # 'mercari_link_to_buy',
                 'number_of_fav,'
             )
-        depth = 1
-        
+
+
 class ProductSerializer(serializers.ModelSerializer):
     """
     serializer - BrandForProductSerializer,CategoryForProductSerialier
-
     """
     created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     updated_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     category = CategoryForProductSerialier(read_only=True)
     brand = BrandForProductSerializer(read_only=True)
-    tag = TagUsingPenSerializer(many=True,read_only=True)
+    tag = TagForProduSerializer(many=True,read_only=True)
     review = ReviewSerialier(many=True)
     number_of_review = serializers.SerializerMethodField()
     description = serializers.SerializerMethodField()
-    # avarage_of_review_star = serializers.SerializerMethodField()
-
-    # def get_avarage_of_review_star(self, instance):
-    #     return instance.review.avarage_star()
-        # sum: int = 0
-        # reviews = inctance.review.filter(product=self)
-        # if reviews.exists():
-        #     for review in reviews:
-        #         sum += review.avarage_star
-        #     return sum / reviews.count()
-        # else:
-        #     return 0
+    number_of_fav = serializers.SerializerMethodField()
 
     def get_number_of_review(self,instance):
         return instance.review.count()
-    #     return instance.review.average_star.all()
-    number_of_fav = serializers.SerializerMethodField()
 
     def get_number_of_fav(self,instance):
         return instance.faved.count()
+
     def get_description(self, instance):
         return markdown.markdown(instance.description)
     
@@ -404,7 +378,6 @@ class ProductSerializer(serializers.ModelSerializer):
         """
         to many - tag, review
         to one  - category, brand
-
         reviwew - filter each product...
         """
         queryset = queryset.prefetch_related('tag','review__reviewer','review__reviewer__profile','review__reviewer__profile__avatar','review__product',)
@@ -421,9 +394,7 @@ class ProductSerializer(serializers.ModelSerializer):
                   'image_src',
                   'amazon_link_to_buy',
                   'rakuten_link_to_buy',
-                #   'mercari_link_to_buy',
                   'number_of_review',
-                #   'avarage_of_review_star',
                   'review',
                   'created_at',
                   'updated_at',
@@ -441,7 +412,6 @@ class ProductSerializer(serializers.ModelSerializer):
                 'image_src',
                 'amazon_link_to_buy',
                 'rakuten_link_to_buy',
-                # 'mercari_link_to_buy',
                 'number_of_fav,'
             )
 
@@ -452,7 +422,7 @@ class ProductListSerializer(serializers.ModelSerializer):
     """
     category = CategoryForProductSerialier(read_only=True)
     brand = BrandForProductSerializer(read_only=True)
-    tag = TagUsingPenSerializer(many=True,read_only=True)
+    tag = TagForProduSerializer(many=True,read_only=True)
     number_of_review = serializers.SerializerMethodField()
     number_of_fav = serializers.SerializerMethodField()
 
