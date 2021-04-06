@@ -148,16 +148,6 @@ class OwnReviewProductListAPIView(generics.ListAPIView):
         user = self.request.user
         return qs.filter(reviewer=user)
 
-class CategoryReadOnlyViewSet(mixins.ListModelMixin,
-                              viewsets.GenericViewSet):
-    """
-    for list category view \n
-    display category related product !
-    """
-    queryset = models.Category.objects.all().prefetch_related("product")
-    serializer_class = serializers.CategorySerializer
-    permission_classes = (permissions.AllowAny,)
-    # lookup_field = 'slug'
         
 class ProductPagingReadOnlyViewSet(mixins.ListModelMixin,
                              mixins.RetrieveModelMixin,
@@ -202,9 +192,17 @@ class ProductRetrieveAPIView(generics.RetrieveAPIView):
         return qs
     # lookup_field = 'slug'
 
+class CategoryFilteredListAPIView(mixins.ListModelMixin,viewsets.GenericViewSet):
+    """
+    for list category view \n
+    display category related product !
+    """
+    queryset = models.Category.objects.all().prefetch_related("product")
+    serializer_class = serializers.CategorySerializer
+    permission_classes = (permissions.AllowAny,)
+    # lookup_field = 'slug'
 
-class TagReadOnlyViewSet(mixins.ListModelMixin,
-                         viewsets.GenericViewSet):
+class TagFilteredProductListAPIView(mixins.ListModelMixin,viewsets.GenericViewSet):
     """
     for list tag view \n
     display tag related product !
@@ -215,8 +213,7 @@ class TagReadOnlyViewSet(mixins.ListModelMixin,
     lookup_field = 'slug'
 
 
-class BrandReadOnlyViewSet(mixins.ListModelMixin,
-                           viewsets.GenericViewSet):
+class BrandFliteredListAPIView(mixins.ListModelMixin,viewsets.GenericViewSet):
     """
     for list brand view \n
     display brand related product !
