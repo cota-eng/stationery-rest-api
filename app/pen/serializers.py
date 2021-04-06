@@ -39,6 +39,9 @@ class ReviewerSerializer(serializers.ModelSerializer):
         }
 
 class ProductInFavListSerializer(serializers.ModelSerializer):
+    """
+    used in fav-list - ok
+    """
     # category = CategoryUsingProductSerializer(read_only=True)
     # brand = BrandSerializer(read_only=True)
     # tag = TagUsingPenSerializer(many=True,read_only=True)
@@ -83,6 +86,7 @@ class OwnFavListSerializer(serializers.ModelSerializer):
         fields = ('product',)
 
 
+
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Category
@@ -100,6 +104,7 @@ class CategoryForProductSerialier(serializers.ModelSerializer):
         model = models.Category
         fields = (
             'id',
+            'slug',
             'name',
             )
         # depth = 1
@@ -231,7 +236,7 @@ class ReviewSerialier(serializers.ModelSerializer):
         }
 
 
-class OwnReviewListSerialier(serializers.ModelSerializer):
+class OwnReviewProductListSerialier(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     """
     reviewer - avatar, nickname, id
@@ -439,7 +444,8 @@ class ProductSerializer(serializers.ModelSerializer):
                 # 'mercari_link_to_buy',
                 'number_of_fav,'
             )
-        depth = 1
+
+
 class ProductListSerializer(serializers.ModelSerializer):
     """
     For Listing Product
@@ -464,7 +470,7 @@ class ProductListSerializer(serializers.ModelSerializer):
         to one  - category, brand
         reviwew - filter each product...
         """
-        queryset = queryset.prefetch_related('tag','review__reviewer','review__reviewer__profile','review__reviewer__profile__avatar','review__product','faved',)
+        queryset = queryset.prefetch_related('tag','review__reviewer','review__reviewer__profile','review__reviewer__profile__avatar','review__product','faved','category')
         queryset = queryset.select_related('category','brand')
         return queryset
 
