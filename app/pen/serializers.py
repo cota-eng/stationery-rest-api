@@ -121,36 +121,36 @@ class ReviewerSerializer(serializers.ModelSerializer):
             },
         }
 
-class ProductInFavListSerializer(serializers.ModelSerializer):
-    """
-    used in fav-list - ok
-    """
-    # category = CategoryUsingProductSerializer(read_only=True)
-    # brand = BrandSerializer(read_only=True)
-    # tag = TagForProductSerializer(many=True,read_only=True)
-    class Meta:
-        model = models.Product
-        fields = ('id',
-                  'name',
-                  'image',
-                #   'number_of_review',
-                #   'avarage_of_review_star',
-                #   'category',
-                #   'brand',
-                #   'tag',
-                  )
-        read_only_fields = (
-                'id',
-                'name',
-                # 'price_yen',
-                'image',
-                # 'image_src',
-                # 'amazon_link_to_buy',
-                # 'rakuten_link_to_buy',
-                # 'mercari_link_to_buy',
-                # 'number_of_review',
-                # 'avarage_of_review_star',
-            )
+# class ProductInFavListSerializer(serializers.ModelSerializer):
+#     """
+#     used in fav-list - ok
+#     """
+#     # category = CategoryUsingProductSerializer(read_only=True)
+#     # brand = BrandSerializer(read_only=True)
+#     # tag = TagForProductSerializer(many=True,read_only=True)
+#     class Meta:
+#         model = models.Product
+#         fields = ('id',
+#                   'name',
+#                   'image',
+#                 #   'number_of_review',
+#                 #   'avarage_of_review_star',
+#                 #   'category',
+#                 #   'brand',
+#                 #   'tag',
+#                   )
+#         read_only_fields = (
+#                 'id',
+#                 'name',
+#                 # 'price_yen',
+#                 'image',
+#                 # 'image_src',
+#                 # 'amazon_link_to_buy',
+#                 # 'rakuten_link_to_buy',
+#                 # 'mercari_link_to_buy',
+#                 # 'number_of_review',
+#                 # 'avarage_of_review_star',
+#             )
 
 class FavProductSerializer(serializers.ModelSerializer):
     is_favorite = serializers.BooleanField(read_only=True)
@@ -161,7 +161,7 @@ class FavProductSerializer(serializers.ModelSerializer):
         read_only_fields = ('is_favorite','fav_user','product',)
     
 class OwnFavListSerializer(serializers.ModelSerializer):
-    product = ProductInFavListSerializer()
+    product = ProductListSerializer()
     class Meta:
         model = models.FavProduct
         fields = ('product',)
