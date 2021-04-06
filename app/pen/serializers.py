@@ -3,11 +3,18 @@ from . import models
 from authentication.models import User
 # from authentication.serializers import UserSerializer
 from django.contrib.auth import get_user_model
+from authentication.models import User
+import markdown
+
 
 class ReviewerSerializer(serializers.ModelSerializer):
     nickname = serializers.SerializerMethodField(read_only=True)
-    twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
+    # twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
     avatar = serializers.SerializerMethodField()
+    # @staticmethod
+    # def setup_for_query(queryset):
+    #     queryset = queryset.select_related('profile')
+    #     return queryset
 
     def get_avatar(self, obj):
         avatar = obj.profile.avatar
@@ -19,8 +26,8 @@ class ReviewerSerializer(serializers.ModelSerializer):
         return obj.profile.nickname
 
     class Meta:
-        model = get_user_model()
-        fields = ('id','profile','nickname','twitter_account','avatar',)
+        model = User
+        fields = ('id','profile','nickname','avatar',)
         extra_kwargs = {
             'password': {
                 'write_only': True,
@@ -31,19 +38,49 @@ class ReviewerSerializer(serializers.ModelSerializer):
             # },
         }
 
+class ProductInFavListSerializer(serializers.ModelSerializer):
+    # category = CategoryUsingProductSerializer(read_only=True)
+    # brand = BrandSerializer(read_only=True)
+    # tag = TagUsingPenSerializer(many=True,read_only=True)
+    class Meta:
+        model = models.Product
+        fields = ('id',
+                  'name',
+                #   'price_yen',
+                  'image',
+                #   'number_of_review',
+                #   'avarage_of_review_star',
+                #   'category',
+                #   'brand',
+                #   'tag',
+                  )
+        read_only_fields = (
+                'id',
+                'name',
+                # 'price_yen',
+                'image',
+                # 'image_src',
+                # 'amazon_link_to_buy',
+                # 'rakuten_link_to_buy',
+                # 'mercari_link_to_buy',
+                # 'number_of_review',
+                # 'avarage_of_review_star',
+            )
+
 class FavProductSerializer(serializers.ModelSerializer):
-    created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
+    # created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     is_favorite = serializers.BooleanField(read_only=True)
     # lookup_field = 'faved.pk'
     class Meta:
         model = models.FavProduct
-        fields = ('is_favorite','fav_user','product','created_at',)
+        fields = ('is_favorite','fav_user','product',)
+        read_only_fields = ('is_favorite','fav_user','product',)
     
-class FavUsedByProfileSerializer(serializers.ModelSerializer):
-    is_favorite = serializers.BooleanField(read_only=True)
+class FavUsedInProfileSerializer(serializers.ModelSerializer):
+    product = ProductInFavListSerializer()
     class Meta:
         model = models.FavProduct
-        fields = ('is_favorite','product',)
+        fields = ('product',)
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -52,13 +89,13 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = (
             'name',
             'slug',
-            'product_category',
+            'product',
             )
         # ex read_only_fields = ('name',)
         # depth = 1
 
 
-class CategoryUsingProductSerializer(serializers.ModelSerializer):
+class CategoryForProductSerialier(serializers.ModelSerializer):
     class Meta:
         model = models.Category
         fields = (
@@ -76,8 +113,20 @@ class BrandSerializer(serializers.ModelSerializer):
             'name',
             'slug',
             'official_site_link',
+            'product'
             )
         # depth = 1
+        
+class BrandForProductSerializer(serializers.ModelSerializer):
+    # pen = PenSerializer()
+    class Meta:
+        model = models.Brand
+        fields = (
+            'id',
+            'name',
+            'slug',
+            'official_site_link',
+            )
 
 class BrandFilteredProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -109,11 +158,15 @@ class TagSerializer(serializers.ModelSerializer):
         fields = (
             'name',
             'slug',
-            'product_tag',
+            'product',
             )
         # depth = 1
 
 class TagUsingPenSerializer(serializers.ModelSerializer):
+    @staticmethod
+    def setup_for_query(queryset):
+        queryset = queryset.select_related('product')
+        return queryset
     class Meta:
         model = models.Tag
         fields = (
@@ -150,6 +203,8 @@ class ReviewSerialier(serializers.ModelSerializer):
     reviewer - avatar, nickname, id
     """
     reviewer = ReviewerSerializer(read_only=True)
+
+
     class Meta:
         model = models.Review
         fields = (
@@ -166,7 +221,6 @@ class ReviewSerialier(serializers.ModelSerializer):
             'reviewer',
             'created_at',
             )
-        depth = 1
         """
         TODO: validation add!
         """
@@ -176,22 +230,55 @@ class ReviewSerialier(serializers.ModelSerializer):
             }
         }
 
-import markdown
 
-class ProductSerializer(serializers.ModelSerializer):
+class ProductRetrieveSerializer(serializers.ModelSerializer):
+    """
+    serializer - BrandForProductSerializer,CategoryForProductSerialier
+
+    """
     created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
     updated_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
-    category = CategoryUsingProductSerializer(read_only=True)
-    brand = BrandSerializer(read_only=True)
+    category = CategoryForProductSerialier(read_only=True)
+    brand = BrandForProductSerializer(read_only=True)
     tag = TagUsingPenSerializer(many=True,read_only=True)
-    # review = ReviewSerialier()
-    # for rate action, many = false is must
-    review = ReviewSerialier(many = True)
-    # description = serializers.SerializerMethodField()
+    review = ReviewSerialier(many=True)
+    number_of_review = serializers.SerializerMethodField()
+    description = serializers.SerializerMethodField()
+    # avarage_of_review_star = serializers.SerializerMethodField()
 
-    # def get_description(self, instance):
-    #     return markdown.markdown(instance.description)
+    # def get_avarage_of_review_star(self, instance):
+    #     return instance.review.avarage_star()
+        # sum: int = 0
+        # reviews = inctance.review.filter(product=self)
+        # if reviews.exists():
+        #     for review in reviews:
+        #         sum += review.avarage_star
+        #     return sum / reviews.count()
+        # else:
+        #     return 0
+
+    def get_number_of_review(self,instance):
+        return instance.review.count()
+    #     return instance.review.average_star.all()
+    number_of_fav = serializers.SerializerMethodField()
+
+    def get_number_of_fav(self,instance):
+        return instance.faved.count()
+    def get_description(self, instance):
+        return markdown.markdown(instance.description)
     
+    @staticmethod
+    def setup_for_query(queryset):
+        """
+        to many - tag, review
+        to one  - category, brand
+
+        reviwew - filter each product...
+        """
+        queryset = queryset.prefetch_related('tag','review__reviewer','review__reviewer__profile','review__reviewer__profile__avatar','review__product',)
+        queryset = queryset.select_related('category','brand')
+        return queryset
+
     class Meta:
         model = models.Product
         fields = ('id',
@@ -202,15 +289,17 @@ class ProductSerializer(serializers.ModelSerializer):
                   'image_src',
                   'amazon_link_to_buy',
                   'rakuten_link_to_buy',
-                  'mercari_link_to_buy',
+                #   'mercari_link_to_buy',
                   'number_of_review',
-                  'avarage_of_review_star',
+                #   'avarage_of_review_star',
                   'review',
                   'created_at',
                   'updated_at',
                   'category',
                   'brand',
-                  'tag',)
+                  'tag',
+                  'number_of_fav',
+                  )
         read_only_fields = (
                 'id',
                 'name',
@@ -220,10 +309,141 @@ class ProductSerializer(serializers.ModelSerializer):
                 'image_src',
                 'amazon_link_to_buy',
                 'rakuten_link_to_buy',
-                'mercari_link_to_buy',
-                'number_of_review',
-                'avarage_of_review_star',
+                # 'mercari_link_to_buy',
+                'number_of_fav,'
             )
         depth = 1
+        
+class ProductSerializer(serializers.ModelSerializer):
+    """
+    serializer - BrandForProductSerializer,CategoryForProductSerialier
+
+    """
+    created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
+    updated_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
+    category = CategoryForProductSerialier(read_only=True)
+    brand = BrandForProductSerializer(read_only=True)
+    tag = TagUsingPenSerializer(many=True,read_only=True)
+    review = ReviewSerialier(many=True)
+    number_of_review = serializers.SerializerMethodField()
+    description = serializers.SerializerMethodField()
+    # avarage_of_review_star = serializers.SerializerMethodField()
+
+    # def get_avarage_of_review_star(self, instance):
+    #     return instance.review.avarage_star()
+        # sum: int = 0
+        # reviews = inctance.review.filter(product=self)
+        # if reviews.exists():
+        #     for review in reviews:
+        #         sum += review.avarage_star
+        #     return sum / reviews.count()
+        # else:
+        #     return 0
+
+    def get_number_of_review(self,instance):
+        return instance.review.count()
+    #     return instance.review.average_star.all()
+    number_of_fav = serializers.SerializerMethodField()
+
+    def get_number_of_fav(self,instance):
+        return instance.faved.count()
+    def get_description(self, instance):
+        return markdown.markdown(instance.description)
+    
+    @staticmethod
+    def setup_for_query(queryset):
+        """
+        to many - tag, review
+        to one  - category, brand
+
+        reviwew - filter each product...
+        """
+        queryset = queryset.prefetch_related('tag','review__reviewer','review__reviewer__profile','review__reviewer__profile__avatar','review__product',)
+        queryset = queryset.select_related('category','brand')
+        return queryset
+
+    class Meta:
+        model = models.Product
+        fields = ('id',
+                  'name',
+                  'description',
+                  'price_yen',
+                  'image',
+                  'image_src',
+                  'amazon_link_to_buy',
+                  'rakuten_link_to_buy',
+                #   'mercari_link_to_buy',
+                  'number_of_review',
+                #   'avarage_of_review_star',
+                  'review',
+                  'created_at',
+                  'updated_at',
+                  'category',
+                  'brand',
+                  'tag',
+                  'number_of_fav',
+                  )
+        read_only_fields = (
+                'id',
+                'name',
+                'description',
+                'price_yen',
+                'image',
+                'image_src',
+                'amazon_link_to_buy',
+                'rakuten_link_to_buy',
+                # 'mercari_link_to_buy',
+                'number_of_fav,'
+            )
+        depth = 1
+class ProductListSerializer(serializers.ModelSerializer):
+    """
+    For Listing Product
+    """
+    category = CategoryForProductSerialier(read_only=True)
+    brand = BrandForProductSerializer(read_only=True)
+    tag = TagUsingPenSerializer(many=True,read_only=True)
+    number_of_review = serializers.SerializerMethodField()
+    number_of_fav = serializers.SerializerMethodField()
+
+
+    def get_number_of_review(self,instance):
+        return instance.review.count()
+
+    def get_number_of_fav(self,instance):
+        return instance.faved.count()
+
+    @staticmethod
+    def setup_for_query(queryset):
+        """
+        to many - tag, review, fav
+        to one  - category, brand
+        reviwew - filter each product...
+        """
+        queryset = queryset.prefetch_related('tag','review__reviewer','review__reviewer__profile','review__reviewer__profile__avatar','review__product','faved',)
+        queryset = queryset.select_related('category','brand')
+        return queryset
+
+    class Meta:
+        model = models.Product
+        fields = ('id',
+                  'name',
+                  'price_yen',
+                  'image',
+                  'number_of_review',
+                  'category',
+                  'brand',
+                  'tag',
+                  'number_of_fav',
+                  )
+        read_only_fields = (
+                'id',
+                'name',
+                'description',
+                'price_yen',
+                'image',
+                'image_src',
+                'number_of_fav,'
+            )
 
     
