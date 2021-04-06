@@ -22,8 +22,8 @@ from .pagination import NormalPagination
 
 from django.db.models import  Q
 
-class SampleAPIView(generics.ListAPIView):
-    queryset = models.Product.objects.all().prefetch_related()
+class ProductCategorisedAPIView(generics.ListAPIView):
+    queryset = models.Product.objects.all().order_by("-id")
     serializer_class = serializers.ProductListSerializer
     permission_classes = (permissions.AllowAny,)
     pagination_class = NormalPagination
@@ -32,7 +32,19 @@ class SampleAPIView(generics.ListAPIView):
         #     return None
         qs = self.queryset
         qs = self.get_serializer_class().setup_for_query(qs)
-        return qs.filter(category__slug=self.kwargs['category__slug'])
+        return qs.filter(category__slug=self.kwargs['category__slug']).filter(brand__slug=self.kwargs['brand__slug'])
+
+class ProductBrandFilteredAPIView(generics.ListAPIView):
+    queryset = models.Product.objects.all().order_by("-id")
+    serializer_class = serializers.ProductListSerializer
+    permission_classes = (permissions.AllowAny,)
+    pagination_class = NormalPagination
+    def get_queryset(self):
+        # if self.kwargs['category__slug'] is None:
+        #     return None
+        qs = self.queryset
+        qs = self.get_serializer_class().setup_for_query(qs)
+        return qs.filter(brand__slug=self.kwargs['brand__slug'])
 
 class OwnFavProductListAPIView(generics.ListAPIView):
     queryset = models.FavProduct.objects.all()
@@ -145,7 +157,7 @@ class CategoryReadOnlyViewSet(mixins.ListModelMixin,
     queryset = models.Category.objects.all().prefetch_related("product")
     serializer_class = serializers.CategorySerializer
     permission_classes = (permissions.AllowAny,)
-    lookup_field = 'slug'
+    # lookup_field = 'slug'
         
 class ProductPagingReadOnlyViewSet(mixins.ListModelMixin,
                              mixins.RetrieveModelMixin,
@@ -214,7 +226,7 @@ class BrandReadOnlyViewSet(mixins.ListModelMixin,
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
 
-
+# from rest_framework import filters
 class ProductSearchByAllConditions(mixins.ListModelMixin,
                                    viewsets.GenericViewSet):
     """
@@ -235,50 +247,6 @@ class ProductSearchByAllConditions(mixins.ListModelMixin,
     # pagination_class = pagination.LimitOffsetPagination
     # add &?limit=100&offset=500
 
-
-class ProductBrandFilteredReadOnlyViewSet(mixins.ListModelMixin,
-                                          viewsets.GenericViewSet):
-    """
-    filter by brand/<brand_name_slug>
-    display Respective Brand Pens !
-    """
-    queryset = models.Product.objects.all()
-    serializer_class = serializers.ProductSerializer
-    permission_classes = (permissions.AllowAny,)
-    def get_queryset(self):
-        slug = self.request.GET.get('slug')
-        return self.queryset.filter(brand__slug=slug)
-
-
-class ProductCategoryFilteredReadOnlyViewSet(mixins.ListModelMixin,
-                                             viewsets.GenericViewSet):
-    """
-    filter by brand/<category_name_slug>
-    display Respective Category Products !
-    """
-    queryset = models.Product.objects.all()
-    serializer_class = serializers.ProductSerializer
-    permission_classes = (permissions.AllowAny,)
-    def get_queryset(self):
-        slug = self.request.GET.get('slug')
-        return self.queryset.filter(category__slug=slug)
-
-
-class ProductTagFilteredReadOnlyViewSet(mixins.ListModelMixin,
-                                        viewsets.GenericViewSet):
-    """
-    filter by tag
-    display Respective Tag Products !
-    """
-    queryset = models.Product.objects.all()
-    serializer_class = serializers.ProductSerializer
-    permission_classes = (permissions.AllowAny,)
-    def get_queryset(self):
-        slug = self.request.GET.get('slug')
-        return self.queryset.filter(tag__slug=slug)
-
-
-    
 
 class ReviewViewSet(mixins.ListModelMixin,
                     mixins.RetrieveModelMixin,
@@ -358,3 +326,47 @@ class ReviewViewSet(mixins.ListModelMixin,
                 'text': f':smile_cat:Review Failed by {user} !!',  
             }))
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+# class ProductBrandFilteredReadOnlyViewSet(mixins.ListModelMixin,
+#                                           viewsets.GenericViewSet):
+#     """
+#     filter by brand/<brand_name_slug>
+#     display Respective Brand Pens !
+#     """
+#     queryset = models.Product.objects.all()
+#     serializer_class = serializers.ProductListSerializer
+#     permission_classes = (permissions.AllowAny,)
+#     def get_queryset(self):
+#         slug = self.request.GET.get('slug')
+#         return self.queryset.filter(brand__slug=slug)
+
+
+# class ProductCategoryFilteredReadOnlyViewSet(mixins.ListModelMixin,
+#                                              viewsets.GenericViewSet):
+#     """
+#     filter by brand/<category_name_slug>
+#     display Respective Category Products !
+#     """
+#     queryset = models.Product.objects.all()
+#     serializer_class = serializers.ProductListSerializer
+#     permission_classes = (permissions.AllowAny,)
+#     def get_queryset(self):
+#         slug = self.request.GET.get('slug')
+#         return self.queryset.filter(category__slug=slug)
+
+
+# class ProductTagFilteredReadOnlyViewSet(mixins.ListModelMixin,
+#                                         viewsets.GenericViewSet):
+#     """
+#     filter by tag
+#     display Respective Tag Products !
+#     """
+#     queryset = models.Product.objects.all()
+#     serializer_class = serializers.ProductListSerializer
+#     permission_classes = (permissions.AllowAny,)
+#     def get_queryset(self):
+#         slug = self.request.GET.get('slug')
+#         return self.queryset.filter(tag__slug=slug)
+
+
+    
