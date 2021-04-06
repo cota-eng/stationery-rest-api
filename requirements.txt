@@ -24,3 +24,4 @@ django_heroku
 gunicorn
 whitenoise
 django-imagekit
+django_extensions
