@@ -15,7 +15,7 @@ class ReviewerSerializer(serializers.ModelSerializer):
     # def setup_for_query(queryset):
     #     queryset = queryset.select_related('profile')
     #     return queryset
-
+    
     def get_avatar(self, obj):
         avatar = obj.profile.avatar
         if avatar:
@@ -76,7 +76,7 @@ class FavProductSerializer(serializers.ModelSerializer):
         fields = ('is_favorite','fav_user','product',)
         read_only_fields = ('is_favorite','fav_user','product',)
     
-class FavUsedInProfileSerializer(serializers.ModelSerializer):
+class OwnFavListSerializer(serializers.ModelSerializer):
     product = ProductInFavListSerializer()
     class Meta:
         model = models.FavProduct
@@ -204,6 +204,50 @@ class ReviewSerialier(serializers.ModelSerializer):
     """
     reviewer = ReviewerSerializer(read_only=True)
 
+
+    class Meta:
+        model = models.Review
+        fields = (
+            'id',
+            'title',
+            'stars_of_design',
+            'stars_of_durability',
+            'stars_of_usefulness',
+            'stars_of_function',
+            'stars_of_easy_to_get',
+            'avarage_star',
+            'good_point_text',
+            'bad_point_text',
+            'reviewer',
+            'created_at',
+            )
+        """
+        TODO: validation add!
+        """
+        extra_kwargs = {
+            "title": {
+                'max_length':100,
+            }
+        }
+
+
+class OwnReviewListSerialier(serializers.ModelSerializer):
+    created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
+    """
+    reviewer - avatar, nickname, id
+    """
+    # reviewer = ReviewerSerializer(read_only=True)
+
+    @staticmethod
+    def setup_for_query(queryset):
+        """
+        to many - tag, review
+        to one  - category, brand
+        reviwew - filter each product...
+        """
+        queryset = queryset.prefetch_related()
+        queryset = queryset.select_related()
+        return queryset
 
     class Meta:
         model = models.Review
