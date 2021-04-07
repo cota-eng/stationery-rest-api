@@ -19,7 +19,7 @@ class Category(models.Model):
         max_length=50,
         unique=True,
         )
-    slug = models.CharField(
+    slug = models.SlugField(
         _("category slug"),
         max_length=50,
         unique=True,
@@ -37,12 +37,11 @@ class Brand(models.Model):
         max_length=50,
         unique=True,
     )
-    slug = models.CharField(
+    slug = models.SlugField(
         _("brand slug"),
-        max_length=50,
         unique=True,
         )
-    official_site_link = models.CharField(
+    official_site_link = models.URLField(
          _("brand link"),
          max_length=255,
          unique=True
@@ -60,9 +59,8 @@ class Tag(models.Model):
         max_length=50,
         unique=True,
         )
-    slug = models.CharField(
+    slug = models.SlugField(
         _("category slug"),
-        max_length=50,
         unique=True,
         )
     
@@ -111,7 +109,7 @@ class Product(models.Model):
         blank=True,
         null=True)
     # in JP 出典
-    image_src = models.CharField(
+    image_src = models.URLField(
         blank=True,
         null=True,
         max_length=500)
@@ -120,11 +118,11 @@ class Product(models.Model):
     """
     in the future, set affiliate link, so is charfield
     """
-    amazon_link_to_buy = models.CharField(
+    amazon_link_to_buy = models.URLField(
         blank=True,
         null=True,
         max_length=500)
-    rakuten_link_to_buy = models.CharField(
+    rakuten_link_to_buy = models.URLField(
         blank=True,
         null=True,
         max_length=500)

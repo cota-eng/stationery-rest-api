@@ -24,7 +24,8 @@ class ProductOriginalFilter(filters.FilterSet):
     lte = filters.NumberFilter(field_name='price_yen', lookup_expr='lte')
     gte = filters.NumberFilter(field_name='price_yen', lookup_expr='gte')
     name = filters.CharFilter(field_name="name", lookup_expr='icontains')
-    tag = filters.CharFilter(field_name='tag__slug',lookup_expr='exact')
+    # tag = filters.CharFilter(field_name='tag__slug',lookup_expr='exact')
     class Meta:
         model = models.Product
-        fields = ('name','tag','brand','category',)
+        fields = ('name',)
+        # fields = ('name','tag','brand','category',)
