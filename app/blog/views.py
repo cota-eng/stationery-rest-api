@@ -5,7 +5,6 @@ from .serializers import (
 )
 from .models import (
     Post,
-    Comment,
 )
 from rest_framework.filters import (
     SearchFilter,
@@ -33,17 +32,3 @@ class PostListAPIView(generics.ListAPIView):
     #             Q(content__icontains=query)
     #         ).distinct()
     #     return qs
-
-class PostDetailAPIView(generics.RetrieveAPIView):
-    serializer_class = PostListSerializer
-    permission_classes = [AllowAny,]
-    queryset = Post.objects.all()
-    lookup_field = "slug"
-
-class PostCreateAPIView(generics.CreateAPIView):
-    serializer_class = PostListSerializer
-    queryset = Post.objects.all()
-    
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
-        return super().perform_create(serializer)

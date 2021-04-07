@@ -9,7 +9,8 @@ from django.utils import  timezone
 
 class PostManager(models.Manager):
     def active(self, *args, **kwargs):
-        return super(PostManager,self).filter(is_public=True).filter(created_at__lte=timezone.now())
+        return super(PostManager, self).filter(is_public=True)
+        # .filter(created_at__lte=timezone.now())
 
 
 class Post(models.Model):
@@ -24,26 +25,35 @@ class Post(models.Model):
         )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    read_time = models.IntegerField(default=0)
+    # read_time = models.IntegerField(default=0)
+    actives = PostManager()
+    objects = models.Manager()
     class Meta:
         ordering = ["-created_at"]
 
-    def get_markdown(self):
+    @property
+    def get_html(self):
+        """
+        Return safe html, escape
+        """
         content = self.content
-        markdown_text = markdown(content)
-        return mark_safe(markdown_text)
+        html = markdown(content)
+        return mark_safe(html)
 
-    @property
-    def comments(self):
-        instance = self
-        qs = Comment.objects.filter_by_instance(instance)
-        return qs
+    """
+    If Comment App implements, below is in use
+    """
+    # @property
+    # def comments(self):
+    #     instance = self
+    #     qs = Comment.objects.filter_by_instance(instance)
+    #     return qs
 
-    @property
-    def get_content_type(self):
-        instance = self
-        content_type = ContentType.objects.get_for_model(instance.__class__)
-        return content_type
+    # @property
+    # def get_content_type(self):
+    #     instance = self
+    #     content_type = ContentType.objects.get_for_model(instance.__class__)
+    #     return content_type
 
 
 def create_slug(instance, new_slug=None):
@@ -64,60 +74,60 @@ def create_slug(instance, new_slug=None):
 
 
 
-class CommentManager(models.Manager):
+# class CommentManager(models.Manager):
 
-    def all(self):
-        qs = super(CommentManager, self).filter(parent=None)
-        return qs
+#     def all(self):
+#         qs = super(CommentManager, self).filter(parent=None)
+#         return qs
 
-    def filter_by_instance(self, instance):
-        content_type = ContentType.objects.get_for_model(instance.__class__)
-        obj_id = instance.id
-        qs = super(CommentManager,self).filter(content_type=content_type,object_id=obj_id)
-        return qs
+#     def filter_by_instance(self, instance):
+#         content_type = ContentType.objects.get_for_model(instance.__class__)
+#         obj_id = instance.id
+#         qs = super(CommentManager,self).filter(content_type=content_type,object_id=obj_id)
+#         return qs
 
-    def create_by_model_type(self, model_type, slug, content, user, parent_obj):
-        model_qs = ContentType.objects.filter(model=model_type)
-        if model_qs.exists():
-            SomeModel = model_qs.first().model_class()
-            obj_qs = SomeModel.objects.filter(slug=self.slug)
-            if obj_qs.exists() and obj_qs.count() == 1:
-                instance = self.model()
-                instance.content = content
-                instance.user = user
-                instance.content_type = model_qs.first()
-                instance.object_id = obj_qs.first().id
-                if parent_obj:
-                    instance.parent = parent_obj
-                instance.save()
-                return instance
-        return None
+#     def create_by_model_type(self, model_type, slug, content, user, parent_obj):
+#         model_qs = ContentType.objects.filter(model=model_type)
+#         if model_qs.exists():
+#             SomeModel = model_qs.first().model_class()
+#             obj_qs = SomeModel.objects.filter(slug=self.slug)
+#             if obj_qs.exists() and obj_qs.count() == 1:
+#                 instance = self.model()
+#                 instance.content = content
+#                 instance.user = user
+#                 instance.content_type = model_qs.first()
+#                 instance.object_id = obj_qs.first().id
+#                 if parent_obj:
+#                     instance.parent = parent_obj
+#                 instance.save()
+#                 return instance
+#         return None
 
     
 
-class Comment(models.Model):
-    content = models.TextField()
-    post = models.ForeignKey(Post,related_name="comment",on_delete=models.CASCADE)
-    commentator = models.ForeignKey(
-        get_user_model(),
-        related_name="commentator",
-        on_delete=models.CASCADE
-        )
-    content_type = models.ForeignKey(ContentType,null=True,blank=True, on_delete=models.SET_NULL)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey(ct_field='content_type',fk_field='object_id') 
-    objects = CommentManager()
-    parent = models.ForeignKey("self",null=True,blank=True,on_delete=models.SET_NULL)
+# class Comment(models.Model):
+#     content = models.TextField()
+#     post = models.ForeignKey(Post,related_name="comment",on_delete=models.CASCADE)
+#     commentator = models.ForeignKey(
+#         get_user_model(),
+#         related_name="commentator",
+#         on_delete=models.CASCADE
+#         )
+#     content_type = models.ForeignKey(ContentType,null=True,blank=True, on_delete=models.SET_NULL)
+#     object_id = models.PositiveIntegerField()
+#     content_object = GenericForeignKey(ct_field='content_type',fk_field='object_id') 
+#     objects = CommentManager()
+#     parent = models.ForeignKey("self",null=True,blank=True,on_delete=models.SET_NULL)
     
     
-    def __str__(self):
-        return str(self.commentator.username)
+#     def __str__(self):
+#         return str(self.commentator.username)
     
-    def children(self):
-        return Comment.objects.filter(parent=self)
+#     def children(self):
+#         return Comment.objects.filter(parent=self)
 
-    @property
-    def is_parent(self):
-        if self.parent is not None:
-            return False
-        return True
+#     @property
+#     def is_parent(self):
+#         if self.parent is not None:
+#             return False
+#         return True
