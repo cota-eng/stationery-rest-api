@@ -7,19 +7,6 @@ from .models import Post,Comment
 from rest_framework.exceptions import  ValidationError
 from django.contrib.auth import get_user_model
 
-class PostListSerializer(ModelSerializer):
-    class Meta:
-        model = Post
-        fields = (
-            "id",
-            "title",
-            "content",
-            "slug",
-            "is_public",
-            "author",
-            "created_at",
-            "updated_at",
-        )
 class PostCreateSerializer(ModelSerializer):
     class Meta:
         model = Post
@@ -35,6 +22,39 @@ class PostCreateSerializer(ModelSerializer):
         )
 
 
+class PostListSerializer(ModelSerializer):
+    class Meta:
+        model = Post
+        fields = (
+            "id",
+            "title",
+            "content",
+            "slug",
+            "is_public",
+            "author",
+            "created_at",
+            "updated_at",
+            # "url",
+            "comments",
+        )
+    # url = HyperlinkedIdentityField(
+    #     view_name="post-detail",
+    #     lookup_field="pk",
+    # )
+    # markdown = SerializerMethodField()
+    comments = SerializerMethodField()
+
+    # def get_markdown(self, obj):
+    #     return obj.get_markdown()
+
+    def get_comments(self, obj):
+        # content_type = obj.get_content_type
+        # object_id = obj.id
+        
+        comment_qs = Comment.content_object.filter_by_instance(obj)
+        comments = CommentSerializer(data=comment_qs, many=True).data
+        return comments
+
 class PostDetailSerializer(ModelSerializer):
     class Meta:
         model = Post
@@ -47,11 +67,13 @@ class PostDetailSerializer(ModelSerializer):
             "author",
             "created_at",
             "updated_at",
+            "url",
+            "comments",
         )
 
     url = HyperlinkedIdentityField(
-        view_name="",
-        lookup_field="",
+        view_name="post-detail",
+        lookup_field="pk",
     )
     markdown = SerializerMethodField()
     comments = SerializerMethodField()
@@ -62,9 +84,11 @@ class PostDetailSerializer(ModelSerializer):
     def get_comments(self, obj):
         # content_type = obj.get_content_type
         # object_id = obj.id
-        comment_qs = Comment.objects.filter_by_instance(obj)
-        comments = CommentSerializer(data=comment_qs, many=True).data
-        return comments
+        
+        # comment_qs = Comment.content_object.filter_by_instance(obj)
+        # comments = CommentSerializer(data=comment_qs, many=True).data
+        # return comments
+        return 0
 
 from django.contrib.contenttypes.models import ContentType
 
