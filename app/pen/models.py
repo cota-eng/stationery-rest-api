@@ -77,6 +77,7 @@ class Product(models.Model):
         editable=False,
         db_index=True
         )
+    related_products = models.ManyToManyField("self",null=True,blank=True,)
     name = models.CharField(
         _("name"), max_length=50)
     # TODO: markdown -> html field
