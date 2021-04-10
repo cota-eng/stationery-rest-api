@@ -29,8 +29,9 @@ LOGGING = {
     },
 }
 INSTALLED_APPS += (
-    'storages',
-    'django_cleanup.apps.CleanupConfig',
+    
+    'drf_yasg',
+
 )
 DEBUG = True
 STATIC_URL = '/static/'

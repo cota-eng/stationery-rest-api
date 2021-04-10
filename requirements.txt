@@ -26,3 +26,7 @@ dj_database_url
 django_heroku
 gunicorn
 whitenoise
+django-imagekit
+django-storages
+django-cleanup
+boto3

@@ -47,15 +47,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'core.apps.CoreConfig',
     'authentication.apps.AuthenticationConfig',
-    # 'account.apps.AccountConfig',
-    # 'social_auth.apps.SocialAuthConfig',
     'pen.apps.PenConfig',
-    'rest_framework',
+    "blog.apps.BlogConfig",
     'django_filters',
     'corsheaders',
-    'drf_yasg',
     'rest_framework_simplejwt.token_blacklist',
     #  "rest_framework.authtoken",
     # for social login
@@ -66,9 +64,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
-    "blog.apps.BlogConfig",
-    
-
+    "imagekit"
 ]
 
 MIDDLEWARE = [
