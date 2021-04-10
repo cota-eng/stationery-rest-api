@@ -1,7 +1,5 @@
-from rest_framework import permissions
 from django.contrib import admin
 from django.urls import path,include
-
 
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -11,7 +9,6 @@ env.read_env(os.path.join(BASE_DIR, '.env'))
 ADMIN_URL = env('ADMIN_URL')
 from django.conf.urls.static import static
 from django.conf import settings
-import debug_toolbar
 
 urlpatterns = [
     path('api/',include("blog.urls")),
@@ -24,6 +21,7 @@ urlpatterns = [
 
 
 if settings.DEBUG:
+    from rest_framework import permissions
     from drf_yasg.views import get_schema_view
     from drf_yasg import openapi
     schema_view = get_schema_view(
