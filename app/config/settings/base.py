@@ -67,7 +67,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
     "blog.apps.BlogConfig",
-    # 'whitenoise.runserver_nostatic',
+    
 
 ]
 
