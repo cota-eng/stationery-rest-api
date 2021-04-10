@@ -8,10 +8,13 @@ env.read_env(os.path.join(BASE_DIR, '.env'))
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
+    'http://127.0.0.1:3000',
+
 ]
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
+    'https://bista.dev',
 ]
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True  # Access-control-Allow-Credentials: true
