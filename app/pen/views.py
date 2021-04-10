@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from . import serializers
 from . import models
-from .permissions import IsOwnerOrReadOnly
+from .permissions import IsOwnerOrReadOnly,IsFavUserOrReadOnly
 from rest_framework import permissions
 from rest_framework import generics
 from rest_framework.response import Response
@@ -58,7 +58,7 @@ class OwnFavProductListAPIView(generics.ListAPIView):
         return self.queryset.prefetch_related('product').select_related('fav_user').filter(fav_user=self.request.user).filter(is_favorite=True)
 
 class FavProductAPIView(mixins.RetrieveModelMixin,
-                           mixins.ListModelMixin,#TODO in production, not needed?
+                        #    mixins.ListModelMixin,#TODO in production, not needed?
                            viewsets.GenericViewSet):
     """
     get specific fav info
@@ -67,7 +67,7 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
     """
     queryset = models.FavProduct.objects.all()
     serializer_class = serializers.FavProductSerializer
-    permission_classes = (permissions.IsAuthenticated,IsOwnerOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticated,IsFavUserOrReadOnly,)
 
     # def get_queryset(self):
     #     return self.queryset.filter(fav_user=self.request.user)
@@ -93,7 +93,7 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
         response = {'message': 'Fav cheked', 'result': serializer.data["is_favorite"]}
         return Response(response, status=status.HTTP_200_OK)
 
-    @action(detail=True, methods=["POST"], permission_classes=[permissions.IsAuthenticated,IsOwnerOrReadOnly])
+    @action(detail=True, methods=["POST"], permission_classes=[permissions.IsAuthenticated,IsFavUserOrReadOnly])
     def fav(self, request, pk=None):
         """
         FAV
@@ -131,7 +131,8 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
                 product=product,
                 is_favorite=True,
                 )
-            response = {'message': 'first faved'}
+            serializer = serializers.FavProductSerializer(fav, many=False)
+            response = {'message': 'first faved','result': serializer.data}
             return Response(response, status=status.HTTP_200_OK)
      
 class OwnReviewProductListAPIView(generics.ListAPIView):
