@@ -1,1 +1,1 @@
-web: sh -c 'cd ./app/ && gunicorn DJANGO_SETTINGS_MODULE=config.settings config.wsgi --log-file -
+web: gunicorn --pythonpath app config.wsgi --log-file -
