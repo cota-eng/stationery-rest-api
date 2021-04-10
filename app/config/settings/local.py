@@ -1,4 +1,37 @@
 from .base import *
+
+# for cors
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOW_CREDENTIALS = True  # Access-control-Allow-Credentials: true
+
+# loggerの設定
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler'
+        },
+    },
+    'loggers': {
+        '': {  # 'catch all' loggers by referencing it with the empty string
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+    },
+}
+INSTALLED_APPS += (
+    'storages',
+    'django_cleanup.apps.CleanupConfig',
+)
 DEBUG = True
 STATIC_URL = '/static/'
 # STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)

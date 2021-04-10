@@ -1,23 +1,28 @@
 cryptography
-django==3.1.1
+django==3.2
 djangorestframework==3.12.2
 django-allauth
 dj-rest-auth
-# psycopg2==2.8.6
+psycopg2==2.8.6
 psycopg2-binary
 Pillow==8.1.0
 flake8>=3.6.0,<3.7.0
 djangorestframework-simplejwt==4.6.0
 django-cors-headers
 django-environ
-drf-yasg==1.20.0
-# dj-rest-auth
-# django-allauth
+dj-rest-auth
+django-allauth
 django-filter
 cloudinary
 markdown
-django-debug-toolbar
 ulid-py
+# for development
+django-debug-toolbar
+drf-yasg==1.20.0
+django-extensions
+django-imagekit
+# for prodction
 # dj_database_url
 # django_heroku
-django-imagekit
+# gunicorn
+# whitenoise

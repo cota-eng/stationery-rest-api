@@ -93,7 +93,7 @@ class OwnProfileEditSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Profile
         fields = ('id', 'nickname','user', 'avatar','twitter_account')
-        read_only_fields = ('user',)
+        read_only_fields = ('user','avatar',)
 
     # def update(self, instance, validated_data):
     #     pass
