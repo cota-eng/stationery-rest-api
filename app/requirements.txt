@@ -28,3 +28,4 @@ gunicorn
 whitenoise
 boto3 
 django-storages
+django-imagekit

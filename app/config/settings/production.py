@@ -19,6 +19,8 @@ CORS_ALLOW_CREDENTIALS = True  # Access-control-Allow-Credentials: true
 DEBUG = False
 
 INSTALLED_APPS += (
+    'storages',
+    'django_cleanup.apps.CleanupConfig',
     'whitenoise.runserver_nostatic',
 )
 

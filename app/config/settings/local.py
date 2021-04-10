@@ -29,8 +29,7 @@ LOGGING = {
     },
 }
 INSTALLED_APPS += (
-    'storages',
-    'django_cleanup.apps.CleanupConfig',
+    
     'drf_yasg',
 
 )
