@@ -29,3 +29,4 @@ whitenoise
 boto3 
 django-storages
 django-imagekit
+django-cleanup
