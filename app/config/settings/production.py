@@ -21,7 +21,7 @@ DEBUG = False
 INSTALLED_APPS += (
     'storages',
     'django_cleanup.apps.CleanupConfig',
-    'whitenoise.runserver_nostatic',
+    # 'whitenoise.runserver_nostatic',
 )
 
 MIDDLEWARE += (
