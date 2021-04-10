@@ -26,7 +26,7 @@ INSTALLED_APPS += (
 
 MIDDLEWARE += (
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 )
 
 """
@@ -62,8 +62,8 @@ DATABASES['default'].update(db_from_env)
 """
 static
 """
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 
 """
 django heroku 
