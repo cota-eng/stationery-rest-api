@@ -21,7 +21,7 @@ router.register('review',views.ReviewViewSet)
 # router.register('review-read',views.ReviewReadOnlyViewSet)
 app_name="pen"
 urlpatterns = [
-    path("category/<slug:category__slug>/brand/<slug:brand__slug>/products",views.ProductCategorisedAPIView.as_view(),name="product-category"),
+    path("category/<slug:category__slug>/brand/<slug:brand__slug>/",views.ProductCategorisedAPIView.as_view(),name="product-category"),
     # これと単純にサーチするもののどちらが早いか
     path("brand/<slug:brand__slug>/products",views.ProductBrandFilteredAPIView.as_view(),name="product-brand"),
     path("products/",views.ProductListAPIView.as_view(),name="product-list"),

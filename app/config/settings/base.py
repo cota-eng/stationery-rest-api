@@ -177,7 +177,7 @@ REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     # 'PAGE_SIZE': 5,
 
-    # 'NON_FIELD_ERRORS_KEY': 'error',
+    'NON_FIELD_ERRORS_KEY': 'error',
     
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
@@ -215,6 +215,7 @@ SIMPLE_JWT = {
     # 'TOKEN_TYPE_CLAIM': 'token_type',
 
     # 'JTI_CLAIM': 'jti',
+
     # sliding unuse
     # 'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
     # 'SLIDING_TOKEN_LIFETIME': timedelta(minutes=),
@@ -226,17 +227,9 @@ SITE_ID = 1
 SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
 SOCIALACCOUNT_EMAIL_REQUIRED = True
 
-# for cors
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-]
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-]
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ALLOW_CREDENTIALS = True  # Access-control-Allow-Credentials: true
+"""
+cannot use
+"""
 # SESSION_COOKIE_SAMESITE = None  # default='Lax'
 # SESSION_COOKIE_SECURE = True
 
@@ -257,8 +250,6 @@ CORS_ALLOW_CREDENTIALS = True  # Access-control-Allow-Credentials: true
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
-
-
 AUTH_USER_MODEL = 'authentication.User'
 
 """Veryfy email sender"""
@@ -269,15 +260,15 @@ AUTH_USER_MODEL = 'authentication.User'
 # EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 
-SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        'Bearer': {
-            'type': 'apiKey',
-            'name': 'Authorization',
-            'in': 'header'
-        }
-    }
-}
+# SWAGGER_SETTINGS = {
+#     'SECURITY_DEFINITIONS': {
+#         'Bearer': {
+#             'type': 'apiKey',
+#             'name': 'Authorization',
+#             'in': 'header'
+#         }
+#     }
+# }
 
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -306,6 +297,9 @@ REST_USE_JWT = True
 # SESSION_COOKIE_HTTPONLY=True
 # CSRF_COOKIE_HTTPONLY=True
 
+"""
+cloudinary
+"""
 # import cloudinary
 # import cloudinary.uploader
 # import cloudinary.api
