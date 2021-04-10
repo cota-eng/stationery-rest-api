@@ -62,9 +62,11 @@ DATABASES['default'].update(db_from_env)
 """
 static
 """
-# STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 """
 django heroku 
 """
@@ -79,13 +81,6 @@ cloudinary
 # cloudinary.config(cloud_name='<cloud-name-here>',
 #                   api_key='<api_key_here>',
 #                   api_secret='<api_secret>')
-
-
-"""
-Django-Storage
-"""
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 """
@@ -107,3 +102,10 @@ STATICFILES_DIRS = [
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AWS_S3_SECURE_URLS = True
+
+"""
+Django-Storage
+"""
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
