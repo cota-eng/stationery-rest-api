@@ -21,7 +21,7 @@ ulid-py
 # drf-yasg==1.20.0
 # django-extensions
 # django-imagekit
-# for prodction
+# for prodctionboto3
 dj_database_url
 django_heroku
 gunicorn
