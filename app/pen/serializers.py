@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from . import models
 from .models import (
     Category,
     Product,
@@ -7,7 +6,6 @@ from .models import (
     Tag,
     FavProduct,
     Review,
-
 )
 from authentication.models import User
 from django.contrib.auth import get_user_model
@@ -92,15 +90,6 @@ class ProductListSerializer(serializers.ModelSerializer):
                   'tag',
                   'number_of_fav',
                   )
-        read_only_fields = (
-                'id',
-                'name',
-                'description',
-                'price_yen',
-                'image',
-                'image_src',
-                'number_of_fav,'
-            )
 
 
 class ReviewerSerializer(serializers.ModelSerializer):
