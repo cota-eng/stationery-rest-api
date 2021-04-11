@@ -2,7 +2,7 @@
         "model": "pen.Brand",
         "pk": 1,
         "fields": {
-            "name": "ユニ(UNI)",
+            "name": "ユニ",
             "slug": "uni",
             "official_site_link": "https://www.mpuni.co.jp/"
         }
@@ -11,7 +11,7 @@
         "model": "pen.Brand",
         "pk": 2,
         "fields": {
-            "name": "パイロット(Pilot)",
+            "name": "パイロット",
             "slug": "pilot",
             "official_site_link": "https://www.pilot.co.jp/"
         }
@@ -20,7 +20,7 @@
         "model": "pen.Brand",
         "pk": 3,
         "fields": {
-            "name": "ゼブラ（ZEBRA）",
+            "name": "ゼブラ",
             "slug": "zebra",
             "official_site_link": "https://www.zebra.co.jp/"
         }
@@ -84,7 +84,7 @@
         "pk": 14,
         "fields": {
             "name": "プラチナ",
-            "slug": "",
+            "slug": "platinum",
             "official_site_link": ""
         }
     }    
