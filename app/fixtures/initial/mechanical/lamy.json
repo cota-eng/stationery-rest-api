@@ -1,0 +1,398 @@
+[
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEX4WKR5J3XYKB0MS8W",
+        "fields": {
+            "name": "LAMY accent AL rubbergripAL ペンシル",
+            "image": "ecd038c76ae36d3fbbd56a75c39ca4e6458699a1.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/lamy-accent-al-woodgrip-pencil",
+            "description": "グリップがカスタマイズ可能なシリーズ 使い勝手を重視したシンプルデザインはグリップによってカスタマイズが可能です。完成品としてはラバーとウッド調の2種類のグリップからお選び頂け、パーツは他に3種類あります。商品番号：L196KKペンシル芯径：0.7mm替え消しゴム：LZ10 ",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEXV8VKZ258MJGM4CEX",
+        "fields": {
+            "name": "LAMY logo stainless red ペンシル",
+            "image": "f2eeeae6e6f46a98c4d154f8fac3053120f68687.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/logo-stainless-red-pencil",
+            "description": "シンプルなミニマルデザイン数多くのラミーのデザイン実績を持つウルフギャング･ファビアンによるデザインの「LAMY logo stainless」。円筒型ボディと天冠から続くクリップが無駄の無いデザインです。光沢のあるステンレスボディにマットカラーのパーツの組み合わせで、軽いクリック感が特徴のノックタイプです。 商品番号：L105RDペンシル芯径：0.5mm",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEXWR81CS47GHV5DECM",
+        "fields": {
+            "name": "LAMY logo stainless blue ペンシル",
+            "image": "b0a3d9bdb50128d7a402686a8d6b1c67e18df7e3.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/logo-stainless-blue-pencil",
+            "description": "シンプルなミニマルデザイン数多くのラミーのデザイン実績を持つウルフギャング･ファビアンによるデザインの「LAMY logo stainless」。円筒型ボディと天冠から続くクリップが無駄の無いデザインです。光沢のあるステンレスボディにマットカラーのパーツの組み合わせで、軽いクリック感が特徴のノックタイプです。商品番号：L105BLペンシル芯径：0.5mm",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEXT89F390HRDVFS1H2",
+        "fields": {
+            "name": "LAMY safari blue ペンシル",
+            "image": "2c73151d844fb1bef092a03af1d1d8a4c640272b.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/safari-blue-pencil",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。 商品番号：L114ペンシル芯径：0.5mm替え消しゴム: LZ18",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEX3S276531X31VSS3G",
+        "fields": {
+            "name": "LAMY logo stainless black ペンシル",
+            "image": "3c78ca52053bff1f4390d7313126dee3991e2ea2.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/logo-stainless-black-pencil",
+            "description": "シンプルなミニマルデザイン数多くのラミーのデザイン実績を持つウルフギャング･ファビアンによるデザインの「LAMY logo stainless」。円筒型ボディと天冠から続くクリップが無駄の無いデザインです。光沢のあるステンレスボディにマットカラーのパーツの組み合わせで、軽いクリック感が特徴のノックタイプです。商品番号：L105BKペンシル芯径：0.5mm",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEXF10778YRDXV9FF9M",
+        "fields": {
+            "name": "LAMY logo stainless green ペンシル",
+            "image": "e55fb6f12e982a8881cb3c2f8497386d75405b7a.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/logo-stainless-green-pencil",
+            "description": "シンプルなミニマルデザイン数多くのラミーのデザイン実績を持つウルフギャング･ファビアンによるデザインの「LAMY logo stainless」。円筒型ボディと天冠から続くクリップが無駄の無いデザインです。光沢のあるステンレスボディにマットカラーのパーツの組み合わせで、軽いクリック感が特徴のノックタイプです。 商品番号：L105GNペンシル芯径：0.5mm",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEXBY8Y44CEC0TA8B22",
+        "fields": {
+            "name": "LAMY safari shinyblack ペンシル",
+            "image": "149c49353bceeff080cf85f28932ec8b2f48e6a4.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/safari-shinyblack-pencil",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。商品番号：L119BKペンシル芯径：0.5mm替え消しゴム: LZ18",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEX95D01RRCW2EPZ6S8",
+        "fields": {
+            "name": "LAMY cp1 mattblack ペンシル",
+            "image": "e80c0b1b7a5dfc1d0c3ab58929196715cb4e0f22.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/cp1-mattblack-cp1-pencil",
+            "description": "シンプルを極めた果てに立ち現れるエレガンス「ラミー cp1」は1970年に登場した、ラミーの代表的なシリーズです。オリジナルデザインは「ラミー 2000」と同様、ゲルト・ミュラーによるもの。“cylindrical pen（円筒形のペン）”を意味する名称の通り、いっさいの無駄を省き、シンプルの極みに到達しています。「ラミーcp1 マットブラック」 は、スリムな筒型ボディと堅牢なステンレス無垢材のクリップによる極限まで追及されたシンプルさが特徴です。 商品番号：L156ペンシル芯径: 0.7mm (LM40)替え消しゴム: LZ10",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEXARQB710YRKYX0C7Z",
+        "fields": {
+            "name": "LAMY safari red ペンシル",
+            "image": "50aa59a37ec241318c029adda4840bae563534df.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/safari-red-pencil",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。 商品番号：L116ペンシル芯径：0.5mm替え消しゴム: LZ18",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEXTZX9Y3TZ8B4A6CSB",
+        "fields": {
+            "name": "LAMY safari vista ペンシル",
+            "image": "18ac59925f107128cad84adea9a17919dfb8cff8.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/safari-vista-pencil",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。商品番号：L112\n\n\n\n\n\nペンシル芯径：0.5mm替え消しゴム: LZ18 ",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEX4AX4RK1D72CP2CWD",
+        "fields": {
+            "name": "LAMY safari yellow ペンシル",
+            "image": "815c1c574ad61353378e9a689b50ba0351f9a135.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/safari-yellow-pencil",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。商品番号：L118ペンシル芯径：0.5mm替え消しゴム: LZ18",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEX6N3KRKX379AT4V0Z",
+        "fields": {
+            "name": "LAMY safari pink ペンシル",
+            "image": "d12203bc8234da723a7a8c1c99c891c991ce8d4e.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/safari-pink-pencil",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。 商品番号：L113P\n\n\n\n\n\nペンシル芯径：0.5mm替え消しゴム: LZ18 ",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEX30GXTCEYDPR1AS41",
+        "fields": {
+            "name": "LAMY safari black ペンシル",
+            "image": "8480be5711c03d6acfdcf21116eec7d38d0124e7.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/safari-black-pencil",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。商品番号：L117ペンシル芯径：0.5mm 替え消しゴム: LZ18",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEXZPNQJYDN9PNGYV37",
+        "fields": {
+            "name": "LAMY 2000 ペンシル",
+            "image": "da6628a42c9edb91f2b21e3ca61a786432764bdb.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/lamy2000-pencil",
+            "description": "バウハウスのDNAを今に伝えるラミーの原点1966年に登場した、ラミーのデザインプロダクト最初の製品です。バウハウスの影響を受けたデザイナー、ゲルト・アルフレッド・ミュラーの手による秀逸なデザインは、40年以上の時を経た現在でも決して色褪せることなく、ラミーデザインの原点を伝える永遠のロングセラーとなっています。ボディは樹脂とステンレスのコンビネーションで、磨き上げられた樹脂の表面には繊細なヘアライン処理が施されています。世界で初めてステンレス無垢材を用いて作られたスプリング入りクリップは、今なお人々の目を引きつけるものです。\n\n\n\n\n\n品番号：L101 (0.5mm)商品番号：L101-7 (0.7mm)ペンシル芯径：0.5mm , 0.7mm替え消しゴム: LZ10",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEXD40B6B9H63QAKAQ0",
+        "fields": {
+            "name": "LAMY scala stainless ペンシル",
+            "image": "c3389027e07a1b3c3c5d902368f302c49b28246e.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/scala-stainless-pencil",
+            "description": "オールステンレスにこだわったエレガンス 一切の無駄を削ぎ落とし、洗練されたシンプルなフォルムに秘められたディテールは妥協を許さない高水準の技術によってのみ成し得たエレガンス。上品なゴールドカラーのベールをまとったチタン仕上げと、漆黒のマットブラックの2種類のボディカラーは、それぞれにクローム仕上げパーツとの美しいコントラストを創出します。ドイツの兄弟デザイナー、sieger design（ジーガーデザイン）によるデザインで、Chicago Athenaeum: Museum of Architecture and Design（シカゴ学術振興協会：建築デザインミュージアム）によるグッドデザインアワードを受賞しました。 \n\n\n\n\n\n“スカラ ステンレス”は、木目のように見えるヘアライン 加工をボディに施し、同じくシルバー系のクローム仕上げのパーツと 絶妙なマッチングを実現しました。 金属的な質感が備わり、永くご愛用いただけるラインナップです。商品番号：L151ペンシル芯径：0.7ｍｍ(LM40) ",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEXYWHMB33V6FSPVRY4",
+        "fields": {
+            "name": "LAMY accent AL woodgrip ペンシル",
+            "image": "7868ac54a329f41eceac002462bcd17bafe15584.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/lamy-accent-al-woodgrip-pencil-1",
+            "description": "グリップがカスタマイズ可能なシリーズ 使い勝手を重視したシンプルデザインはグリップによってカスタマイズが可能です。完成品としてはラバーとウッド調の2種類のグリップからお選び頂け、パーツは他に3種類あります。商品番号：L196KWペンシル芯径：0.7mm替え消しゴム：LZ10 ",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEXKXHYN707X1CNKAJ0",
+        "fields": {
+            "name": "LAMY abc set",
+            "image": "ab3aca8b7ed4d2e9a9d0e6d2aee4cbec330fb600.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/lamy-abc-set",
+            "description": "子供に正しく、楽しく字を書くことを学ばせたい、というラミーのこだわりが詰まった子供用の万年筆とペンシル。形状やサイズはもちろん、子供らしいビビッドなパーツとメープルウッドの素材使いまで、教育者と共同開発された子供の為の筆記具です。万年筆のペン先は先端に丸みを帯びたAニブでグリップのチカラや角度の不安定なお子様に適しています。ペンシルは芯が折れにくい太めの1.4mm芯。筆箱として使える木箱に万年筆（レッド）、ペンシル（ブルー）、万年筆用コンバーター、カートリッジインク（ブラック）が入っています。 万年筆: カートリッジ・コンバーター両用式ペンシル芯径：1.4mm（LM44）商品番号：LABC-SET",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEXB6HQKKGNT8BVP81B",
+        "fields": {
+            "name": "LAMY safari green ペンシル",
+            "image": "150e02e56f81284bde86749a7bbce698b7ab30b6.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/safari-green-pencil",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。商品番号：L113GN\n\n\n\n\n\nペンシル芯径：0.5mm替え消しゴム: LZ18 ",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEXVDDD492GCMWZVYGQ",
+        "fields": {
+            "name": "LAMY logo stainless hairline ペンシル",
+            "image": "e772c51a331655316cdc7d434c5584d5cbd097b7.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/logo-stainless-hairline-pencil",
+            "description": "シンプルなミニマルデザイン数多くのラミーのデザイン実績を持つウルフギャング･ファビアンによるデザインの「LAMY logo stainless」。円筒型ボディと天冠から続くクリップが無駄の無いデザインです。上品な光沢を放つステンレスヘアライン加工とクリップや口金などのパーツのコントラストがシンプルなデザインの魅力を引き立てています。高級感があり、ヨーロッパで人気のモデルです。 商品番号：L106ペンシル芯径：0.5mm",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEX0XVP412RPN3AADSH",
+        "fields": {
+            "name": "LAMY safari white ペンシル",
+            "image": "e3de408c019e1df68075e8f8ebf3b3a4b0a4ed3b.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/safari-white-pencil",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。商品番号：L119WTぺンシル芯径：0.5mm替え消しゴム: LZ18",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEXXX0M6D7SBW18NX5M",
+        "fields": {
+            "name": "LAMY spirit palladium ペンシル",
+            "image": "d8e618935ba1466ea8671c2f7c075eddd40fabaa.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/lamy-spirit-palladium-pencil",
+            "description": "1枚の板を曲げたり打ち抜いたりして極細に仕上げたペンシル。もともとは手帳用のペンとして手帳やノートの背表紙に挟んで重宝されました。惜しまれながら廃盤になったスピリットは日本でも非常に人気が高く、限定数のペンシルのみ入手しました。0.5mm芯です。品番号：L163-Nペンシル芯径：0.5mm 替え消しゴム: LZ10",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252JEX9HCBDM6TY50ATNGV",
+        "fields": {
+            "name": "LAMY AL-star ペンシル ギフトセット",
+            "image": "b07e0be0d491aaed47c883aae4e0f220e2a91553.jpg",
+            "image_src": "https://lamy.jp/collections/noto/products/lamy-al-star-%E3%83%9A%E3%83%B3%E3%82%B7%E3%83%AB-%E3%82%AE%E3%83%95%E3%83%88%E3%82%BB%E3%83%83%E3%83%88",
+            "description": " ラミーの人気シリーズ「アルスター」のペンシルが数量限定で登場。アルスターのペンシルは日本未発売品。同じく日本未発売品のイレーサーと共に缶ケースに収めた、ギフトにぴったりのお得なコンプリートセットです。堅牢でミニマルなデザインの缶ケースは、大事なペンの保管やデスクアクセサリーとしても活躍。消しゴムはラテックスフリー・フタル酸フリーの、体に優しいメイド・イン・ジャーマニー品質です。特別感のあるクリスマスギフトとして、是非お役立てください。  【セット内容】　・アルスター  ペンシル ＆ ペンシル芯 0.5m 商品番号：ALSET-C（グラファイト）",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    }
+]

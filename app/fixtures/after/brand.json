@@ -1,0 +1,20 @@
+[
+    {
+        "model": "pen.Brand",
+        "pk": 221,
+        "fields": {
+            "name": "パイロット",
+            "slug": "pilot",
+            "official_site_link": "https://www.pilot.co.jp/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 222,
+        "fields": {
+            "name": "ロットリング",
+            "slug": "rotring",
+            "official_site_link": "https://www.rotring.com/jp/"
+        }
+    }
+]

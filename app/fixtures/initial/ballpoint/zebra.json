@@ -1,0 +1,884 @@
+[
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZQDMKNEZZGZ65Q3VZH",
+        "fields": {
+            "name": "Bn2",
+            "image": "960d5d4f91fcbc7c63d206f667636d21da400146.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/bn2/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZQ526W8E7HGG6R78V1",
+        "fields": {
+            "name": "クリップ-オン マルチ2000",
+            "image": "473ba23289e79b36e6bd4822b2d2ee220a79bfe7.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/clipon-multi2000/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZQD9P9FBKN989RYZAD",
+        "fields": {
+            "name": "クリップ-オン マルチ1000 / S",
+            "image": "37944060f437cfcce7c20936bdf8179f526704bb.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/clipon-multi1000/index.html?tab_id=tabs-b",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZQAF3859J7M2K0D2CG",
+        "fields": {
+            "name": "クリップ-オン マルチ1000 / S",
+            "image": "37944060f437cfcce7c20936bdf8179f526704bb.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/clipon-multi1000/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRTHXZ9M8BS8TXP2R4",
+        "fields": {
+            "name": "フォルティアVC",
+            "image": "80b1c527cd18814c291f0d386cfc4a235bc0e407.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/fortia_vc/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZR33YA0WCFJ5HYA950",
+        "fields": {
+            "name": "フロス",
+            "image": "4bf464342f1f00efddf710ae4c22eb546d2926a1.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/flos/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZR5YDN1E7YXS18NWBS",
+        "fields": {
+            "name": "ウェットニー",
+            "image": "22061c35a41fac22d1b87dfe4495ff184dbe2db7.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/wetnie/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRDT75SFEJWX5ZG5WQ",
+        "fields": {
+            "name": "ライトライトα",
+            "image": "7432345792c420b1a5ad99a05f8bedf2cd4ce01f.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/lightwrite-a/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRDM8VVJ4G2T87E14M",
+        "fields": {
+            "name": "クリップ-オン マルチ",
+            "image": "ae8c6f7e42fd65af2ceb84822fa06f0b0bc76043.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/clipon-multi/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZR7HGXS8G32KRFNBAW",
+        "fields": {
+            "name": "手帳用",
+            "image": "5194a0a35513c1789eed7702a6cbbea8ff866dc0.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/t/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRA0EBTJWARRXGAY7B",
+        "fields": {
+            "name": "SL-F1 mini / ST",
+            "image": "ad83ec3d89cb449fd2d3dcad4e466aaa72d0e655.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sl-f1mini_st/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRGVGT7A6CARN56050",
+        "fields": {
+            "name": "フォルティア300",
+            "image": "ddff8ea1732dd8e41a5519a5d5063eed52ba38e7.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/fortia/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRCYRYVCMG2666ZKC7",
+        "fields": {
+            "name": "クリップ-オン スリム",
+            "image": "789caa98e0131925495ca287d4e762c487720b50.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/clipon-slim/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRGA28TZ29XFGNTX5J",
+        "fields": {
+            "name": "クリップ-オンG",
+            "image": "ce8a538a29be8e7ba9f2bce0035b039514c588fb.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/clipon-g/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRS1B7XT1497RDGH2P",
+        "fields": {
+            "name": "タプリ ホールドクリップ",
+            "image": "31c725bf38c7d4193d24cf4498bb1d956b2c29af.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/tapli-holdclip/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRQZ33F51Z81FF2TEG",
+        "fields": {
+            "name": "フィラーレ 2+S",
+            "image": "39b94352cd0fdcd3f189d49b3327a9199251652d.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/filare_2s/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZR5EFGZMK0GKVZ9144",
+        "fields": {
+            "name": "サラサグランド",
+            "image": "be519e11ab566aece721d86ff633e79168517ef9.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sarasa-grand/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRT1GXGSA357KGW18D",
+        "fields": {
+            "name": "サラサマルチ",
+            "image": "1b29a6bc1fc2b40bc37729e12bd8021d3d817256.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sarasa_multi/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRHTH43WRJQP69NXKQ",
+        "fields": {
+            "name": "サラサ3B / サラサ2+SB",
+            "image": "8d8907b46df381eaeb11fddf8b07a7ffc02f376a.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sarasa-3b_2sb/index.html?tab_id=tabs-b",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRVWP0MEXA31BRJ0C8",
+        "fields": {
+            "name": "サラサ3 /サラサ2＋S",
+            "image": "8d8907b46df381eaeb11fddf8b07a7ffc02f376a.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sarasa3/index.html?tab_id=tabs-c",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZR2Q2HJ7R1P85J281F",
+        "fields": {
+            "name": "サラサ3B / サラサ2+SB",
+            "image": "8d8907b46df381eaeb11fddf8b07a7ffc02f376a.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sarasa-3b_2sb/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRQ14R5Y3EQ45DGSN1",
+        "fields": {
+            "name": "サラサ3 /サラサ2＋S",
+            "image": "8d8907b46df381eaeb11fddf8b07a7ffc02f376a.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sarasa3/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZR0E74A10SPWJ6Q64D",
+        "fields": {
+            "name": "サラサセレクト ソフトグリップ",
+            "image": "93ba71b04c5a0b2ea2517c4e514320a028f93585.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sarasa-select-softgrip/",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRTJYKFDVTM2BSQ6AZ",
+        "fields": {
+            "name": "サラサセレクト",
+            "image": "a18941572a0ddce2dcf007bf679d3bc3386129ee.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sarasa-select/",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRETYKB00NWVKK6PD5",
+        "fields": {
+            "name": "サラサドライ",
+            "image": "c6eb303cd186ebae58f4ada4af054de58b529401.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sarasa_dry/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRGNQEX1XN3BATATHG",
+        "fields": {
+            "name": "サラサ",
+            "image": "2ec173a73963c4ffdc09d2169403049ef27cd2dd.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sarasa/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRRYMRH3B3C58BWNFS",
+        "fields": {
+            "name": "サラサスタディ",
+            "image": "cf2abf9ff82e0f10240c0a02593f08ffbdb19da4.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sarasa-study/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRQ4HEJ7KVXEPWS3RH",
+        "fields": {
+            "name": "サラサマークオン",
+            "image": "1b6a631aba89c79dad94105f07a8ec9ee8732614.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sarasa-markon/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRWXWPHQ0T4EP6ZEB3",
+        "fields": {
+            "name": "サラサクリップ マーブルカラー",
+            "image": "d4d81b08d7a095fefba8aa879d94cbca36355413.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sarasa-marble/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZR77WCCYF389CWNQN8",
+        "fields": {
+            "name": "サラサクリップ",
+            "image": "f9c60a9d7dac224f73a46b6e92441f4ba6f2de23.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sarasa-clip/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZR1R1YN7DNJT80ECQC",
+        "fields": {
+            "name": "フィラーレ3C",
+            "image": "c30121eae104580f58881f8215017c21e6ef136d.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/filare_3c/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZR28TZ7GXTT525QTR1",
+        "fields": {
+            "name": "フィラーレ",
+            "image": "1c81ee02ca1091269b230beaa96ea7fa2e4c534a.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/filare/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZR8912PTMMPQ3MSNCH",
+        "fields": {
+            "name": "シャーボNu",
+            "image": "885a5b7c93e8b1b4032fb29c2166b7a5aac8e016.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/sharbo_nu/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZR56A5YRRG5RKE62TF",
+        "fields": {
+            "name": "フロス 輪-Rin-",
+            "image": "b067d246ef59e03118057afc4d7ef6124e3cf075.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/flos-rin/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRVQERMAAMZGJ1EV19",
+        "fields": {
+            "name": "フィラーレef",
+            "image": "cb51e8af9070b91f62c7dddf43977211cec01bc4.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/filare-ef/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRXGC9EQA0W9GJQXJ7",
+        "fields": {
+            "name": "フィラーレウッド",
+            "image": "6dddf7c12bca13680b827046a3efeb416bd21e22.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/filare-wd/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRVGSMX4Y3WWVMAN03",
+        "fields": {
+            "name": "デルガード+2C",
+            "image": "6c1e5f93a3dce4eef43f7cef92244c401fbe5bb4.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/del_guard_2c/",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRZNE7KBFGY99FES95",
+        "fields": {
+            "name": "フィラーレ\r\n",
+            "image": "339e9b8470b529a5a95864b1dc69ad8d2d295b3e.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/filare_2/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRP4G6JENSVCFB84WD",
+        "fields": {
+            "name": "カドカド",
+            "image": "8c52db262d1aaafdd8c602a1b21800c970ea3129.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/kadokado/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZR4TFJH6PR3A4ATWZ7",
+        "fields": {
+            "name": "フォルティアCONE",
+            "image": "44951d411a8278be88581253f38acd1287ac8eac.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/fortia_cone/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZR1ZFE7JXZC75DWJQW",
+        "fields": {
+            "name": "スラリマルチ",
+            "image": "48e57fe98275d724c8643156e527faed6846bdce.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/surari_multi/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRQW7T89ZP960THVWZ",
+        "fields": {
+            "name": "スラリ300",
+            "image": "802cfff03d42553da2543e17071e99e7997a5c96.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/surari_300/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRVRFFFGBQTEGQRYQ5",
+        "fields": {
+            "name": "フォルティアem.",
+            "image": "77c11b1be7a74913fd0c97941a8cc05e7e592443.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/fortia_em/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRWSNDCQDB16VZRHHY",
+        "fields": {
+            "name": "スラリ0.5 / 0.7 / 1.0",
+            "image": "94dcab35313e80436b41b8d9b485d4150d706b9a.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/surari/",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRKKGHSKR5278CCHBQ",
+        "fields": {
+            "name": "ジムノックUK",
+            "image": "80734e5f70c8cec1405a8f4502cb699a7d2b439f.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/jim-knock-uk/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRWT9XRYYBQQK77ZRH",
+        "fields": {
+            "name": "ジムノック",
+            "image": "220e33561fbff8f7cd44f4dad23fc1de474af664.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/jim-knock/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZR3VC3J9HZ8H2VN1PA",
+        "fields": {
+            "name": "タプリクリップ",
+            "image": "a44cde577b70a3437042dad632dae1a3695638b0.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/tapliclip/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZRG906ZSSTN3C2HBST",
+        "fields": {
+            "name": "ラバー80",
+            "image": "10adebf89a168c93a1c7479b517a8cae58d89426.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/rubber80/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K2ZREWB0ETGV8MMYS6MG",
+        "fields": {
+            "name": "ニューハード ケアS",
+            "image": "2f81d76832f6aef4d8aa2f2a62c04a45d8f7fd12.jpg",
+            "image_src": "https://www.zebra.co.jp/pro/new-hard/index.html",
+            "price": 0,
+            "description": "本文準備中",
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 8
+        }
+    }
+]

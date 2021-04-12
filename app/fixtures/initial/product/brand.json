@@ -5,7 +5,7 @@
         "fields": {
             "name": "カランダッシュ",
             "slug": "carandache",
-            "official_site_link": ""
+            "official_site_link": "https://www.carandache.com/jp/"
         }
     },
     {
@@ -41,30 +41,12 @@
         "fields": {
             "name": "ぺんてる",
             "slug": "pentel",
-            "official_site_link": "https://ohto.co.jp/"
-        }
-    },
-    {
-        "model": "pen.Brand",
-        "pk": 2,
-        "fields": {
-            "name": "パイロット",
-            "slug": "pilot",
-            "official_site_link": "https://www.pilot.co.jp/"
+            "official_site_link": "https://www.pentel.co.jp/"
         }
     },
     {
         "model": "pen.Brand",
         "pk": 6,
-        "fields": {
-            "name": "ロットリング",
-            "slug": "rotring",
-            "official_site_link": "https://www.rotring.com/jp/"
-        }
-    },
-    {
-        "model": "pen.Brand",
-        "pk": 9,
         "fields": {
             "name": "トンボ",
             "slug": "tombow",
@@ -73,7 +55,7 @@
     },
     {
         "model": "pen.Brand",
-        "pk": 2,
+        "pk": 7,
         "fields": {
             "name": "ユニ",
             "slug": "uni",
@@ -82,11 +64,12 @@
     },
     {
         "model": "pen.Brand",
-        "pk": 3,
+        "pk": 8,
         "fields": {
             "name": "ゼブラ",
             "slug": "zebra",
             "official_site_link": "https://www.zebra.co.jp/"
         }
     }
+    
 ]

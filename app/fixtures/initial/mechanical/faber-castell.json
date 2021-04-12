@@ -1,0 +1,200 @@
+[
+    {
+        "model": "pen.Product",
+        "pk": "01F3252J91J3XZQ33Y3B2RXS51",
+        "fields": {
+            "image": "0ea0e00672e1953a3c0b63a322ab23034b1ba472.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%b0%e3%83%aa%e3%83%83%e3%83%97%e3%83%97%e3%83%a9%e3%82%b91314%e3%83%9a%e3%83%b3%e3%82%b7%e3%83%ab%e3%83%ac%e3%83%83%e3%83%89/131431",
+            "name": "グリッププラス1314 ペンシル　レッド",
+            "description": "太めで持ちやすい、トライアングルシェープのラバーグリップゾーンがついた1.4mm芯のペンシルペンシルの先端は格納式軸は3色での展開",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252J91AY8AH4AHVA1BT5F5",
+        "fields": {
+            "image": "952a35264b594852d3cbb67ec3d907737e4c48af.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%b0%e3%83%aa%e3%83%83%e3%83%97%e3%83%97%e3%83%a9%e3%82%b91307%e3%83%9a%e3%83%b3%e3%82%b7%e3%83%ab%e3%83%9a%e3%83%88%e3%83%ad%e3%83%bc%e3%83%ab%e3%82%b0%e3%83%aa%e3%83%bc%e3%83%b3/130735",
+            "name": "グリッププラス1307 　ペンシル　ペトロールグリーン",
+            "description": "太めで持ちやすい、トライアングルシェープのラバーグリップゾーンがついた0.7mmペンシルノック部分を回転させるとイレーサーが出てきます軸はマルチカラーでの展開",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252J91TH6JQ08530VK6JA6",
+        "fields": {
+            "image": "d92dcac5c05b128fe1af38df95559880280360ac.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%b0%e3%83%aa%e3%83%83%e3%83%97%e3%83%97%e3%83%a9%e3%82%b91314%e3%83%9a%e3%83%b3%e3%82%b7%e3%83%ab%e3%83%9b%e3%83%af%e3%82%a4%e3%83%88/131401",
+            "name": "グリッププラス1314 ペンシル　ホワイト",
+            "description": "太めで持ちやすい、トライアングルシェープのラバーグリップゾーンがついた1.4mm芯のペンシルペンシルの先端は格納式軸は3色での展開",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252J9132PY81Q3VE7BQQ98",
+        "fields": {
+            "image": "90a43e85bbbe688ba21b8307584230efb1eaf632.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%b0%e3%83%aa%e3%83%83%e3%83%97%e3%83%9e%e3%83%86%e3%82%a3%e3%83%83%e3%82%af1375%e3%83%9a%e3%83%b3%e3%82%b7%e3%83%ab%e3%83%96%e3%83%ab%e3%83%bc/137551",
+            "name": "グリップマティック1375　ペンシル ブルー",
+            "description": "芯を保護するスリーブで、折れにくくお使いいただけますラバーグリップゾーンがしっかりと握ることをサポートしすべりにくいイレーサーつき自動的に芯が繰り出す設計です0.5mm芯胴軸のカラーは3色展開（レッド、ブルー、グリーン）",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252J91JHKEE6EX7Z70X1KT",
+        "fields": {
+            "image": "f734ed4f0250f3168bcd8bcf861a5e70303f5713.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%b0%e3%83%aa%e3%83%83%e3%83%97%e3%83%97%e3%83%a9%e3%82%b91307%e3%83%9a%e3%83%b3%e3%82%b7%e3%83%ab%e3%83%96%e3%83%a9%e3%83%83%e3%82%af%e3%83%99%e3%83%aa%e3%83%bc/130734",
+            "name": "グリッププラス1307 ペンシル　ブラックベリー",
+            "description": "太めで持ちやすい、トライアングルシェープのラバーグリップゾーンがついた0.7mmペンシルノック部分を回転させるとイレーサーが出てきます軸はマルチカラーでの展開",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252J916PZHZ1DC54EP0CZ1",
+        "fields": {
+            "image": "edbe0f7031259ede051907359f43c09f9aadd5ac.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%b0%e3%83%aa%e3%83%83%e3%83%972011%e3%83%9a%e3%83%b3%e3%82%b7%e3%83%ab%e3%82%b7%e3%83%ab%e3%83%90%e3%83%bc/131211",
+            "name": "グリップ2011　ペンシル　シルバー",
+            "description": "グリップ2011鉛筆の形をモチーフとし、人間工学に基づき作られたトライアングルシェープのペンシルソフトグリップゾーンですべりにくく、しっかりと握ることができますキャップの下にリフィルイレーサーがあります0.7mm芯",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252J915FXZ1H7FY984D005",
+        "fields": {
+            "image": "1a03dc7f9bd5c0ead04cd8b88f30b6b3597ee8d7.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%b0%e3%83%aa%e3%83%83%e3%83%97%e3%83%97%e3%83%a9%e3%82%b91307%e3%83%9a%e3%83%b3%e3%82%b7%e3%83%ab%e3%82%b0%e3%83%aa%e3%83%bc%e3%83%b3/130700",
+            "name": "グリッププラス1307 ペンシル　グリーン",
+            "description": "太めで持ちやすい、トライアングルシェープのラバーグリップゾーンがついた0.7mmペンシルノック部分を回転させるとイレーサーが出てきます軸はマルチカラーでの展開",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252J91NR85D6N6Z63CSYVK",
+        "fields": {
+            "image": "e8205a2d04d9d7bcc826a2c19aaeb5451ee4aa19.jpg",
+            "image_src": "https://www.faber-castell.jp/products/TKFINEGRIP%e3%82%b7%e3%83%a3%e3%83%bc%e3%83%97%e3%83%9a%e3%83%b3%e3%82%b7%e3%83%ab05mm%e3%83%a1%e3%82%bf%e3%83%aa%e3%83%83%e3%82%af%e3%83%96%e3%83%a9%e3%83%83%e3%82%af/134599",
+            "name": "TK-FINE GRIPⅡシャープペンシル 0.5mm メタリックブラック",
+            "description": "芯折れを防ぐ、クッション機能付きのペン先を持つペンシルツイスト式の大きめなイレーサー付きしっかりとしたメタルクリップでノートや胸ポケットにホールド0.5mm芯使用で細かな描画・筆記に最適ラバーグリップゾーンですべりにくい",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252J914YP2TRW59ZBMV5RG",
+        "fields": {
+            "image": "5a4f6a210642d809a6865c27a56a69b0e1678d18.jpg",
+            "image_src": "https://www.faber-castell.jp/products/TKFINE%e3%83%90%e3%83%aa%e3%82%aaL%e3%83%9a%e3%83%b3%e3%82%b7%e3%83%ab03035mm/135300",
+            "name": "TK-FINE バリオLペンシル　0.3/0.35mm",
+            "description": "製図用のペンシルとして理想的な造りのシャープペンシル替えイレーサーと硬度HBのペンシルリフィルつき替芯はスーパーポリマー0.3/0.35mmをご利用下さい",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252J91W6JFM69JK6XXJGDG",
+        "fields": {
+            "image": "ac950e0fe384687393595d0ae2981b56010563d4.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%b0%e3%83%aa%e3%83%83%e3%83%97%e3%83%97%e3%83%a9%e3%82%b91314%e3%83%9a%e3%83%b3%e3%82%b7%e3%83%ab%e3%83%96%e3%83%ab%e3%83%bc/131432",
+            "name": "グリッププラス1314 ペンシル　ブルー",
+            "description": "太めで持ちやすい、トライアングルシェープのラバーグリップゾーンがついた1.4mm芯のペンシルペンシルの先端は格納式軸は3色での展開",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F3252J91EH8TFF4X0W1SEP4K",
+        "fields": {
+            "image": "d2486d7e28a8c3b65ecb443b18313f98953f7c3d.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%b7%e3%83%a3%e3%83%bc%e3%83%97%e3%83%9a%e3%83%b3%e3%82%b7%e3%83%abTKFine9713035mm/136300",
+            "name": "シャープペンシル TK-Fine 9713 0.35 mm",
+            "description": "ペンシルの先端は格納式製図用のペンシルとして細かな書き込みに対応替えイレーサーと硬度HBのペンシルリフィルつきプッシュボタンの色が線幅を表示線幅0.35mm",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    }
+]
