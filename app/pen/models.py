@@ -79,7 +79,7 @@ class Product(models.Model):
         )
     related_products = models.ManyToManyField("self",null=True,blank=True,)
     name = models.CharField(
-        _("name"), max_length=50)
+        _("name"), max_length=100)
     # TODO: markdown -> html field
     description = models.TextField(
         _('description'))
