@@ -30,8 +30,20 @@ env = environ.Env()
 env.read_env('.env')
 import requests, json
 
-class ProductCategorisedAPIView(generics.ListAPIView):
-    queryset = Product.objects.all().order_by("-id")
+class ProductCategoryBrandFilteredAPIView(generics.ListAPIView):
+    queryset = Product.objects.all() #.order_by("-id")
+    serializer_class = serializers.ProductListSerializer
+    permission_classes = (AllowAny,)
+    pagination_class = NormalPagination
+    def get_queryset(self):
+        # if self.kwargs['category__slug'] is None:
+        #     return None
+        qs = self.queryset
+        qs = self.get_serializer_class().setup_for_query(qs)
+        return qs.filter(category__slug=self.kwargs['category__slug']).filter(brand__slug=self.kwargs['brand__slug'])
+
+class ProductBrandCategoryFilteredAPIView(generics.ListAPIView):
+    queryset = Product.objects.all() #.order_by("-id")
     serializer_class = serializers.ProductListSerializer
     permission_classes = (AllowAny,)
     pagination_class = NormalPagination
@@ -239,12 +251,10 @@ class BrandFliteredListAPIView(mixins.ListModelMixin,viewsets.GenericViewSet):
     lookup_field = 'slug'
 
 # from rest_framework import filters
-class ProductSearchByAllConditions(mixins.ListModelMixin,
-                                   viewsets.GenericViewSet):
+class ProductSearchByName(mixins.ListModelMixin,viewsets.GenericViewSet):
     """
     search like below \n
-    http://localhost:8000/api/search/?name=S20&? \n
-    all condition searching
+    http://localhost:8000/api/search/?name=S20&
     """
     queryset = Product.objects.all()
     serializer_class = serializers.ProductListSerializer
