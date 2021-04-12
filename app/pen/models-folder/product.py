@@ -33,7 +33,7 @@ class Product(models.Model):
         # TODO CASCADE -> SETNULL
         on_delete=models.CASCADE
         )
-    price_yen = models.PositiveIntegerField(
+    price = models.PositiveIntegerField(
         _("price"),
         validators=[MaxValueValidator(1000000),]
         )
@@ -93,5 +93,5 @@ class Product(models.Model):
             return 0
         
     def __str__(self):
-        return f'product: {self.name} Price: {self.price_yen}'
+        return f'product: {self.name} Price: {self.price}'
     

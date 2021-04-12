@@ -10,8 +10,8 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [
         ReviewInline
     ]
-    list_display = ('name', 'price_yen',)
-    list_filter = ('price_yen',)
+    list_display = ('name', 'price',)
+    list_filter = ('price',)
 
 admin.site.register(models.Product,ProductAdmin)
 

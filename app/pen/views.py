@@ -165,9 +165,15 @@ class ProductPagingReadOnlyViewSet(mixins.ListModelMixin,
     for testing
     """
     queryset = Product.objects.all()
-    serializer_class = serializers.ProductRetrieveSerializer
+    serializer_class = serializers.ProductListSerializer
     permission_classes = (AllowAny,)
     pagination_class = NormalPagination
+    
+    def get_queryset(self):
+        qs = self.queryset
+        qs = self.get_serializer_class().setup_for_query(qs)
+        return qs
+    
 
 class ProductListAPIView(generics.ListAPIView):
     """
