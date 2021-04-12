@@ -34,7 +34,7 @@ class ProductCategorisedAPIView(generics.ListAPIView):
     queryset = Product.objects.all().order_by("-id")
     serializer_class = serializers.ProductListSerializer
     permission_classes = (AllowAny,)
-    # pagination_class = NormalPagination
+    pagination_class = NormalPagination
     def get_queryset(self):
         # if self.kwargs['category__slug'] is None:
         #     return None
@@ -183,7 +183,7 @@ class ProductListAPIView(generics.ListAPIView):
     # serializer_class = serializers.ProductListSerializer
     serializer_class = serializers.ProductListSerializer
     permission_classes = (AllowAny,)
-    # pagination_class = NormalPagination
+    pagination_class = NormalPagination
 
     
     def get_queryset(self):
