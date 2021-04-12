@@ -1,0 +1,290 @@
+[
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XDMGG9SB4B6GDEJFT7",
+        "fields": {
+            "image": "3a9a6bff85a12ea05d164108abd14bab78f02813.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%a2%e3%83%b3%e3%83%93%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%aa%e3%83%97%e3%82%a2%e3%83%bc%e3%83%88%e3%83%96%e3%83%ab%e3%83%bc%e3%83%a9%e3%82%b0%e3%83%bc%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/149618",
+            "name": "アンビションオプアート　ブルーラグーンボールペン",
+            "description": "目の錯覚によって図柄が浮き上がったり、動くように見える視覚効果のあるアート、オプアートをレジンバレルに彫り込んだ幾何学的な柄が特徴です。カラーは２色展開。キャップ、BP口金は真鍮クロームコーティング、ツイスト式です。ブラックリフィル(B)が付属しており、ホワイトのギフトボックス付きです。",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XDV29CP9W8PE9XDFS8",
+        "fields": {
+            "image": "0653eb9e9becaa87d68e4e67b9c812364c92dfbe.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%aa%e3%83%b3%e3%83%89%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%95%e3%82%a1%e3%82%a4%e3%83%88%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/147509",
+            "name": "オンドロ　グラファイト　ボールペン",
+            "description": "マットブラックプレシャスレジンバレルキャップや首軸は磨き抜かれたクロームメタルスプリング内臓のメタルクリップ採用ツイスト式大容量のボールペンリフィル搭載",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XDYZJP62WW54KGSF85",
+        "fields": {
+            "image": "8d982165eadb3f320f12e6c9f70f7ef25d854906.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%aa%e3%83%b3%e3%83%89%e3%83%ad%e3%82%a6%e3%83%83%e3%83%89%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/147508",
+            "name": "オンドロ　ウッド　ボールペン",
+            "description": "スモークド・オーク素材のバレルキャップや首軸は磨き抜かれたクロームメタル筆記が快適なマグナムリフィル使用ツイスト式",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XD9NHEFKFBTXC9T5KX",
+        "fields": {
+            "image": "9a20c8ef61801db0cd519c85312d7f0936c96542.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%a8%e3%83%a2%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%83%97%e3%83%ac%e3%82%b7%e3%83%a3%e3%82%b9%e3%83%ac%e3%82%b8%e3%83%b3%e3%83%96%e3%83%a9%e3%83%83%e3%82%af%e3%82%a6%e3%82%a3%e3%83%bc%e3%83%96%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/148351",
+            "name": "エモーション　プレシャスレジン　ブラックウィーブ　ボールペン",
+            "description": "プレシャスレジン素材に、”寄せ木”のパターンを施したバレルキャップや首軸は磨き抜かれたクロームメタル書き心地のよい大容量インクリフィルつき",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XDVWZN82VSBE6QNW16",
+        "fields": {
+            "image": "7d1def9f4a338bb70f47594e5393480e98ddb8b0.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%a8%e3%83%a2%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%83%97%e3%83%ac%e3%82%b7%e3%83%a3%e3%82%b9%e3%83%ac%e3%82%b8%e3%83%b3%e3%83%96%e3%83%a9%e3%83%83%e3%82%af%e3%82%af%e3%83%ad%e3%82%b3%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/148350",
+            "name": "エモーション　プレシャスレジン　ブラッククロコ　ボールペン",
+            "description": "プレシャスレジン素材に、クロコパターンを施したバレルキャップや首軸は磨き抜かれたクロームメタル書き心地のよい大容量インクリフィルつき",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XDSBRR8YZ8QP2JQ6EE",
+        "fields": {
+            "image": "2ae6eede5f153691b5f64556045527c37540b508.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%a8%e3%83%a2%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%a6%e3%83%83%e3%83%89%e3%82%af%e3%83%ad%e3%83%bc%e3%83%a0%e6%a2%a8%e3%81%ae%e6%9c%a8%e3%83%96%e3%83%a9%e3%83%83%e3%82%af%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/148383",
+            "name": "エモーション　ウッド＆クローム　梨の木　ブラック　ボールペン",
+            "description": "ペアウッド（梨の木）素材のバレルキャップや首軸は磨き抜かれたクロームメタル書き心地のよい大容量インクリフィルつき",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XDTGBY1GRYHY1EWVRW",
+        "fields": {
+            "image": "178998d5e0533ba7fa44f2f7920d27c22e667131.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%a8%e3%83%a2%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%a6%e3%83%83%e3%83%89%e3%82%af%e3%83%ad%e3%83%bc%e3%83%a0%e6%a2%a8%e3%81%ae%e6%9c%a8%e3%83%80%e3%83%bc%e3%82%af%e3%83%96%e3%83%a9%e3%82%a6%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/148381",
+            "name": "エモーション　ウッド＆クローム　梨の木　ダークブラウン　ボールペン",
+            "description": "ダークブラウンのペアウッド（梨の木）のバレルキャップや首軸は磨き抜かれたクロームメタル筆記が快適なマグナムリフィル使用ツイスト式",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XDCHM42M0Q3CJ0M9A5",
+        "fields": {
+            "image": "97f6ab0d570fd8679f3308325c156f9e08a61ce3.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%a2%e3%83%b3%e3%83%93%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%b9%e3%83%86%e3%83%b3%e3%83%ac%e3%82%b9%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/148152",
+            "name": "アンビション　ステンレス　ボールペン",
+            "description": "艶消しのステンレス素材のバレルキャップや首軸は磨き抜かれたクロームメタルクリップはスプリング内蔵筆記が快適なマグナムリフィル使用ツイスト式",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XDTNRNJ520XFDJ7SW4",
+        "fields": {
+            "image": "a8c2cca658acc1c1fbd522d78149b74200695816.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%a2%e3%83%b3%e3%83%93%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%b3%e3%82%b3%e3%82%b9%e3%82%a6%e3%83%83%e3%83%89%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/148150",
+            "name": "アンビション　ココスウッド　ボールペン",
+            "description": "ココナッツウッド素材のバレルキャップや首軸は磨き抜かれたクロームメタルクリップはスプリング内蔵筆記が快適なマグナムリフィル使用ツイスト式",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XD4H5GC1X9JJ577B6K",
+        "fields": {
+            "image": "57693c4474118dc5263823c627eb546fdb82df2b.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%a2%e3%83%b3%e3%83%93%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%aa%e3%83%97%e3%82%a2%e3%83%bc%e3%83%88%e3%83%96%e3%83%a9%e3%83%83%e3%82%af%e3%82%b5%e3%83%b3%e3%83%89%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/147055",
+            "name": "アンビション　オプアート　ブラックサンド　ボールペン",
+            "description": "ギロシェパターンを刻んだプレシャスレジンバレル幾何学的な線と色が3D視覚効果をもたらしますサンドカラーをベースとし、アンビションにエレンガンスをプラスキャップや首軸は磨き抜かれたクロームメタルスプリング内臓のメタルクリップ採用ツイスト式",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XD7VB7C9HBHH8VTC7R",
+        "fields": {
+            "image": "b7f480e6d521d94bab19139459f270dca4f56e45.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%a2%e3%83%b3%e3%83%93%e3%82%b7%e3%83%a7%e3%83%b3%e3%83%ad%e3%83%b3%e3%83%90%e3%82%b9%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/148900",
+            "name": "アンビション　ロンバス　ボールペン",
+            "description": "プレシャスレジン素材に、繊細なギロシェパターンをエングレービングしたバレルキャップや首軸は磨き抜かれたクロームメタルクリップはスプリング内臓書き心地のよい大容量インクリフィルつき",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XDT49PSP0DEW9991DH",
+        "fields": {
+            "image": "02173856d1af6f78794ba4326bd6c1e421df44a6.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%a8%e3%83%a2%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%83%94%e3%83%a5%e3%82%a2%e3%83%96%e3%83%a9%e3%83%83%e3%82%af%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/148690",
+            "name": "エモーション　ピュアブラック　ボールペン",
+            "description": "アルミ素材を採用したバレル素材を陽極酸化させ、ギロシェのエングレービングを刻んだボディですブラックマットクロームコーティングを施したメタルパーツは、スプリング内臓のクリップ採用快適な書き心地のボールペンリフィルB",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XDY088VGE6RMWMF48F",
+        "fields": {
+            "image": "15d889a6d9b74bb19a229a39dfffa39f1e2a3aa8.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%a8%e3%83%a2%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%a6%e3%83%83%e3%83%89%e3%82%af%e3%83%ad%e3%83%bc%e3%83%a0%e6%a2%a8%e3%81%ae%e6%9c%a8%e3%83%96%e3%83%a9%e3%82%a6%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/148382",
+            "name": "エモーション　ウッド＆クローム　梨の木　ブラウン　ボールペン",
+            "description": "ペアウッド（梨の木）素材のバレルキャップや首軸は磨き抜かれたクロームメタル書き心地のよい大容量インクリフィルつき",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XD4SZHTH84903290RJ",
+        "fields": {
+            "image": "129227c133d8287763a90b9eaa13a8dacc95bc8d.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%a2%e3%83%b3%e3%83%93%e3%82%b7%e3%83%a7%e3%83%b3%e3%83%ac%e3%82%b8%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/148130",
+            "name": "アンビション　レジン　ボールペン",
+            "description": "艶消しのブラックプレシャスレジン素材バレルキャップや首軸は磨き抜かれたクロームメタルクリップはスプリング内蔵交換可能なリフィルイレーサーもございます筆記が快適なマグナムリフィル使用ツイスト式",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XDKNW42GDBCX5PYYAP",
+        "fields": {
+            "image": "ca0f5c0febbd9013ba9c139f886179eff3691165.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%a2%e3%83%b3%e3%83%93%e3%82%b7%e3%83%a7%e3%83%b3%e6%a2%a8%e3%81%ae%e6%9c%a8%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/148131",
+            "name": "アンビション　梨の木　ボールペン",
+            "description": "ペアウッド（梨の木）素材のバレルキャップや首軸は磨き抜かれたクロームメタルクリップはスプリング内蔵ツイスト式",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K1XDEG30FQ6TRQGGJ0BM",
+        "fields": {
+            "image": "16bee0afc39f53f5ad24927da2b6318d7326d83a.jpg",
+            "image_src": "https://www.faber-castell.jp/products/%e3%82%a2%e3%83%b3%e3%83%93%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%aa%e3%83%97%e3%82%a2%e3%83%bc%e3%83%88%e3%83%94%e3%83%b3%e3%82%af%e3%82%b5%e3%83%b3%e3%82%bb%e3%83%83%e3%83%88%e3%83%9c%e3%83%bc%e3%83%ab%e3%83%9a%e3%83%b3/149619",
+            "name": "アンビションオプアート　ピンクサンセットボールペン",
+            "description": "目の錯覚によって図柄が浮き上がったり、動くように見える視覚効果のあるアート、オプアートをレジンバレルに彫り込んだ幾何学的な柄が特徴です。カラーは２色展開。キャップ、BP口金は真鍮クロームコーティング、ツイスト式です。ブラックリフィル(B)が付属しており、ホワイトのギフトボックス付きです。",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 2
+        }
+    }
+]

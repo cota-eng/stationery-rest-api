@@ -1,14 +1,21 @@
 from rest_framework import serializers
-from . import models
+from .models import (
+    Category,
+    Product,
+    Brand,
+    Tag,
+    FavProduct,
+    Review,
+)
 from authentication.models import User
-# from authentication.serializers import UserSerializer
 from django.contrib.auth import get_user_model
 from authentication.models import User
 import markdown
+from pen.models import Product
 
 class CategoryForProductSerialier(serializers.ModelSerializer):
     class Meta:
-        model = models.Category
+        model = Category
         fields = (
             'id',
             'slug',
@@ -17,7 +24,7 @@ class CategoryForProductSerialier(serializers.ModelSerializer):
 
 class BrandForProductSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Brand
+        model = Brand
         fields = (
             'id',
             'name',
@@ -33,7 +40,7 @@ class TagForProductSerializer(serializers.ModelSerializer):
         return queryset
 
     class Meta:
-        model = models.Tag
+        model = Tag
         fields = (
             'name',
             'slug',
@@ -72,10 +79,10 @@ class ProductListSerializer(serializers.ModelSerializer):
         return queryset
 
     class Meta:
-        model = models.Product
+        model = Product
         fields = ('id',
                   'name',
-                  'price_yen',
+                  'price',
                   'image',
                   'number_of_review',
                   'category',
@@ -83,15 +90,6 @@ class ProductListSerializer(serializers.ModelSerializer):
                   'tag',
                   'number_of_fav',
                   )
-        read_only_fields = (
-                'id',
-                'name',
-                'description',
-                'price_yen',
-                'image',
-                'image_src',
-                'number_of_fav,'
-            )
 
 
 class ReviewerSerializer(serializers.ModelSerializer):
@@ -142,7 +140,7 @@ class ReviewerSerializer(serializers.ModelSerializer):
 #         read_only_fields = (
 #                 'id',
 #                 'name',
-#                 # 'price_yen',
+#                 # 'price',
 #                 'image',
 #                 # 'image_src',
 #                 # 'amazon_link_to_buy',
@@ -156,21 +154,21 @@ class FavProductSerializer(serializers.ModelSerializer):
     is_favorite = serializers.BooleanField(read_only=True)
 
     class Meta:
-        model = models.FavProduct
+        model = FavProduct
         fields = ('is_favorite','fav_user','product',)
         read_only_fields = ('is_favorite','fav_user','product',)
     
 class OwnFavListSerializer(serializers.ModelSerializer):
     product = ProductListSerializer()
     class Meta:
-        model = models.FavProduct
+        model = FavProduct
         fields = ('product',)
 
 
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Category
+        model = Category
         fields = (
             'name',
             'slug',
@@ -181,7 +179,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Brand
+        model = Brand
         fields = (
             'id',
             'name',
@@ -193,13 +191,13 @@ class BrandSerializer(serializers.ModelSerializer):
 
 class BrandFilteredProductSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Product
+        model = Product
         fields = (
             'id',
             'name',
             'description',
             'category',
-            'price_yen',
+            'price',
             'brand',
             'tag',
             'image',
@@ -214,7 +212,7 @@ class BrandFilteredProductSerializer(serializers.ModelSerializer):
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Tag
+        model = Tag
         fields = (
             'name',
             'slug',
@@ -229,7 +227,7 @@ class ReviewNotIncludeUserSerialier(serializers.ModelSerializer):
     reviewer - avatar, nickname, id
     """
     class Meta:
-        model = models.Review
+        model = Review
         fields = (
             'id',
             'title',
@@ -253,7 +251,7 @@ class ReviewSerialier(serializers.ModelSerializer):
 
 
     class Meta:
-        model = models.Review
+        model = Review
         fields = (
             'id',
             'title',
@@ -297,7 +295,7 @@ class OwnReviewProductListSerialier(serializers.ModelSerializer):
         return queryset
 
     class Meta:
-        model = models.Review
+        model = Review
         fields = (
             'id',
             'title',
@@ -322,6 +320,54 @@ class OwnReviewProductListSerialier(serializers.ModelSerializer):
         }
 
 
+class RelatedProductListSerializer(serializers.ModelSerializer):
+    """
+    For Listing Product
+    """
+    category = CategoryForProductSerialier(read_only=True)
+    brand = BrandForProductSerializer(read_only=True)
+    tag = TagForProductSerializer(many=True,read_only=True)
+    # number_of_review = serializers.SerializerMethodField()
+    # number_of_fav = serializers.SerializerMethodField()
+
+
+    # def get_number_of_review(self,instance):
+    #     return instance.review.count()
+
+    # def get_number_of_fav(self,instance):
+    #     return instance.faved.count()
+
+    @staticmethod
+    def setup_for_query(queryset):
+        """
+        to many - tag, review, fav
+        to one  - category, brand
+        reviwew - filter each product...
+        """
+        queryset = queryset.prefetch_related(
+            'tag',
+            # 'review__reviewer',
+            # 'review__reviewer__profile',
+            # 'review__reviewer__profile__avatar',
+            # 'review__product',
+            # 'faved',
+            'category'
+            )
+        queryset = queryset.select_related('category','brand')
+        return queryset
+
+    class Meta:
+        model = Product
+        fields = ('id',
+                  'name',
+                  'image',
+                #   'number_of_review',
+                #   'number_of_fav',
+                  'category',
+                  'brand',
+                  'tag',
+                  )
+
 class ProductRetrieveSerializer(serializers.ModelSerializer):
     """
     serializer - BrandForProductSerializer,CategoryForProductSerialier
@@ -337,6 +383,8 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
     description = serializers.SerializerMethodField()
     number_of_fav = serializers.SerializerMethodField()
 
+    related = RelatedProductListSerializer(source="related_products",many=True)
+
     def get_number_of_review(self,instance):
         return instance.review.count()
 
@@ -345,7 +393,8 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
 
     def get_description(self, instance):
         return markdown.markdown(instance.description)
-    
+
+
     @staticmethod
     def setup_for_query(queryset):
         """
@@ -354,23 +403,29 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
         reviwew - filter each product...
         """
         queryset = queryset.prefetch_related(
-            'tag', 'review__reviewer', 'review__reviewer__profile', 'review__reviewer__profile__avatar', 'review__product',
+            'tag',
+            'review__reviewer',
+            'review__reviewer__profile',
+            'review__reviewer__profile__avatar',
+            'review__product',
+            'related_products__category',
+            'related_products__brand',
+            'related_products__tag',
             )
         queryset = queryset.select_related('category','brand')
         return queryset
 
     class Meta:
-        model = models.Product
+        model = Product
         fields = ('id',
                   'name',
                   'description',
-                  'price_yen',
+                  'price',
                   'image',
                   'image_src',
                   'amazon_link_to_buy',
                   'rakuten_link_to_buy',
                   'number_of_review',
-                #   'avarage_of_review_star',
                   'review',
                   'created_at',
                   'updated_at',
@@ -378,19 +433,18 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
                   'brand',
                   'tag',
                   'number_of_fav',
+                  'related',
+                #   "related_products",
                   )
-        read_only_fields = (
-                'id',
-                'name',
-                'description',
-                'price_yen',
-                'image',
-                'image_src',
-                'amazon_link_to_buy',
-                'rakuten_link_to_buy',
-                'number_of_fav,'
-            )
 
-
-
-    
+        # read_only_fields = (
+        #         'id',
+        #         'name',
+        #         'description',
+        #         'price',
+        #         'image',
+        #         'image_src',
+        #         'amazon_link_to_buy',
+        #         'rakuten_link_to_buy',
+        #         'number_of_fav,'
+        #     )

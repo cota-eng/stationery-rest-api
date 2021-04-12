@@ -35,7 +35,7 @@
         "pk": 5,
         "fields": {
             "name": "おしゃれ",
-            "slug": "osyare"
+            "slug": "fashionable"
         }
     },
     {
@@ -140,7 +140,7 @@
         "pk": 13,
         "fields": {
             "name": "重い",
-            "slug": "weight"
+            "slug": "heavy"
         }
     },
     {
@@ -148,7 +148,7 @@
         "pk": 13,
         "fields": {
             "name": "定番",
-            "slug": ""
+            "slug": "classic"
         }
     },
     {
@@ -156,7 +156,7 @@
         "pk": 13,
         "fields": {
             "name": "ゲル",
-            "slug": ""
+            "slug": "gel"
         }
     },
     {
@@ -181,22 +181,6 @@
         "fields": {
             "name": "頑丈",
             "slug": "tough"
-        }
-    },
-    {
-        "model": "pen.Tag",
-        "pk": 13,
-        "fields": {
-            "name": "",
-            "slug": ""
-        }
-    },
-    {
-        "model": "pen.Tag",
-        "pk": 13,
-        "fields": {
-            "name": "",
-            "slug": ""
         }
     },
     {

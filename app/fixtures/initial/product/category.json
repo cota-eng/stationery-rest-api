@@ -3,7 +3,7 @@
         "pk": 1,
         "fields": {
             "name": "シャーペン",
-            "slug": "mechanical-pencil"
+            "slug": "mechanical"
         }
     },
     {
@@ -11,7 +11,7 @@
         "pk": 2,
         "fields": {
             "name": "ボールペン",
-            "slug": "ball-point-pen"
+            "slug": "ballpoint"
         }
     },
     {
@@ -19,7 +19,7 @@
         "pk": 3,
         "fields": {
             "name": "万年筆",
-            "slug": "fountain-pen"
+            "slug": "fountain"
         }
     }
 ]

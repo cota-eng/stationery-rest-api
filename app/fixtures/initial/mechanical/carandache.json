@@ -1,0 +1,758 @@
+[
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAFHF6MS8XG092XE0N",
+        "fields": {
+            "image": "d0e62ab6858592d2c7abe21ef9b656d592710860.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "エクリドール レーシング メカニカルペンシル + レーシングペンシース",
+            "description": "モータースポーツからインスピレーションをうけてデザインされた、エクリドール初のブラックボディモデル『エクリドールレーシング』から、メカニカルペンシルが登場。スピード感と興奮、精密な車体が織りなすダイナミズム。それらのエレメンツを繊細な彫刻や特別な加工を駆使し、1本の筆記具で表現しました。",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAK6CC3SXTYTRVXT4A",
+        "fields": {
+            "image": "cef81f418a1f11d5d415110defc090f7f10f9994.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "844 クラシックライン メカニカルペンシル ホワイト",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPA91QE8CY7J9YTJD73",
+        "fields": {
+            "image": "2f67d2b5a8a0783b15b69aedd992a67e7611cfcd.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "844クラシックライン メカニカルペンシル シルバー",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAHGHP3XJS7RQB9N9H",
+        "fields": {
+            "image": "4ff5bb55e9471bdb0aebc73adfcf4ba48a370cee.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "844クラシックライン メカニカルペンシル ブラック",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPA86W7MQP5WMCSB5DP",
+        "fields": {
+            "image": "e3867dcf74cd842f6d703e62aa53f44c493eef2c.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "844クラシックライン メカニカルペンシル レッド",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPABXBD0NSBB2C9H0NT",
+        "fields": {
+            "image": "08938d3a7582d8d5b2a22394dbb9eecdb8787040.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "844クラシックライン メカニカルペンシル サファイアブルー",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAZB6F7F7EPJ0842NE",
+        "fields": {
+            "image": "19dac545b5ef3cfa4e1fc3c4c89d35714783a236.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "844クラシックライン メカニカルペンシル 蛍光オレンジ",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPA0DWXK0V3ZCVDX0VZ",
+        "fields": {
+            "image": "62af85e3128f0edb6c2051c44c80052355b2e78c.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "844クラシックライン メカニカルペンシル 蛍光イエロー",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAERKWP75R7KA416DY",
+        "fields": {
+            "image": "2663b6aa09e67ebbc9925baffb691e7428400907.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "エクリドール アベニュー メカニカルペンシル",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPA4Y5V55VSY41E1AX3",
+        "fields": {
+            "image": "02d869ba2b2aa2a73a99bb80c38e25ba61867930.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "844クラシックライン メカニカルペンシル 蛍光ピンク",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPA9FGJ4STER7PVR1YW",
+        "fields": {
+            "image": "0361c36eef167af671b7ba7d887b60d8379b58be.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "エクリドール　レーシング　メカニカルペンシル",
+            "description": "モータースポーツからインスピレーションをうけてデザインされた、エクリドール初のブラックボディモデル『エクリドールレーシング』から、メカニカルペンシルが登場。スピード感と興奮、精密な車体が織りなすダイナミズム。それらのエレメンツを繊細な彫刻や特別な加工を駆使し、1本の筆記具で表現しました。",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAZ7Q4SE11ZTVCGQP2",
+        "fields": {
+            "image": "0add36232fbea979f3bdc9f1b1ac841a7f4ed218.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "エクリドール ヘリテージ メカニカルペンシル（シャープペンシル） パラジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPA20702PFNTRQVHNAM",
+        "fields": {
+            "image": "373ea3c80e7397b3d87f1d223656b1932e4159f7.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン スリム メカニカルペンシル（シャープペンシル） エボニーブラック",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAHS6BHHD1J2NF6BEC",
+        "fields": {
+            "image": "bb5a2540c959cf277aa13fabcb4b5ce7dc72d082.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン スリム メカニカルペンシル（シャープペンシル） スカーレット レッド",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPA0F68WJ4TZAQPT2RM",
+        "fields": {
+            "image": "f184fc38c35ba090b1aac15148ed0039e8f246d8.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン スリム メカニカルペンシル（シャープペンシル） ホワイト ローズゴールド",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAZE048FH9AJGZMPKH",
+        "fields": {
+            "image": "57ba519d39644a4a5feca7b167d1f0bcfa759c1a.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン　レマンナイト　メカニカルペンシル（シャープペンシル）",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAQC322J3AQDEDH470",
+        "fields": {
+            "image": "4b330cb004460b91e4a3d3f2926a42bb08ffb369.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "エクリドール レトロ メカニカルペンシル（シャープペンシル）  パラジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAA2X63DK1TGQVD1PJ",
+        "fields": {
+            "image": "a624b1ecd5a31880bf8df04a8e8c8a7cda44e14c.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "エクリドール シェブロン メカニカルペンシル（シャープペンシル）  パラジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAEYS0RW1NG5P6FF8M",
+        "fields": {
+            "image": "555f8192152846cfcaba189213fa2642ecc19fb5.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "エクリドール シェブロン メカニカルペンシル（シャープペンシル）  ゴールドプレート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAXZCPS0NWC4A649AV",
+        "fields": {
+            "image": "9d415c46ffcc3e5c9662ace19ffd8391ec588379.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "エクリドール キューブリック メカニカルペンシル（シャープペンシル）  パラジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPA3XYVKKNWTDSX8CR9",
+        "fields": {
+            "image": "1153971921f6098ae887ec868b583ae0e3e19f83.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン バイカラー サフラン メカニカルペンシル（シャープペンシル）  シルバープレート＆ロジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAJGEBK4BZCHMK9FA1",
+        "fields": {
+            "image": "62649e0929897d5dfc2a7d50d2c7542a8d876e0b.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン バイカラー ターコイズ メカニカルペンシル（シャープペンシル）  シルバープレート＆ロジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAZB9RZDT6N23J5HPH",
+        "fields": {
+            "image": "4bd0d5a569c638c5f20bba02f3cd37731af500f5.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン バイカラー ブラック メカニカルペンシル（シャープペンシル）  シルバープレート＆ロジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPA9GAK57XCFXDE0VWA",
+        "fields": {
+            "image": "0bd0cd578b6da94b25002743edb8674654e56a8e.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン バイカラー ホワイト メカニカルペンシル（シャープペンシル） シルバープレート＆ロジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPATV5GPN7VF3NW6ZTM",
+        "fields": {
+            "image": "71a3d394cd6b486e6d574b177f068669943428c9.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン マット ブラック メカニカルペンシル（シャープペンシル）  シルバープレート＆ロジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAZN99ZD1QJR6TKB5C",
+        "fields": {
+            "image": "ba54cc79f50e29ad04d02d8a7d67bab7098e4f4d.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "バリアス アイバンホー メカニカルペンシル（シャープペンシル） シルバープレート＆ロジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPAKBASRY11086RNR0Y",
+        "fields": {
+            "image": "b8f984b6bb991de8f07951050589cd822c69c6bf.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン エボニー ブラック メカニカルペンシル（シャープペンシル）  シルバープレート＆ロジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPA9KJB507FA7FBJ6SB",
+        "fields": {
+            "image": "fdb5665f26b53d73e8388aba97d16d314eb27306.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "バリアス アイバンホー ブラック メカニカルペンシル（シャープペンシル） シルバープレート＆ロジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPADZ526J3ZGY23YFWE",
+        "fields": {
+            "image": "4ea54f1bf0739dd57853f9228d95f897c594a8bf.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "バリアス カーボン メカニカルペンシル（シャープペンシル）  シルバープレート＆ロジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPBNHQ97PMS60PV5FE5",
+        "fields": {
+            "image": "7e7a143464c02372e0bca9fa3f41f71b12371ce9.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "バリアス チャイナ ブラック シルバープレート＆ロジウムコート メカニカルペンシル",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPBYCA7KB1GEQC82ZEZ",
+        "fields": {
+            "image": "5c730c253ec2c257e1c0ec6411c7895e8d1f1d49.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "バリアス ラブレーサー メカニカルペンシル（シャープペンシル）  シルバープレート＆ロジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPBM4PATM09N0TSMWTH",
+        "fields": {
+            "image": "f5b0fca2e8b0213eb55bc7ef5d5db01c6272d017.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "エクリドール ゴルフ メカニカルペンシル（シャープペンシル）  パラジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPB0DZ1CPZM318J0KY2",
+        "fields": {
+            "image": "432bb502d8fd9d50e4a6f8ec89cb485e21c46950.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン マット ブルー ナイト メカニカルペンシル（シャープペンシル）  シルバープレート＆ロジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPBNHGWS8AMYG2MDSMJ",
+        "fields": {
+            "image": "18aa66274346c5170bf0be309f2f9d388b2da0d6.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン スカーレット レッド メカニカルペンシル（シャープペンシル）  シルバープレート＆ロジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPBC0JRB9CBMSJ8SMV3",
+        "fields": {
+            "image": "0867dce76350a16f7df7f10bdadde692cf33c894.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン キャビア メカニカルペンシル（シャープペンシル）  シルバープレート＆ロジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPB8CGPP78N5YR6HBV8",
+        "fields": {
+            "image": "bec72ed3fd200b09f22a053b9ba759bc07c93927.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "エクリドール バリエーション メカニカルペンシル（シャープペンシル）  ガラスビーズブラスティング＆パラジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPBC5WMF800E47KMHAN",
+        "fields": {
+            "image": "41e7d9f6cf2ef86a66b55eba07fc45f6476a2271.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "【限定】フィックスペンシル マリオ・ボッタ ブラック",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPBJWCXNTW8BTD3HAXE",
+        "fields": {
+            "image": "9baf00088928cb96c214283527d4328b27a72d5b.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "【限定】フィックスペンシル マリオ・ボッタ ホワイト",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPBB0SZG1E5KNS0VR6R",
+        "fields": {
+            "image": "9a34a3974aa06fc6bd4dc2e53fb78c95689bcde0.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン グランブルー メカニカルペンシル（シャープペンシル）  シルバープレート＆ロジウムコート",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPBVJ69P9BK662CHBE9",
+        "fields": {
+            "image": "506d3da774ca75bf4804890d6b96c22a5a169a5c.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "レマン バイファンクション エボニーブラック",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPBTFE6Y662033Z2GG0",
+        "fields": {
+            "image": "2e4b9fd576ded31ab4d887f723da435f253dc39f.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "バリアス エボニー ローズゴールドプレート メカニカルペンシル",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F325FGPBM8FA5TQR39B98GFD",
+        "fields": {
+            "image": "4d05f37878c2ff5c0f88d2690c889fa9b770d551.jpg",
+            "image_src": "https://www.carandache.com/jp/ja/",
+            "name": "バリアス　エボニーシルバー メカニカルペンシル",
+            "description": "本文準備中",
+            "price": 0,
+            "category": 1,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 1
+        }
+    }
+]

@@ -2,7 +2,9 @@
     "python.autoComplete.extraPaths": [
         "./app"
     ],
-    "python.linting.pylintEnabled": true
+    "python.linting.pylintEnabled": false,
+    "python.linting.mypyEnabled": true,
+    "python.linting.enabled": true
     // "python.pythonPath": "python",
     // "python.envFile": "${workspaceFolder}/.env"
 }

@@ -35,7 +35,7 @@ class ProductModelTests(TestCase):
         product1 = Product.objects.create(
             name="あいう鉛筆",
             description="",
-            price_yen=150,
+            price=150,
             image="products/default.jpg",
             image_src="https://example.com",
             amazon_link_to_buy="",

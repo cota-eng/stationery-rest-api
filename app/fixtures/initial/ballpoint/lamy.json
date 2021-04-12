@@ -1,0 +1,1424 @@
+[
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24A92R3DJQ911BPYBNK",
+        "fields": {
+            "name": "LAMY 2000  4色ボールペン",
+            "image": "b9486735fc8835d04e161520ab5f0977e346c1f8.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy2000-4col",
+            "description": "バウハウスのDNAを今に伝えるラミーの原点1966年に登場した、ラミーのデザインプロダクト最初のモデルlamy2000のボールペンで4色のリフィールが内蔵されています。クリップの付け根にあるカラーチップの使いたい色を上向きにしてノックをすると芯が出てくる仕組みです。ボディは樹脂とステンレスのコンビネーションで、磨き上げられた樹脂の表面には繊細なヘアライン処理が施されています。世界で初めてステンレス無垢材を用いて作られたスプリング入りクリップは、今なお人々の目を引きつけるものです。商品番号：L401油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24AYWDZKPBACH1K5BM4",
+        "fields": {
+            "name": "LAMY noto white+silver ボールペン",
+            "image": "39bcf54a4ca13bebfe485dfc6996e03a11c47213.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/noto-white-silver-bp",
+            "description": "ラミーとフカサワのコラボレーション日本のラミーファンにとって、とてもうれしく、また誇らしくもある新製品の登場です。世界を舞台に活躍する日本人デザイナー、深澤直人氏がデザインした「ラミー ノト」。 それは、デザイン企業としてのラミーを力強く牽引してきた現会長、ドクター・ラミーのリクエストに応えて、深澤氏が自身のデザイン哲学を余すところなく表現した、万人のための新しい筆記具です。心持ち長めで程よい太さのボディは柔らかな三角断面形状のため、持った瞬間に自然に収まり、しっくりと手に馴染みます。心地よい筆記の実現に無関係な装飾はいっさい施されていませんが、ボディに切り込みを入れたような形状のクリップと、微妙にオフセットした平たい楕円形のノックボタンがアクセントになり、知性とユーモアを感じさせます。優れたドイツ製品に特有のマットでスムーズな質感は、文字を書いたり、ペンを片手に何かを考えることを楽しくします。深澤氏のミニマルなデザインは、人と道具を有機的につなぐ点に神髄があるといわれます。だからこそ「ラミー ノト」の活躍の場は、日常生活の中にあるといえます。普段使いに、ちょっとしたプレゼントに。ラミーとフカサワの“達成”を、ぜひあなたの暮らしに取り入れてください。 商品番号：L283WT油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BD3KM90XEGF6WW5JJ",
+        "fields": {
+            "name": "LAMY AL-star allblack ボールペン",
+            "image": "613547019444238fb1562b209d0a2fbd27aab921.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-al-star-allblack-bp",
+            "description": "ベストセラー「ラミー サファリ」のボディをアルミ製にした人気モデルです。くぼみ付きのグリップやワイヤー式クリップなど、 「ラミー サファリ」 の特徴を踏襲しながら、ボディは若干太く仕上げられ、大人のユーザーがビジネスや生活の場で常用するのに適した仕様となっています。商品番号：L271油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BYZP91QSS6DQSF3BD",
+        "fields": {
+            "name": "LAMY studio Lx allblack ボールペン",
+            "image": "2b42bf63da3ef71599c674ce9ddff88696421e05.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-studio-lx-allblack-bp",
+            "description": "プロペラ型クリップに見るデザイナーの熱意 90度にねじれたプロペラ型が特徴的なクリップは、ラミーファンの期待に応えて余りある、唯一無二のデザインです。 計算し尽くされたフォルムはバランスがよく、使い心地も良好です。ルクスオールブラックは現在庫のみの限定カラーで、クリップ、天冠、口金がPVDコーティングされています。商品番号：L266AB油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24B4K1T1FPKTQTW5BFZ",
+        "fields": {
+            "name": "LAMY safari candy violet ボールペン",
+            "image": "cf663ea0e76740b2c86cd4ffc0ca109c66b1ce3b.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/safari-candy-violet-bp",
+            "description": "2020年発売の限定カラー。ジューシーなキャンディカラー3色のうちのひとつ。アイコニックなワイヤークリップとボディが同色で統一されたポップな仕上がりです。サファリとは：世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。 商品番号：L221VT",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24B06W53WB9JE4GMX3Z",
+        "fields": {
+            "name": "LAMY safari first savannah green ボールペン",
+            "image": "bcfa17d9f108a077d2befaa6c02fe795f575d023.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-safari-first-terra-red-%E3%83%9C%E3%83%BC%E3%83%AB%E3%83%9A%E3%83%B3%E3%81%AE%E3%82%B3%E3%83%94%E3%83%BC",
+            "description": "2021年発売の限定カラー、サヴァンナグリーン。世界中の筆記具ファンから絶大な支持を集める「 ラミー サファリ 」は、1980年に登場しました。軽快な樹脂素材と斬新なカラーリングで若者をターゲットにした先駆的なデザインは、当時大きな驚きをもって迎えられましたが、現在では永遠の定番として世界中で愛されています。そんなラミーサファリの初代カラーが、約40年の時を経て数量限定で復活いたします。アースカラーが印象的な初代サファリの復活には、感染症の流行等で社会が大きく変容する中、海や大地のように変わらないものの存在に焦点を当てるというメッセージも込められています。サファリとは：世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。  商品番号：L241SV",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BWRSPQNC3EXJXM0K8",
+        "fields": {
+            "name": "LAMY safari pink ボールペン",
+            "image": "88555605b69df3c2f5253bd2c74961f2eec8f5e7.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/safari-pink-bp",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。 商品番号：L213P 油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24B4R9CFVVVDPXB90J5",
+        "fields": {
+            "name": "LAMY safari red ボールペン",
+            "image": "6231ef40acf09fdc5eb59d6b22900112983189c2.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/safari-red-bp",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。  商品番号：L216油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BK8X4G633DQ9SCCH9",
+        "fields": {
+            "name": "LAMY noto black+silver ボールペン",
+            "image": "788bde0384c417fc65dd80450168b42ede3505fc.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/noto-black-silver-bp",
+            "description": "ラミーとフカサワのコラボレーション日本のラミーファンにとって、とてもうれしく、また誇らしくもある新製品の登場です。世界を舞台に活躍する日本人デザイナー、深澤直人氏がデザインした「ラミー ノト」。 それは、デザイン企業としてのラミーを力強く牽引してきた現会長、ドクター・ラミーのリクエストに応えて、深澤氏が自身のデザイン哲学を余すところなく表現した、万人のための新しい筆記具です。心持ち長めで程よい太さのボディは柔らかな三角断面形状のため、持った瞬間に自然に収まり、しっくりと手に馴染みます。心地よい筆記の実現に無関係な装飾はいっさい施されていませんが、ボディに切り込みを入れたような形状のクリップと、微妙にオフセットした平たい楕円形のノックボタンがアクセントになり、知性とユーモアを感じさせます。優れたドイツ製品に特有のマットでスムーズな質感は、文字を書いたり、ペンを片手に何かを考えることを楽しくします。深澤氏のミニマルなデザインは、人と道具を有機的につなぐ点に神髄があるといわれます。だからこそ「ラミー ノト」の活躍の場は、日常生活の中にあるといえます。普段使いに、ちょっとしたプレゼントに。ラミーとフカサワの“達成”を、ぜひあなたの暮らしに取り入れてください。 商品番号：L283油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24B252TD8GDG5VN33ZF",
+        "fields": {
+            "name": "LAMY studio terracotta ボールペン",
+            "image": "2ef377937ae03cab7e4d17e6fbfee639e085309a.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-studio-terracotta-bp",
+            "description": "プロペラ型クリップに見るデザイナーの熱意 90度にねじれたプロペラ型が特徴的なクリップは、ラミーファンの期待に応えて余りある、唯一無二のデザインです。 計算し尽くされたフォルムはバランスがよく、使い心地も良好です。テラコッタは現在庫のみの限定カラーです。商品番号：L266TC油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BFVAQKNFNK2T8FXNG",
+        "fields": {
+            "name": "LAMY safari yellow ボールペン",
+            "image": "ebc841bd42767cd0b58f9e31826bc0333439673c.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/safari-yellow-bp",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。商品番号：L218油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BBTX7TYDGNG8GASZR",
+        "fields": {
+            "name": "LAMY logo tri pen stainless",
+            "image": "34fae463ea5c4fed20bdb423ff7b0cdc662be4d8.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/logo-tri-pen-stainless",
+            "description": "能性を追及したシンプルなミニマルデザイン『ラミー ロゴ』シリーズに３色ボールペン。ブラック、ブルー、レッドの3色がセットされています。使い方は、カラー表示の使いたい色を上に向けてノックするだけです。機能的でありながら、しっかりと個性を主張できる飽きのこないデザインで、ビジネスシーンからプライベートな時間まで手放せないアイテムです。 商品番号：L405油性ボールペン替芯: LM21",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BNHW1Z71AZM30DREV",
+        "fields": {
+            "name": "LAMY AL-star tourmaline ボールペン",
+            "image": "f1e0b09c2cab9ddbd6fd0f65e47309e10ffc71e9.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/al-star-tourmaline-bp",
+            "description": "ベストセラー「ラミー サファリ」のボディをアルミ製にした人気モデルです。くぼみ付きのグリップやワイヤー式クリップなど、 「ラミー サファリ」 の特徴を踏襲しながら、ボディは若干太く仕上げられ、大人のユーザーがビジネスや生活の場で常用するのに適した仕様となっています。心身を浄化するとも言われる神秘的な色・トルマリンが新色としてラインナップに加わりました。商品番号：L223TR",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24B8Q60X0WR4MFG0X3T",
+        "fields": {
+            "name": "LAMY safari first terra red ボールペン",
+            "image": "122e87c056b64d7d31f4246221869aa5a4751594.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-safari-candy-aquamarine-%E3%83%9C%E3%83%BC%E3%83%AB%E3%83%9A%E3%83%B3%E3%81%AE%E3%82%B3%E3%83%94%E3%83%BC",
+            "description": "2021年発売の限定カラー、テラレッド。世界中の筆記具ファンから絶大な支持を集める「 ラミー サファリ 」は、1980年に登場しました。軽快な樹脂素材と斬新なカラーリングで若者をターゲットにした先駆的なデザインは、当時大きな驚きをもって迎えられましたが、現在では永遠の定番として世界中で愛されています。そんなラミーサファリの初代カラーが、約40年の時を経て数量限定で復活いたします。アースカラーが印象的な初代サファリの復活には、感染症の流行等で社会が大きく変容する中、海や大地のように変わらないものの存在に焦点を当てるというメッセージも込められています。サファリとは：世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。  商品番号：L241TE",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24B6D97SMT2WSPBF4V5",
+        "fields": {
+            "name": "LAMY pico white ボールペン",
+            "image": "348a0eaa30a47ead570e74680ef399eb8ae5b61d.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-pico-white",
+            "description": "ポケットに収まるドイツの英知携帯時は全長わずか92mmのコンパクト設計。ところが、たった一度のノックで口金が飛び出し、続いて尻軸が延伸。あっという間に全長123mmのフルサイズボールペンに早変わり。愛らしい外観からは想像もつかないダイナミックな機構により、2002年のデザインプラス最優秀賞にも輝いたモデルです。クリップを持たない代わりに転がり防止の突起が装備されるなど、細かい部分まで気が配られ、極めてユーザーフレンドリーな仕上がりとなっています。商品番号：L288WT油性ボールペン替芯：LM22",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24B8FN27910SB989ZZA",
+        "fields": {
+            "name": "LAMY pico black ボールペン",
+            "image": "88c64e636eb096912888dd4092c36b0b8f23e247.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-pico-black",
+            "description": "ポケットに収まるドイツの英知携帯時は全長わずか92mmのコンパクト設計。ところが、たった一度のノックで口金が飛び出し、続いて尻軸が延伸。あっという間に全長123mmのフルサイズボールペンに早変わり。愛らしい外観からは想像もつかないダイナミックな機構により、2002年のデザインプラス最優秀賞にも輝いたモデルです。クリップを持たない代わりに転がり防止の突起が装備されるなど、細かい部分まで気が配られ、極めてユーザーフレンドリーな仕上がりとなっています。商品番号：L288油性ボールペン替芯：LM22",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BTN8J1BVH0E422R7M",
+        "fields": {
+            "name": "LAMY 2000 blackwood ボールペン",
+            "image": "e4eaf05aae3198868b8282bacf94379c80527780.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy2000-blackwood-bp",
+            "description": "エキゾチックウッドの高級ボールペン「ラミー 2000 ブラックウッド」は、不朽の名作「ラミー 2000」油性ボールペンをベースに、ボディ素材として天然のグラナディラ材（アフリカンブラックウッド）を用いた高級仕様モデルです。グラナディラは赤道直下の一部地域のみに育つ非常に希少な木材で、高級クラリネットやオーボエなどに使用されています。硬く、目の詰まった素材のため、軽量なベースモデルに比べ、ずっしりと重量感のある仕上がりとなっています。ノックボタンは真鍮、クリップはステンレスで、ともにパラジュームコートが施されています。オフィスやお部屋でのご使用がメインでしたら、もお薦めです。 商品番号：L203 油性ボールペン替芯：  ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BZYMT6X70EWN0SAMM",
+        "fields": {
+            "name": "LAMY 2000 taxus ボールペン",
+            "image": "eff59a8bda506cbfcaed0758294e24612b15081f.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy2000-taxus-bp",
+            "description": "\n\n\n\n\n\n工芸品を髣髴させる素材感 「ラミー 2000 ブラックウッド」に続く高級木材ボールペンの第2弾が「ラミー 2000 タクサス」です。名作「ラミー 2000」油性ボールペンをベースに、工芸品や家具などに用いられる西洋イチイをボディ素材として採用しました。西洋イチイは、温かみのある美しい杢目を持ち、加工しやすく狂いが生じにくいことから、筆記具のボディ素材として非常に優れた木材です。ブラックウッド同様、ノックボタンは真鍮、クリップはステンレスで、ともにパラジュームコートが施されています。  商品番号：L203TAX 油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BSZ7V93XH0GE46SPR",
+        "fields": {
+            "name": "LAMY studio palladium ボールペン",
+            "image": "a87b17dfa61902164244dee871a5a94e1a7a0b57.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/studio-palladium-bp",
+            "description": "プロペラ型クリップに見るデザイナーの熱意 90度にねじれたプロペラ型が特徴的なクリップは、ラミーファンの期待に応えて余りある、唯一無二のデザインです。 計算し尽くされたフォルムはバランスがよく、使い心地も良好です。グリップは、ボディカラーごとに異なる仕上げを採用しています。 商品番号：L268-N油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BB2423SF42SSS6RGQ",
+        "fields": {
+            "name": "LAMY scala stainless ボールペン",
+            "image": "715b24a0b660ade73393cd76b577efe0228f3cda.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/scala-stainless-bp",
+            "description": "オールステンレスにこだわったエレガンス 一切の無駄を削ぎ落とし、洗練されたシンプルなフォルムに秘められたディテールは妥協を許さない高水準の技術によってのみ成し得たエレガンス。上品なゴールドカラーのベールをまとったチタン仕上げと、漆黒のマットブラックの2種類のボディカラーは、それぞれにクローム仕上げパーツとの美しいコントラストを創出します。ドイツの兄弟デザイナー、sieger design（ジーガーデザイン）によるデザインで、Chicago Athenaeum: Museum of Architecture and Design（シカゴ学術振興協会：建築デザインミュージアム）によるグッドデザインアワードを受賞しました。 \n\n\n\n\n\n“スカラ ステンレス”は、木目のように見えるヘアライン 加工をボディに施し、同じくシルバー系のクローム仕上げのパーツと 絶妙なマッチングを実現しました。 金属的な質感が備わり、永くご愛用いただけるラインナップです。商品番号：L251油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BX9KDR1R65QWMB2QN",
+        "fields": {
+            "name": "LAMY scala mattblack ボールペン",
+            "image": "241f4ec0a708a25a1a66bdcf5845944970f0aa4a.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/scala-mattblack-bp",
+            "description": "オールステンレスにこだわったエレガンス 一切の無駄を削ぎ落とし、洗練されたシンプルなフォルムに秘められたディテールは妥協を許さない高水準の技術によってのみ成し得たエレガンス。上品なゴールドカラーのベールをまとったチタン仕上げと、漆黒のマットブラックの2種類のボディカラーは、それぞれにクローム仕上げパーツとの美しいコントラストを創出します。ドイツの兄弟デザイナー、sieger design（ジーガーデザイン）によるデザインで、Chicago Athenaeum: Museum of Architecture and Design（シカゴ学術振興協会：建築デザインミュージアム）によるグッドデザインアワードを受賞しました。\n\n\n\n\n\n商品番号：L280\n\n\n\n\n\n油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24B6QAMWH7DABM2PC6Y",
+        "fields": {
+            "name": "LAMY accent AL rubbergrip ボールペン",
+            "image": "9c56e0533805ee38d131fb9af9fe2fad4b96e1e9.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-accent-al-rubbergrip-bp",
+            "description": "グリップがカスタマイズ可能なシリーズ 使い勝手を重視したシンプルデザインはグリップによってカスタマイズが可能です。完成品としてはラバーとウッド調の2種類のグリップからお選び頂け、パーツは他に3種類あります。商品番号：L296KK 油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BKBGFDVF4KSTHNNPH",
+        "fields": {
+            "name": "LAMY accent AL woodgrip ボールペン",
+            "image": "15e55f5fc4568c37500985aa485ae9d75b5f73ad.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-accent-al-woodgrip-bp",
+            "description": "グリップがカスタマイズ可能なシリーズ 使い勝手を重視したシンプルデザインはグリップによってカスタマイズが可能です。完成品としてはラバーとウッド調の2種類のグリップからお選び頂け、パーツは他に3種類あります。商品番号：L296KW油性ボールペン替芯：  ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24B1DXNREXTCX1B9F8E",
+        "fields": {
+            "name": "LAMY logo stainless black ボールペン",
+            "image": "eb428e14ccd37174b5e52dc8a5ed40651a77c579.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/logo-stainless-bp",
+            "description": "シンプルなミニマルデザイン数多くのラミーのデザイン実績を持つウルフギャング･ファビアンによるデザインの「LAMY logo stainless」。円筒型ボディと天冠から続くクリップが無駄の無いデザインです。光沢のあるステンレスボディにマットカラーのパーツの組み合わせで、軽いクリック感が特徴のノックタイプです。 商品番号：L205BK油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24B7Z4GXE6GJXXN3BDF",
+        "fields": {
+            "name": "LAMY cp1 mattblack ボールペン",
+            "image": "0dc1b69646b2e8695bc13c0ef3e7dafa7846acde.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/cp1-mattblack-cp1-rb",
+            "description": "「ラミー cp1」は1970年に登場した、ラミーの代表的なシリーズです。オリジナルデザインは「ラミー 2000」と同様、ゲルト・ミュラーによるもの。“cylindrical pen（円筒形のペン）”を意味する名称の通り、いっさいの無駄を省き、シンプルの極みに到達しています。「ラミーcp1 マットブラック」 は、スリムな筒型ボディと堅牢なステンレス無垢材のクリップによる極限まで追及されたシンプルさが特徴です。  商品番号：L256油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BJJJ01RQBCAYBSYKM",
+        "fields": {
+            "name": "LAMY scala darkviolet ボールペン",
+            "image": "20b400c55ef3bb30b9bc21f0b0772e9767a98f80.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-scala-darkviolet-bp",
+            "description": "オールステンレスにこだわったエレガンス 一切の無駄を削ぎ落とし、洗練されたシンプルなフォルムに秘められたディテールは妥協を許さない高水準の技術によってのみ成し得たエレガンス。上品なゴールドカラーのベールをまとったチタン仕上げと、漆黒のマットブラックの2種類のボディカラーは、それぞれにクローム仕上げパーツとの美しいコントラストを創出します。ドイツの兄弟デザイナー、sieger design（ジーガーデザイン）によるデザインで、Chicago Athenaeum: Museum of Architecture and Design（シカゴ学術振興協会：建築デザインミュージアム）によるグッドデザインアワードを受賞しました。ダークヴァイオレットは現在庫限りの限定カラーです。\n\n\n\n\n\n商品番号：L279VL\n\n\n\n\n\n油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BR6FJB5VMZT76VYAF",
+        "fields": {
+            "name": "LAMY 2000 stainless steel ボールペン",
+            "image": "40850a4b804e84d1638bcdbdbee956eb799c249d.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy2000-stainless-steel-bp",
+            "description": "\n\n\n\n\n\n進化したラミーの原点発売以来40年以上に渡り、ラミーのアイコン的シリーズとして知られてきたラミー2000の特徴的なディテールはそのままに、オールステンレスで現代に蘇るクラシックモダンなデザイン。非常に目の細かいベルベットマット仕上げのボディにステンレス無垢材にプラチナコーティングしたクリップが際立つ素材使いに、クールな質感が手にずっしりとしたステンレスの重みを伝えます。商品番号：L202S 油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24BKP6FDNT1DJF33DQV",
+        "fields": {
+            "name": "LAMY logo stainless green ボールペン",
+            "image": "71662a610aed10544378a75da18ad35e9d349aef.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/logo-stainless-green-bp",
+            "description": "シンプルなミニマルデザイン数多くのラミーのデザイン実績を持つウルフギャング･ファビアンによるデザインの「LAMY logo stainless」。円筒型ボディと天冠から続くクリップが無駄の無いデザインです。光沢のあるステンレスボディにマットカラーのパーツの組み合わせで、軽いクリック感が特徴のノックタイプです。 商品番号：L205GN油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CQJR5KW8C2NP9YKT9",
+        "fields": {
+            "name": "LAMY pur silver ボールペン",
+            "image": "32dc1962de5f1c6e82ebd5a658f9cac7bad6ef9b.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/pur-silver-bp",
+            "description": "超軽量のシリンダーシェイプのアルミニウムボディが未来的な印象で、超軽量仕上げのノック式ボールペン。フラットなレクタングルクリップが際立つミニマルデザインはデンマークデザインの巨匠、ナッド・ホルシャーによるもの。ギフトにもお奨めのジャストプライスです。 商品番号：L247SV 油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CF4W3BGS2YJ2GG885",
+        "fields": {
+            "name": "LAMY Lx rosegold ボールペン",
+            "image": "99791b226357fbd829d92e0000ef27f5d8f74cb6.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lx-rosegold-bp",
+            "description": "高い機能性と洗練されたモダンさが融合したLx（ルクス）。照度（明るさ）の国際的な単位を指す英語“lux”のドイツ語での発音から名付けられました。その名の通り、軽量なアルミ素材の胴軸とメタルパーツを組み合わせ、アルマイト（陽極酸化処理）加工を施し、絶妙に光り輝くプレシャスメタルカラーを表現しています。ペンと同色のアルミニウムケースが付属し、格調高いギフトにも最適です。 商品番号：L276油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24C8W1CVCEER3ZA4NGT",
+        "fields": {
+            "name": "LAMY aion red ボールペン",
+            "image": "e7f426179d3258b5d7672d81d3798f32e6e8f2db.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/aion-red-bp",
+            "description": "ミニマルデザインと、ディテールに宿る先進性を具現化したモダンデザインの巨匠、ジャスパ―・モリソンがデザインを手がけたシンプルの極み。アルマイト加工したアルミニウムをメインの素材とし、シルクマットな手触りが時代を超えて愛される、機能美を体現したシリーズです。高度な技術が必要とされる深絞り加工が、つなぎ目のないパーツを実現。グリップ部分はサーキュラーブラッシュ加工を施ししっかりとした握りをサポート。ミニマルなデザインながらも随所にこだわりのある仕上がりです。  商品番号：L277RD",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CB4F1AHNZ7KJ3JC7F",
+        "fields": {
+            "name": "LAMY aion dark green ボールペン",
+            "image": "c7e3ce86f49981dce1f1d3c0d65e6bbdb73b1b10.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-aion-black-%E3%83%9C%E3%83%BC%E3%83%AB%E3%83%9A%E3%83%B3%E3%81%AE%E3%82%B3%E3%83%94%E3%83%BC",
+            "description": "時代を超越する普遍的なデザインを追求する「 スーパーノーマル 」 の提唱者であり 、 数多くのグローバルブランドをクライアントに持つ巨匠 、 ジャスパー ・ モリソン氏とのコラボレーションで生まれた 、 ラミー アイオン 。軽量かつ適度な太さでホールド感に優れたシンプルなスタイルの中に 、 シームレスな仕上りへの徹底したこだわりが見え隠れする逸品です 。本年は 、 ドイツの針葉樹林を想起させるダークグリーンが数量限定で登場 。悠久の森のような神秘性を纏ったスペシャルエディションです 。 商品番号：L277DG ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CHVTEWS8N58G9MCZQ",
+        "fields": {
+            "name": "LAMY pico laserorange ボールペン",
+            "image": "4e479c2636fb95b33950a0872d2c85b70cdb2fe8.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-pico-lasororange",
+            "description": "ポケットに収まるドイツの英知携帯時は全長わずか92mmのコンパクト設計。ところが、たった一度のノックで口金が飛び出し、続いて尻軸が延伸。あっという間に全長123mmのフルサイズボールペンに早変わり。愛らしい外観からは想像もつかないダイナミックな機構により、2002年のデザインプラス最優秀賞にも輝いたモデルです。クリップを持たない代わりに転がり防止の突起が装備されるなど、細かい部分まで気が配られ、極めてユーザーフレンドリーな仕上がりとなっています。商品番号：L288LO-N油性ボールペン替芯：LM22",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CNB7X8JYFDRA5Z60D",
+        "fields": {
+            "name": "LAMY logo stainless red ボールペン",
+            "image": "2ab33a6ca3f96d4802fd64effd3b36027b5854f7.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/logo-stainless-red-bp",
+            "description": "シンプルなミニマルデザイン数多くのラミーのデザイン実績を持つウルフギャング･ファビアンによるデザインの「LAMY logo stainless」。円筒型ボディと天冠から続くクリップが無駄の無いデザインです。光沢のあるステンレスボディにマットカラーのパーツの組み合わせで、軽いクリック感が特徴のノックタイプです。 商品番号：L205RD油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24C6E9YT6XSGK1NAB4T",
+        "fields": {
+            "name": "LAMY logo stainless blue ボールペン",
+            "image": "a5d8526e0216bb20807aaba47b4d56763d14d66b.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/logo-stainless-blue-bp",
+            "description": "シンプルなミニマルデザイン数多くのラミーのデザイン実績を持つウルフギャング･ファビアンによるデザインの「LAMY logo stainless」。円筒型ボディと天冠から続くクリップが無駄の無いデザインです。光沢のあるステンレスボディにマットカラーのパーツの組み合わせで、軽いクリック感が特徴のノックタイプです。 商品番号：L205BL油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CSXPZHE4TY032SB6S",
+        "fields": {
+            "name": "LAMY Lx palladium ボールペン",
+            "image": "1973d35846e503db31107f5eb15cb9f572a6a235.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lx-palladium-bp",
+            "description": "高い機能性と洗練されたモダンさが融合したLx（ルクス）。照度（明るさ）の国際的な単位を指す英語“lux”のドイツ語での発音から名付けられました。その名の通り、軽量なアルミ素材の胴軸とメタルパーツを組み合わせ、アルマイト（陽極酸化処理）加工を施し、絶妙に光り輝くプレシャスメタルカラーを表現しています。ペンと同色のアルミニウムケースが付属し、格調高いギフトにも最適です。 商品番号：L258油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CJWMBNBXHRPFYH3JT",
+        "fields": {
+            "name": "LAMY aion black ボールペン",
+            "image": "5c6f7866f8925eeee253549dd284fb507b8faf95.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/aion-black-bp",
+            "description": "ミニマルデザインと、ディテールに宿る先進性を具現化したモダンデザインの巨匠、ジャスパ―・モリソンがデザインを手がけたシンプルの極み。アルマイト加工したアルミニウムをメインの素材とし、シルクマットな手触りが時代を超えて愛される、機能美を体現したシリーズです。高度な技術が必要とされる深絞り加工が、つなぎ目のないパーツを実現。グリップ部分はサーキュラーブラッシュ加工を施ししっかりとした握りをサポート。ミニマルなデザインながらも随所にこだわりのある仕上がりです。商品番号：L277BK ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CQ6SAR96H3KVT5SH8",
+        "fields": {
+            "name": "LAMY aion blue ボールペン",
+            "image": "08eb23c56372ffc9d3dcc00fecf49d953b0baa33.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/aion-blue-bp",
+            "description": "ミニマルデザインと、ディテールに宿る先進性を具現化したモダンデザインの巨匠、ジャスパ―・モリソンがデザインを手がけたシンプルの極み。アルマイト加工したアルミニウムをメインの素材とし、シルクマットな手触りが時代を超えて愛される、機能美を体現したシリーズです。高度な技術が必要とされる深絞り加工が、つなぎ目のないパーツを実現。グリップ部分はサーキュラーブラッシュ加工を施ししっかりとした握りをサポート。ミニマルなデザインながらも随所にこだわりのある仕上がりです。  商品番号：L277BL",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24C0A92G9D3E9JZHJV5",
+        "fields": {
+            "name": "LAMY pico neon ボールペン",
+            "image": "ca1fd35b7bceaa92233aff7273aa3747aabd09c0.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-pico-neon",
+            "description": "ポケットに収まるドイツの英知携帯時は全長わずか92mmのコンパクト設計。ところが、たった一度のノックで口金が飛び出し、続いて尻軸が延伸。あっという間に全長123mmのフルサイズボールペンに早変わり。愛らしい外観からは想像もつかないダイナミックな機構により、2002年のデザインプラス最優秀賞にも輝いたモデルです。クリップを持たない代わりに転がり防止の突起が装備されるなど、細かい部分まで気が配られ、極めてユーザーフレンドリーな仕上がりとなっています。ネオンは在庫限りの限定カラーです。商品番号：L288NEO油性ボールペン替芯：LM22",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CF3VNYH006TAZTWQP",
+        "fields": {
+            "name": "LAMY pico neongreen ボールペン",
+            "image": "03deda80580331a7d4c2846e72963404f2502547.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-pico-neongreen",
+            "description": "ポケットに収まるドイツの英知携帯時は全長わずか92mmのコンパクト設計。ところが、たった一度のノックで口金が飛び出し、続いて尻軸が延伸。あっという間に全長123mmのフルサイズボールペンに早変わり。愛らしい外観からは想像もつかないダイナミックな機構により、2002年のデザインプラス最優秀賞にも輝いたモデルです。クリップを持たない代わりに転がり防止の突起が装備されるなど、細かい部分まで気が配られ、極めてユーザーフレンドリーな仕上がりとなっています。ネオングリーンは在庫限りの限定カラーです。商品番号：L288NG油性ボールペン替芯：LM22",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24C5YAGTPG2G1RJGMEY",
+        "fields": {
+            "name": "LAMY studio olive ボールペン",
+            "image": "9f9fd7b9860625e1c2d781f301e8820bc8531234.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-studio-olive-bp",
+            "description": "プロペラ型クリップに見るデザイナーの熱意 90度にねじれたプロペラ型が特徴的なクリップは、ラミーファンの期待に応えて余りある、唯一無二のデザインです。 計算し尽くされたフォルムはバランスがよく、使い心地も良好です。オリーブは現在庫のみの限定カラーです。商品番号：L266OV油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CJ8BQXMN40GJ3E8BZ",
+        "fields": {
+            "name": "LAMY scala rose ボールペン",
+            "image": "489d3e42bf74fb1acefbc9f1bc5542cca1e436a8.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-scala-rose-bp",
+            "description": "オールステンレスにこだわったエレガンス 一切の無駄を削ぎ落とし、洗練されたシンプルなフォルムに秘められたディテールは妥協を許さない高水準の技術によってのみ成し得たエレガンス。上品なゴールドカラーのベールをまとったチタン仕上げと、漆黒のマットブラックの2種類のボディカラーは、それぞれにクローム仕上げパーツとの美しいコントラストを創出します。ドイツの兄弟デザイナー、sieger design（ジーガーデザイン）によるデザインで、Chicago Athenaeum: Museum of Architecture and Design（シカゴ学術振興協会：建築デザインミュージアム）によるグッドデザインアワードを受賞しました。ローズは現在庫限りの限定カラーです。\n\n\n\n\n\n商品番号：L279RS\n\n\n\n\n\n油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CD5FRC368CBWTZMHJ",
+        "fields": {
+            "name": "LAMY safari white ボールペン",
+            "image": "777e03fce56b9cbb766097a96faf2891e3d666db.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/safari-white-bp",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。商品番号：L219WT油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CAAC63FGE4BHC997J",
+        "fields": {
+            "name": "LAMY pico imperialblue ボールペン",
+            "image": "5bfa29c661f3df7b4ca0cb5f7e5982e99e98f744.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-pico-imperialblue",
+            "description": "ポケットに収まるドイツの英知携帯時は全長わずか92mmのコンパクト設計。ところが、たった一度のノックで口金が飛び出し、続いて尻軸が延伸。あっという間に全長123mmのフルサイズボールペンに早変わり。愛らしい外観からは想像もつかないダイナミックな機構により、2002年のデザインプラス最優秀賞にも輝いたモデルです。クリップを持たない代わりに転がり防止の突起が装備されるなど、細かい部分まで気が配られ、極めてユーザーフレンドリーな仕上がりとなっています。商品番号：L288IB油性ボールペン替芯：LM22",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CGJAF865JBNC9A831",
+        "fields": {
+            "name": "LAMY pur black ボールペン",
+            "image": "9e7839f3cae5a21d07575a069cc4a3f982a561fe.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/pur-black-bp",
+            "description": "超軽量のシリンダーシェイプのアルミニウムボディが未来的な印象で、超軽量仕上げのノック式ボールペン。フラットなレクタングルクリップが際立つミニマルデザインはデンマークデザインの巨匠、ナッド・ホルシャーによるもの。ギフトにもお奨めのジャストプライスです。 商品番号：L247BK油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CJHNQJW7HQVC7R1KE",
+        "fields": {
+            "name": "LAMY studio concrete ボールペン",
+            "image": "8b6df909ff1f017a841c7a5375305bd13192313f.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-studio-concrete-bp",
+            "description": "人気のステュディオにモードなグレイッシュカラー“コンクリート”が登場。建築デザインにおいてミニマリズムやシンプリシティの表現に重用されるコンクリートにインスピレーションを得た、モダンで端正なカラーリングです。プロペラ型のクリップがアクセントとなり、なめらかな紡錘形のバレルは手にしっかりとフィットします。お求めやすくなったボールペンはギフトにも最適です。は現在庫のみの限定カラーです。控えめな華やかさのあるマットラッカー仕上げ。デザイナーはハンネス･ヴェットシュタイン。商品番号：L267CR油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24C7NVMMWJ0EYWK93ZR",
+        "fields": {
+            "name": "LAMY pico chrome ボールペン",
+            "image": "e644118ee287856a2b5b78f40fb3f58c20f00d05.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-pico-chrome",
+            "description": "ポケットに収まるドイツの英知携帯時は全長わずか92mmのコンパクト設計。ところが、たった一度のノックで口金が飛び出し、続いて尻軸が延伸。あっという間に全長123mmのフルサイズボールペンに早変わり。愛らしい外観からは想像もつかないダイナミックな機構により、2002年のデザインプラス最優秀賞にも輝いたモデルです。クリップを持たない代わりに転がり防止の突起が装備されるなど、細かい部分まで気が配られ、極めてユーザーフレンドリーな仕上がりとなっています。商品番号：L289油性ボールペン替芯：LM22",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CKDVPF3KKZZJMT78N",
+        "fields": {
+            "name": "LAMY logo plus black ボールペン",
+            "image": "64bd07fdfe3df76403220ba1465f6bb2e557685d.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/logo-plus-black",
+            "description": "シンプルなミニマルデザイン数多くのラミーのデザイン実績を持つウルフギャング･ファビアンによるデザインの「LAMY logo」。円筒型ボディと天冠から続くクリップが無駄の無いデザインです。軽いクリック感が特徴のノックタイプです。商品番号：L204MPL-BK 油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24C8WQETH2WKM4QW8BT",
+        "fields": {
+            "name": "LAMY noto black ボールペン",
+            "image": "d1bf276671178cf385cc007534fa0020a58ad645.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/noto-black-bp",
+            "description": "ラミーとフカサワのコラボレーション日本のラミーファンにとって、とてもうれしく、また誇らしくもある新製品の登場です。世界を舞台に活躍する日本人デザイナー、深澤直人氏がデザインした「ラミー ノト」。 それは、デザイン企業としてのラミーを力強く牽引してきた現会長、ドクター・ラミーのリクエストに応えて、深澤氏が自身のデザイン哲学を余すところなく表現した、万人のための新しい筆記具です。心持ち長めで程よい太さのボディは柔らかな三角断面形状のため、持った瞬間に自然に収まり、しっくりと手に馴染みます。心地よい筆記の実現に無関係な装飾はいっさい施されていませんが、ボディに切り込みを入れたような形状のクリップと、微妙にオフセットした平たい楕円形のノックボタンがアクセントになり、知性とユーモアを感じさせます。優れたドイツ製品に特有のマットでスムーズな質感は、文字を書いたり、ペンを片手に何かを考えることを楽しくします。深澤氏のミニマルなデザインは、人と道具を有機的につなぐ点に神髄があるといわれます。だからこそ「ラミー ノト」の活躍の場は、日常生活の中にあるといえます。普段使いに、ちょっとしたプレゼントに。ラミーとフカサワの“達成”を、ぜひあなたの暮らしに取り入れてください。 商品番号：L282BLK 油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CMM7WWJY8ZBHXSR03",
+        "fields": {
+            "name": "LAMY Lx marron ボールペン",
+            "image": "ff424d88c9baf0a7f1908e3ee2b93fa6af5cd6d0.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lx-marron-bp",
+            "description": "高い機能性と洗練されたモダンさが融合したLx（ルクス）。照度（明るさ）の国際的な単位を指す英語“lux”のドイツ語での発音から名付けられました。その名の通り、軽量なアルミ素材の胴軸とメタルパーツを組み合わせ、アルマイト（陽極酸化処理）加工を施し、絶妙に光り輝くプレシャスメタルカラーを表現しています。ペンと同色のアルミニウムケースが付属し、格調高いギフトにも最適です。  商品番号：L290油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CVSD773DQ0J109H21",
+        "fields": {
+            "name": "LAMY pico Lx rosegold ボールペン",
+            "image": "0525988b2d6f173261fecad9617798f376772a73.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-pico-lx-rosegold",
+            "description": "ポケットに収まるドイツの英知携帯時は全長わずか92mmのコンパクト設計。ところが、たった一度のノックで口金が飛び出し、続いて尻軸が延伸。あっという間に全長123mmのフルサイズボールペンに早変わり。愛らしい外観からは想像もつかないダイナミックな機構により、2002年のデザインプラス最優秀賞にも輝いたモデルです。クリップを持たない代わりに転がり防止の突起が装備されるなど、細かい部分まで気が配られ、極めてユーザーフレンドリーな仕上がりとなっています。ルクスローズゴールドは在庫限りの限定カラーです。専用レザーケース付属。商品番号：L281油性ボールペン替芯：LM22",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24CVZ4HHVTM0KCWDMJ5",
+        "fields": {
+            "name": "LAMY studio mattblack ボールペン",
+            "image": "ef933d4e408187642a090c0747649e5c6bb05be6.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/studio-mattblack-bp",
+            "description": "プロペラ型クリップに見るデザイナーの熱意 90度にねじれたプロペラ型が特徴的なクリップは、ラミーファンの期待に応えて余りある、唯一無二のデザインです。 計算し尽くされたフォルムはバランスがよく、使い心地も良好です。 商品番号：L267-N油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24DYBGHRNKQYQ4HVT8H",
+        "fields": {
+            "name": "LAMY logo plus red ボールペン",
+            "image": "8e95a5a3009d7ce4b1c3340d03c4310210700027.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/logo-plus-red",
+            "description": "シンプルなミニマルデザイン数多くのラミーのデザイン実績を持つウルフギャング･ファビアンによるデザインの「LAMY logo」。円筒型ボディと天冠から続くクリップが無駄の無いデザインです。軽いクリック感が特徴のノックタイプです。 商品番号：L204MPL-RD油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24D2PNPJA8T9EW1PQ41",
+        "fields": {
+            "name": "LAMY logo plus white ボールペン",
+            "image": "12c132f5f3333097d0f3e96d96afb1ba4533905f.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/logo-plus-white",
+            "description": "シンプルなミニマルデザイン数多くのラミーのデザイン実績を持つウルフギャング･ファビアンによるデザインの「LAMY logo」。円筒型ボディと天冠から続くクリップが無駄の無いデザインです。軽いクリック感が特徴のノックタイプです。商品番号：L204MPL-WT 油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24D2HCG123G5MWWF519",
+        "fields": {
+            "name": "LAMY noto imperialblue+silver ボールペン",
+            "image": "92d46fa3dc7c3ddebd71ee86c5af23ae024ae222.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/noto-imperialblue-silver-bp",
+            "description": "ラミーとフカサワのコラボレーション日本のラミーファンにとって、とてもうれしく、また誇らしくもある新製品の登場です。世界を舞台に活躍する日本人デザイナー、深澤直人氏がデザインした「ラミー ノト」。 それは、デザイン企業としてのラミーを力強く牽引してきた現会長、ドクター・ラミーのリクエストに応えて、深澤氏が自身のデザイン哲学を余すところなく表現した、万人のための新しい筆記具です。心持ち長めで程よい太さのボディは柔らかな三角断面形状のため、持った瞬間に自然に収まり、しっくりと手に馴染みます。心地よい筆記の実現に無関係な装飾はいっさい施されていませんが、ボディに切り込みを入れたような形状のクリップと、微妙にオフセットした平たい楕円形のノックボタンがアクセントになり、知性とユーモアを感じさせます。優れたドイツ製品に特有のマットでスムーズな質感は、文字を書いたり、ペンを片手に何かを考えることを楽しくします。深澤氏のミニマルなデザインは、人と道具を有機的につなぐ点に神髄があるといわれます。だからこそ「ラミー ノト」の活躍の場は、日常生活の中にあるといえます。普段使いに、ちょっとしたプレゼントに。ラミーとフカサワの“達成”を、ぜひあなたの暮らしに取り入れてください。 商品番号：L283IB 油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24DFWVMWRK5B9DQ7RMF",
+        "fields": {
+            "name": "LAMY aion olivesilver ボールペン",
+            "image": "4eb090e674352d5bd6cb3ed417845b91279289c0.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/aion-olivesilver-bp",
+            "description": "ミニマルデザインと、ディテールに宿る先進性を具現化したモダンデザインの巨匠、ジャスパ―・モリソンがデザインを手がけたシンプルの極み。アルマイト加工したアルミニウムをメインの素材とし、シルクマットな手触りが時代を超えて愛される、機能美を体現したシリーズです。高度な技術が必要とされる深絞り加工が、つなぎ目のないパーツを実現。グリップ部分はサーキュラーブラッシュ加工を施ししっかりとした握りをサポート。ミニマルなデザインながらも随所にこだわりのある仕上がりです。 商品番号：L277OS",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24DZXARS77ZKXGVY4DM",
+        "fields": {
+            "name": "LAMY studio glacier ボールペン",
+            "image": "52326b8cb20a32c28eeba176c9e55eb691d02835.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-studio-glacier-ballpoint",
+            "description": "プロペラ型クリップに見るデザイナーの熱意 90度にねじれたプロペラ型が特徴的なクリップは、ラミーファンの期待に応えて余りある、唯一無二のデザインです。 計算し尽くされたフォルムはバランスがよく、使い心地も良好です。グレーシャーは現在庫のみの限定カラーです。商品番号：L266GC油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24DZ41SZB2M6NEWPB8H",
+        "fields": {
+            "name": "LAMY AL-star deeppurple ボールペン",
+            "image": "975598b0d2d1bd7fa1cbcd1c3c7743abe51c7643.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/al-star-deeppurple-bp",
+            "description": "ベストセラー「ラミー サファリ」のボディをアルミ製にした人気モデルです。くぼみ付きのグリップやワイヤー式クリップなど、 「ラミー サファリ」 の特徴を踏襲しながら、ボディは若干太く仕上げられ、大人のユーザーがビジネスや生活の場で常用するのに適した仕様となっています。商品番号：L229DP油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24DR6QZD82AH4GBPB3S",
+        "fields": {
+            "name": "LAMY AL-star oceanblue ボールペン",
+            "image": "88df955ca60327472c7e6a1968bf08b79298a635.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/al-star-oceanblue-bp",
+            "description": "ベストセラー「ラミー サファリ」のボディをアルミ製にした人気モデルです。くぼみ付きのグリップやワイヤー式クリップなど、 「ラミー サファリ」 の特徴を踏襲しながら、ボディは若干太く仕上げられ、大人のユーザーがビジネスや生活の場で常用するのに適した仕様となっています。商品番号：L228油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24DCRJWPNJRFQ69D4C6",
+        "fields": {
+            "name": "LAMY safari vista ボールペン",
+            "image": "db2ae06d46d066004f35915ca35b57b9a7301f47.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/safari-vista-bp",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。商品番号：L212油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24DFD8JXKZ5RMK4FTYE",
+        "fields": {
+            "name": "LAMY safari green ボールペン",
+            "image": "96a8833ae7285f2b40a4a1fb9a9b83d5d2603813.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/safari-green-bp",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。 商品番号：L213GN油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24D2RXMS92QB4AM08MY",
+        "fields": {
+            "name": "LAMY 2000 ボールペン",
+            "image": "a1ce8aeacae9ad9afb249b2289501734a3fd6433.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy2000-bp",
+            "description": "バウハウスのDNAを今に伝えるラミーの原点1966年に登場した、ラミーのデザインプロダクト最初の製品です。バウハウスの影響を受けたデザイナー、ゲルト・アルフレッド・ミュラーの手による秀逸なデザインは、40年以上の時を経た現在でも決して色褪せることなく、ラミーデザインの原点を伝える永遠のロングセラーとなっています。ボディは樹脂とステンレスのコンビネーションで、磨き上げられた樹脂の表面には繊細なヘアライン処理が施されています。世界で初めてステンレス無垢材を用いて作られたスプリング入りクリップは、今なお人々の目を引きつけるものです。 商品番号：L201油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24DCVN23JYWDX4XPVG2",
+        "fields": {
+            "name": "LAMY Lx ruthenium ボールペン",
+            "image": "51ffa0dd71a60d4f4d404f6d3594da90e9129283.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lx-ruthenium-bp",
+            "description": "高い機能性と洗練されたモダンさが融合したLx（ルクス）。照度（明るさ）の国際的な単位を指す英語“lux”のドイツ語での発音から名付けられました。その名の通り、軽量なアルミ素材の胴軸とメタルパーツを組み合わせ、アルマイト（陽極酸化処理）加工を施し、絶妙に光り輝くプレシャスメタルカラーを表現しています。ペンと同色のアルミニウムケースが付属し、格調高いギフトにも最適です。 商品番号：L257油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24DWHZG5M3Z3NKB5Q0Z",
+        "fields": {
+            "name": "LAMY AL-star bronze ボールペン",
+            "image": "ed6d9fa87b9e2b7712ed2bec522367c77ce26915.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/al-star-bronze-bp",
+            "description": "ベストセラー「ラミー サファリ」のボディをアルミ製にした人気モデルです。くぼみ付きのグリップやワイヤー式クリップなど、 「ラミー サファリ」 の特徴を踏襲しながら、ボディは若干太く仕上げられ、大人のユーザーがビジネスや生活の場で常用するのに適した仕様となっています。 商品番号：L227BR油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24DK4F8RMMC151J3MD3",
+        "fields": {
+            "name": "LAMY safari shinyblack ボールペン",
+            "image": "70978958d14218df83528fbb987c3e33c3359540.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/safari-shinyblack-bp",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。商品番号：L219BK油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24DGFNVX0VGY3EGTKVZ",
+        "fields": {
+            "name": "LAMY studio imperialblue ボールペン",
+            "image": "2613f5e6bddfa974e22d6ac9c1235929ca619e52.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/studio-imperialblue-bp",
+            "description": "プロペラ型クリップに見るデザイナーの熱意 90度にねじれたプロペラ型が特徴的なクリップは、ラミーファンの期待に応えて余りある、唯一無二のデザインです。 計算し尽くされたフォルムはバランスがよく、使い心地も良好です。商品番号：L267IB-N油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24D696C4BQE8ZERW1Z3",
+        "fields": {
+            "name": "LAMY studio mattstainless ボールペン",
+            "image": "8ff3aa696b5442bab796c50f0a3a1dd741bcbf7b.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/studio-mattstainless-bp",
+            "description": "プロペラ型クリップに見るデザイナーの熱意 90度にねじれたプロペラ型が特徴的なクリップは、ラミーファンの期待に応えて余りある、唯一無二のデザインです。 計算し尽くされたフォルムはバランスがよく、使い心地も良好です。商品番号：L265-N油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24D9XW72ZH2FAS3PN31",
+        "fields": {
+            "name": "LAMY safari pastel mintgreen ボールペン",
+            "image": "c34586ac85a9ecd50e14f25cddc93d259a238074.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/safari-pastel-mintgreen-bp",
+            "description": " 世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。 商品番号：L236MG",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24D3QS6KKNAZWV4PKKX",
+        "fields": {
+            "name": "LAMY AL-star bluegreen ボールペン",
+            "image": "4ed84dbff7910b0c9c142616775a8973153e872a.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-al-star-bluegreen-bp",
+            "description": "ベストセラー「ラミー サファリ」のボディをアルミ製にした人気モデルです。くぼみ付きのグリップやワイヤー式クリップなど、 「ラミー サファリ」 の特徴を踏襲しながら、ボディは若干太く仕上げられ、大人のユーザーがビジネスや生活の場で常用するのに適した仕様となっています。ブルーグリーンは現在庫限りで販売終了です。 商品番号：L232油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24DJS8VBG0PMP1AKG11",
+        "fields": {
+            "name": "LAMY safari blue ボールペン",
+            "image": "be65989c22b02cec6afe5f784bef5a6c97f84a2f.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/safari-blue-bp",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。商品番号：L214油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24DXJXSVSCXGGZM5A7Y",
+        "fields": {
+            "name": "LAMY safari first terra red(万年筆+ボールペン)特製ボックスセット",
+            "image": "6e6ec42eddc3ef86c0987967e0670e805b1387a0.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-safari-first-savannah-green-%E7%89%B9%E8%A3%BD%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9%E3%82%BB%E3%83%83%E3%83%88%E3%81%AE%E3%82%B3%E3%83%94%E3%83%BC",
+            "description": "2021年発売の限定カラー、テラレッド。ラミーサファリ 2021年限定色の万年筆とボールペンを 、1980 年サファリシリーズ発売当時のパッケージを模した特製ギフトボックスに収めたメモリアルセット 。自然なテクスチャーが心地よいボックスは 、マグネット開閉で大切なペンをしっかりと守ります 。世界中の筆記具ファンから絶大な支持を集める「 ラミー サファリ 」は、1980年に登場しました。軽快な樹脂素材と斬新なカラーリングで若者をターゲットにした先駆的なデザインは、当時大きな驚きをもって迎えられましたが、現在では永遠の定番として世界中で愛されています。そんなラミーサファリの初代カラーが、約40年の時を経て数量限定で復活いたします。アースカラーが印象的な初代サファリの復活には、感染症の流行等で社会が大きく変容する中、海や大地のように変わらないものの存在に焦点を当てるというメッセージも込められています。サファリとは：世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。 スチールペン先。カートリッジインク（ブルー）1本が付属しています。（は別売です）万年筆：カートリッジ・コンバーター両用式商品番号：L41TE　+　L241TE",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24EVT8ZAK3TA8RS9RTJ",
+        "fields": {
+            "name": "LAMY logo plus blue ボールペン",
+            "image": "12f90d734e84462b3fbedfbb9ea800becee887c1.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/logo-plus-blue",
+            "description": "シンプルなミニマルデザイン数多くのラミーのデザイン実績を持つウルフギャング･ファビアンによるデザインの「LAMY logo」。円筒型ボディと天冠から続くクリップが無駄の無いデザインです。軽いクリック感が特徴のノックタイプです。商品番号：L204MPL-BL 油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24EKRZWFGE744AN6K17",
+        "fields": {
+            "name": "LAMY AL-star graphite ボールペン",
+            "image": "11b19525d10b3973b99795e2a99d619c80d65485.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/al-star-graphite-bp",
+            "description": "ベストセラー「ラミー サファリ」のボディをアルミ製にした人気モデルです。くぼみ付きのグリップやワイヤー式クリップなど、 「ラミー サファリ」 の特徴を踏襲しながら、ボディは若干太く仕上げられ、大人のユーザーがビジネスや生活の場で常用するのに適した仕様となっています。商品番号：L226油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24ETBAFHVF3EQZQC7E7",
+        "fields": {
+            "name": "LAMY logo stainless hairline ボールペン",
+            "image": "0050a0a602e3e04171f7566c7490239b14bfad00.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/logo-stainless-hairline-bp",
+            "description": "シンプルなミニマルデザイン数多くのラミーのデザイン実績を持つウルフギャング･ファビアンによるデザインの「LAMY logo stainless」。円筒型ボディと天冠から続くクリップが無駄の無いデザインです。ヘアラインは、上品な光沢を放つステンレスヘアライン加工とクリップや口金などのパーツのコントラストがシンプルなデザインの魅力を引き立てています。高級感があり、ヨーロッパで人気のモデルです。 商品番号：L206油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24EV6Y748YQZG4F0SMR",
+        "fields": {
+            "name": "LAMY safari candy mango ボールペン",
+            "image": "aa4e6cd2c28b89d757f5b2ed2eb81e8ec22f010a.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/safari-candy-mango-bp",
+            "description": "2020年発売の限定カラー。ジューシーなキャンディカラー3色のうちのひとつ。アイコニックなワイヤークリップとボディが同色で統一されたポップな仕上がりです。サファリとは：世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。商品番号：L221MG",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24ERKPKGZZP2H6HHF9N",
+        "fields": {
+            "name": "LAMY safari black ボールペン",
+            "image": "da23f52326fbaaf89c54ab94285facef892746ec.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/safari-black-bp",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。 商品番号：L217油性ボールペン替芯： ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24EGHMS7GM4CQXMZDSA",
+        "fields": {
+            "name": "LAMY safari first savannah green(万年筆+ボールペン)特製ボックスセット",
+            "image": "a76d7de6c1c3378a2613ef2ad5b4abfdf6fae8a7.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/lamy-safari-first-terra-red-%E4%B8%87%E5%B9%B4%E7%AD%86%E3%81%AE%E3%82%B3%E3%83%94%E3%83%BC-1",
+            "description": "2021年発売の限定カラー、サヴァンナグリーン。ラミーサファリ 2021年限定色の万年筆とボールペンを 、1980 年サファリシリーズ発売当時のパッケージを模した特製ギフトボックスに収めたメモリアルセット 。自然なテクスチャーが心地よいボックスは 、マグネット開閉で大切なペンをしっかりと守ります 。世界中の筆記具ファンから絶大な支持を集める「 ラミー サファリ 」は、1980年に登場しました。軽快な樹脂素材と斬新なカラーリングで若者をターゲットにした先駆的なデザインは、当時大きな驚きをもって迎えられましたが、現在では永遠の定番として世界中で愛されています。そんなラミーサファリの初代カラーが、約40年の時を経て数量限定で復活いたします。アースカラーが印象的な初代サファリの復活には、感染症の流行等で社会が大きく変容する中、海や大地のように変わらないものの存在に焦点を当てるというメッセージも込められています。サファリとは：世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。 スチールペン先。カートリッジインク（ブルー）1本が付属しています。（は別売です）万年筆：カートリッジ・コンバーター両用式商品番号：L41SV　+　L241SV",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24EPTN0NTWVKSTPH1ED",
+        "fields": {
+            "name": "LAMY safari candy aquamarine ボールペン",
+            "image": "3d99eb23f02d99233b0f246e73ab9e7d7d670d09.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/safari-candy-aquamarine-bp",
+            "description": "2020年発売の限定カラー。ジューシーなキャンディカラー3色のうちのひとつ。アイコニックなワイヤークリップとボディが同色で統一されたポップな仕上がりです。サファリとは：世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。  商品番号：L221AQ",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    },
+    {
+        "model": "pen.Product",
+        "pk": "01F324K24ESXFJ3VKE28KRPJ1S",
+        "fields": {
+            "name": "LAMY safari white with black clip ボールペン",
+            "image": "131aa1037818e73f95d852095e42cbd64282cc2a.jpg",
+            "image_src": "https://lamy.jp/collections/abc/products/safari-white-with-black-clip-bp",
+            "description": "世界中の筆記具ファン、特に若年層から絶大な支持を集める定番シリーズです。軽くて丈夫な樹脂製ボディのグリップ部分には、誰もが正しくペンを握れるようにくぼみが設けられています。大型のワイヤー製クリップは、デニムなど厚手のカジュアルウェアのポケットにもしっかりとグリップします。 時折リリースされる特別カラーの限定モデルは、常に筆記具ファンやデザインプロダクトを愛するユーザーの注目の的となっています。商品番号：L219WTB油性ボールペン替芯：",
+            "price": 0,
+            "category": 2,
+            "tag": [],
+            "created_at": "2021-04-01T12:00:00.000Z",
+            "updated_at": "2021-04-01T12:00:00.000Z",
+            "amazon_link_to_buy": "",
+            "rakuten_link_to_buy": "",
+            "brand": 3
+        }
+    }
+]

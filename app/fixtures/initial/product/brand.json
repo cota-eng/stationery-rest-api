@@ -1,0 +1,75 @@
+[
+    {
+        "model": "pen.Brand",
+        "pk": 1,
+        "fields": {
+            "name": "カランダッシュ",
+            "slug": "carandache",
+            "official_site_link": "https://www.carandache.com/jp/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 2,
+        "fields": {
+            "name": "ファーバーカステル",
+            "slug": "faber-castell",
+            "official_site_link": "https://www.faber-castell.jp/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 3,
+        "fields": {
+            "name": "ラミー",
+            "slug": "lamy",
+            "official_site_link": "https://lamy.jp/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 4,
+        "fields": {
+            "name": "オート",
+            "slug": "ohto",
+            "official_site_link": "https://ohto.co.jp/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 5,
+        "fields": {
+            "name": "ぺんてる",
+            "slug": "pentel",
+            "official_site_link": "https://www.pentel.co.jp/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 6,
+        "fields": {
+            "name": "トンボ",
+            "slug": "tombow",
+            "official_site_link": "https://www.tombow.com/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 7,
+        "fields": {
+            "name": "ユニ",
+            "slug": "uni",
+            "official_site_link": "https://www.mpuni.co.jp/"
+        }
+    },
+    {
+        "model": "pen.Brand",
+        "pk": 8,
+        "fields": {
+            "name": "ゼブラ",
+            "slug": "zebra",
+            "official_site_link": "https://www.zebra.co.jp/"
+        }
+    }
+    
+]
