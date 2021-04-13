@@ -14,14 +14,15 @@ below 3 view is not needed
 # router.register('product-brand',views.ProductBrandFilteredReadOnlyViewSet)
 # router.register('product-tag', views.ProductTagFilteredReadOnlyViewSet)
 
-router.register('search',views.ProductSearchByAllConditions)
+router.register('search',views.ProductSearchByName)
 router.register('fav',views.FavProductAPIView)
 router.register('pro',views.ProductPagingReadOnlyViewSet)
 router.register('review',views.ReviewViewSet)
 # router.register('review-read',views.ReviewReadOnlyViewSet)
 app_name="pen"
 urlpatterns = [
-    path("category/<slug:category__slug>/brand/<slug:brand__slug>/",views.ProductCategorisedAPIView.as_view(),name="product-category"),
+    path("category/<slug:category__slug>/brand/<slug:brand__slug>/",views.ProductCategoryBrandFilteredAPIView.as_view(),name="product-category"),
+    path("category/<slug:brand__slug>/brand/<slug:category__slug>/",views.ProductCategoryBrandFilteredAPIView.as_view(),name="product-category"),
     # これと単純にサーチするもののどちらが早いか
     path("brand/<slug:brand__slug>/products",views.ProductBrandFilteredAPIView.as_view(),name="product-brand"),
     path("products/",views.ProductListAPIView.as_view(),name="product-list"),
