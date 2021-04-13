@@ -101,6 +101,8 @@ class Product(models.Model):
     tag = models.ManyToManyField(
         Tag,
         related_name="product",
+        null=True,
+        blank=True,
     )
     image = ProcessedImageField(
         upload_to='products',
