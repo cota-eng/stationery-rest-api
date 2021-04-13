@@ -14,11 +14,13 @@ below 3 view is not needed
 # router.register('product-brand',views.ProductBrandFilteredReadOnlyViewSet)
 # router.register('product-tag', views.ProductTagFilteredReadOnlyViewSet)
 
-router.register('search',views.ProductSearchByName)
+"""
+now unuse
+"""
+router.register('search', views.ProductSearchByName)
 router.register('fav',views.FavProductAPIView)
-router.register('pro',views.ProductPagingReadOnlyViewSet)
-router.register('review',views.ReviewViewSet)
-# router.register('review-read',views.ReviewReadOnlyViewSet)
+router.register('review', views.ReviewViewSet)
+
 app_name="pen"
 urlpatterns = [
     path("category/<slug:category__slug>/brand/<slug:brand__slug>/",views.ProductCategoryBrandFilteredAPIView.as_view(),name="product-category"),
