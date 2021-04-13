@@ -1,5 +1,6 @@
 *.dio
 memo.txt
+app/media/*
 textfolder
 # Byte-compiled / optimized / DLL files
 __pycache__/
