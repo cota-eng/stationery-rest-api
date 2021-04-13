@@ -11,12 +11,12 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for product in Product.objects.all():
-            related = Product.objects.exclude(pk=product.pk).filter(Q(related_products__brand__pk=product.brand.pk) & Q(related_products__category__pk=product.category.pk)).order_by("?")[:6]
-            sleep(0.5)
-            # | Q(related_products__tag__pk=product.tag.pk)
-            # product.related_products
+            related = Product.objects.exclude(pk=product.pk).filter(Q(related_products__brand__pk=product.brand.id)| Q(related_products__category__pk=product.category.id)).order_by("?").distinct()[:6]
+            # related = Product.objects.all().order_by("?")[:6]
+            # Q(related_products__tag__pk=product.tag.pk)
             # Product.objects.create(product=product,related_products=related)
             product.related_products.set(related)
             # pprint(product.related_products.all())
             pprint(product)
             # pprint(related)
+            sleep(0.5)
