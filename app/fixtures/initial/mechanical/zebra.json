@@ -1,10 +1,10 @@
 [
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFF6NPTF66CVHYNN95",
+        "pk": "01F35HRR8H91B9GGT2GFQGYRC6",
         "fields": {
             "name": "エアーフィットライト / S",
-            "image": "5c3659daf55d1e39e6781e458b4b885e1b184fe3.jpg",
+            "image": "products/5c3659daf55d1e39e6781e458b4b885e1b184fe3.jpg",
             "image_src": "https://www.zebra.co.jp/pro/airfit-lt/index.html",
             "price": 0,
             "description": "本文追加予定",
@@ -19,10 +19,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFAS484MRXWYF1Q56K",
+        "pk": "01F35HRR8HWGZ347GEBE4M1SSW",
         "fields": {
             "name": "エアーフィット",
-            "image": "4c7f7cd909130f9a2d4aa5edb03bbb73349e6abb.jpg",
+            "image": "products/4c7f7cd909130f9a2d4aa5edb03bbb73349e6abb.jpg",
             "image_src": "https://www.zebra.co.jp/pro/airfit/index.html",
             "price": 0,
             "description": "本文追加予定",
@@ -37,10 +37,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFFAFD1MHBP14A44VA",
+        "pk": "01F35HRR8HBHV8Z1X4X4H98ECY",
         "fields": {
             "name": "ジムメカ",
-            "image": "2837ee0d9218618f5ee68c190a5184c9eb408bc9.jpg",
+            "image": "products/2837ee0d9218618f5ee68c190a5184c9eb408bc9.jpg",
             "image_src": "https://www.zebra.co.jp/pro/jim-meca/index.html",
             "price": 0,
             "description": "本文追加予定",
@@ -55,10 +55,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGF60Y7WD8V4XZEQX3G",
+        "pk": "01F35HRR8HWJ2CKNJX9S6ZZ9F5",
         "fields": {
             "name": "タプリクリップ",
-            "image": "a44cde577b70a3437042dad632dae1a3695638b0.jpg",
+            "image": "products/a44cde577b70a3437042dad632dae1a3695638b0.jpg",
             "image_src": "https://www.zebra.co.jp/pro/tapliclip/index.html?tab_id=tabs-f",
             "price": 0,
             "description": "本文追加予定",
@@ -73,10 +73,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGF6YD9D2G9BCEVQVQT",
+        "pk": "01F35HRR8H9GR62V2BSZ3WR8TE",
         "fields": {
             "name": "クリップ-オン マルチ2000",
-            "image": "473ba23289e79b36e6bd4822b2d2ee220a79bfe7.jpg",
+            "image": "products/473ba23289e79b36e6bd4822b2d2ee220a79bfe7.jpg",
             "image_src": "https://www.zebra.co.jp/pro/clipon-multi2000/index.html",
             "price": 0,
             "description": "本文追加予定",
@@ -91,10 +91,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFWEQH7HFP54MZ7X1K",
+        "pk": "01F35HRR8HB6A3P5G3J5PD7QDK",
         "fields": {
             "name": "デルガード+2C",
-            "image": "6c1e5f93a3dce4eef43f7cef92244c401fbe5bb4.jpg",
+            "image": "products/6c1e5f93a3dce4eef43f7cef92244c401fbe5bb4.jpg",
             "image_src": "https://www.zebra.co.jp/pro/del_guard_2c/",
             "price": 0,
             "description": "本文追加予定",
@@ -109,10 +109,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFX0GW1VE7AT7VBWZG",
+        "pk": "01F35HRR8HEAHTA785G89PPGGP",
         "fields": {
             "name": "クリップ-オン マルチ1000 / S",
-            "image": "37944060f437cfcce7c20936bdf8179f526704bb.jpg",
+            "image": "products/37944060f437cfcce7c20936bdf8179f526704bb.jpg",
             "image_src": "https://www.zebra.co.jp/pro/clipon-multi1000/index.html?tab_id=tabs-b",
             "price": 0,
             "description": "本文追加予定",
@@ -127,10 +127,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFJMV0GYMZATPF2RA5",
+        "pk": "01F35HRR8HD0M80F7NTJMYFCAJ",
         "fields": {
             "name": "クリップ-オン マルチ1000 / S",
-            "image": "37944060f437cfcce7c20936bdf8179f526704bb.jpg",
+            "image": "products/37944060f437cfcce7c20936bdf8179f526704bb.jpg",
             "image_src": "https://www.zebra.co.jp/pro/clipon-multi1000/index.html",
             "price": 0,
             "description": "本文追加予定",
@@ -145,10 +145,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFNKTF0DV9EJW4NA5X",
+        "pk": "01F35HRR8HGMBT3F3D5WKA43X0",
         "fields": {
             "name": "デルガード タイプLx\r\n\r\n",
-            "image": "b9de6af86ef0c28d4cc63e806df07e2c4fddc539.jpg",
+            "image": "products/b9de6af86ef0c28d4cc63e806df07e2c4fddc539.jpg",
             "image_src": "https://www.zebra.co.jp/pro/del_guard_lx/index.html",
             "price": 0,
             "description": "本文追加予定",
@@ -163,10 +163,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGF1P7J5G5KMWDJG97A",
+        "pk": "01F35HRR8HZCN0X9WEW7SY6H38",
         "fields": {
             "name": "デルガード",
-            "image": "b9de6af86ef0c28d4cc63e806df07e2c4fddc539.jpg",
+            "image": "products/b9de6af86ef0c28d4cc63e806df07e2c4fddc539.jpg",
             "image_src": "https://www.zebra.co.jp/pro/del_guard/index.html",
             "price": 0,
             "description": "本文追加予定",
@@ -181,10 +181,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFGDM3HTKZ09E1T0T3",
+        "pk": "01F35HRR8HNHJN85WFQ0S4HGRT",
         "fields": {
             "name": "テクトツゥーウェイ / ライト",
-            "image": "0df019785361b0c6884b8033f3756d0b929cb5eb.jpg",
+            "image": "products/0df019785361b0c6884b8033f3756d0b929cb5eb.jpg",
             "image_src": "https://www.zebra.co.jp/pro/tect/index.html",
             "price": 0,
             "description": "本文追加予定",
@@ -199,10 +199,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFBPK6CN03T1N76RA6",
+        "pk": "01F35HRR8HYW7GF7NG6TKMGPWB",
         "fields": {
             "name": "テクトツゥーウェイ / ライト",
-            "image": "0df019785361b0c6884b8033f3756d0b929cb5eb.jpg",
+            "image": "products/0df019785361b0c6884b8033f3756d0b929cb5eb.jpg",
             "image_src": "https://www.zebra.co.jp/pro/tect/index.html?tab_id=tabs-b",
             "price": 0,
             "description": "本文追加予定",
@@ -217,10 +217,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFH56ZPX76BATCXQ2M",
+        "pk": "01F35HRR8HHYDDSKC4CRBX8MYE",
         "fields": {
             "name": "デルガード タイプGR",
-            "image": "4b3de652ab6cd3ee8b90e1cd1d46ffcc14d00ebd.jpg",
+            "image": "products/4b3de652ab6cd3ee8b90e1cd1d46ffcc14d00ebd.jpg",
             "image_src": "https://www.zebra.co.jp/pro/del_guard_gr/index.html",
             "price": 0,
             "description": "本文追加予定",
@@ -235,10 +235,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGF368013Q8ZTN2Q2GC",
+        "pk": "01F35HRR8H1K90CY816N93RCG7",
         "fields": {
             "name": "デルガード タイプER",
-            "image": "f609e88c7e79a59494c63f70c46a2b9a0ed5dc30.jpg",
+            "image": "products/f609e88c7e79a59494c63f70c46a2b9a0ed5dc30.jpg",
             "image_src": "https://www.zebra.co.jp/pro/del_guard_er/index.html",
             "price": 0,
             "description": "本文追加予定",
@@ -253,10 +253,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFPD6KC89KV2YPRD4S",
+        "pk": "01F35HRR8HNTTFPVWK9WCYZ38A",
         "fields": {
             "name": "クリップ-オン マルチ",
-            "image": "ae8c6f7e42fd65af2ceb84822fa06f0b0bc76043.jpg",
+            "image": "products/ae8c6f7e42fd65af2ceb84822fa06f0b0bc76043.jpg",
             "image_src": "https://www.zebra.co.jp/pro/clipon-multi/index.html",
             "price": 0,
             "description": "本文追加予定",
@@ -271,10 +271,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFEPP6EGMPK8KACYFS",
+        "pk": "01F35HRR8HFD1CMP9TQ5Y6K3FA",
         "fields": {
             "name": "手帳用",
-            "image": "5194a0a35513c1789eed7702a6cbbea8ff866dc0.jpg",
+            "image": "products/5194a0a35513c1789eed7702a6cbbea8ff866dc0.jpg",
             "image_src": "https://www.zebra.co.jp/pro/t/index.html",
             "price": 0,
             "description": "本文追加予定",
@@ -289,10 +289,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFDCWVFWFVNH0WAPJ8",
+        "pk": "01F35HRR8HMC9D04KQP4QKBN3Q",
         "fields": {
             "name": "ドラフィックス",
-            "image": "7cc8e63e1d7d62d6b1ea71d081e89f569ef2de43.jpg",
+            "image": "products/7cc8e63e1d7d62d6b1ea71d081e89f569ef2de43.jpg",
             "image_src": "https://www.zebra.co.jp/pro/drafix_sharp/index.html",
             "price": 0,
             "description": "本文追加予定",
@@ -307,10 +307,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFX0RXY8B2Z286X414",
+        "pk": "01F35HRR8H05N3X8WEWG0Z3823",
         "fields": {
             "name": "カラーフライト0.3",
-            "image": "10767b3c2b440e5b2bb3f1753405c8372f985047.jpg",
+            "image": "products/10767b3c2b440e5b2bb3f1753405c8372f985047.jpg",
             "image_src": "https://www.zebra.co.jp/pro/color-flight-03/index.html",
             "price": 0,
             "description": "本文追加予定",
@@ -325,10 +325,10 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F3252KGFM11H8ZXW64BAM9KC",
+        "pk": "01F35HRR8H4PNAZB3T0MFX91KH",
         "fields": {
             "name": "カラーフライト",
-            "image": "8f38850a4daf369950fb3099d6a6563e787a48a8.jpg",
+            "image": "products/8f38850a4daf369950fb3099d6a6563e787a48a8.jpg",
             "image_src": "https://www.zebra.co.jp/pro/color-flight/index.html",
             "price": 0,
             "description": "本文追加予定",
