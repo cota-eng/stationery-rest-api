@@ -16,13 +16,13 @@ import requests, json
 from pen.models import Review,FavProduct
 
 
-class AvatarSerializer(serializers.ModelSerializer):
+# class AvatarSerializer(serializers.ModelSerializer):
     # id = serializers.SerializerMethodField()
     # def get_id(self, obj):
     #     return obj.profile.pk
-    class Meta:
-        model = models.Avatar
-        fields = ('id','image',)
+    # class Meta:
+    #     model = models.Avatar
+    #     fields = ('id','image',)
 
 class UserSerializer(serializers.ModelSerializer):
     nickname = serializers.SerializerMethodField(read_only=True)
@@ -32,7 +32,7 @@ class UserSerializer(serializers.ModelSerializer):
     def get_avatar(self, obj):
         avatar = obj.profile.avatar
         if avatar:
-            return avatar.name
+            return avatar
         return None
 
     def get_nickname(self, obj):
@@ -55,7 +55,7 @@ class UserSerializer(serializers.ModelSerializer):
         to one  - profile, avatar
         """
         queryset = queryset.prefetch_related()
-        queryset = queryset.select_related('profile','profile__avatar')
+        queryset = queryset.select_related('profile',)
         return queryset
     # def create(self, validated_data):
     #     response = super().create(validated_data)
@@ -71,7 +71,7 @@ class WhoAmISerializer(serializers.ModelSerializer):
     def get_avatar(self, obj):
         avatar = obj.avatar
         if avatar:
-            return avatar.name
+            return avatar
         return None
     class Meta:
         model = models.Profile
@@ -114,7 +114,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     def get_avatar(self, obj):
         avatar = obj.avatar
         if avatar:
-            return avatar.name
+            return avatar
         return None
     # avatar = AvatarSerializer()
 
@@ -127,7 +127,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     @staticmethod
     def setup_for_query(queryset):
         # to-one
-        qs = queryset.select_related("avatar").prefetch_related()
+        qs = queryset.select_related().prefetch_related()
         return qs
     # def get_faved_product(self, obj):
     #     faved_product = FavProduct.objects.filter(fav_user=obj.user)

@@ -106,7 +106,7 @@ class Product(models.Model):
     )
     image = ProcessedImageField(
         upload_to='products',
-        processors=[ResizeToFill(100, 100)],
+        processors=[ResizeToFill(500,500)],
         format='JPEG',
         options={'quality': 60},
         blank=True,
