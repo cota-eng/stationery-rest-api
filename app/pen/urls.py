@@ -18,8 +18,8 @@ below 3 view is not needed
 now unuse
 """
 router.register('search', views.ProductSearchByName)
-router.register('fav',views.FavProductAPIView)
-router.register('review', views.ReviewViewSet)
+# router.register('fav',views.FavProductAPIView)
+# router.register('review', views.ReviewViewSet)
 
 app_name="pen"
 urlpatterns = [
@@ -29,8 +29,8 @@ urlpatterns = [
     path("brand/<slug:brand__slug>/products",views.ProductBrandFilteredAPIView.as_view(),name="product-brand"),
     path("products/",views.ProductListAPIView.as_view(),name="product-list"),
     path("products/<str:pk>/",views.ProductRetrieveAPIView.as_view(),name="product"),
-    path("fav-list/",views.OwnFavProductListAPIView.as_view(),name="fav-list"),
-    path("review-list/",views.OwnReviewProductListAPIView.as_view(),name="review-list"),
+    # path("fav-list/",views.OwnFavProductListAPIView.as_view(),name="fav-list"),
+    # path("review-list/",views.OwnReviewProductListAPIView.as_view(),name="review-list"),
     path('',include(router.urls)),
 ]
 
