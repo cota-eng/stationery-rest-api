@@ -123,21 +123,20 @@ def profile_avatar_path(instance, filename):
     ext = filename.split('.')[-1]
     filename = f'{uuid.uuid4()}.{ext}'
     # return os.path.join('uploads/avatar/',filename)
-    return os.path.join('media/',filename)
+    return os.path.join('avatar/',filename)
 
-def profile_avatar_resize():
-    pass
 
-class Avatar(models.Model):
-    name = models.CharField(_("name"),max_length=20,null=True,blank=True)
-    image = models.ImageField(upload_to="avatar",  width_field=None, height_field=None, null=True, blank=True)
-    def __str__(self):
-        return f'{self.image}'
-    
+# class Avatar(models.Model):
+#     name = models.CharField(_("name"),max_length=20,null=True,blank=True)
+#     image = models.ImageField(upload_to="avatar",  width_field=None, height_field=None, null=True, blank=True)
+#     def __str__(self):
+#         return f'{self.image}'
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 
 class Profile(models.Model):
-    """Model that has avatar and dates of create and update"""
     """
+    Model that has avatar and dates of create and update
     TODO: id is to normal id?
     """
     id = ULIDField(
@@ -155,8 +154,16 @@ class Profile(models.Model):
     nickname = models.CharField(_('nickname'),max_length=10,default="匿名ユーザー")
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
-    # avatar = models.ImageField(upload_to=profile_avatar_path, height_field=None, width_field=None, max_length=None,null=True,blank=True)
-    avatar = models.ForeignKey(Avatar,on_delete=models.PROTECT,related_name="profile")
+    avatar = ProcessedImageField(
+        upload_to=profile_avatar_path,
+        processors=[ResizeToFill(500,500)],
+        format='JPEG',
+        options={'quality': 60},
+        blank=True,
+        null=True,
+        default="avatar/default.jpg"
+        )
+    # avatar = models.ForeignKey(Avatar,on_delete=models.PROTECT,related_name="profile")
     twitter_account = models.CharField(_('twitter username'),null=True,blank=True,max_length=100)
     def __str__(self):
         return f'Profile of {self.user}'
@@ -169,9 +176,9 @@ def create_profile(sender, **kwargs):
     when user created, own profile automatically created
     """
     if kwargs['created']:
-        WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
-        requests.post(WEB_HOOK_URL, data = json.dumps({
-            'text': f':smile_cat:Profile [ {kwargs["instance"]} ] Created!!',  
-        }))
-        avatar = Avatar.objects.get(pk=1)
-        profile = Profile.objects.get_or_create(user=kwargs['instance'],avatar=avatar)
+        # WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+        # requests.post(WEB_HOOK_URL, data = json.dumps({
+        #     'text': f':smile_cat:Profile [ {kwargs["instance"]} ] Created!!',  
+        # }))
+        # avatar = Avatar.objects.get(pk=1)
+        profile = Profile.objects.get_or_create(user=kwargs['instance'])
