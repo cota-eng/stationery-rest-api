@@ -21,8 +21,8 @@ class ProductOriginalFilter(filters.FilterSet):
     brand - exact (multi choice)
     category - exact (one choice why emits so many resuts)
     """
-    lte = filters.NumberFilter(field_name='price', lookup_expr='lte')
-    gte = filters.NumberFilter(field_name='price', lookup_expr='gte')
+    # lte = filters.NumberFilter(field_name='price', lookup_expr='lte')
+    # gte = filters.NumberFilter(field_name='price', lookup_expr='gte')
     name = filters.CharFilter(field_name="name", lookup_expr='icontains')
     # tag = filters.CharFilter(field_name='tag__slug',lookup_expr='exact')
     class Meta:

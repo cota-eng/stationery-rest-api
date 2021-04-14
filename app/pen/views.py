@@ -259,7 +259,7 @@ class ProductSearchByName(mixins.ListModelMixin,viewsets.GenericViewSet):
     queryset = Product.objects.all()
     serializer_class = serializers.ProductListSerializer
     permission_classes = (AllowAny,)
-    pagination_class = NormalPagination
+    # pagination_class = NormalPagination
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = ProductOriginalFilter
     def get_queryset(self):
