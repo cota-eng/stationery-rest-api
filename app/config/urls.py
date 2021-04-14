@@ -14,10 +14,9 @@ urlpatterns = [
     path('api/',include("blog.urls")),
     path('api/', include("authentication.urls")),
     path('api/', include("pen.urls")),
-    path('admin/', admin.site.urls),
+    path(ADMIN_URL + '/', admin.site.urls),
 ]
 # else:
-#     path(ADMIN_URL + '/', admin.site.urls),
 
 
 if settings.DEBUG:
