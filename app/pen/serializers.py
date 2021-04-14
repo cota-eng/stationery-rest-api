@@ -380,7 +380,7 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
     tag = TagForProductSerializer(many=True,read_only=True)
     review = ReviewSerialier(many=True)
     number_of_review = serializers.SerializerMethodField()
-    description = serializers.SerializerMethodField()
+    # description = serializers.SerializerMethodField()
     number_of_fav = serializers.SerializerMethodField()
 
     related = RelatedProductListSerializer(source="related_products",many=True)
@@ -391,8 +391,11 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
     def get_number_of_fav(self,instance):
         return instance.faved.count()
 
-    def get_description(self, instance):
-        return markdown.markdown(instance.description)
+    """
+    TODO:時間ができたら文章入力していくため、今はmarkdownでなくていい
+    """
+    # def get_description(self, instance):
+    #     return markdown.markdown(instance.description)
 
 
     @staticmethod
