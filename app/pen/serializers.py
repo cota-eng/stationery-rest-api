@@ -420,25 +420,26 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ('id',
-                  'name',
-                  'description',
-                  'price',
-                  'image',
-                  'image_src',
-                  'amazon_link_to_buy',
-                  'rakuten_link_to_buy',
-                  'number_of_review',
-                  'review',
-                  'created_at',
-                  'updated_at',
-                  'category',
-                  'brand',
-                  'tag',
-                  'number_of_fav',
-                  'related',
-                #   "related_products",
-                  )
+        fields = (
+            'id',
+            'name',
+            'description',
+            'price',
+            'image',
+            'image_src',
+            'amazon_link_to_buy',
+            'rakuten_link_to_buy',
+            'number_of_review',
+            'review',
+            'created_at',
+            'updated_at',
+            'category',
+            'brand',
+            'tag',
+            'number_of_fav',
+            'related',
+            #   "related_products",
+            )
 
         # read_only_fields = (
         #         'id',
