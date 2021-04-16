@@ -14,7 +14,7 @@ urlpatterns = [
     path('api/',include("blog.urls")),
     path('api/', include("authentication.urls")),
     path('api/', include("pen.urls")),
-    path(ADMIN_URL + '/', admin.site.urls),
+    path('admin/', admin.site.urls),
 ]
 # else:
 
