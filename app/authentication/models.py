@@ -133,12 +133,13 @@ def profile_avatar_path(instance, filename):
 #         return f'{self.image}'
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
-
+import uuid
 class Profile(models.Model):
     """
     Model that has avatar and dates of create and update
     TODO: id is to normal id?
     """
+    # uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     id = ULIDField(
         primary_key=True,
         default=ulid.new,
