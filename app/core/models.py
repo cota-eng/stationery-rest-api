@@ -15,32 +15,32 @@ class ULIDField(models.CharField):
     def db_type(self, connection):
         return 'char(26)'
 
-    def deconstruct(self):
-        name, path, args, kwargs = super().deconstruct()
-        del kwargs['max_length']
-        return name, path, args, kwargs
+    # def deconstruct(self):
+    #     name, path, args, kwargs = super().deconstruct()
+    #     del kwargs['max_length']
+    #     return name, path, args, kwargs
 
-    def get_internal_type(self):
-        return 'UUIDField'
+    # def get_internal_type(self):
+    #     return 'UUIDField'
 
-    def get_db_prep_value(self, value, connection, prepared=False):
-        if value is None:
-            return None
-        if not isinstance(value, ulid.ULID):
-            value = self.to_python(value)
-        return value.uuid if connection.features.has_native_uuid_field else str(value)
+    # def get_db_prep_value(self, value, connection, prepared=False):
+    #     if value is None:
+    #         return None
+    #     if not isinstance(value, ulid.ULID):
+    #         value = self.to_python(value)
+    #     return value.uuid if connection.features.has_native_uuid_field else str(value)
 
-    def from_db_value(self, value, expression, connection):
-        return self.to_python(value)
+    # def from_db_value(self, value, expression, connection):
+    #     return self.to_python(value)
 
-    def to_python(self, value):
-        if value is None:
-            return None
-        try:
-            return ulid.parse(value)
-        except (AttributeError, ValueError):
-            raise exceptions.ValidationError(
-                _("'%(value)s' is not a valid ULID."),
-                code='invalid',
-                params={'value': value}
-            )
+    # def to_python(self, value):
+    #     if value is None:
+    #         return None
+    #     try:
+    #         return ulid.parse(value)
+    #     except (AttributeError, ValueError):
+    #         raise exceptions.ValidationError(
+    #             _("'%(value)s' is not a valid ULID."),
+    #             code='invalid',
+    #             params={'value': value}
+    #         )
