@@ -77,6 +77,7 @@ class OwnFavProductListAPIView(generics.ListAPIView):
         # return self.queryset.filter(Q(fav_user=self.request.user)&Q(is_favorite=True))
         return self.queryset.prefetch_related('product').select_related('fav_user').filter(fav_user=self.request.user).filter(is_favorite=True)
 
+
 class FavProductAPIView(mixins.RetrieveModelMixin,
                         #    mixins.ListModelMixin,#TODO in production, not needed?
                            viewsets.GenericViewSet):
@@ -99,6 +100,31 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
     """
     # lookup_field = "product"
     # lookup_url_kwarg = "fav_user"
+
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.filter_queryset(self.get_queryset())
+
+    #     page = self.paginate_queryset(queryset)
+    #     if page is not None:
+    #         serializer = self.get_serializer(page, many=True)
+    #         return self.get_paginated_response(serializer.data)
+
+    #     serializer = self.get_serializer(queryset, many=True)
+    #     return Response(serializer.data)
+
+    # def retrieve(self, request, *args, **kwargs):
+    #     instance = self.get_object()
+    #     print(instance)
+    #     serializer = self.get_serializer(instance)
+    #     return Response(serializer.data)
+
+    # def get(self, request, pk=None):
+    #     """
+    #     fav/fav_id/ => get is_favorite
+    #     """
+    #     queryset = self.get_queryset()
+    #     serializer = serializers.FavSerializer
+    #     return Response(serializer.data)
   
     @action(detail=True, methods=["GET"], permission_classes=[IsAuthenticated])
     def check(self, request, pk=None):
@@ -170,6 +196,7 @@ class OwnReviewProductListAPIView(generics.ListAPIView):
         return qs.filter(reviewer=user)
 
         
+from .pagination import NormalPagination
 class ProductPagingReadOnlyViewSet(mixins.ListModelMixin,
                              mixins.RetrieveModelMixin,
                              viewsets.GenericViewSet):
@@ -262,10 +289,6 @@ class ProductSearchByName(mixins.ListModelMixin,viewsets.GenericViewSet):
     # pagination_class = NormalPagination
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = ProductOriginalFilter
-    def get_queryset(self):
-        qs = self.queryset
-        qs = self.get_serializer_class().setup_for_query(qs)
-        return qs
     # pagination_class = FilteredResultPagination
     # pagination_class = pagination.LimitOffsetPagination
     # add &?limit=100&offset=500

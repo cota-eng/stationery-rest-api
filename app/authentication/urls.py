@@ -11,11 +11,9 @@ from rest_framework.routers import DefaultRouter
 app_name="authentication"
 router = DefaultRouter()
 router.register('user',views.UserReadOnlyViewSet)
-router.register('profile', views.OwnProfileListRetrieveUpdateViewSet)
-# below needed?
+router.register('profile',views.OwnProfileListRetrieveUpdateViewSet)
 router.register('allprofile',views.ProfileReadOnlyViewSet)
 router.register('whoami',views.WhoAmIView)
-
 # router.register('avatar',views.AvatarRetrieveUpdateView)
 
 urlpatterns = [

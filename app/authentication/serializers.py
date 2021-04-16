@@ -5,10 +5,25 @@ from rest_framework import exceptions
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken,TokenError,AccessToken
+from rest_framework_simplejwt.tokens import RefreshToken,TokenError
 from . import models
 from django.utils.text import gettext_lazy as _
-from pen.serializers import ReviewNotIncludeUserSerialier,FavProductSerializer
+
+# class LoginSerializer(serializers.ModelSerializer):
+#     tokens = serializers.SerializerMethodField()
+#     email = serializers.EmailField(max_length=255)
+#     password = serializers.CharField(max_length=255, min_length=4, write_only=True)
+#     tokens = serializers.CharField(read_only=True)
+#     class Meta:
+#         model = models.User
+#         fields = ('email', 'password','tokens',)
+#     # need to check
+#     def get_tokens(self, obj):
+#         user = models.User.objects.get(email=obj['email'])
+#         return {
+#             'access':user.tokens()['access'],
+#             'refresh':user.tokens()['refresh'],
+#         }
 import environ
 env = environ.Env()
 env.read_env('.env')
@@ -23,6 +38,7 @@ from pen.models import Review,FavProduct
     # class Meta:
     #     model = models.Avatar
     #     fields = ('id','image',)
+
 
 class UserSerializer(serializers.ModelSerializer):
     nickname = serializers.SerializerMethodField(read_only=True)
@@ -46,6 +62,9 @@ class UserSerializer(serializers.ModelSerializer):
                 'write_only': True,
                 'style': {'input_type': 'password'}
             },
+            # 'email': {
+            #     'read_only':True
+            # },
         }
 
     @staticmethod
@@ -64,6 +83,9 @@ class UserSerializer(serializers.ModelSerializer):
     #         'text': f':smile_cat:UserCreated [ {validated_data["email"]} ] ',  
     #     }))
     #     return response
+    # def create(self, validated_data):
+    #     return get_user_model().objects.create_user(**validated_data)
+from pen.serializers import ReviewNotIncludeUserSerialier,FavUsedByProfileSerializer
 
 class WhoAmISerializer(serializers.ModelSerializer):
     avatar = serializers.SerializerMethodField()
@@ -81,24 +103,19 @@ class WhoAmISerializer(serializers.ModelSerializer):
 class OwnProfileEditSerializer(serializers.ModelSerializer):
     # user = UserSerializer(read_only=True)
     # user_profile = UserSerializer()
-    # avatar = serializers.SerializerMethodField()
+    avatar = serializers.SerializerMethodField()
 
-    # def get_avatar(self, obj):
-    #     avatar = obj.avatar
-    #     if avatar:
-    #         return avatar.name
-    #     return None
+    def get_avatar(self, obj):
+        avatar = obj.avatar
+        if avatar:
+            return avatar.name
+        return None
     # avatar = AvatarSerializer()
 
     class Meta:
         model = models.Profile
         fields = ('id', 'nickname','user', 'avatar','twitter_account')
-        read_only_fields = ('user','avatar',)
-
-    # def update(self, instance, validated_data):
-    #     pass
-        
-
+        read_only_fields = ('user',)
 class ProfileSerializer(serializers.ModelSerializer):
     """
     read only 
@@ -108,7 +125,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     updated_at = serializers.DateField(format="%Y/%m/%d", read_only=True)
     # user_profile = UserSerializer()
     review = serializers.SerializerMethodField()
-    # faved_product = serializers.SerializerMethodField()
+    faved_product = serializers.SerializerMethodField()
     avatar = serializers.SerializerMethodField()
 
     def get_avatar(self, obj):
@@ -120,7 +137,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def get_review(self, obj):
         own_review = Review.objects.filter(reviewer__id=obj.user.id)
-        # print(own_review)
+        print(own_review)
         serializer = ReviewNotIncludeUserSerialier(instance=own_review,many=True)
         return serializer.data
     
@@ -135,9 +152,12 @@ class ProfileSerializer(serializers.ModelSerializer):
     #     serializer = FavProductSerializer(instance=faved_product, many=True)
     #     return serializer.data
 
+
     class Meta:
         model = models.Profile
-        fields = ('id','nickname','review','created_at', 'updated_at','avatar', )
+        fields = ('id','nickname','review','faved_product','created_at', 'updated_at','avatar', )
+        # fields = ('id', 'nickname','created_at', 'updated_at',  'avatar', 'user_profile')
+        # extra_kwargs = {'user_profile': {'read_only': True}}
     # def validate(self, attrs):
     #     nickname = attrs.get('nickname')
     #     if not nickname.isalnum():
@@ -145,20 +165,17 @@ class ProfileSerializer(serializers.ModelSerializer):
     #     return super().validate(attrs)
 
 class LogoutSerializer(serializers.Serializer):
-    # access = serializers.CharField()
     refresh = serializers.CharField()
     default_error_messages = {
         'bad_token': _('invalid token')
     }
 
     def validate(self, attrs):
-        # self.token = attrs['access']
         self.token = attrs['refresh']
         return attrs
 
     def save(self, **kwargs):
         try:
-            # AccessToken(self.token).blacklist()
             RefreshToken(self.token).blacklist()
         except TokenError:
             self.fail('bad_token')
@@ -297,20 +314,3 @@ class LogoutSerializer(serializers.Serializer):
 #                 raise exceptions.AuthenticationFailed('reset link is invalid, try again!', 401)
                 
 #         return super().validate(attrs)
-
-
-# class LoginSerializer(serializers.ModelSerializer):
-#     tokens = serializers.SerializerMethodField()
-#     email = serializers.EmailField(max_length=255)
-#     password = serializers.CharField(max_length=255, min_length=4, write_only=True)
-#     tokens = serializers.CharField(read_only=True)
-#     class Meta:
-#         model = models.User
-#         fields = ('email', 'password','tokens',)
-#     # need to check
-#     def get_tokens(self, obj):
-#         user = models.User.objects.get(email=obj['email'])
-#         return {
-#             'access':user.tokens()['access'],
-#             'refresh':user.tokens()['refresh'],
-#         }

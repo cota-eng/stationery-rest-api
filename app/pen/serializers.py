@@ -100,6 +100,7 @@ class ReviewerSerializer(serializers.ModelSerializer):
     #     queryset = queryset.select_related('profile')
     #     return queryset
     
+
     def get_avatar(self, obj):
         avatar = obj.profile.avatar
         if avatar:
@@ -110,8 +111,8 @@ class ReviewerSerializer(serializers.ModelSerializer):
         return obj.profile.nickname
 
     class Meta:
-        model = User
-        fields = ('id','profile','nickname','avatar',)
+        model = get_user_model()
+        fields = ('id','profile','nickname','twitter_account','avatar',)
         extra_kwargs = {
             'password': {
                 'write_only': True,
@@ -166,14 +167,16 @@ class OwnFavListSerializer(serializers.ModelSerializer):
 
 
 
+
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = (
             'name',
             'slug',
-            'product',
+            'product_category',
             )
+
 
 
 
@@ -185,9 +188,8 @@ class BrandSerializer(serializers.ModelSerializer):
             'name',
             'slug',
             'official_site_link',
-            'product'
             )
-        
+
 
 class BrandFilteredProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -216,8 +218,9 @@ class TagSerializer(serializers.ModelSerializer):
         fields = (
             'name',
             'slug',
-            'product',
+            'product_tag',
             )
+
 
 
 
@@ -248,8 +251,6 @@ class ReviewSerialier(serializers.ModelSerializer):
     reviewer - avatar, nickname, id
     """
     reviewer = ReviewerSerializer(read_only=True)
-
-
     class Meta:
         model = Review
         fields = (
@@ -266,6 +267,7 @@ class ReviewSerialier(serializers.ModelSerializer):
             'reviewer',
             'created_at',
             )
+        depth = 1
         """
         TODO: validation add!
         """
@@ -275,6 +277,7 @@ class ReviewSerialier(serializers.ModelSerializer):
             }
         }
 
+import markdown
 
 class OwnReviewProductListSerialier(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(format="%Y/%m/%d", read_only=True)
@@ -355,6 +358,7 @@ class RelatedProductListSerializer(serializers.ModelSerializer):
             )
         queryset = queryset.select_related('category','brand')
         return queryset
+
 
     class Meta:
         model = Product
@@ -440,6 +444,7 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
             'related',
             #   "related_products",
             )
+
 
         # read_only_fields = (
         #         'id',

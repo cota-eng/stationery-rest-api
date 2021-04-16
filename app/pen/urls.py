@@ -32,6 +32,7 @@ urlpatterns = [
     # path("fav-list/",views.OwnFavProductListAPIView.as_view(),name="fav-list"),
     # path("review-list/",views.OwnReviewProductListAPIView.as_view(),name="review-list"),
     path('',include(router.urls)),
+
 ]
 
 """
