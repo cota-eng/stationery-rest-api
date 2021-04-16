@@ -133,9 +133,6 @@ class Product(models.Model):
     """
     TODO: not needed? this field is able to be impletemted in front end
     """
-    # @property
-    # def mercari_link_to_buy(self):
-    #     return f'https://www.mercari.com/jp/search/?keyword={self.name}'
 
     # @property
     # def number_of_fav(self):
@@ -161,7 +158,7 @@ class FavProduct(models.Model):
     """
     Fav is Favorite
     TODO: user content-type
-    {"liked":false,"likable_id":29686,"likable_type":"Article"}
+    {"liked":false,"likable_id":,"likable_type":"Article"}
     """
     is_favorite = models.BooleanField(default=False)
     """
