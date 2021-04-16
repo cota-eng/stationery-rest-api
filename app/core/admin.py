@@ -18,7 +18,7 @@ class UserAdmin(BaseUserAdmin):
         ProfileInline,
         # AvatarInline
     ]
-    ordering = ['id',]
+    # ordering = ['id',]
     list_display = ['email','username','last_login']
     fieldsets = (
         (_('Credentials'),{'fields':('email','password','username')}),

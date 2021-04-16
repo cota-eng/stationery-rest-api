@@ -6,4 +6,4 @@ from django.conf import settings
 from django.utils import timezone
 from authentication.models import User
 import ulid
-from core.models import ULIDField
+# from core.models import ULIDField
