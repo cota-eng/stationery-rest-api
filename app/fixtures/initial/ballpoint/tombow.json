@@ -1,7 +1,7 @@
 [
     {
         "model": "pen.Product",
-        "pk": "01F35HSA5M3DH35DZAEJT7N1KD",
+        "pk": "d66de6dc-49f5-4e50-babf-7219eeb5ed67",
         "fields": {
             "name": "ビズノ",
             "image": "products/1cec4f7f14d74e00242aed3d12e1f7864db09874.jpg",
@@ -19,7 +19,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HSA5MAJ5GZSVXKVFHEEBS",
+        "pk": "7c3d0a38-342a-4e6e-91ef-8df7aa4058f4",
         "fields": {
             "name": "ズーム 韻 箸",
             "image": "products/8cd88dd93a3a3ca03a13b0670ae97335cde1ef51.jpg",
@@ -37,7 +37,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HSA5M7P254ZN4B949J62C",
+        "pk": "2f7a8c67-d922-41ce-adad-5b01cb5b60eb",
         "fields": {
             "name": "ズーム 韻 砂紋",
             "image": "products/e6a94deb430c3b6087fd4a8e194a714d492d762b.jpg",
@@ -55,7 +55,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HSA5ME3VB0HRB8YYAYPYV",
+        "pk": "71779b76-12c4-4133-9147-e6f575388763",
         "fields": {
             "name": "ズーム 505 ハバナ",
             "image": "products/988607c633a9c40a52202b64bfe0580047509414.jpg",
@@ -73,7 +73,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HSA5MWW27H2P7GN6Y3K22",
+        "pk": "e98ee7b7-89f5-4454-84cb-113b6d1ca65d",
         "fields": {
             "name": "ズーム 535",
             "image": "products/c1f98b636bd08f282a164bb070a6b549d14c6993.jpg",
@@ -91,7 +91,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HSA5MP2V5KTPFGM4ZWF1M",
+        "pk": "2fc3a735-c0ab-422f-8d99-20d0bfabb1d4",
         "fields": {
             "name": "ズーム 707",
             "image": "products/029737c5223d5cabeb7b4a135b2f24b19253b541.jpg",
@@ -109,7 +109,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HSA5MP220MAVG57F0P9K4",
+        "pk": "d827e83a-054c-4874-a1e0-fa0d42a8bef4",
         "fields": {
             "name": "ズーム 505",
             "image": "products/50469842b4e2831f16d495cee3fbf71eb8cb4eb2.jpg",
@@ -127,7 +127,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HSA5MKKAPHAM59H8V3HPG",
+        "pk": "742d25bf-29fc-4a2f-8729-f1e1f0746aeb",
         "fields": {
             "name": "ズーム L105",
             "image": "products/9c39d0b6e14b1015830028948e4ebeabba368229.jpg",
@@ -145,7 +145,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HSA5M9BPBVSSQYG73T37H",
+        "pk": "8b72e859-2749-498d-afd4-45203718cd82",
         "fields": {
             "name": "エアプレス",
             "image": "products/bbb46fbb967b6b594a24d32e5d839632748a460a.jpg",
@@ -163,7 +163,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HSA5M3RHWF70PEHA8GBGY",
+        "pk": "5a93d002-bdcb-4ac1-ba9c-3bb0fa055bf5",
         "fields": {
             "name": "リポータースマート",
             "image": "products/c0ac66e50be193a2762b82706012465354d16f21.jpg",
@@ -181,7 +181,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HSA5M6J1XWWFA87H22838",
+        "pk": "511250a5-3561-42cf-a62e-e443ddf01656",
         "fields": {
             "name": "リポーター",
             "image": "products/304fc109d1999f4de5ce8a84bfd27f06f464478a.jpg",
@@ -199,7 +199,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HSA5MYQEYXYTQB63XBGXG",
+        "pk": "4bdd52ea-3ffa-400a-9564-9411633337f5",
         "fields": {
             "name": "モノグラフライト",
             "image": "products/aa5e5d5da8d974b6761c7a4ac4ce6a599186f561.jpg",

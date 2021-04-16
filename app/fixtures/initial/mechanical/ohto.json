@@ -1,7 +1,7 @@
 [
     {
         "model": "pen.Product",
-        "pk": "01F35HRQP97RNFE438J1ZHDRPJ",
+        "pk": "bbc0a78a-095f-4ef0-80f0-a25eb7ae58f5",
         "fields": {
             "name": "MULTI  MF-20K3B",
             "image": "products/5b6dc07ae75d73ac51f0345f166cf0008fd7c260.jpg",
@@ -19,7 +19,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRQP94Q43V24R7FGXWHVD",
+        "pk": "9de1a981-af76-4b4c-986d-da797d9bf64d",
         "fields": {
             "name": "Blooom ブルーム",
             "image": "products/5b6dc07ae75d73ac51f0345f166cf0008fd7c260.jpg",
@@ -37,7 +37,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRQP9R120BVE8WH0H7Q85",
+        "pk": "491b5349-1def-4b55-98b8-975f096c6047",
         "fields": {
             "name": "MULTI  MF-20K3A",
             "image": "products/c47eab6afbbf5d0fcf42d030cd22d0ccee78588a.jpg",
@@ -55,7 +55,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRQP91EBTVQ6W5MJ60X87",
+        "pk": "c803826e-0c5a-4cb0-9940-e17ee9d38a40",
         "fields": {
             "name": "プロメカＳＰ‐５００Ｐシャープ",
             "image": "products/807652e812e9aab4064b1f02d8a9c26dee8d9670.jpg",
@@ -73,7 +73,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRQP96AY5EJF1HDA52N6A",
+        "pk": "4cca7abf-710b-48f3-8030-4927d559375f",
         "fields": {
             "name": "プロメカ１０００Ｐシャープ",
             "image": "products/69f69425ed44b6a572927852f3eb4a42e9cfb2e0.jpg",
@@ -91,7 +91,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRQP947P5Q0Q45TNHVRZZ",
+        "pk": "10537f91-3d05-449f-bb5b-dd58f0578704",
         "fields": {
             "name": "スーパープロメカ",
             "image": "products/a735bc08ae81b310e6e274c021491ecc05bd04d9.jpg",
@@ -109,7 +109,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRQP91QS5659K3QNBDQEH",
+        "pk": "31acc52f-f077-4583-b3d3-b8ac02b1c936",
         "fields": {
             "name": "コンセプション 0.5",
             "image": "products/1d7faaa020e19796ae072415e735069e5a3e6774.jpg",
@@ -127,7 +127,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRQP9WVD9XYH65QQB3KVW",
+        "pk": "c465cc9c-9042-4976-ae6e-fb00ff602c4e",
         "fields": {
             "name": "コンセプション 0.3",
             "image": "products/8fb73940aa1c67f66a120b0c8bf57e0a94bdb927.jpg",

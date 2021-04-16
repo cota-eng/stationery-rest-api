@@ -1,7 +1,7 @@
 [
     {
         "model": "pen.Product",
-        "pk": "01F35HRR0M2C3QEQCZ9H0M8K80",
+        "pk": "985a284a-db6e-4c58-a49c-65706677804b",
         "fields": {
             "image": "products/1cec4f7f14d74e00242aed3d12e1f7864db09874.jpg",
             "image_src": "https://www.tombow.com/products/bizno/",
@@ -19,7 +19,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR0MZ2PC8JYFGPXBK1CK",
+        "pk": "4d3156fa-1fde-4be4-9dff-acbb86151ac7",
         "fields": {
             "image": "products/029737c5223d5cabeb7b4a135b2f24b19253b541.jpg",
             "image_src": "https://www.tombow.com/products/zoom_707/",
@@ -37,7 +37,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR0MFCK07RCD3T4XM84Y",
+        "pk": "b5921e36-b31b-4a78-afd5-d71e23802b39",
         "fields": {
             "image": "products/50469842b4e2831f16d495cee3fbf71eb8cb4eb2.jpg",
             "image_src": "https://www.tombow.com/products/zoom_505/",
@@ -55,7 +55,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR0MHKMAMR5W2TSB0G29",
+        "pk": "3c4621cf-258d-419a-98f6-4b61a536c811",
         "fields": {
             "image": "products/9c39d0b6e14b1015830028948e4ebeabba368229.jpg",
             "image_src": "https://www.tombow.com/products/zoom_l105/",
@@ -73,7 +73,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR0MQ4P8Q1RTFK689D11",
+        "pk": "2d013a7e-e405-490c-a7a3-5e47765e56ed",
         "fields": {
             "image": "products/a87f3e799d6c9fd8d58208aee99142b1296a100b.jpg",
             "image_src": "https://www.tombow.com/products/monograph_zero/",
@@ -91,7 +91,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR0MBM0RP7CZFWB44N4G",
+        "pk": "f37cb260-9bd2-4e1d-9054-2f784a0c65d2",
         "fields": {
             "image": "products/f5ea3a33bd5a5ce09c2aeeea25a09abd08b0489a.jpg",
             "image_src": "https://www.tombow.com/products/monograph_grip/",
@@ -109,7 +109,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR0MZQDH06X67QHR7W8W",
+        "pk": "c13d98d8-113f-47ec-ad4b-1f110d9d3e55",
         "fields": {
             "image": "products/f6038111ee8434b7b5f16610d0829bd57419025c.jpg",
             "image_src": "https://www.tombow.com/products/mono_graph/",
