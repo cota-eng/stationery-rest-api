@@ -170,17 +170,20 @@ class Profile(models.Model):
 
 from django.db.models.signals import post_save
 
-"""
-"""
+from core.utils import Util
 @receiver(post_save, sender=User)
 def create_profile(sender, **kwargs):
     """
     when user created, own profile automatically created
     """
     if kwargs['created']:
-        # WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
-        # requests.post(WEB_HOOK_URL, data = json.dumps({
-        #     'text': f':smile_cat:Profile [ {kwargs["instance"]} ] Created!!',  
-        # }))
-        # avatar = Avatar.objects.get(pk=1)
+        WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+        requests.post(WEB_HOOK_URL, data = json.dumps({
+            'text': f':smile_cat:Profile [ {kwargs["instance"]} ] Created!!',  
+        }))
+        # data = {
+        #     "type":"profile created",
+        #     "instance":kwargs["instance"]
+        # }
+        # Util.send_webhook(data)
         profile = Profile.objects.get_or_create(user=kwargs['instance'])
