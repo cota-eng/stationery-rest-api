@@ -241,11 +241,10 @@ class BrandListAPIView(generics.ListAPIView):
     serializer_class = serializers.BrandSerializer
     permission_classes = (AllowAny,)
 
-# from rest_framework import filters
 class ProductSearchByName(generics.ListAPIView):
     """
     search like below \n
-    http://localhost:8000/api/search/?name=S20&
+    http://localhost:8000/api/search/?name=S20
     """
     queryset = Product.objects.all()
     serializer_class = serializers.ProductListSerializer
