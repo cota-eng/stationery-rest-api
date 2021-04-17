@@ -326,7 +326,7 @@ class RelatedProductListSerializer(serializers.ModelSerializer):
     """
     category = CategoryForProductSerialier(read_only=True)
     brand = BrandForProductSerializer(read_only=True)
-    tag = TagForProductSerializer(many=True,read_only=True)
+    # tag = TagForProductSerializer(many=True,read_only=True)
     # number_of_review = serializers.SerializerMethodField()
     # number_of_fav = serializers.SerializerMethodField()
 
@@ -365,7 +365,7 @@ class RelatedProductListSerializer(serializers.ModelSerializer):
                 #   'number_of_fav',
                   'category',
                   'brand',
-                  'tag',
+                #   'tag',
                   )
 
 class ProductRetrieveSerializer(serializers.ModelSerializer):
@@ -440,15 +440,3 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
             'related',
             #   "related_products",
             )
-
-        # read_only_fields = (
-        #         'id',
-        #         'name',
-        #         'description',
-        #         'price',
-        #         'image',
-        #         'image_src',
-        #         'amazon_link_to_buy',
-        #         'rakuten_link_to_buy',
-        #         'number_of_fav,'
-        #     )
