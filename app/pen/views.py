@@ -35,6 +35,7 @@ class ProductCategoryBrandFilteredAPIView(generics.ListAPIView):
     serializer_class = serializers.ProductListSerializer
     permission_classes = (AllowAny,)
     pagination_class = NormalPagination
+
     def get_queryset(self):
         # if self.kwargs['category__slug'] is None:
         #     return None
@@ -42,23 +43,16 @@ class ProductCategoryBrandFilteredAPIView(generics.ListAPIView):
         qs = self.get_serializer_class().setup_for_query(qs)
         return qs.filter(category__slug=self.kwargs['category__slug']).filter(brand__slug=self.kwargs['brand__slug'])
 
-class ProductBrandCategoryFilteredAPIView(generics.ListAPIView):
-    queryset = Product.objects.all().order_by("?")
-    serializer_class = serializers.ProductListSerializer
-    permission_classes = (AllowAny,)
-    pagination_class = NormalPagination
-    def get_queryset(self):
-        # if self.kwargs['category__slug'] is None:
-        #     return None
-        qs = self.queryset
-        qs = self.get_serializer_class().setup_for_query(qs)
-        return qs.filter(category__slug=self.kwargs['category__slug']).filter(brand__slug=self.kwargs['brand__slug'])
 
 class ProductBrandCategoryFilteredAPIView(generics.ListAPIView):
+    """
+    ex: brand/[brand_slug]/category/[category_slug]
+    """
     queryset = Product.objects.all().order_by("?")
     serializer_class = serializers.ProductListSerializer
     permission_classes = (AllowAny,)
     pagination_class = NormalPagination
+
     def get_queryset(self):
         # if self.kwargs['category__slug'] is None:
         #     return None
@@ -219,39 +213,36 @@ class ProductRetrieveAPIView(generics.RetrieveAPIView):
         return qs
     # lookup_field = 'slug'
 
-class CategoryFilteredListAPIView(mixins.ListModelMixin,viewsets.GenericViewSet):
+class CategoryListAPIView(mixins.ListModelMixin,viewsets.GenericViewSet):
     """
     for list category view \n
     display category related product !
     """
-    queryset = Category.objects.all().prefetch_related("product")
+    queryset = Category.objects.all()
     serializer_class = serializers.CategorySerializer
     permission_classes = (AllowAny,)
-    # lookup_field = 'slug'
 
-class TagFilteredProductListAPIView(mixins.ListModelMixin,viewsets.GenericViewSet):
+class TagListAPIView(generics.ListAPIView):
     """
-    for list tag view \n
+    for list tag view 
     display tag related product !
     """
-    queryset = Tag.objects.all().prefetch_related("product")
+    queryset = Tag.objects.all()
     serializer_class = serializers.TagSerializer
     permission_classes = (AllowAny,)
-    lookup_field = 'slug'
 
 
-class BrandFliteredListAPIView(mixins.ListModelMixin,viewsets.GenericViewSet):
+class BrandListAPIView(generics.ListAPIView):
     """
-    for list brand view \n
+    for list brand view 
     display brand related product !
     """
-    queryset = Brand.objects.all().prefetch_related("product")
+    queryset = Brand.objects.all()
     serializer_class = serializers.BrandSerializer
     permission_classes = (AllowAny,)
-    lookup_field = 'slug'
 
 # from rest_framework import filters
-class ProductSearchByName(mixins.ListModelMixin,viewsets.GenericViewSet):
+class ProductSearchByName(generics.ListAPIView):
     """
     search like below \n
     http://localhost:8000/api/search/?name=S20&
@@ -266,7 +257,6 @@ class ProductSearchByName(mixins.ListModelMixin,viewsets.GenericViewSet):
         qs = self.queryset
         qs = self.get_serializer_class().setup_for_query(qs)
         return qs
-    # pagination_class = FilteredResultPagination
     # pagination_class = pagination.LimitOffsetPagination
     # add &?limit=100&offset=500
 
