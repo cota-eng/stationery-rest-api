@@ -13,12 +13,10 @@ class WebhookThread(threading.Thread):
 
     def run(self):
         WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
-        print("-"*10)
-        print(self.data)
         webhook_post = requests.post(WEB_HOOK_URL,data=self.data)
 
 
 class Util:
     @staticmethod
-    def send_webhook(data):
+    def send_webhook_create_user(data):
         WebhookThread(data).start()
