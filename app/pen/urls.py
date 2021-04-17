@@ -24,9 +24,9 @@ router.register('search', views.ProductSearchByName)
 app_name="pen"
 urlpatterns = [
     path("category/<slug:category__slug>/brand/<slug:brand__slug>/",views.ProductCategoryBrandFilteredAPIView.as_view(),name="product-category"),
-    path("category/<slug:brand__slug>/brand/<slug:category__slug>/",views.ProductCategoryBrandFilteredAPIView.as_view(),name="product-category"),
+    # path("category/<slug:brand__slug>/brand/<slug:category__slug>/",views.ProductCategoryBrandFilteredAPIView.as_view(),name="product-category"),
     # これと単純にサーチするもののどちらが早いか
-    path("brand/<slug:brand__slug>/products",views.ProductBrandFilteredAPIView.as_view(),name="product-brand"),
+    path("brand/<slug:brand__slug>/products",views.ProductBrandCategoryFilteredAPIView.as_view(),name="product-brand"),
     path("products/",views.ProductListAPIView.as_view(),name="product-list"),
     path("products/<uuid:pk>/",views.ProductRetrieveAPIView.as_view(),name="product"),
     # path("fav-list/",views.OwnFavProductListAPIView.as_view(),name="fav-list"),
