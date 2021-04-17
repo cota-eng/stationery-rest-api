@@ -177,13 +177,12 @@ def create_profile(sender, **kwargs):
     when user created, own profile automatically created
     """
     if kwargs['created']:
-        WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
-        requests.post(WEB_HOOK_URL, data = json.dumps({
-            'text': f':smile_cat:Profile [ {kwargs["instance"]} ] Created!!',  
-        }))
-        # data = {
-        #     "type":"profile created",
-        #     "instance":kwargs["instance"]
-        # }
-        # Util.send_webhook(data)
+        # WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
+        # requests.post(WEB_HOOK_URL, data = json.dumps({
+        #     'text': f':smile_cat:Profile [ {kwargs["instance"]} ] Created!!',  
+        # }))
+        data = json.dumps({
+            'text': f':smile_cat:Profile [ {kwargs["instance"]} ] Created!!'
+        })
+        Util.send_webhook_create_user(data)
         profile = Profile.objects.get_or_create(user=kwargs['instance'])
