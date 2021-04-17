@@ -8,7 +8,7 @@ from .models import (
     FavProduct,
     Review,
 )
-from .permissions import IsOwnerOrReadOnly,IsFavUserOrReadOnly
+from .permissions import IsFavUserOrReadOnly
 from rest_framework.permissions import (
     AllowAny,
     IsAuthenticated,
@@ -213,7 +213,7 @@ class ProductRetrieveAPIView(generics.RetrieveAPIView):
         return qs
     # lookup_field = 'slug'
 
-class CategoryListAPIView(mixins.ListModelMixin,viewsets.GenericViewSet):
+class CategoryListAPIView(generics.ListAPIView):
     """
     for list category view \n
     display category related product !
@@ -266,6 +266,7 @@ class ReviewViewSet(mixins.ListModelMixin,
                     # mixins.CreateModelMixin,
                     viewsets.GenericViewSet):
     """
+    TODO:もし編集機能つけるならPermisson見直す
     can review specific pen 
     only authenticateed user 
     """
