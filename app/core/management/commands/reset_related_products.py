@@ -5,7 +5,7 @@ from django.db.models import Q
 from pprint import pprint
 from time import sleep
 import requests
-
+import environ
 env = environ.Env()
 env.read_env('SLACK_WEBHOOK_NEWS')
 
@@ -16,4 +16,4 @@ class Command(BaseCommand):
             sleep(0.1)
         WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_NEWS")
         requests.post(WEB_HOOK_URL, data = {
-            'text': "fin! set related products" })
+            'text': "fin! reset related products" })
