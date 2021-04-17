@@ -2,18 +2,19 @@ from django.urls import path,include
 from rest_framework import routers
 from . import views
 
+
+
 router = routers.DefaultRouter()
-
-
 """
 now unuse
 """
-router.register('search', views.ProductSearchByName)
+# router.register('search', views.ProductSearchByName)
 # router.register('fav',views.FavProductAPIView)
 # router.register('review', views.ReviewViewSet)
 
 app_name="pen"
 urlpatterns = [
+    path("search/",views.ProductSearchByName.as_view(),name="search"),
     path("category/",views.CategoryListAPIView.as_view(),name="category-list"),
     path("brand/",views.BrandListAPIView.as_view(),name="brand-list"),
     path("tag/",views.TagListAPIView.as_view(),name="tag-list"),
