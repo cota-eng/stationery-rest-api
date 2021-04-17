@@ -43,7 +43,7 @@ class ProductCategoryBrandFilteredAPIView(generics.ListAPIView):
         return qs.filter(category__slug=self.kwargs['category__slug']).filter(brand__slug=self.kwargs['brand__slug'])
 
 class ProductBrandCategoryFilteredAPIView(generics.ListAPIView):
-    queryset = Product.objects.all() #.order_by("-id")
+    queryset = Product.objects.all().order_by("?")
     serializer_class = serializers.ProductListSerializer
     permission_classes = (AllowAny,)
     pagination_class = NormalPagination
@@ -54,8 +54,8 @@ class ProductBrandCategoryFilteredAPIView(generics.ListAPIView):
         qs = self.get_serializer_class().setup_for_query(qs)
         return qs.filter(category__slug=self.kwargs['category__slug']).filter(brand__slug=self.kwargs['brand__slug'])
 
-class ProductBrandFilteredAPIView(generics.ListAPIView):
-    queryset = Product.objects.all().order_by("-id")
+class ProductBrandCategoryFilteredAPIView(generics.ListAPIView):
+    queryset = Product.objects.all().order_by("?")
     serializer_class = serializers.ProductListSerializer
     permission_classes = (AllowAny,)
     pagination_class = NormalPagination
@@ -64,7 +64,7 @@ class ProductBrandFilteredAPIView(generics.ListAPIView):
         #     return None
         qs = self.queryset
         qs = self.get_serializer_class().setup_for_query(qs)
-        return qs.filter(brand__slug=self.kwargs['brand__slug'])
+        return qs.filter(brand__slug=self.kwargs['brand__slug']).filter(category__slug=self.kwargs['category__slug'])
 
 class OwnFavProductListAPIView(generics.ListAPIView):
     queryset = FavProduct.objects.all()
