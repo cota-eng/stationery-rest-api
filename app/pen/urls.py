@@ -28,7 +28,7 @@ urlpatterns = [
     # これと単純にサーチするもののどちらが早いか
     path("brand/<slug:brand__slug>/products",views.ProductBrandFilteredAPIView.as_view(),name="product-brand"),
     path("products/",views.ProductListAPIView.as_view(),name="product-list"),
-    path("products/<str:pk>/",views.ProductRetrieveAPIView.as_view(),name="product"),
+    path("products/<uuid:pk>/",views.ProductRetrieveAPIView.as_view(),name="product"),
     # path("fav-list/",views.OwnFavProductListAPIView.as_view(),name="fav-list"),
     # path("review-list/",views.OwnReviewProductListAPIView.as_view(),name="review-list"),
     path('',include(router.urls)),
