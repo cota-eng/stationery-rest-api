@@ -1,7 +1,6 @@
 from django.db import models
 import uuid
 import os
-import environ
 import requests
 import json
 import ulid
@@ -21,6 +20,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 # from core.models import ULIDField
 
+import environ
 env = environ.Env()
 env.read_env('.env')
 
