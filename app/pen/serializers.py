@@ -185,7 +185,6 @@ class BrandSerializer(serializers.ModelSerializer):
             'name',
             'slug',
             'official_site_link',
-            'product'
             )
         
 
@@ -216,7 +215,6 @@ class TagSerializer(serializers.ModelSerializer):
         fields = (
             'name',
             'slug',
-            'product',
             )
 
 

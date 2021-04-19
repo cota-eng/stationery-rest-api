@@ -6,7 +6,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken,TokenError,AccessToken
-from . import models
+from .models import Profile
 from django.utils.text import gettext_lazy as _
 from pen.serializers import ReviewNotIncludeUserSerialier,FavProductSerializer
 import environ
@@ -74,7 +74,7 @@ class WhoAmISerializer(serializers.ModelSerializer):
             return avatar
         return None
     class Meta:
-        model = models.Profile
+        model = Profile
         fields = ('id','nickname','avatar', 'user')
        
 
@@ -91,7 +91,7 @@ class OwnProfileEditSerializer(serializers.ModelSerializer):
     # avatar = AvatarSerializer()
 
     class Meta:
-        model = models.Profile
+        model = Profile
         fields = ('id', 'nickname','user', 'avatar','twitter_account')
         read_only_fields = ('user','avatar',)
 
@@ -136,7 +136,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     #     return serializer.data
 
     class Meta:
-        model = models.Profile
+        model = Profile
         fields = ('id','nickname','review','created_at', 'updated_at','avatar', )
     # def validate(self, attrs):
     #     nickname = attrs.get('nickname')

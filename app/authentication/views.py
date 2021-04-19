@@ -12,7 +12,8 @@ from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from dj_rest_auth.registration.views import SocialLoginView
 from allauth.socialaccount.providers.oauth2.client import OAuth2Client
 from django.conf import settings
-from rest_framework import permissions, status
+from rest_framework.permissions import (AllowAny,IsAuthenticated,)
+from rest_framework import  status
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from .serializers import LogoutSerializer
@@ -54,7 +55,7 @@ class UserReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     # TODO: serializer - 
     queryset = get_user_model().objects.all()
     serializer_class = serializers.UserSerializer
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (AllowAny,)
     lookup_field = "id"
 
     def get_queryset(self):
@@ -68,7 +69,7 @@ class WhoAmIView(
     # TODO: serializer - ok
     queryset = models.Profile.objects.all()
     # permission_classes = (permissions.AllowAny,)
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     serializer_class = serializers.WhoAmISerializer
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
@@ -79,7 +80,7 @@ class ProfileReadOnlyViewSet(mixins.RetrieveModelMixin,
                              viewsets.GenericViewSet):
     queryset = models.Profile.objects.all().prefetch_related("user__reviewer")
     # permission_classes = (permissions.AllowAny,)
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (AllowAny,)
     serializer_class = serializers.ProfileSerializer
     #TODO serializer Recreate
     # parser_classes = [parsers.MultiPartParser,
@@ -98,7 +99,7 @@ class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
     """
     queryset = models.Profile.objects.all()
     # permission_classes = (permissions.AllowAny,)
-    permission_classes = (permissions.IsAuthenticated,
+    permission_classes = (IsAuthenticated,
                           UserIsOwnerOrReadOnly,
                           )
     serializer_class = serializers.OwnProfileEditSerializer
@@ -110,7 +111,7 @@ class OwnProfileListRetrieveUpdateViewSet(mixins.RetrieveModelMixin,
 
 class LogoutView(GenericAPIView):
     serializer_class = LogoutSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request, *args):
         sz = self.get_serializer(data=request.data)
