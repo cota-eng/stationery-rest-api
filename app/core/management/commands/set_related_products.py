@@ -22,9 +22,9 @@ class Command(BaseCommand):
             related = Product.objects.filter(Q(brand=product.brand.id) | Q(category=product.category.id)).exclude(id=str(product.id)).order_by("?")[:6]
             # related = Product.objects.filter(Q(brand=product.brand.id) | Q(category=product.category.id)).exclude(id=str(product.id)).order_by("?").distinct()[:6]
             product.related_products.set(related)
+            product.save()
             # pprint(len(related))
             # pprint(str(product.pk))
-            sleep(0.5)
         WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_NEWS")
         requests.post(WEB_HOOK_URL, data = {
             'text': "fin! set related products" })
