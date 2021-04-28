@@ -1,7 +1,6 @@
 from django.db import models
 import uuid
 import os
-import environ
 import requests
 import json
 import ulid
@@ -19,8 +18,9 @@ from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.utils import timezone
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from core.models import ULIDField
+# from core.models import ULIDField
 
+import environ
 env = environ.Env()
 env.read_env('.env')
 
@@ -71,13 +71,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
     TODO: id override to UUOD ?
     """
-    id = ULIDField(
+    id = models.UUIDField(
         primary_key=True,
-        default=ulid.new,
+        default=uuid.uuid4,
         unique=True,
-        editable=False,
-        db_index=True
-        )
+        db_index=True,
+        editable=False)
     # oauth email automatically add
     username = models.CharField(
         _('username'),
@@ -118,6 +117,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = _('users')
         # abstract = True
 
+    def __str__(self):
+        return self.username
 
 def profile_avatar_path(instance, filename):
     ext = filename.split('.')[-1]
@@ -139,14 +140,12 @@ class Profile(models.Model):
     Model that has avatar and dates of create and update
     TODO: id is to normal id?
     """
-    # uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    id = ULIDField(
+    id = models.UUIDField(
         primary_key=True,
-        default=ulid.new,
+        default=uuid.uuid4,
         unique=True,
-        editable=False,
-        db_index=True
-        )
+        db_index=True,
+        editable=False)
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         related_name="profile",
@@ -167,10 +166,11 @@ class Profile(models.Model):
     # avatar = models.ForeignKey(Avatar,on_delete=models.PROTECT,related_name="profile")
     twitter_account = models.CharField(_('twitter username'),null=True,blank=True,max_length=100)
     def __str__(self):
-        return f'Profile of {self.user}'
+        return f'Profile of {self.user.username}'
 
 from django.db.models.signals import post_save
 
+from core.utils import Util
 @receiver(post_save, sender=User)
 def create_profile(sender, **kwargs):
     """
@@ -181,5 +181,8 @@ def create_profile(sender, **kwargs):
         # requests.post(WEB_HOOK_URL, data = json.dumps({
         #     'text': f':smile_cat:Profile [ {kwargs["instance"]} ] Created!!',  
         # }))
-        # avatar = Avatar.objects.get(pk=1)
+        data = json.dumps({
+            'text': f':smile_cat:Profile [ {kwargs["instance"]} ] Created!!'
+        })
+        Util.send_webhook_create_user(data)
         profile = Profile.objects.get_or_create(user=kwargs['instance'])

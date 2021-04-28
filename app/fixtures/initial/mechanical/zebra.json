@@ -1,7 +1,7 @@
 [
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8H91B9GGT2GFQGYRC6",
+        "pk": "a2ab6bd6-6256-4b10-b2bb-b31a0365ec37",
         "fields": {
             "name": "エアーフィットライト / S",
             "image": "products/5c3659daf55d1e39e6781e458b4b885e1b184fe3.jpg",
@@ -19,7 +19,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8HWGZ347GEBE4M1SSW",
+        "pk": "efbc4925-62f0-4983-9000-0f1a74676343",
         "fields": {
             "name": "エアーフィット",
             "image": "products/4c7f7cd909130f9a2d4aa5edb03bbb73349e6abb.jpg",
@@ -37,7 +37,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8HBHV8Z1X4X4H98ECY",
+        "pk": "005c7ec6-77fd-4483-af9d-4a3fe5310e32",
         "fields": {
             "name": "ジムメカ",
             "image": "products/2837ee0d9218618f5ee68c190a5184c9eb408bc9.jpg",
@@ -55,7 +55,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8HWJ2CKNJX9S6ZZ9F5",
+        "pk": "048b462a-e8ac-4d2f-a74f-f256117cafde",
         "fields": {
             "name": "タプリクリップ",
             "image": "products/a44cde577b70a3437042dad632dae1a3695638b0.jpg",
@@ -73,7 +73,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8H9GR62V2BSZ3WR8TE",
+        "pk": "874c704e-4f0e-4b5d-9f4d-4d749958c834",
         "fields": {
             "name": "クリップ-オン マルチ2000",
             "image": "products/473ba23289e79b36e6bd4822b2d2ee220a79bfe7.jpg",
@@ -91,7 +91,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8HB6A3P5G3J5PD7QDK",
+        "pk": "565287d5-7b72-4b5d-96b2-bc126d0cbaca",
         "fields": {
             "name": "デルガード+2C",
             "image": "products/6c1e5f93a3dce4eef43f7cef92244c401fbe5bb4.jpg",
@@ -109,7 +109,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8HEAHTA785G89PPGGP",
+        "pk": "39c4f157-2468-4657-8a72-b8c60d55d865",
         "fields": {
             "name": "クリップ-オン マルチ1000 / S",
             "image": "products/37944060f437cfcce7c20936bdf8179f526704bb.jpg",
@@ -127,7 +127,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8HD0M80F7NTJMYFCAJ",
+        "pk": "2bf72067-198b-4b12-a3ac-c1d4dcd57a80",
         "fields": {
             "name": "クリップ-オン マルチ1000 / S",
             "image": "products/37944060f437cfcce7c20936bdf8179f526704bb.jpg",
@@ -145,7 +145,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8HGMBT3F3D5WKA43X0",
+        "pk": "d148725a-9b9d-4190-b271-ccb84e34cee0",
         "fields": {
             "name": "デルガード タイプLx\r\n\r\n",
             "image": "products/b9de6af86ef0c28d4cc63e806df07e2c4fddc539.jpg",
@@ -163,7 +163,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8HZCN0X9WEW7SY6H38",
+        "pk": "45c4ae00-989e-439b-8b2c-7dc2fa8a333d",
         "fields": {
             "name": "デルガード",
             "image": "products/b9de6af86ef0c28d4cc63e806df07e2c4fddc539.jpg",
@@ -181,7 +181,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8HNHJN85WFQ0S4HGRT",
+        "pk": "77d25043-e2a0-4da3-92d2-af732353ed08",
         "fields": {
             "name": "テクトツゥーウェイ / ライト",
             "image": "products/0df019785361b0c6884b8033f3756d0b929cb5eb.jpg",
@@ -199,7 +199,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8HYW7GF7NG6TKMGPWB",
+        "pk": "722fa019-4c52-4a0a-8d87-8e8d380a4eb0",
         "fields": {
             "name": "テクトツゥーウェイ / ライト",
             "image": "products/0df019785361b0c6884b8033f3756d0b929cb5eb.jpg",
@@ -217,7 +217,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8HHYDDSKC4CRBX8MYE",
+        "pk": "9c71e423-17e9-46d5-b2c1-40d99f7db722",
         "fields": {
             "name": "デルガード タイプGR",
             "image": "products/4b3de652ab6cd3ee8b90e1cd1d46ffcc14d00ebd.jpg",
@@ -235,7 +235,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8H1K90CY816N93RCG7",
+        "pk": "f9cb6492-703e-48f6-9ffd-bfd4cee78a6a",
         "fields": {
             "name": "デルガード タイプER",
             "image": "products/f609e88c7e79a59494c63f70c46a2b9a0ed5dc30.jpg",
@@ -253,7 +253,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8HNTTFPVWK9WCYZ38A",
+        "pk": "02512298-87eb-47ed-84a1-4bbd703242e3",
         "fields": {
             "name": "クリップ-オン マルチ",
             "image": "products/ae8c6f7e42fd65af2ceb84822fa06f0b0bc76043.jpg",
@@ -271,7 +271,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8HFD1CMP9TQ5Y6K3FA",
+        "pk": "655e8c55-8fe5-48f3-8a8e-002a1be9471e",
         "fields": {
             "name": "手帳用",
             "image": "products/5194a0a35513c1789eed7702a6cbbea8ff866dc0.jpg",
@@ -289,7 +289,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8HMC9D04KQP4QKBN3Q",
+        "pk": "9b3b6972-9052-4cec-8d69-6f24294b9be3",
         "fields": {
             "name": "ドラフィックス",
             "image": "products/7cc8e63e1d7d62d6b1ea71d081e89f569ef2de43.jpg",
@@ -307,7 +307,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8H05N3X8WEWG0Z3823",
+        "pk": "c25fa5d7-7b16-4b61-961b-913b4773c65f",
         "fields": {
             "name": "カラーフライト0.3",
             "image": "products/10767b3c2b440e5b2bb3f1753405c8372f985047.jpg",
@@ -325,7 +325,7 @@
     },
     {
         "model": "pen.Product",
-        "pk": "01F35HRR8H4PNAZB3T0MFX91KH",
+        "pk": "4300d3ef-c29d-4c49-a1c1-bdef80594ead",
         "fields": {
             "name": "カラーフライト",
             "image": "products/8f38850a4daf369950fb3099d6a6563e787a48a8.jpg",

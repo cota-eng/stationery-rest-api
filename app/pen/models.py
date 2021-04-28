@@ -6,7 +6,7 @@ from django.conf import settings
 from django.utils import timezone
 from authentication.models import User
 import ulid
-from core.models import ULIDField
+# from core.models import ULIDField
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
 
@@ -70,13 +70,12 @@ class Tag(models.Model):
 
 class Product(models.Model):
     """Model that is main part"""
-    id = ULIDField(
+    id = models.UUIDField(
         primary_key=True,
-        default=ulid.new,
+        default=uuid.uuid4,
         unique=True,
-        editable=False,
-        db_index=True
-        )
+        db_index=True,
+        editable=False)
     related_products = models.ManyToManyField("self",null=True,blank=True,)
     name = models.CharField(
         _("name"), max_length=100)
@@ -206,13 +205,12 @@ class Review(models.Model):
     #     ]
 
     """Model that display reviews of pens"""
-    id = ULIDField(
+    id = models.UUIDField(
         primary_key=True,
-        default=ulid.new,
+        default=uuid.uuid4,
         unique=True,
-        editable=False,
-        db_index=True
-        )
+        db_index=True,
+        editable=False)
     product = models.ForeignKey(
         Product,
         related_name='review',
