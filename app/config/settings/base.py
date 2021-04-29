@@ -9,20 +9,21 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+from datetime import timedelta
+import os
 import environ
+# from pathlib import Path
 
 env = environ.Env()
 env.read_env('.env')
 
-from pathlib import Path
-import os
-from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 # BASE_DIR = Path(__file__).resolve().parent.parent
 
 # settings dir created, so changed basedir
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -34,8 +35,7 @@ SECRET_KEY = env.get_value('SECRET_KEY')
 DEBUG = True
 
 
-
-ALLOWED_HOSTS = ['localhost','127.0.0.1',]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', ]
 
 
 # Application definition
@@ -84,7 +84,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,7 +111,7 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASS'),
-        'PORT':os.environ.get('DB:PORT'),
+        'PORT': os.environ.get('DB:PORT'),
     }
 }
 
@@ -120,16 +120,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.\
+            UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.\
+            MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.\
+            CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.\
+            NumericPasswordValidator',
     },
 ]
 
@@ -149,8 +153,8 @@ USE_TZ = True
 
 
 AUTHENTICATION_BACKENDS = [
-   "django.contrib.auth.backends.AllowAllUsersModelBackend",
-   "allauth.account.auth_backends.AuthenticationBackend"
+    "django.contrib.auth.backends.AllowAllUsersModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend"
 ]
 
 
@@ -168,13 +172,10 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny'
         # 'rest_framework.permissions.IsAuthenticated',
     ),
-    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.StandardResultsSetPagination',
 
-    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    # 'PAGE_SIZE': 5,
 
     'NON_FIELD_ERRORS_KEY': 'error',
-    
+
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
         'rest_framework.throttling.UserRateThrottle'
@@ -189,9 +190,8 @@ REST_FRAMEWORK = {
 }
 
 
-
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),# in local
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),  # in local
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
@@ -244,7 +244,7 @@ cannot use
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'authentication.User'
 
@@ -299,9 +299,9 @@ cloudinary
 # import cloudinary
 # import cloudinary.uploader
 # import cloudinary.api
-# cloudinary.config( 
-#   cloud_name = env.get_value('CLOUDINARY_URL'), 
-#   api_key = env.get_value('CLOUDINARY_API_KEY'), 
+# cloudinary.config(
+#   cloud_name = env.get_value('CLOUDINARY_URL'),
+#   api_key = env.get_value('CLOUDINARY_API_KEY'),
 #   api_secret = env.get_value('CLOUDINARY_API_SECRET'),
 # )
 # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
