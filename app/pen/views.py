@@ -1,3 +1,5 @@
+import json
+import requests
 from rest_framework import viewsets
 from . import serializers
 from .models import (
@@ -16,22 +18,23 @@ from rest_framework.permissions import (
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.decorators import  action
-from rest_framework import authentication
+from rest_framework.decorators import action
+# from rest_framework import authentication
 from django_filters import rest_framework as filters
-from .filters import  ProductOriginalFilter,OwnFavFilter
-from rest_framework import pagination
+from .filters import ProductOriginalFilter
+# , OwnFavFilter
+# from rest_framework import pagination
 from rest_framework import mixins
-from rest_framework import generics
+# from rest_framework import generics
 from django.db.models import Q
 from .pagination import NormalPagination
 import environ
 env = environ.Env()
 env.read_env('.env')
-import requests, json
+
 
 class ProductCategoryBrandFilteredAPIView(generics.ListAPIView):
-    queryset = Product.objects.all() #.order_by("-id")
+    queryset = Product.objects.all()  # .order_by("-id")
     serializer_class = serializers.ProductListSerializer
     permission_classes = (AllowAny,)
     pagination_class = NormalPagination
@@ -41,7 +44,8 @@ class ProductCategoryBrandFilteredAPIView(generics.ListAPIView):
         #     return None
         qs = self.queryset
         qs = self.get_serializer_class().setup_for_query(qs)
-        return qs.filter(category__slug=self.kwargs['category__slug']).filter(brand__slug=self.kwargs['brand__slug'])
+        return qs.filter(category__slug=self.kwargs['category__slug']) \
+            .filter(brand__slug=self.kwargs['brand__slug'])
 
 
 class ProductBrandCategoryFilteredAPIView(generics.ListAPIView):
@@ -58,7 +62,9 @@ class ProductBrandCategoryFilteredAPIView(generics.ListAPIView):
         #     return None
         qs = self.queryset
         qs = self.get_serializer_class().setup_for_query(qs)
-        return qs.filter(brand__slug=self.kwargs['brand__slug']).filter(category__slug=self.kwargs['category__slug'])
+        return qs.filter(brand__slug=self.kwargs['brand__slug']) \
+            .filter(category__slug=self.kwargs['category__slug'])
+
 
 class OwnFavProductListAPIView(generics.ListAPIView):
     queryset = FavProduct.objects.all()
@@ -68,12 +74,17 @@ class OwnFavProductListAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         # below two code is equal in sql...
-        # return self.queryset.filter(Q(fav_user=self.request.user)&Q(is_favorite=True))
-        return self.queryset.prefetch_related('product').select_related('fav_user').filter(fav_user=self.request.user).filter(is_favorite=True)
+        # return self.queryset.filter(Q(fav_user=self.request.user)\
+        # &Q(is_favorite=True))
+        return self.queryset.prefetch_related('product') \
+            .select_related('fav_user').filter(fav_user=self.request.user) \
+            .filter(is_favorite=True)
+
 
 class FavProductAPIView(mixins.RetrieveModelMixin,
-                        #    mixins.ListModelMixin,#TODO in production, not needed?
-                           viewsets.GenericViewSet):
+                        #    mixins.ListModelMixin,
+                        # #TODO in production, not needed?
+                        viewsets.GenericViewSet):
     """
     get specific fav info
     EX
@@ -81,11 +92,11 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
     """
     queryset = FavProduct.objects.all()
     serializer_class = serializers.FavProductSerializer
-    permission_classes = (IsAuthenticated,IsFavUserOrReadOnly,)
+    permission_classes = (IsAuthenticated, IsFavUserOrReadOnly,)
 
     # def get_queryset(self):
     #     return self.queryset.filter(fav_user=self.request.user)
-        
+
     # filter_backends = [filters.DjangoFilterBackend]
     # filterset_class = OwnFavFilter
     """
@@ -93,21 +104,25 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
     """
     # lookup_field = "product"
     # lookup_url_kwarg = "fav_user"
-  
+
     @action(detail=True, methods=["GET"], permission_classes=[IsAuthenticated])
     def check(self, request, pk=None):
         product = Product.objects.get(id=pk)
         user = self.request.user
         try:
-            fav = FavProduct.objects.get(Q(fav_user__exact=user) & Q(product__exact=product))
+            fav = FavProduct.objects.get(
+                Q(fav_user__exact=user) & Q(product__exact=product))
         except FavProduct.DoesNotExist:
             response = {'message': 'not faved'}
             return Response(response, status=status.HTTP_204_NO_CONTENT)
         serializer = serializers.FavProductSerializer(fav, many=False)
-        response = {'message': 'Fav cheked', 'result': serializer.data["is_favorite"]}
+        response = {'message': 'Fav cheked',
+                    'result': serializer.data["is_favorite"]}
         return Response(response, status=status.HTTP_200_OK)
 
-    @action(detail=True, methods=["POST"], permission_classes=[IsAuthenticated,IsFavUserOrReadOnly])
+    @action(detail=True,
+            methods=["POST"],
+            permission_classes=[IsAuthenticated, IsFavUserOrReadOnly])
     def fav(self, request, pk=None):
         """
         FAV
@@ -144,11 +159,12 @@ class FavProductAPIView(mixins.RetrieveModelMixin,
                 fav_user=user,
                 product=product,
                 is_favorite=True,
-                )
+            )
             serializer = serializers.FavProductSerializer(fav, many=False)
-            response = {'message': 'first faved','result': serializer.data}
+            response = {'message': 'first faved', 'result': serializer.data}
             return Response(response, status=status.HTTP_200_OK)
-     
+
+
 class OwnReviewProductListAPIView(generics.ListAPIView):
     """
     View that get data reviewed by request user:IsAuthenticated
@@ -156,17 +172,17 @@ class OwnReviewProductListAPIView(generics.ListAPIView):
     queryset = Review.objects.all()
     serializer_class = serializers.OwnReviewProductListSerialier
     permission_classes = (IsAuthenticated,)
-    
+
     def get_queryset(self):
         qs = self.queryset
         qs = self.get_serializer_class().setup_for_query(qs)
         user = self.request.user
         return qs.filter(reviewer=user)
 
-        
+
 class ProductPagingReadOnlyViewSet(mixins.ListModelMixin,
-                             mixins.RetrieveModelMixin,
-                             viewsets.GenericViewSet):
+                                   mixins.RetrieveModelMixin,
+                                   viewsets.GenericViewSet):
     """
     for testing
     """
@@ -174,12 +190,12 @@ class ProductPagingReadOnlyViewSet(mixins.ListModelMixin,
     serializer_class = serializers.ProductListSerializer
     permission_classes = (AllowAny,)
     pagination_class = NormalPagination
-    
+
     def get_queryset(self):
         qs = self.queryset
         qs = self.get_serializer_class().setup_for_query(qs)
         return qs
-    
+
 
 class ProductListAPIView(generics.ListAPIView):
     """
@@ -191,12 +207,10 @@ class ProductListAPIView(generics.ListAPIView):
     permission_classes = (AllowAny,)
     # pagination_class = NormalPagination
 
-    
     def get_queryset(self):
         qs = self.queryset
         qs = self.get_serializer_class().setup_for_query(qs)
         return qs
-    
 
 
 class ProductRetrieveAPIView(generics.RetrieveAPIView):
@@ -206,12 +220,13 @@ class ProductRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = serializers.ProductRetrieveSerializer
     permission_classes = (AllowAny,)
-    
+
     def get_queryset(self):
         qs = self.queryset
         qs = self.get_serializer_class().setup_for_query(qs)
         return qs
     # lookup_field = 'slug'
+
 
 class CategoryListAPIView(generics.ListAPIView):
     """
@@ -221,6 +236,7 @@ class CategoryListAPIView(generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = serializers.CategorySerializer
     permission_classes = (AllowAny,)
+
 
 class TagListAPIView(generics.ListAPIView):
     """
@@ -241,6 +257,7 @@ class BrandListAPIView(generics.ListAPIView):
     serializer_class = serializers.BrandSerializer
     permission_classes = (AllowAny,)
 
+
 class ProductSearchByName(generics.ListAPIView):
     """
     search like below \n
@@ -252,6 +269,7 @@ class ProductSearchByName(generics.ListAPIView):
     # pagination_class = NormalPagination
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = ProductOriginalFilter
+
     def get_queryset(self):
         qs = self.queryset
         qs = self.get_serializer_class().setup_for_query(qs)
@@ -275,7 +293,10 @@ class ReviewViewSet(mixins.ListModelMixin,
     # lookup_field = ''
     # def perform_create(self, serializer):
     #     serializer.save(reviewer=self.request.user)
-    @action(detail=True,methods=["POST"], permission_classes=[IsAuthenticated])
+
+    @action(detail=True,
+            methods=["POST"],
+            permission_classes=[IsAuthenticated])
     def create_review(self, request, pk=None):
         """
         review specific pen 
@@ -307,10 +328,11 @@ class ReviewViewSet(mixins.ListModelMixin,
                 review.bad_point_text = bad_point_text
                 review.save()
                 serializer = serializers.ReviewSerialier(review, many=False)
-                response = {'message': 'Rating updated', 'result': serializer.data}
+                response = {'message': 'Rating updated',
+                            'result': serializer.data}
                 WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
-                requests.post(WEB_HOOK_URL, data = json.dumps({
-                    'text': f':smile_cat:Review Updated by {user} !!',  
+                requests.post(WEB_HOOK_URL, data=json.dumps({
+                    'text': f':smile_cat:Review Updated by {user} !!',
                 }))
                 return Response(response, status=status.HTTP_200_OK)
             except Review.DoesNotExist:
@@ -325,18 +347,18 @@ class ReviewViewSet(mixins.ListModelMixin,
                     stars_of_easy_to_get=int(stars_of_easy_to_get),
                     good_point_text=good_point_text,
                     bad_point_text=bad_point_text
-                    )
+                )
                 response = {'message': 'review created'}
                 WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
-                requests.post(WEB_HOOK_URL, data = json.dumps({
-                    'text': f':smile_cat:Review Created by {user} !!',  
+                requests.post(WEB_HOOK_URL, data=json.dumps({
+                    'text': f':smile_cat:Review Created by {user} !!',
                 }))
                 return Response(response, status=status.HTTP_200_OK)
         else:
             response = {'message': 'error evoled'}
             WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
-            requests.post(WEB_HOOK_URL, data = json.dumps({
-                'text': f':smile_cat:Review Failed by {user} !!',  
+            requests.post(WEB_HOOK_URL, data=json.dumps({
+                'text': f':smile_cat:Review Failed by {user} !!',
             }))
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
@@ -380,6 +402,3 @@ class ReviewViewSet(mixins.ListModelMixin,
 #     def get_queryset(self):
 #         slug = self.request.GET.get('slug')
 #         return self.queryset.filter(tag__slug=slug)
-
-
-    

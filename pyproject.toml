@@ -2,6 +2,6 @@
 line-length = 99
 exclude = '''
 (
-    app/settings
+    config/settings/*
 )
 '''
