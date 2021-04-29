@@ -1,9 +1,10 @@
 import environ
-env = environ.Env()
-env.read_env('.env')
 import threading
 import requests
-import json
+# import json
+env = environ.Env()
+env.read_env('.env')
+
 
 class WebhookThread(threading.Thread):
 
@@ -13,7 +14,7 @@ class WebhookThread(threading.Thread):
 
     def run(self):
         WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
-        webhook_post = requests.post(WEB_HOOK_URL,data=self.data)
+        requests.post(WEB_HOOK_URL, data=self.data)
 
 
 class Util:

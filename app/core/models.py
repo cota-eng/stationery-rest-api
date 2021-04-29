@@ -1,7 +1,8 @@
 from django.db import models
-import ulid
-from django.core import exceptions
-from django.utils.translation import gettext as _
+# from django.core import exceptions
+# from django.utils.translation import gettext as _
+
+# import ulid
 
 
 class ULIDField(models.CharField):
@@ -28,7 +29,8 @@ class ULIDField(models.CharField):
     #         return None
     #     if not isinstance(value, ulid.ULID):
     #         value = self.to_python(value)
-    #     return value.uuid if connection.features.has_native_uuid_field else str(value)
+    #     return value.uuid if connection.feature\
+    # s.has_native_uuid_field else str(value)
 
     # def from_db_value(self, value, expression, connection):
     #     return self.to_python(value)
