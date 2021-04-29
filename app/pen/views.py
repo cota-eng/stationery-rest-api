@@ -266,7 +266,7 @@ class ProductSearchByName(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = serializers.ProductListSerializer
     permission_classes = (AllowAny,)
-    # pagination_class = NormalPagination
+    pagination_class = NormalPagination
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = ProductOriginalFilter
 
