@@ -2,4 +2,3 @@
 exclude =
   migrations ,
   __pycash__.py,
-  settings.py
