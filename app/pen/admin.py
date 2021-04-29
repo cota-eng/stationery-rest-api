@@ -3,8 +3,10 @@ from . import models
 
 admin.site.site_header = "管理画面"
 
+
 class ReviewInline(admin.TabularInline):
     model = models.Review
+
 
 class ProductAdmin(admin.ModelAdmin):
     inlines = [
@@ -13,31 +15,41 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'price',)
     list_filter = ('price',)
 
-admin.site.register(models.Product,ProductAdmin)
+
+admin.site.register(models.Product, ProductAdmin)
+
 
 class FavProductAdmin(admin.ModelAdmin):
     list_display = ('fav_user', 'product',)
     list_filter = ('is_favorite',)
 
-admin.site.register(models.FavProduct,FavProductAdmin)
+
+admin.site.register(models.FavProduct, FavProductAdmin)
 
 
 class TagAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug',)
 
-admin.site.register(models.Tag,TagAdmin)
+
+admin.site.register(models.Tag, TagAdmin)
+
 
 class BrandAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug', 'official_site_link',)
 
-admin.site.register(models.Brand,BrandAdmin)
-    
+
+admin.site.register(models.Brand, BrandAdmin)
+
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug',)
-    
-admin.site.register(models.Category,CategoryAdmin)
+
+
+admin.site.register(models.Category, CategoryAdmin)
+
 
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('avarage_star',)
 
-admin.site.register(models.Review,ReviewAdmin)
+
+admin.site.register(models.Review, ReviewAdmin)

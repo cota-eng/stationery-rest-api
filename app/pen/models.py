@@ -2,13 +2,14 @@ from django.db import models
 import uuid
 from django.utils.translation import gettext as _
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.conf import settings
+# from django.conf import settings
 from django.utils import timezone
 from authentication.models import User
-import ulid
+# import ulid
 # from core.models import ULIDField
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
+
 
 class Category(models.Model):
     """
@@ -18,15 +19,16 @@ class Category(models.Model):
         _("category name"),
         max_length=50,
         unique=True,
-        )
+    )
     slug = models.SlugField(
         _("category slug"),
         max_length=50,
         unique=True,
-        )
-    
+    )
+
     def __str__(self):
         return f'Category: {self.name}'
+
 
 class Brand(models.Model):
     """
@@ -40,15 +42,16 @@ class Brand(models.Model):
     slug = models.SlugField(
         _("brand slug"),
         unique=True,
-        )
+    )
     official_site_link = models.URLField(
-         _("brand link"),
-         max_length=255,
-         unique=True
-        )
+        _("brand link"),
+        max_length=255,
+        unique=True
+    )
 
     def __str__(self):
         return f'Brand: {self.name}'
+
 
 class Tag(models.Model):
     """
@@ -58,12 +61,12 @@ class Tag(models.Model):
         _("category name"),
         max_length=50,
         unique=True,
-        )
+    )
     slug = models.SlugField(
         _("category slug"),
         unique=True,
-        )
-    
+    )
+
     def __str__(self):
         return f'Tag: {self.name}'
 
@@ -76,7 +79,7 @@ class Product(models.Model):
         unique=True,
         db_index=True,
         editable=False)
-    related_products = models.ManyToManyField("self",null=True,blank=True,)
+    related_products = models.ManyToManyField("self", null=True, blank=True,)
     name = models.CharField(
         _("name"), max_length=100)
     # TODO: markdown -> html field
@@ -87,11 +90,11 @@ class Product(models.Model):
         related_name="product",
         # TODO: CASCADE -> SETNULL
         on_delete=models.CASCADE
-        )
+    )
     price = models.PositiveIntegerField(
         _("price"),
-        validators=[MaxValueValidator(1000000),]
-        )
+        validators=[MaxValueValidator(1000000), ]
+    )
     brand = models.ForeignKey(
         Brand,
         related_name="product",
@@ -105,7 +108,7 @@ class Product(models.Model):
     )
     image = ProcessedImageField(
         upload_to='products',
-        processors=[ResizeToFill(500,500)],
+        processors=[ResizeToFill(500, 500)],
         format='JPEG',
         options={'quality': 60},
         blank=True,
@@ -141,17 +144,18 @@ class Product(models.Model):
     # @property
     # def avarage_of_review_star(self):
     #     sum: int = 0
-    #     reviews = self.objects.prefetch_related('review').filter(product=self)
+    #     reviews = self.objects.prefetch_related('review').\
+    # filter(product=self)
     #     if len(reviews) != 0:
     #         for review in reviews:
     #             sum += review.avarage_star
     #         return sum / len(reviews)
     #     else:
     #         return 0
-        
+
     def __str__(self):
         return f'product: {self.name} Price: {self.price}'
-    
+
 
 class FavProduct(models.Model):
     """
@@ -175,12 +179,12 @@ class FavProduct(models.Model):
         on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(auto_now_add=True)
-    
+
     class Meta:
         """
         one review for one person 
         """
-        unique_together = (('fav_user','product'))
+        unique_together = (('fav_user', 'product'))
         index_together = (('fav_user', 'product'))
         ordering = ['-created_at']
 
@@ -232,24 +236,23 @@ class Review(models.Model):
     stars_of_design = models.IntegerField(
         _('design'),
         validators=[MaxValueValidator(5), MinValueValidator(1)]
-        )
+    )
     stars_of_durability = models.IntegerField(
         _('durability'),
         validators=[MaxValueValidator(5), MinValueValidator(1)]
-        )
+    )
     stars_of_usefulness = models.IntegerField(
         _('usefulness'),
         validators=[MaxValueValidator(5), MinValueValidator(1)]
-        )
+    )
     stars_of_function = models.IntegerField(
         _('function'),
         validators=[MaxValueValidator(5), MinValueValidator(1)]
-        )
+    )
     stars_of_easy_to_get = models.IntegerField(
         _('easy_to_get'),
         validators=[MaxValueValidator(5), MinValueValidator(1)]
-        )
-    
+    )
 
     @property
     def avarage_star(self):
@@ -268,8 +271,8 @@ class Review(models.Model):
             sum += star
         return float(sum / len(stars_list))
 
-    good_point_text = models.TextField(blank=True,null=True)
-    bad_point_text = models.TextField(blank=True,null=True)
+    good_point_text = models.TextField(blank=True, null=True)
+    bad_point_text = models.TextField(blank=True, null=True)
     reviewer = models.ForeignKey(
         User,
         related_name='reviewer',
@@ -281,7 +284,8 @@ class Review(models.Model):
         one review for one person 
         """
         constraints = [
-            models.UniqueConstraint(fields=['reviewer', 'product'], name='unique_booking'),
+            models.UniqueConstraint(
+                fields=['reviewer', 'product'], name='unique_booking'),
         ]
         indexes = [
             models.Index(fields=['reviewer', 'product'])
@@ -293,7 +297,8 @@ class Review(models.Model):
         # index_together = (('reviewer', 'product'))
 
     def __str__(self):
-        return f'Reviewd product: {self.product.name} / Reviewer: {self.reviewer.username}'
-    
+        return f'Reviewd product: {self.product.name} \
+             Reviewer: {self.reviewer.username}'
+
 # class Comment(models.Model):
 #     pass

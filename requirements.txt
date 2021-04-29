@@ -6,7 +6,7 @@ dj-rest-auth
 psycopg2==2.8.6
 psycopg2-binary
 Pillow==8.1.0
-flake8>=3.6.0,<3.7.0
+flake8
 djangorestframework-simplejwt==4.6.0
 django-cors-headers
 django-environ
@@ -30,3 +30,7 @@ django-imagekit
 django-storages
 django-cleanup
 boto3
+black
+autopep8
+pipdeptree
+#flake8-3.9.1 pycodestyle-2.7.0 pyflakes-2.3.1

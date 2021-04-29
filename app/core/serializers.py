@@ -23,6 +23,5 @@
 #         return str(ulid.parse(value))
 
 
-# # Register the DRF serializer field with the Django ULID model field so the DRF model
-# # serializer can automatically detect/use the field without requiring serializers to specify it.
-# serializers.ModelSerializer.serializer_field_mapping[models.ULIDField] = ULIDField
+# serializers.ModelSerializer.serializer_field_ma\
+# pping[models.ULIDField] = ULIDField

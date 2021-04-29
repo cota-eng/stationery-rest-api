@@ -1,7 +1,11 @@
-from .base import *
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
+import django_heroku
+import dj_database_url
 import environ
+from .base import *
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))
+
 env = environ.Env()
 env.read_env(os.path.join(BASE_DIR, '.env'))
 
@@ -46,27 +50,25 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # SECURE_SSL_REDIRECT = True
 # SECURE_HSTS_PRELOAD=True
 # CORS_ORIGIN_WHITELIST = [
-    
+
 # ]
 # CSRF_TRUSTED_ORIGINS = [
-    
+
 # ]
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
-ALLOWED_HOSTS = [".herokuapp.com",]
+ALLOWED_HOSTS = [".herokuapp.com", ]
 
 """
 DB
 """
-import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
 DATABASES['default'].update(db_from_env)
 
 """
 django heroku 
 """
-import django_heroku
 django_heroku.settings(locals())
 
 
@@ -86,10 +88,10 @@ AWS_ACCESS_KEY_ID = env('AWS_ACCESS')
 AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
 # AWS_DEFAULT_ACL = 'public-read'
-AWS_LOCATION = 'static' # s3バケット上のベースとなるファイルパス
+AWS_LOCATION = 'static'  # s3バケット上のベースとなるファイルパス
 AWS_S3_OBJECT_PARAMETERS = {
-        'CacheControl': 'max-age=86400',
-    }
+    'CacheControl': 'max-age=86400',
+}
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
 """

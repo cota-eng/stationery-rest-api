@@ -1,9 +1,9 @@
-import logging
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from pen.models import Tag
+# import logging
+
 
 class Command(BaseCommand):
-    # args = '<target_id target_id ...>'
     help = u'タグをリストアップ'
 
     def handle(self, *args, **options):

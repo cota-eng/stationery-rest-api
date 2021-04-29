@@ -1,5 +1,9 @@
 [flake8]
+max-line-length = 99
+ignore = E203,W503,W504
 exclude =
   migrations ,
   __pycash__.py,
-  settings.py
+  local.py,
+  production.py,
+ .git,__pycache__,docs/source/conf.py,old,build,dist

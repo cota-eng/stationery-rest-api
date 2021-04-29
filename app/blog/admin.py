@@ -8,9 +8,9 @@ from .models import Post
 #     list_editable = ["title"]
 #     list_filter = ["updated_at"]
 #     search_fields = ["title", "content"]
-    
+
 #     class Meta:
 #         model = Post
-        
+
 admin.site.register(Post)
 # admin.site.register(Post,PostModelAdmin)

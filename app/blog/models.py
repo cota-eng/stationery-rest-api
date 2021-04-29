@@ -3,9 +3,11 @@ from django.contrib.auth import get_user_model
 from markdown import markdown
 from django.utils.safestring import mark_safe
 from django.utils.text import slugify
-from django.contrib.contenttypes.fields import GenericForeignKey,GenericRelation  
-from django.contrib.contenttypes.models import ContentType
-from django.utils import  timezone
+# from django.contrib.contenttypes.fields import GenericForeignKey\
+# , GenericRelation
+# from django.contrib.contenttypes.models import ContentType
+# from django.utils import timezone
+
 
 class PostManager(models.Manager):
     def active(self, *args, **kwargs):
@@ -22,12 +24,13 @@ class Post(models.Model):
         get_user_model(),
         related_name="author",
         on_delete=models.CASCADE
-        )
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     # read_time = models.IntegerField(default=0)
     actives = PostManager()
     objects = models.Manager()
+
     class Meta:
         ordering = ["-created_at"]
 
@@ -66,12 +69,11 @@ def create_slug(instance, new_slug=None):
         new_slug = f"{slug}-{qs.first().id}"
         return create_slug(instance, new_slug=new_slug)
     return slug
-    
+
 # @receiver(post_save, sender=Post)
 # def pre_save_post_reciewver(sender, instance, *args, **kwargs):
 #     if not instance.slug:
 #         instance.slug = create_slug(instance)
-
 
 
 # class CommentManager(models.Manager):
@@ -83,10 +85,12 @@ def create_slug(instance, new_slug=None):
 #     def filter_by_instance(self, instance):
 #         content_type = ContentType.objects.get_for_model(instance.__class__)
 #         obj_id = instance.id
-#         qs = super(CommentManager,self).filter(content_type=content_type,object_id=obj_id)
+#         qs = super(CommentManager,self).filter\
+# (content_type=content_type,object_id=obj_id)
 #         return qs
 
-#     def create_by_model_type(self, model_type, slug, content, user, parent_obj):
+#     def create_by_model_type\
+# (self, model_type, slug, content, user, parent_obj):
 #         model_qs = ContentType.objects.filter(model=model_type)
 #         if model_qs.exists():
 #             SomeModel = model_qs.first().model_class()
@@ -103,26 +107,29 @@ def create_slug(instance, new_slug=None):
 #                 return instance
 #         return None
 
-    
 
 # class Comment(models.Model):
 #     content = models.TextField()
-#     post = models.ForeignKey(Post,related_name="comment",on_delete=models.CASCADE)
+#     post = models.ForeignKey(Post,related_name="comment",\
+# on_delete=models.CASCADE)
 #     commentator = models.ForeignKey(
 #         get_user_model(),
 #         related_name="commentator",
 #         on_delete=models.CASCADE
 #         )
-#     content_type = models.ForeignKey(ContentType,null=True,blank=True, on_delete=models.SET_NULL)
+#     content_type = models.ForeignKey(ContentType,null=True,blank=True, \
+# on_delete=models.SET_NULL)
 #     object_id = models.PositiveIntegerField()
-#     content_object = GenericForeignKey(ct_field='content_type',fk_field='object_id') 
+#     content_object = GenericForeignKey\
+# (ct_field='content_type',fk_field='object_id')
 #     objects = CommentManager()
-#     parent = models.ForeignKey("self",null=True,blank=True,on_delete=models.SET_NULL)
-    
-    
+#     parent = models.ForeignKey\
+# ("self",null=True,blank=True,on_delete=models.SET_NULL)
+
+
 #     def __str__(self):
 #         return str(self.commentator.username)
-    
+
 #     def children(self):
 #         return Comment.objects.filter(parent=self)
 
