@@ -1,32 +1,37 @@
+from pen.models import Review
+# import json
+# import requests
 from rest_framework import serializers
-from django.conf import settings
-from django.contrib.auth import get_user_model, authenticate
-from rest_framework import exceptions
-from django.contrib.sites.shortcuts import get_current_site
-from django.urls import reverse
-from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken,TokenError,AccessToken
+# from django.conf import settings
+# from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import get_user_model
+# from rest_framework import exceptions
+# from django.contrib.sites.shortcuts import get_current_site
+# from django.urls import reverse
+# from rest_framework import status
+from rest_framework_simplejwt.tokens import RefreshToken, TokenError
+# AccessToken
 from .models import Profile
 from django.utils.text import gettext_lazy as _
-from pen.serializers import ReviewNotIncludeUserSerialier,FavProductSerializer
+from pen.serializers import ReviewNotIncludeUserSerialier
+#  FavProductSerializer
 import environ
 env = environ.Env()
 env.read_env('.env')
-import requests, json
-from pen.models import Review,FavProduct
 
 
 # class AvatarSerializer(serializers.ModelSerializer):
-    # id = serializers.SerializerMethodField()
-    # def get_id(self, obj):
-    #     return obj.profile.pk
-    # class Meta:
-    #     model = models.Avatar
-    #     fields = ('id','image',)
+# id = serializers.SerializerMethodField()
+# def get_id(self, obj):
+#     return obj.profile.pk
+# class Meta:
+#     model = models.Avatar
+#     fields = ('id','image',)
 
 class UserSerializer(serializers.ModelSerializer):
     nickname = serializers.SerializerMethodField(read_only=True)
-    twitter_account = serializers.ReadOnlyField(source="profile.twitter_account")
+    twitter_account = serializers.ReadOnlyField(
+        source="profile.twitter_account")
     avatar = serializers.SerializerMethodField()
 
     def get_avatar(self, obj):
@@ -40,7 +45,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = ('id','profile','nickname','twitter_account','avatar',)
+        fields = ('id', 'profile', 'nickname', 'twitter_account', 'avatar',)
         extra_kwargs = {
             'password': {
                 'write_only': True,
@@ -61,9 +66,10 @@ class UserSerializer(serializers.ModelSerializer):
     #     response = super().create(validated_data)
     #     WEB_HOOK_URL = env.get_value("SLACK_WEBHOOK_CREATE_USER")
     #     requests.post(WEB_HOOK_URL, data = json.dumps({
-    #         'text': f':smile_cat:UserCreated [ {validated_data["email"]} ] ',  
+    #         'text': f':smile_cat:UserCreated [ {validated_data["email"]} ] ',
     #     }))
     #     return response
+
 
 class WhoAmISerializer(serializers.ModelSerializer):
     avatar = serializers.SerializerMethodField()
@@ -73,10 +79,11 @@ class WhoAmISerializer(serializers.ModelSerializer):
         if avatar:
             return avatar
         return None
+
     class Meta:
         model = Profile
-        fields = ('id','nickname','avatar', 'user')
-       
+        fields = ('id', 'nickname', 'avatar', 'user')
+
 
 class OwnProfileEditSerializer(serializers.ModelSerializer):
     # user = UserSerializer(read_only=True)
@@ -92,19 +99,19 @@ class OwnProfileEditSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ('id', 'nickname','user', 'avatar','twitter_account')
-        read_only_fields = ('user','avatar',)
+        fields = ('id', 'nickname', 'user', 'avatar', 'twitter_account')
+        read_only_fields = ('user', 'avatar',)
 
     # def update(self, instance, validated_data):
     #     pass
-        
+
 
 class ProfileSerializer(serializers.ModelSerializer):
     """
     read only 
     """
     # user = UserSerializer(read_only=True)
-    created_at = serializers.DateField(format="%Y/%m/%d",read_only=True)
+    created_at = serializers.DateField(format="%Y/%m/%d", read_only=True)
     updated_at = serializers.DateField(format="%Y/%m/%d", read_only=True)
     # user_profile = UserSerializer()
     review = serializers.SerializerMethodField()
@@ -121,9 +128,10 @@ class ProfileSerializer(serializers.ModelSerializer):
     def get_review(self, obj):
         own_review = Review.objects.filter(reviewer__id=obj.user.id)
         # print(own_review)
-        serializer = ReviewNotIncludeUserSerialier(instance=own_review,many=True)
+        serializer = ReviewNotIncludeUserSerialier(
+            instance=own_review, many=True)
         return serializer.data
-    
+
     @staticmethod
     def setup_for_query(queryset):
         # to-one
@@ -137,12 +145,14 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ('id','nickname','review','created_at', 'updated_at','avatar', )
+        fields = ('id', 'nickname', 'review',
+                  'created_at', 'updated_at', 'avatar', )
     # def validate(self, attrs):
     #     nickname = attrs.get('nickname')
     #     if not nickname.isalnum():
     #         raise serializers.ValidationError('only a-z 0-9 alnum')
     #     return super().validate(attrs)
+
 
 class LogoutSerializer(serializers.Serializer):
     # access = serializers.CharField()
@@ -175,13 +185,15 @@ class LogoutSerializer(serializers.Serializer):
 #         if prev_avatar:
 #             prev_avatar.delete()
 #         return super().save(*args, **kwargs)
-    
+
 #     def update(self, instance, validated_data):
 #         return super().update(instance, validated_data)
 
 # class UserRegisterSerializer(serializers.ModelSerializer):
-#     password = serializers.CharField(style={'input_type':'password'},write_only=True)
-#     password2 = serializers.CharField(style={'input_type':'password'},write_only=True)
+#     password = serializers.CharField(style={'input_type':\
+# 'password'},write_only=True)
+#     password2 = serializers.CharField(style={'input_type':\
+# 'password'},write_only=True)
 #     class Meta:
 #         model = get_user_model()
 #         fields = ('email', 'password','password2',)
@@ -200,17 +212,17 @@ class LogoutSerializer(serializers.Serializer):
 #         user.save()
 
 
-
 # class EmailVerifySerializer(serializers.ModelSerializer):
 #     tokens = serializers.CharField(max_length=500)
 #     class Meta:
 #         model = get_user_model
 #         fields = ('tokens',)
-        
+
 # class LoginSerializer(serializers.ModelSerializer):
 #     tokens = serializers.SerializerMethodField()
 #     email = serializers.EmailField(max_length=255)
-#     password = serializers.CharField(max_length=255, min_length=4, write_only=True)
+#     password = serializers.CharField(max_length=255, min_length=4,\
+#  write_only=True)
 #     tokens = serializers.CharField(read_only=True)
 #     class Meta:
 #         model = get_user_model
@@ -228,9 +240,11 @@ class LogoutSerializer(serializers.Serializer):
 #         password = attrs.get('password')
 #         filtered_user_by_email = models.User.objects.filter(email=email)
 #         user = authenticate(email=email, password=password)
-#         if filtered_user_by_email.exists() and filtered_user_by_email[0].auth_provider != 'email':
+#         if filtered_user_by_email.exists() and \
+# filtered_user_by_email[0].auth_provider != 'email':
 #             raise exceptions.AuthenticationFailed(
-#                 detail='Please continue your login using ' + filtered_user_by_email[0].auth_provider)
+#                 detail='Please continue your login using ' + \
+# filtered_user_by_email[0].auth_provider)
 
 #         if not user:
 #             raise exceptions.AuthenticationFailed('invalid user')
@@ -244,10 +258,9 @@ class LogoutSerializer(serializers.Serializer):
 #         }
 
 
-
 # class PasswordResetSerializer(serializers.ModelSerializer):
 #     redirect_url = serializers.CharField(max_length=255, required=False)
-    
+
 #     class Meta:
 #         model = models.User
 #         fields = ('email','redirect_url',)
@@ -258,21 +271,24 @@ class LogoutSerializer(serializers.Serializer):
     #     if user.exists():
     #         uidb64 = urlsafe_base64_encode(user.id)
     #         token = PasswordResetTokenGenerator().make_token(user)
-    #         current_site = get_current_site(request=attrs['data'].get('request')).domain
-    #         reverse_link = reverse('account:password-reset',kwargs={'uidb64':uidb64,'token':token})
+    #         current_site = get_current_site(request=attrs['data'].\
+    # get('request')).domain
+    #         reverse_link = reverse('account:password-reset',kwargs=\
+    # {'uidb64':uidb64,'token':token})
     #         absolute_url = f'http://{current_site}{reverse_link}'
 
-    #         email_body = f'Hi,there! \n please click this url for reset your password! \n {absolute_url}'
+    #         email_body = f'Hi,there! \n please click this url for \
+    # reset your password! \n {absolute_url}'
 
     #         data = {
     #             'email_subject': 'reset password',
     #             'email_body': email_body,
     #             'email_to': user.email,
     #             }
-            
+
     #         utils.Util.send_email(data)
     #     return super().validate(attrs)
-    
+
 # class SetNewPasswordSerializer(serializers.ModelSerializer):
 #     password = serializers.CharField(write_only=True)
 #     token = serializers.CharField(write_only=True)
@@ -280,7 +296,7 @@ class LogoutSerializer(serializers.Serializer):
 #     class Meta:
 #         model = models.User
 #         fields = ('password', 'token', 'uidb64',)
-    
+
 #     def validate(self, attrs):
 #         try:
 #             password = attrs.get('password')
@@ -290,19 +306,22 @@ class LogoutSerializer(serializers.Serializer):
 #             user = models.User.objects.get(id=id)
 
 #             if not PasswordResetTokenGenerator().check_token(user, token):
-#                 raise exceptions.AuthenticationFailed('reset link is invalid, try again!', 401)
+#                 raise exceptions.AuthenticationFailed\
+# ('reset link is invalid, try again!', 401)
 #             user.set_password(password)
 #             user.save()
 #         except  Exception as e:
-#                 raise exceptions.AuthenticationFailed('reset link is invalid, try again!', 401)
-                
+#                 raise exceptions.AuthenticationFailed\
+# ('reset link is invalid, try again!', 401)
+
 #         return super().validate(attrs)
 
 
 # class LoginSerializer(serializers.ModelSerializer):
 #     tokens = serializers.SerializerMethodField()
 #     email = serializers.EmailField(max_length=255)
-#     password = serializers.CharField(max_length=255, min_length=4, write_only=True)
+#     password = serializers.CharField(max_length=255, \
+# min_length=4, write_only=True)
 #     tokens = serializers.CharField(read_only=True)
 #     class Meta:
 #         model = models.User
