@@ -3,7 +3,7 @@ from .views import (
     PostListAPIView,
 )
 
-app_name="blog"
+app_name = "blog"
 urlpatterns = [
-    path('post/',PostListAPIView.as_view(),name="list"),
+    path('post/', PostListAPIView.as_view(), name="list"),
 ]

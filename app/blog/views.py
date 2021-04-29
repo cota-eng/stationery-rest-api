@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework import generics
 from .serializers import (
     PostListSerializer,
@@ -8,20 +7,20 @@ from .models import (
 )
 from rest_framework.filters import (
     SearchFilter,
-    OrderingFilter,
+    # OrderingFilter,
 )
 
-from django.db.models import Q
-from rest_framework.permissions import AllowAny, IsAuthenticated
+# from django.db.models import Q
+from rest_framework.permissions import AllowAny
 
 
 class PostListAPIView(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostListSerializer
-    permission_classes = [AllowAny,]
+    permission_classes = [AllowAny, ]
     filter_backends = [SearchFilter]
-    search_fields = ["title", "content",]
-    
+    search_fields = ["title", "content", ]
+
     # def get_queryset(self):
     #     # super(PostListAPIView,self).get_queryset(self)
     #     query = self.request.GET.get("q")
