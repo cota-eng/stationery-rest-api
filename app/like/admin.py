@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import LikePost, LikeProduct
 
-# Register your models here.
+admin.site.register(LikePost)
+admin.site.register(LikeProduct)
